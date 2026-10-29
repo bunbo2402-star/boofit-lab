@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BOO FIT LAB – Đúng Gu cùng BOO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{fontFamily:{sans:['"Be Vietnam Pro"','system-ui','sans-serif']},
+tailwind.config={theme:{extend:{fontFamily:{sans:['"Be Vietnam Pro"','system-ui','sans-serif'],cute:['"Fredoka"','sans-serif']},
 colors:{sky:'#A9CBEF',mint:'#CDEBDD',leaf:'#2F7D4F',sand:'#F1EADB',ink:'#0A0A0A'}}}}
 </script>
 <style>
@@ -56,41 +56,43 @@ body{background:#fff;color:#0A0A0A}
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
     <div class="relative max-w-6xl mx-auto px-4 pb-14 pt-40 w-full">
       <p class="font-bold text-mint mb-3">BOO FIT LAB</p>
-      <h1 class="text-5xl sm:text-7xl font-black leading-[1.02] max-w-3xl">Đúng Gu cùng BOO</h1>
+      <h1 class="text-5xl sm:text-7xl font-cute font-bold leading-[1.02] max-w-3xl">Đúng Gu cùng BOO</h1>
       <p class="text-xl sm:text-2xl mt-4 max-w-xl">Đúng gu gọn tủ, vẫn đủ chất riêng.</p>
       <button data-go="quiz" class="btn btn-sky mt-8 text-lg">Khám phá Style Quiz ngay</button>
     </div>
   </div>
 
-  <div class="bg-sand">
-    <div class="max-w-6xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center">
+  <!-- PHẦN NỀN THAY BẰNG ẢNH banner-2.png -->
+  <div class="relative text-white py-24" style="background:url('images/banner-2.png') center/cover">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-3xl sm:text-5xl font-black leading-tight">Tủ đồ gọn hơn, mặc đẹp hơn.</h2>
-        <p class="mt-5 text-lg max-w-prose leading-relaxed">Fit Lab là nơi BOO giúp bạn định hình phong cách cá nhân một cách thông minh. Trả lời các câu hỏi nhanh để nhận diện chính xác gu thẩm mỹ của riêng bạn.</p>
-        <p class="mt-4 text-lg max-w-prose leading-relaxed">Mỗi set được phối sẵn để mặc lại được nhiều lần, tối ưu không gian tủ đồ mà vẫn giữ trọn chất tôi độc bản.</p>
+        <h2 class="text-3xl sm:text-5xl font-cute font-bold leading-tight">Tủ đồ gọn hơn, mặc đẹp hơn.</h2>
+        <p class="mt-5 text-lg max-w-prose leading-relaxed text-neutral-100">Fit Lab là nơi BOO giúp bạn định hình phong cách cá nhân một cách thông minh. Trả lời các câu hỏi nhanh để nhận diện chính xác gu thẩm mỹ của riêng bạn.</p>
+        <p class="mt-4 text-lg max-w-prose leading-relaxed text-neutral-100">Mỗi set được phối sẵn để mặc lại được nhiều lần, tối ưu không gian tủ đồ mà vẫn giữ trọn chất tôi độc bản.</p>
       </div>
       <div class="grid grid-cols-2 gap-4" aria-label="Không gian Fit Lab">
-        <img src="images/trang-chu-1.png" alt="Không gian Fit Lab BOO" class="rounded-2xl w-full aspect-square object-cover" loading="lazy">
-        <img src="images/trang-chu-2.jpg" alt="Người mẫu BOO đứng trước bối cảnh phố" class="rounded-2xl w-full aspect-square object-cover mt-8" loading="lazy">
-        <img src="images/minh-hoa.jpg" alt="Hình minh hoạ chiến dịch BOO" class="rounded-2xl w-full aspect-square object-cover -mt-8" loading="lazy">
-        <img src="images/minh-hoa-1.jpg" alt="Hình minh hoạ chiến dịch BOO – phiên bản 2" class="rounded-2xl w-full aspect-square object-cover" loading="lazy">
+        <img src="images/trang-chu-1.png" alt="Không gian Fit Lab BOO" class="rounded-2xl w-full aspect-square object-cover border-2 border-white/20 shadow-lg" loading="lazy">
+        <img src="images/trang-chu-2.jpg" alt="Người mẫu BOO đứng trước bối cảnh phố" class="rounded-2xl w-full aspect-square object-cover mt-8 border-2 border-white/20 shadow-lg" loading="lazy">
+        <img src="images/minh-hoa.jpg" alt="Hình minh hoạ chiến dịch BOO" class="rounded-2xl w-full aspect-square object-cover -mt-8 border-2 border-white/20 shadow-lg" loading="lazy">
+        <img src="images/minh-hoa-1.jpg" alt="Hình minh hoạ chiến dịch BOO – phiên bản 2" class="rounded-2xl w-full aspect-square object-cover border-2 border-white/20 shadow-lg" loading="lazy">
       </div>
     </div>
   </div>
 
-  <!-- SECTION MỚI: HÀNH TRÌNH TÌM ĐÚNG GU CÙNG BOO -->
-  <div class="bg-white py-20 border-y-2 border-ink">
+  <!-- SECTION HÀNH TRÌNH TÌM ĐÚNG GU CÙNG BOO -->
+  <div class="bg-white py-20 border-b-2 border-ink">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-14">
         <span class="bg-mint text-ink text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider border border-ink">Trải nghiệm MarTech</span>
-        <h2 class="text-3xl sm:text-4xl font-black mt-3">Hành trình tìm đúng gu cùng BOO</h2>
+        <h2 class="text-3xl sm:text-4xl font-cute font-bold mt-3">Hành trình tìm đúng gu cùng BOO</h2>
         <p class="mt-2 text-neutral-600">Quy trình 5 bước đơn giản để tối ưu tủ đồ và tỏa sáng chất riêng.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div class="bg-sand border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">01</span>
           <div>
-            <h3 class="font-black text-lg mt-3">Làm Style Quiz</h3>
+            <h3 class="font-cute font-bold text-lg mt-3">Làm Style Quiz</h3>
             <p class="text-sm mt-1 text-neutral-700">Trả lời 5 câu hỏi nhanh để hệ thống bóc tách gu thời trang của bạn.</p>
           </div>
           <button data-go="quiz" class="mt-4 text-xs font-bold underline text-left">Bắt đầu ngay →</button>
@@ -98,14 +100,14 @@ body{background:#fff;color:#0A0A0A}
         <div class="bg-mint border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">02</span>
           <div>
-            <h3 class="font-black text-lg mt-3">Nhận gợi ý set đồ</h3>
+            <h3 class="font-cute font-bold text-lg mt-3">Nhận gợi ý set đồ</h3>
             <p class="text-sm mt-1 text-neutral-700">Nhận diện tên Gu Gen Z độc đáo và các set đồ chuẩn vibe nhất.</p>
           </div>
         </div>
         <div class="bg-sky border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">03</span>
           <div>
-            <h3 class="font-black text-lg mt-3">Lưu vào FIT CARD</h3>
+            <h3 class="font-cute font-bold text-lg mt-3">Lưu vào FIT CARD</h3>
             <p class="text-sm mt-1 text-neutral-700">Lưu giữ tủ đồ ảo cá nhân và tự do mix-match theo ý thích.</p>
           </div>
           <a href="#fitcard" data-go="fit" class="mt-4 text-xs font-bold underline text-left">Xem FIT CARD →</a>
@@ -113,14 +115,14 @@ body{background:#fff;color:#0A0A0A}
         <div class="bg-sand border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">04</span>
           <div>
-            <h3 class="font-black text-lg mt-3">Ra Fit Spot thử đồ</h3>
+            <h3 class="font-cute font-bold text-lg mt-3">Ra Fit Spot thử đồ</h3>
             <p class="text-sm mt-1 text-neutral-700">Mang FIT CARD đến cửa hàng BOO gần nhất để trải nghiệm thực tế.</p>
           </div>
         </div>
         <div class="bg-white border-2 border-ink rounded-2xl p-5 flex flex-col justify-between shadow-sm">
           <span class="text-3xl font-black text-leaf">05</span>
           <div>
-            <h3 class="font-black text-lg mt-3">Chốt đúng gu</h3>
+            <h3 class="font-cute font-bold text-lg mt-3">Chốt đúng gu</h3>
             <p class="text-sm mt-1 text-neutral-700">Sở hữu tủ đồ tinh gọn, mặc đẹp hơn và thỏa sức thể hiện chất riêng.</p>
           </div>
         </div>
@@ -128,21 +130,21 @@ body{background:#fff;color:#0A0A0A}
     </div>
   </div>
 
-  <!-- SECTION SỨ MỆNH & GIÁ TRỊ CỐT LÕI -->
+  <!-- SECTION SỨ MỆNH & GIÁ TRỊ CỐT LÕI (ĐÃ BỎ ICON) -->
   <div class="bg-sand py-16">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
       <div class="bg-white border-2 border-ink rounded-3xl p-8 shadow-sm">
         <span class="bg-sky text-ink text-xs font-bold px-3 py-1 rounded-full">Sứ mệnh thương hiệu</span>
-        <h3 class="text-2xl font-black mt-3">Đúng gu gọn tủ, vẫn đủ chất riêng</h3>
+        <h3 class="text-2xl font-cute font-bold mt-3">Đúng gu gọn tủ, vẫn đủ chất riêng</h3>
         <p class="mt-3 text-neutral-700 leading-relaxed">BOO FIT LAB ra đời với sứ mệnh đồng hành cùng giới trẻ Việt Nam giải quyết bài toán tiêu dùng thời trang bền vững. Chúng tôi tin rằng phong cách không nằm ở số lượng quần áo nhiều hay ít, mà nằm ở khả năng thấu hiểu bản thân để chọn đúng những gì đại diện hoàn hảo cho chất tôi độc bản.</p>
       </div>
       <div class="bg-mint border-2 border-ink rounded-3xl p-8 shadow-sm">
         <span class="bg-leaf text-white text-xs font-bold px-3 py-1 rounded-full">Giá trị cốt lõi</span>
-        <h3 class="text-2xl font-black mt-3">Smart Wardrobe & Self-Expression</h3>
-        <ul class="mt-3 space-y-2 text-neutral-800 font-medium">
-          <li>✨ <strong>Tinh gọn:</strong> Tối ưu tủ đồ, loại bỏ sự lãng phí không cần thiết.</li>
-          <li>🎯 <strong>Chính xác:</strong> Công nghệ MarTech cá nhân hóa trải nghiệm phối đồ.</li>
-          <li>🔥 <strong>Chất riêng:</strong> Tôn vinh bản sắc cá tính độc lập của thế hệ trẻ Gen Z.</li>
+        <h3 class="text-2xl font-cute font-bold mt-3">Smart Wardrobe & Self-Expression</h3>
+        <ul class="mt-3 space-y-3 text-neutral-800 font-medium">
+          <li><strong>Tinh gọn:</strong> Tối ưu tủ đồ, loại bỏ sự lãng phí không cần thiết.</li>
+          <li><strong>Chính xác:</strong> Công nghệ MarTech cá nhân hóa trải nghiệm phối đồ.</li>
+          <li><strong>Chất riêng:</strong> Tôn vinh bản sắc cá tính độc lập của thế hệ trẻ Gen Z.</li>
         </ul>
       </div>
     </div>
@@ -150,12 +152,12 @@ body{background:#fff;color:#0A0A0A}
 
   <div id="lookbook" class="bg-white scroll-mt-16 border-t-2 border-ink">
     <div class="max-w-6xl mx-auto px-4 py-20">
-      <h2 class="text-3xl sm:text-5xl font-black">Lookbook</h2>
+      <h2 class="text-3xl sm:text-5xl font-cute font-bold">Lookbook</h2>
       <p class="mt-3 text-lg max-w-xl">Những cách mặc BOO ngoài đời thật.</p>
       <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <figure class="polaroid -rotate-2"><img src="images/nguoi-mau-1.jpg" alt="Người mẫu mặc áo thun xanh, ngồi bên lề đường" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 01 · Xanh trời</figcaption></figure>
-        <figure class="polaroid rotate-1 md:mt-10"><img src="images/nguoi-mau-2.jpg" alt="Người mẫu mặc áo thể thao số 03 và quần rằn ri" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 02 · Varsity 03</figcaption></figure>
-        <figure class="polaroid -rotate-1"><img src="images/nguoi-mau-3.jpg" alt="Người mẫu mặc áo be và chân váy bóng, đeo túi chéo" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 03 · Be nhẹ nhàng</figcaption></figure>
+        <figure class="polaroid -rotate-2"><img src="images/nguoi-mau-1.jpg" alt="Look 01" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 01 · Xanh trời</figcaption></figure>
+        <figure class="polaroid rotate-1 md:mt-10"><img src="images/nguoi-mau-2.jpg" alt="Look 02" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 02 · Varsity 03</figcaption></figure>
+        <figure class="polaroid -rotate-1"><img src="images/nguoi-mau-3.jpg" alt="Look 03" class="w-full aspect-[4/5] object-cover" loading="lazy"><figcaption class="font-bold mt-2 px-1">Look 03 · Be nhẹ nhàng</figcaption></figure>
       </div>
       <div class="text-center mt-14"><button data-go="quiz" class="btn btn-ink">Tìm look hợp gu của bạn</button></div>
     </div>
@@ -166,9 +168,452 @@ body{background:#fff;color:#0A0A0A}
 <section id="v-quiz" class="view">
   <div class="max-w-2xl mx-auto px-4 py-12 min-h-[75vh]">
     <div id="quizIntro" class="text-center py-10">
-      <h2 class="text-4xl sm:text-5xl font-black">Style Quiz</h2>
+      <h2 class="text-4xl sm:text-5xl font-cute font-bold">Style Quiz</h2>
       <p class="mt-4 text-lg">5 câu hỏi nhanh. Chọn đúng gu để nhận set đồ chuẩn vibe nhất.</p>
       <button id="startQuiz" class="btn btn-ink mt-8 text-lg">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
-      <div class="flex justify-between font-bold text-sm mb-2"><span id="qStep">Câu 1/5</span><button id="qBack" class="underline">Quay lại</button
+      <div class="flex justify-between font-bold text-sm mb-2"><span id="qStep">Câu 1/5</span><button id="qBack" class="underline">Quay lại</button></div>
+      <div class="h-3 rounded-full bg-mint overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="5" id="qBar"><div id="qFill" class="h-full bg-leaf transition-all" style="width:0"></div></div>
+      <h3 id="qText" class="text-2xl sm:text-3xl font-cute font-bold mt-8 leading-snug" aria-live="polite"></h3>
+      <div id="qOpts" class="grid gap-3 mt-6"></div>
+    </div>
+    <div id="quizDone" class="hidden text-center py-16">
+      <p class="text-3xl font-cute font-bold">Đang bóc tách vibe và gọi tên Gu của bạn…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRANG 3: OUTFIT ============ -->
+<section id="v-outfit" class="view">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="bg-mint border-2 border-ink rounded-3xl p-6 sm:p-10 mb-10 shadow-sm">
+      <span class="bg-ink text-white text-xs font-bold px-3 py-1 rounded-full">Kết quả Style Quiz của bạn</span>
+      <h2 id="resultTitle" class="text-3xl sm:text-5xl font-cute font-bold mt-3"></h2>
+      <p id="resultNote" class="mt-3 text-lg font-medium"></p>
+    </div>
+    <h3 class="text-2xl font-cute font-bold">Các set đồ gợi ý chuẩn vibe nhất dành cho bạn</h3>
+    <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-6"></div>
+    <div class="mt-10"><button data-go="quiz" id="retake" class="btn btn-line">Làm lại quiz</button></div>
+  </div>
+</section>
+
+<!-- ============ TRANG 4: FIT CARD ============ -->
+<section id="v-fit" class="view">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl sm:text-5xl font-cute font-bold">FIT CARD của bạn</h2>
+    <p class="mt-3 text-lg">Tủ đồ cá nhân: những set bạn đã lưu và khu vực tự phối đồ.</p>
+    
+    <div id="fitGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8"></div>
+
+    <div class="mt-16 bg-sand border-2 border-ink rounded-3xl p-6 sm:p-8">
+      <h3 class="text-2xl sm:text-3xl font-cute font-bold">Phòng Lab Tự Phối Đồ (Custom Outfit)</h3>
+      <p class="mt-2 text-neutral-700">Tự do chọn riêng từng item (Áo, Quần, Giày, Phụ kiện) bên dưới. Hình ảnh sẽ tự động thay đổi theo lựa chọn của bạn!</p>
+      
+      <div class="mt-6 grid lg:grid-cols-3 gap-8 items-center">
+        <div class="bg-white border-2 border-ink rounded-2xl p-4 text-center shadow-md">
+          <p class="font-bold text-sm mb-2 text-leaf">Hình ảnh phối đồ trực quan</p>
+          <img id="customPreviewImg" alt="Custom Look Preview" class="w-full aspect-square object-contain mx-auto rounded-xl bg-sand">
+          <p id="customDescText" class="mt-3 font-bold text-sm text-neutral-800">Chưa chọn đủ món</p>
+        </div>
+
+        <div id="customRow" class="lg:col-span-2 grid sm:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <button id="saveCustom" class="btn btn-sky">Lưu look tự phối vào FIT CARD</button>
+        <span id="customMsg" class="font-semibold" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="mt-16 bg-mint border-2 border-ink rounded-3xl p-8 max-w-2xl text-center">
+      <h3 class="text-2xl font-cute font-bold">Sẵn sàng trải nghiệm tại Fit Spot?</h3>
+      <p class="mt-3 text-neutral-800">Mang theo FIT CARD này đến hệ thống cửa hàng BOO để nhân viên hỗ trợ bạn thử trực tiếp các set đồ đã lưu một cách nhanh chóng nhất!</p>
+      <button data-go="home" class="btn btn-ink mt-6">Quay về trang chủ</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-ink text-white mt-10"><div class="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center gap-4 justify-between">
+  <img src="images/BOO.png" alt="BOO" class="h-10 w-10 rounded-lg"><p>BOO FIT LAB · Đúng Gu cùng BOO</p></div></footer>
+
+<!-- MODAL CHI TIẾT -->
+<div id="modal" class="fixed inset-0 z-50 hidden bg-black/60 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="bg-white rounded-3xl max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden border-2 border-ink">
+    <img id="mImg" alt="" class="w-full h-full object-cover bg-sand">
+    <div class="p-6">
+      <div class="flex justify-between items-start gap-2"><h3 id="mTitle" class="text-2xl font-cute font-bold"></h3><button id="mClose" class="text-2xl leading-none px-2 font-bold" aria-label="Đóng">×</button></div>
+      <ul id="mItems" class="mt-4 grid gap-4"></ul>
+      <p class="mt-5 font-black text-xl">Tổng: <span id="mTotal"></span></p>
+      <button id="mSave" class="btn btn-ink w-full mt-4">Lưu vào giỏ / FIT CARD</button>
+    </div>
+  </div>
+</div>
+
+<!-- WIDGET LEAD SCORE -->
+<aside id="lead" class="fixed right-3 bottom-3 z-50 w-56 bg-white border-2 border-ink rounded-2xl p-3 shadow-xl" aria-live="polite" aria-label="Điểm tích lũy">
+  <div class="flex items-center justify-between">
+    <span class="font-black text-lg"><span id="ptsNum">0</span> / 100 PTS</span>
+    <span id="pill" class="text-xs font-bold rounded-full px-2 py-1 bg-sky">Cold Lead</span>
+  </div>
+  <div class="h-2 rounded-full bg-mint mt-2 overflow-hidden"><div id="ptsBar" class="h-full bg-leaf transition-all duration-500" style="width:0"></div></div>
+  <p id="ptsLog" class="text-xs mt-2 text-neutral-600 min-h-[1rem]">Làm quiz để bắt đầu tích điểm.</p>
+</aside>
+
+<script>
+const SETS=[
+ {
+   id:'soft',
+   name:'Set Nơ Hồng Dịu Dàng',
+   img:'images/outfit-1.png',
+   tag:'Nhẹ nhàng · Nữ tính · Minimalist',
+   items:[
+    {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
+    {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
+    {n:'Túi đeo vai nơ',p:329000,c:['Hồng','Trắng']},
+    {n:'Giày mary jane đen',p:549000,c:['Đen','Trắng']}
+   ]
+ },
+ {
+   id:'street',
+   name:'Set Varsity Đỏ Đường Phố',
+   img:'images/outfit-2.png',
+   tag:'Streetwear · Oversized · Năng động',
+   items:[
+    {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
+    {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
+    {n:'Quần jeans cargo',p:549000,c:['Đen','Xanh dương']},
+    {n:'Giày sneaker trắng',p:599000,c:['Trắng','Be nhạt']}
+   ]
+ },
+ {
+   id:'neutral',
+   name:'Set Neutral Thu Đông Boheme',
+   img:'images/outfit-3.jfif',
+   tag:'Minimalist · Ấm áp · Cá tính',
+   items:[
+    {n:'Áo tay dài loang màu tie-dye',p:399000,c:['Be','Xám']},
+    {n:'Quần short jean wash xám dây rút',p:429000,c:['Xám đậm']},
+    {n:'Túi đeo vai nâu da bóng',p:450000,c:['Nâu đậm']},
+    {n:'Ủng cao cổ da nâu',p:799000,c:['Nâu']}
+   ]
+ },
+ {
+   id:'explorer',
+   name:'Set Urban Explorer Phóng Khoáng',
+   img:'images/outfit-4.jfif',
+   tag:'Streetwear · Utility · Nam tính',
+   items:[
+    {n:'Áo sơ mi flannel kẻ sọc tối màu',p:499000,c:['Đen/Xám']},
+    {n:'Áo thun trắng basic',p:250000,c:['Trắng']},
+    {n:'Quần túi hộp cargo rêu nhiều ngăn',p:650000,c:['Xanh rêu']},
+    {n:'Giày cao cổ sneaker bản lớn',p:699000,c:['Đen/Trắng']}
+   ]
+ },
+ {
+   id:'comfy',
+   name:'Set Comfy Slytherin Green',
+   img:'images/outfit-5.png',
+   tag:'Comfy · Active · Daily Wear',
+   items:[
+    {n:'Áo nỉ sweatshirt xanh rêu Slytherin',p:550000,c:['Xanh rêu']},
+    {n:'Quần jogger nỉ xám lông chuột',p:450000,c:['Xám']},
+    {n:'Nón kết thêu chữ "Lười"',p:199000,c:['Đen']},
+    {n:'Giày sneaker thể thao xanh',p:599000,c:['Xanh lá']}
+   ]
+ }
+];
+
+const CUSTOM_ITEMS = {
+  ao: [
+    { name: 'Áo sweatshirt trắng in nơ', img: 'images/outfit-1.png' },
+    { name: 'Áo khoác varsity đỏ', img: 'images/outfit-2.png' },
+    { name: 'Áo tay dài loang màu tie-dye', img: 'images/outfit-3.jfif' },
+    { name: 'Áo sơ mi flannel sọc', img: 'images/outfit-4.jfif' },
+    { name: 'Áo nỉ sweatshirt xanh rêu', img: 'images/outfit-5.png' }
+  ],
+  quan: [
+    { name: 'Chân váy xếp ly caro hồng', img: 'images/outfit-1.png' },
+    { name: 'Quần jeans cargo túi hộp', img: 'images/outfit-2.png' },
+    { name: 'Quần short jean wash xám', img: 'images/outfit-3.jfif' },
+    { name: 'Quần túi hộp cargo rêu', img: 'images/outfit-4.jfif' },
+    { name: 'Quần jogger nỉ xám', img: 'images/outfit-5.png' }
+  ],
+  giay: [
+    { name: 'Giày mary jane đen', img: 'images/outfit-1.png' },
+    { name: 'Giày sneaker trắng chunky', img: 'images/outfit-2.png' },
+    { name: 'Ủng cao cổ da nâu', img: 'images/outfit-3.jfif' },
+    { name: 'Giày cao cổ sneaker', img: 'images/outfit-4.jfif' },
+    { name: 'Giày thể thao xanh rêu', img: 'images/outfit-5.png' }
+  ],
+  phukien: [
+    { name: 'Túi đeo vai nơ hồng', img: 'images/outfit-1.png' },
+    { name: 'Túi đeo vai nâu da bóng', img: 'images/outfit-3.jfif' },
+    { name: 'Mắt kính Urban Explorer', img: 'images/outfit-4.jfif' },
+    { name: 'Nón kết thêu chữ Lười', img: 'images/outfit-5.png' }
+  ]
+};
+
+const QS=[
+ {
+   text:'Cuối tuần của bạn thường là…',
+   opts:[
+    {t:'Ở nhà, nhẹ nhàng, xem phim, chụp ảnh ngọt ngào', vibe:'soft'},
+    {t:'Đi phố, cà phê check-in, dạo phố sập sàn', vibe:'street'},
+    {t:'Khám phá các triển lãm nghệ thuật, không gian mộc mạc', vibe:'neutral'},
+    {t:'Săn ảnh street life, khám phá những góc ngách mới của thành phố', vibe:'explorer'},
+    {t:'Tụ tập chơi board game, cà phê chill cùng hội cạ cứng', vibe:'comfy'}
+   ]
+ },
+ {
+   text:'Bạn chuộng phong cách thời trang nào nhất?',
+   opts:[
+    {t:'Minimalist nữ tính, trong trẻo, đáng yêu', vibe:'soft'},
+    {t:'Streetwear năng động, cá tính, hút mọi ánh nhìn', vibe:'street'},
+    {t:'Phong cách Thu Đông ấm áp, tinh tế, tối giản', vibe:'neutral'},
+    {t:'Utility / Urban Explorer phóng khoáng, bụi bặm', vibe:'explorer'},
+    {t:'Active / Comfy thoải mái tối đa cho cả ngày dài', vibe:'comfy'}
+   ]
+ },
+ {
+   text:'Kiểu dáng trang phục ưu tiên trong tủ đồ?',
+   opts:[
+    {t:'Slim fit gọn gàng, xếp ly duyên dáng', vibe:'soft'},
+    {t:'Oversized rộng rãi, thoải mái thể hiện chất riêng', vibe:'street'},
+    {t:'Form suông vừa vặn, chất liệu vải dạ/nỉ ấm áp', vibe:'neutral'},
+    {t:'Nhiều túi hộp tiện dụng, thiết kế đa lớp (layered)', vibe:'explorer'},
+    {t:'Form rộng năng động, chất liệu cotton nỉ mềm mịn', vibe:'comfy'}
+   ]
+ },
+ {
+   text:'Bảng màu sắc yêu thích khi bạn chọn đồ?',
+   opts:[
+    {t:'Pastel ngọt ngào, trắng, hồng, be nhạt', vibe:'soft'},
+    {t:'Đỏ nổi bật, đen tương phản mạnh mẽ', vibe:'street'},
+    {t:'Be, nâu đất, xám tro trầm ấm', vibe:'neutral'},
+    {t:'Xanh rêu, đen, xám khói đậm chất lính', vibe:'explorer'},
+    {t:'Xanh lá đậm, xám lông chuột tươi trẻ', vibe:'comfy'}
+   ]
+ },
+ {
+   text:'Món phụ kiện "must-have" không thể thiếu?',
+   opts:[
+    {t:'Nơ cài tóc, túi đeo vai xinh xắn', vibe:'soft'},
+    {t:'Mũ lưỡi trai, vòng tay cá tính', vibe:'street'},
+    {t:'Túi da bóng phong cách retro', vibe:'neutral'},
+    {t:'Kính râm, móc khóa utility', vibe:'explorer'},
+    {t:'Nón kết thêu slogan độc lạ', vibe:'comfy'}
+   ]
+ }
+];
+
+const fmt=n=>n.toLocaleString('vi-VN')+'đ';
+const $=s=>document.querySelector(s);
+const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,resultVibe:null,cur:null,colors:{}};
+
+function addPts(n,why){
+  const before=S.pts;S.pts=Math.min(100,S.pts+n);
+  if(S.pts===before)return;
+  $('#ptsNum').textContent=S.pts;$('#ptsBar').style.width=S.pts+'%';
+  const l=S.pts>=70?['Hot Lead','#2F7D4F','#fff']:S.pts>=30?['Warm Lead','#CDEBDD','#0A0A0A']:['Cold Lead','#A9CBEF','#0A0A0A'];
+  const p=$('#pill');p.textContent=l[0];p.style.background=l[1];p.style.color=l[2];
+  $('#ptsLog').textContent='+'+(S.pts-before)+' điểm · '+why;
+  const w=$('#lead');w.classList.remove('bump');void w.offsetWidth;w.classList.add('bump');
+}
+
+function show(v,scroll){
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+  if(v==='fit')renderFit();
+  if(scroll){setTimeout(()=>document.getElementById(scroll)?.scrollIntoView(),30)}else window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-go]');if(!a)return;
+  e.preventDefault();
+  const v=a.dataset.go;
+  if(v==='quiz')resetQuizUI();
+  show(v,a.dataset.scroll);
+});
+
+function resetQuizUI(){
+  if(S.done||S.q>0){S.q=0;S.answers=[];}
+  $('#quizIntro').classList.remove('hidden');$('#quizBox').classList.add('hidden');$('#quizDone').classList.add('hidden');
+}
+$('#startQuiz').onclick=()=>{$('#quizIntro').classList.add('hidden');$('#quizBox').classList.remove('hidden');renderQ()};
+$('#qBack').onclick=()=>{if(S.q>0){S.q--;S.answers.pop();renderQ()}};
+
+function renderQ(){
+  const q=QS[S.q];
+  $('#qStep').textContent='Câu '+(S.q+1)+'/5';
+  $('#qFill').style.width=(S.q/5*100)+'%';$('#qBar').setAttribute('aria-valuenow',S.q);
+  $('#qText').textContent=q.text;
+  $('#qOpts').innerHTML='';
+  q.opts.forEach(opt=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=opt.t;
+    b.onclick=()=>{S.answers.push(opt.vibe);S.q++;S.q<5?renderQ():finishQuiz()};
+    $('#qOpts').append(b);
+  });
+  $('#qBack').style.visibility=S.q?'visible':'hidden';
+}
+
+function finishQuiz(){
+  $('#qFill').style.width='100%';
+  $('#quizBox').classList.add('hidden');$('#quizDone').classList.remove('hidden');
+  const counts={};
+  S.answers.forEach(v=>counts[v]=(counts[v]||0)+1);
+  let bestVibe='soft', maxCount=0;
+  for(let v in counts){if(counts[v]>maxCount){maxCount=counts[v];bestVibe=v;}}
+  S.resultVibe=bestVibe;
+  if(!S.done){S.done=true;addPts(30,'Hoàn thành Style Quiz chuẩn vibe');}
+  S.q=0;
+  setTimeout(()=>{renderOutfits();show('outfit')},900);
+}
+
+const VIBE_TITLES={
+  soft:{name:'BayBOO Ngọt Ngào & Tinh Tế',desc:'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi.'},
+  street:{name:'Hop on da Showgirl & Street Vibe',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
+  neutral:{name:'Minimalist Thu Đông Ấm Áp',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'},
+  explorer:{name:'Urban Explorer Phóng Khoáng',desc:'Bụi bặm, mạnh mẽ và sẵn sàng cho mọi hành trình khám phá.'},
+  comfy:{name:'Comfy Active Daily Wear',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'}
+};
+
+function renderOutfits(){
+  const vibe=S.resultVibe||'soft';
+  const info=VIBE_TITLES[vibe];
+  $('#resultTitle').textContent=`✨ Gu của bạn: "${info.name}"`;
+  $('#resultNote').textContent=`${info.desc} (Đúng gu gọn tủ, vẫn đủ chất riêng).`;
+  const sortedSets=[...SETS].sort((a,b)=>{
+    if(a.id===vibe) return -1;
+    if(b.id===vibe) return 1;
+    return 0;
+  });
+  $('#outfitList').innerHTML=sortedSets.map((s,i)=>`
+   <article class="rounded-3xl border-2 border-ink overflow-hidden bg-white shadow-sm">
+     <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
+     <div class="p-5">
+       <p class="font-bold text-leaf">${s.id===vibe?'🔥 Set đồ chuẩn vibe nhất cho bạn · 100% hợp gu':'Set đồ gợi ý thêm'}</p>
+       <h3 class="text-2xl font-cute font-bold mt-1">${s.name}</h3>
+       <p class="mt-1">${s.tag}</p>
+       <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho cả set</p>
+       <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
+     </div></article>`).join('');
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
+
+let lastFocus=null;
+function openModal(id){
+  const s=SETS.find(x=>x.id===id);S.cur=s;lastFocus=document.activeElement;
+  if(!S.colors[id])S.colors[id]=s.items.map(i=>i.c[0]);
+  $('#mImg').src=s.img;$('#mImg').alt=s.name;$('#mTitle').textContent=s.name;
+  $('#mItems').innerHTML=s.items.map((it,i)=>`<li class="border-b border-neutral-200 pb-3">
+    <div class="flex justify-between gap-3 font-bold"><span>${it.n}</span><span>${fmt(it.p)}</span></div>
+    <div class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Màu cho ${it.n}">${it.c.map(c=>`<button class="chip" data-i="${i}" data-c="${c}" aria-pressed="${S.colors[id][i]===c}">${c}</button>`).join('')}</div></li>`).join('');
+  $('#mTotal').textContent=fmt(s.items.reduce((a,b)=>a+b.p,0));
+  refreshSave();
+  $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';$('#mClose').focus();
+  if(!S.seen.has(id)){S.seen.add(id);addPts(10,'Xem chi tiết sản phẩm');}
+}
+function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD ✓':'Lưu vào giỏ / FIT CARD';}
+$('#mItems').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
+  c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+});
+$('#mSave').onclick=()=>{
+  const s=S.cur;if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return}
+  S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
+  addPts(20,'Lưu set vào FIT CARD');updCount();refreshSave();
+};
+function closeModal(){$('#modal').classList.add('hidden');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+$('#mClose').onclick=closeModal;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#modal').classList.contains('hidden'))closeModal()});
+const updCount=()=>$('#fcCount').textContent=S.saved.length;
+
+function renderFit(){
+  $('#fitGrid').innerHTML=S.saved.length?S.saved.map((s,i)=>`
+   <div class="rounded-2xl border-2 border-ink overflow-hidden bg-white shadow-sm">
+     <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
+     <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
+     <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
+     <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
+    :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center border-2 border-ink"><p class="font-bold text-lg">FIT CARD của bạn đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button></div>`;
+
+  const categories = [
+    { key: 'ao', label: '👕 Áo lựa chọn' },
+    { key: 'quan', label: '👖 Quần / Chân váy' },
+    { key: 'giay', label: '👟 Giày dép' },
+    { key: 'phukien', label: '👜 Phụ kiện' }
+  ];
+
+  $('#customRow').innerHTML = categories.map(cat => `
+    <div class="slot">
+      <label class="font-bold block text-sm text-neutral-800">${cat.label}</label>
+      <select data-cat="${cat.key}" class="custom-select mt-2 w-full rounded-lg border-2 border-ink px-3 py-2 font-medium bg-white text-sm">
+        <option value="">+ Chọn ${cat.label.toLowerCase()}</option>
+        ${CUSTOM_ITEMS[cat.key].map(item => `
+          <option value="${item.name}" data-img="${item.img}" ${S.custom[cat.key]?.name===item.name?'selected':''}>${item.name}</option>
+        `).join('')}
+      </select>
+    </div>
+  `).join('');
+
+  updateCustomPreview();
+}
+
+document.addEventListener('change', e => {
+  if(e.target.classList.contains('custom-select')) {
+    const cat = e.target.dataset.cat;
+    const selectedOpt = e.target.options[e.target.selectedIndex];
+    const name = e.target.value;
+    const img = selectedOpt.dataset.img;
+
+    if(name) {
+      S.custom[cat] = { name, img };
+      $('#customPreviewImg').src = img;
+    } else {
+      delete S.custom[cat];
+    }
+    updateCustomPreview();
+  }
+});
+
+function updateCustomPreview() {
+  const chosen = Object.values(S.custom);
+  if(chosen.length > 0) {
+    $('#customDescText').textContent = 'Đã chọn: ' + chosen.map(i => i.name).join(' + ');
+    if(S.custom.ao) {
+      $('#customPreviewImg').src = S.custom.ao.img;
+    } else if(S.custom.quan) {
+      $('#customPreviewImg').src = S.custom.quan.img;
+    } else {
+      $('#customPreviewImg').src = chosen[0].img;
+    }
+  } else {
+    $('#customPreviewImg').src = 'images/outfit-1.png';
+    $('#customDescText').textContent = 'Hãy chọn ít nhất một item để xem phối cảnh';
+  }
+}
+
+document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){S.saved.splice(+r.dataset.rm,1);updCount();renderFit()}});
+
+$('#saveCustom').onclick=()=>{
+  const picks = Object.values(S.custom);
+  if(picks.length < 2){$('#customMsg').textContent='Chọn ít nhất 2 món để tạo look.';return}
+  S.customSaved++;
+  const previewImg = $('#customPreviewImg').src;
+  S.saved.push({
+    id:'custom'+S.customSaved,
+    name:'Look tự phối #'+S.customSaved,
+    img: previewImg,
+    colors: picks.map(i => i.name)
+  });
+  S.custom={}; 
+  addPts(20,'Lưu look tự phối vào FIT CARD');
+  updCount();
+  $('#customMsg').textContent='Đã lưu look thành công vào FIT CARD!';
+  renderFit();
+};
+</script>
+</body>
+</html>
