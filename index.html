@@ -27,7 +27,7 @@ body{background:#fff;color:#0A0A0A}
 .polaroid{background:#fff;padding:.6rem .6rem 2rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
 .chip{border:2px solid #0A0A0A;border-radius:999px;padding:.25rem .8rem;font-size:.85rem;font-weight:600;cursor:pointer;background:#fff}
 .chip[aria-pressed=true]{background:#0A0A0A;color:#fff}
-.slot{border:2px dashed #0A0A0A;border-radius:1rem;padding:.9rem;background:#fff}
+.slot{border:2px solid #0A0A0A;border-radius:1rem;padding:1rem;background:#fff}
 #pill{transition:background .3s,color .3s}
 .bump{animation:bump .5s}
 @keyframes bump{40%{transform:scale(1.12)}}
@@ -112,7 +112,7 @@ body{background:#fff;color:#0A0A0A}
       <div id="qOpts" class="grid gap-3 mt-6"></div>
     </div>
     <div id="quizDone" class="hidden text-center py-16">
-      <p class="text-3xl font-black">Đang phối set hợp gu cho bạn…</p>
+      <p class="text-3xl font-black">Đang phân tích và gọi tên Gu của bạn…</p>
     </div>
   </div>
 </section>
@@ -120,9 +120,13 @@ body{background:#fff;color:#0A0A0A}
 <!-- ============ TRANG 3: OUTFIT ============ -->
 <section id="v-outfit" class="view">
   <div class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-3xl sm:text-5xl font-black">Set đồ dành cho bạn</h2>
-    <p id="resultNote" class="mt-3 text-lg"></p>
-    <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-10"></div>
+    <div class="bg-mint border-2 border-ink rounded-3xl p-6 sm:p-10 mb-10">
+      <span class="bg-ink text-white text-xs font-bold px-3 py-1 rounded-full">Kết quả Style Quiz của bạn</span>
+      <h2 id="resultTitle" class="text-3xl sm:text-5xl font-black mt-3"></h2>
+      <p id="resultNote" class="mt-3 text-lg font-medium"></p>
+    </div>
+    <h3 class="text-2xl font-black">Các set đồ gợi ý dành riêng cho bạn</h3>
+    <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-6"></div>
     <div class="mt-10"><button data-go="quiz" id="retake" class="btn btn-line">Làm lại quiz</button></div>
   </div>
 </section>
@@ -131,18 +135,33 @@ body{background:#fff;color:#0A0A0A}
 <section id="v-fit" class="view">
   <div class="max-w-6xl mx-auto px-4 py-12">
     <h2 class="text-3xl sm:text-5xl font-black">FIT CARD của bạn</h2>
-    <p class="mt-3 text-lg">Tủ đồ cá nhân: những set bạn đã lưu và các look tự phối.</p>
+    <p class="mt-3 text-lg">Tủ đồ cá nhân: những set bạn đã lưu và khu vực tự phối đồ.</p>
+    
     <div id="fitGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8"></div>
 
-    <h3 class="text-2xl font-black mt-16">Tự phối đồ</h3>
-    <p class="mt-2">Chọn từng món để tạo look riêng, rồi lưu vào FIT CARD.</p>
-    <div id="customRow" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5"></div>
-    <div class="mt-5 flex flex-wrap items-center gap-4">
-      <button id="saveCustom" class="btn btn-sky">Lưu look tự phối</button>
-      <span id="customMsg" class="font-semibold" aria-live="polite"></span>
+    <div class="mt-16 bg-sand border-2 border-ink rounded-3xl p-6 sm:p-8">
+      <h3 class="text-2xl sm:text-3xl font-black">Phòng Lab Tự Phối Đồ (Custom Outfit)</h3>
+      <p class="mt-2 text-neutral-700">Tự do chọn riêng từng item (Áo, Quần, Giày, Phụ kiện) bên dưới. Hình ảnh sẽ tự động thay đổi theo lựa chọn của bạn!</p>
+      
+      <div class="mt-6 grid lg:grid-cols-3 gap-8 items-center">
+        <!-- Khu vực hiển thị ảnh live preview theo item đang chọn -->
+        <div class="bg-white border-2 border-ink rounded-2xl p-4 text-center shadow-md">
+          <p class="font-bold text-sm mb-2 text-leaf">Hình ảnh phối đồ trực quan</p>
+          <img id="customPreviewImg" src="images/outfit-1.png" alt="Custom Look Preview" class="w-full aspect-square object-contain mx-auto rounded-xl bg-sand">
+          <p id="customDescText" class="mt-3 font-bold text-sm text-neutral-800">Chưa chọn đủ món</p>
+        </div>
+
+        <!-- Khu vực các dropdown chọn từng thành phần -->
+        <div id="customRow" class="lg:col-span-2 grid sm:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <button id="saveCustom" class="btn btn-sky">Lưu look tự phối vào FIT CARD</button>
+        <span id="customMsg" class="font-semibold" aria-live="polite"></span>
+      </div>
     </div>
 
-    <div class="mt-16 bg-sand rounded-3xl p-6 sm:p-10 max-w-2xl">
+    <div class="mt-16 bg-sand rounded-3xl p-6 sm:p-10 max-w-2xl border-2 border-ink">
       <h3 class="text-2xl font-black">Chốt hồ sơ thời trang cá nhân</h3>
       <p class="mt-2">Để lại email hoặc số điện thoại, BOO sẽ gửi lại FIT CARD và ưu đãi theo gu của bạn.</p>
       <form id="leadForm" class="mt-6 grid gap-4" novalidate>
@@ -161,10 +180,10 @@ body{background:#fff;color:#0A0A0A}
 
 <!-- MODAL CHI TIẾT -->
 <div id="modal" class="fixed inset-0 z-50 hidden bg-black/60 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-  <div class="bg-white rounded-3xl max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden">
+  <div class="bg-white rounded-3xl max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden border-2 border-ink">
     <img id="mImg" alt="" class="w-full h-full object-cover bg-sand">
     <div class="p-6">
-      <div class="flex justify-between items-start gap-2"><h3 id="mTitle" class="text-2xl font-black"></h3><button id="mClose" class="text-2xl leading-none px-2" aria-label="Đóng">×</button></div>
+      <div class="flex justify-between items-start gap-2"><h3 id="mTitle" class="text-2xl font-black"></h3><button id="mClose" class="text-2xl leading-none px-2 font-bold" aria-label="Đóng">×</button></div>
       <ul id="mItems" class="mt-4 grid gap-4"></ul>
       <p class="mt-5 font-black text-xl">Tổng: <span id="mTotal"></span></p>
       <button id="mSave" class="btn btn-ink w-full mt-4">Lưu vào giỏ / FIT CARD</button>
@@ -183,7 +202,7 @@ body{background:#fff;color:#0A0A0A}
 </aside>
 
 <script>
-/* ---------- DỮ LIỆU ---------- */
+/* ---------- DỮ LIỆU & DANH MỤC ITEM TÁCH RỜI CHO CUSTOM OUTFIT ---------- */
 const SETS=[
  {id:'soft',name:'Set Nơ Hồng Dịu Dàng',img:'images/outfit-1.png',tag:'Nhẹ nhàng · Nữ tính · Minimalist',items:[
   {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
@@ -196,6 +215,29 @@ const SETS=[
   {n:'Quần jeans cargo',p:549000,c:['Đen','Xanh dương']},
   {n:'Giày sneaker trắng',p:599000,c:['Trắng','Be nhạt']}]}
 ];
+
+// Danh sách các thành phần để khách tự phối đồ kèm hình ảnh minh họa riêng cho từng món
+const CUSTOM_ITEMS = {
+  ao: [
+    { name: 'Áo sweatshirt trắng in nơ', img: 'images/outfit-1.png' },
+    { name: 'Áo khoác varsity đỏ', img: 'images/outfit-2.png' },
+    { name: 'Áo thun graphic xanh streetwear', img: 'images/nguoi-mau-1.jpg' }
+  ],
+  quan: [
+    { name: 'Chân váy xếp ly caro hồng', img: 'images/outfit-1.png' },
+    { name: 'Quần jeans cargo túi hộp', img: 'images/outfit-2.png' },
+    { name: 'Quần jogger ống suông', img: 'images/nguoi-mau-2.jpg' }
+  ],
+  giay: [
+    { name: 'Giày mary jane đen', img: 'images/outfit-1.png' },
+    { name: 'Giày sneaker trắng đế chunky', img: 'images/outfit-2.png' }
+  ],
+  phukien: [
+    { name: 'Túi đeo vai nơ hồng', img: 'images/outfit-1.png' },
+    { name: 'Mũ lưỡi trai cá tính', img: 'images/nguoi-mau-3.jpg' }
+  ]
+};
+
 const QS=[
  ['Cuối tuần của bạn thường là…','Đi phố, cà phê, chụp film','street','Ở nhà, nhẹ nhàng, gọn gàng','soft'],
  ['Bạn chuộng phong cách nào hơn?','Streetwear năng động','street','Minimalist tối giản','soft'],
@@ -207,6 +249,7 @@ const QS=[
  ['Phụ kiện không thể thiếu','Mũ lưỡi trai, vòng tay','street','Nơ, túi nhỏ xinh','soft'],
  ['Bạn muốn mọi người nhớ gì ở outfit của mình?','Cá tính, nổi bật','street','Tinh tế, dịu dàng','soft'],
  ['Tủ đồ lý tưởng của bạn là…','Ít món nhưng đậm chất riêng','street','Ít món, dễ phối với nhau','soft']];
+
 const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
 const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,lead:false,result:null,cur:null,colors:{}};
@@ -266,26 +309,39 @@ function finishQuiz(){
   setTimeout(()=>{renderOutfits();show('outfit')},900);
 }
 
-/* ---------- OUTFIT ---------- */
+/* ---------- OUTFIT & TÊN GU GEN Z ---------- */
 function renderOutfits(){
   const r=S.result||{street:50,soft:50};
+  
+  // Xác định tên Gu Gen Z độc đáo dựa trên kết quả
+  let guName = "BayBOO Ngọt Ngào & Tinh Tế";
+  let guDesc = "Bạn yêu thích sự nhẹ nhàng, thanh thoát nhưng vẫn giữ trọn dấu ấn cá nhân trong từng bộ cánh.";
+  if (r.street > r.soft) {
+    guName = "Hop on da Showgirl & Street Vibe";
+    guDesc = "Cá tính, nổi bật và luôn tràn đầy năng lượng đường phố. Bạn chọn phong cách không lẫn vào đâu được!";
+  } else if (r.street === r.soft) {
+    guName = "Chameleon Cân Bằng Gu";
+    guDesc = "Linh hoạt biến hoá giữa sự phóng khoáng đường phố và nét ngọt ngào tối giản.";
+  }
+
+  $('#resultTitle').textContent = `✨ Gu của bạn: "${guName}"`;
+  $('#resultNote').textContent = guDesc + " (Đúng gu gọn tủ, vẫn đủ chất riêng).";
+
   const list=[...SETS].sort((a,b)=>r[b.id]-r[a.id]);
-  $('#resultNote').textContent=r.street===r.soft?'Bạn cân bằng cả hai gu – thử cả hai set bên dưới.':
-    'Gu của bạn nghiêng về '+(r.street>r.soft?'Streetwear năng động':'Minimalist nhẹ nhàng')+'.';
   $('#outfitList').innerHTML=list.map((s,i)=>`
-   <article class="rounded-3xl border-2 border-ink overflow-hidden bg-white">
+   <article class="rounded-3xl border-2 border-ink overflow-hidden bg-white shadow-sm">
      <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
      <div class="p-5">
        <p class="font-bold text-leaf">${i===0?'Hợp nhất · ':''}${r[s.id]}% hợp gu</p>
        <h3 class="text-2xl font-black mt-1">${s.name}</h3>
        <p class="mt-1">${s.tag}</p>
        <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho cả set</p>
-       <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set</button>
+       <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
      </div></article>`).join('');
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
 
-/* ---------- MODAL CHI TIẾT ---------- */
+/* ---------- MODAL CHI TIẾT SẢN PHẨM TRONG SET ---------- */
 let lastFocus=null;
 function openModal(id){
   const s=SETS.find(x=>x.id===id);S.cur=s;lastFocus=document.activeElement;
@@ -316,31 +372,95 @@ $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()})
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#modal').classList.contains('hidden'))closeModal()});
 const updCount=()=>$('#fcCount').textContent=S.saved.length;
 
-/* ---------- FIT CARD ---------- */
-const POOL=SETS.flatMap(s=>s.items.map(i=>i.n));
-const SLOTS=['Áo','Áo khoác / Áo ngoài','Quần / Váy','Giày / Phụ kiện'];
+/* ---------- FIT CARD & CUSTOM OUTFIT (TÁCH RỜI ITEM & ĐỔI ẢNH REALTIME) ---------- */
 function renderFit(){
+  // 1. Render danh sách set đã lưu
   $('#fitGrid').innerHTML=S.saved.length?S.saved.map((s,i)=>`
-   <div class="rounded-2xl border-2 border-ink overflow-hidden bg-white">
+   <div class="rounded-2xl border-2 border-ink overflow-hidden bg-white shadow-sm">
      <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
      <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
-     <p class="text-sm mt-1">${s.colors.join(' · ')}</p>
-     <button class="underline text-sm mt-2" data-rm="${i}">Xoá</button></div></div>`).join('')
-   :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center"><p class="font-bold text-lg">FIT CARD đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz để có set đầu tiên</button></div>`;
-  $('#customRow').innerHTML=SLOTS.map((l,i)=>`<label class="slot font-bold block">${l}
-    <select data-slot="${i}" class="mt-2 w-full rounded-lg border-2 border-ink px-2 py-2 font-normal bg-white">
-    <option value="">+ Chọn món</option>${POOL.map(p=>`<option ${S.custom[i]===p?'selected':''}>${p}</option>`).join('')}</select></label>`).join('');
+     <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
+     <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
+    :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center border-2 border-ink"><p class="font-bold text-lg">FIT CARD của bạn đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button></div>`;
+
+  // 2. Render các ô lựa chọn Custom Outfit tách rời từng item
+  const categories = [
+    { key: 'ao', label: '👕 Áo lựa chọn' },
+    { key: 'quan', label: '👖 Quần / Chân váy' },
+    { key: 'giay', label: '👟 Giày dép' },
+    { key: 'phukien', label: '👜 Phụ kiện' }
+  ];
+
+  $('#customRow').innerHTML = categories.map(cat => `
+    <div class="slot">
+      <label class="font-bold block text-sm text-neutral-800">${cat.label}</label>
+      <select data-cat="${cat.key}" class="custom-select mt-2 w-full rounded-lg border-2 border-ink px-3 py-2 font-medium bg-white text-sm">
+        <option value="">+ Chọn ${cat.label.toLowerCase()}</option>
+        ${CUSTOM_ITEMS[cat.key].map(item => `
+          <option value="${item.name}" data-img="${item.img}" ${S.custom[cat.key]?.name===item.name?'selected':''}>${item.name}</option>
+        `).join('')}
+      </select>
+    </div>
+  `).join('');
+
+  updateCustomPreview();
 }
+
+// Xử lý sự kiện khi khách chọn item trong phần custom outfit -> Cập nhật ảnh hiển thị ngay lập tức
+document.addEventListener('change', e => {
+  if(e.target.classList.contains('custom-select')) {
+    const cat = e.target.dataset.cat;
+    const selectedOpt = e.target.options[e.target.selectedIndex];
+    const name = e.target.value;
+    const img = selectedOpt.dataset.img;
+
+    if(name) {
+      S.custom[cat] = { name, img };
+      // Ưu tiên đổi ảnh preview sang ảnh của món đồ mới chọn gần nhất
+      $('#customPreviewImg').src = img;
+    } else {
+      delete S.custom[cat];
+    }
+    updateCustomPreview();
+  }
+});
+
+function updateCustomPreview() {
+  const chosen = Object.values(S.custom);
+  if(chosen.length > 0) {
+    $('#customDescText').textContent = 'Đã chọn: ' + chosen.map(i => i.name).join(' + ');
+    // Nếu có chọn áo, ưu tiên hiển thị ảnh áo, v.v.
+    if(S.custom.ao) {
+      $('#customPreviewImg').src = S.custom.ao.img;
+    } else if(S.custom.quan) {
+      $('#customPreviewImg').src = S.custom.quan.img;
+    }
+  } else {
+    $('#customPreviewImg').src = 'images/outfit-1.png';
+    $('#customDescText').textContent = 'Hãy chọn ít nhất một item để xem phối cảnh';
+  }
+}
+
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){S.saved.splice(+r.dataset.rm,1);updCount();renderFit()}});
-$('#customRow').addEventListener('change',e=>{S.custom[e.target.dataset.slot]=e.target.value});
+
 $('#saveCustom').onclick=()=>{
-  const picks=Object.values(S.custom).filter(Boolean);
-  if(picks.length<2){$('#customMsg').textContent='Chọn ít nhất 2 món để tạo look.';return}
+  const picks = Object.values(S.custom);
+  if(picks.length < 2){$('#customMsg').textContent='Chọn ít nhất 2 món (ví dụ: Áo + Quần) để tạo look.';return}
   S.customSaved++;
-  S.saved.push({id:'custom'+S.customSaved,name:'Look tự phối #'+S.customSaved,img:'images/BOO.png',colors:picks});
-  S.custom={};addPts(20,'Lưu look tự phối');updCount();
-  $('#customMsg').textContent='Đã lưu look của bạn vào FIT CARD.';renderFit();
+  const previewImg = $('#customPreviewImg').src;
+  S.saved.push({
+    id:'custom'+S.customSaved,
+    name:'Look tự phối #'+S.customSaved,
+    img: previewImg,
+    colors: picks.map(i => i.name)
+  });
+  S.custom={}; 
+  addPts(20,'Lưu look tự phối vào FIT CARD');
+  updCount();
+  $('#customMsg').textContent='Đã lưu look thành công vào FIT CARD!';
+  renderFit();
 };
+
 $('#leadForm').addEventListener('submit',e=>{
   e.preventDefault();
   const v=$('#fContact').value.trim();
@@ -349,7 +469,6 @@ $('#leadForm').addEventListener('submit',e=>{
   $('#fErr').textContent='';
   if(!S.lead){S.lead=true;addPts(20,'Đăng ký hồ sơ thời trang');}
   $('#leadForm').innerHTML='<p class="text-xl font-black">Đã lưu hồ sơ của bạn. BOO sẽ liên hệ sớm!</p>';
-  // TODO: gửi {name, contact, saved, pts} tới backend/CRM tại đây
 });
 </script>
 </body>
