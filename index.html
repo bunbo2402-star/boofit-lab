@@ -204,16 +204,66 @@ body{background:#fff;color:#0A0A0A}
 <script>
 /* ---------- DỮ LIỆU & DANH MỤC ITEM TÁCH RỜI CHO CUSTOM OUTFIT ---------- */
 const SETS=[
- {id:'soft',name:'Set Nơ Hồng Dịu Dàng',img:'images/outfit-1.png',tag:'Nhẹ nhàng · Nữ tính · Minimalist',items:[
-  {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
-  {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
-  {n:'Túi đeo vai nơ',p:329000,c:['Hồng','Trắng']},
-  {n:'Giày mary jane đen',p:549000,c:['Đen','Trắng']}]},
- {id:'street',name:'Set Varsity Đỏ Đường Phố',img:'images/outfit-2.png',tag:'Streetwear · Oversized · Năng động',items:[
-  {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
-  {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
-  {n:'Quần jeans cargo',p:549000,c:['Đen','Xanh dương']},
-  {n:'Giày sneaker trắng',p:599000,c:['Trắng','Be nhạt']}]}
+ {
+   id:'soft',
+   name:'Set Nơ Hồng Dịu Dàng',
+   img:'images/outfit-1.png',
+   tag:'Nhẹ nhàng · Nữ tính · Minimalist',
+   items:[
+    {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
+    {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
+    {n:'Túi đeo vai nơ',p:329000,c:['Hồng','Trắng']},
+    {n:'Giày mary jane đen',p:549000,c:['Đen','Trắng']}
+   ]
+ },
+ {
+   id:'street',
+   name:'Set Varsity Đỏ Đường Phố',
+   img:'images/outfit-2.png',
+   tag:'Streetwear · Oversized · Năng động',
+   items:[
+    {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
+    {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
+    {n:'Quần jeans cargo',p:549000,c:['Đen','Xanh dương']},
+    {n:'Giày sneaker trắng',p:599000,c:['Trắng','Be nhạt']}
+   ]
+ },
+ {
+   id:'neutral',
+   name:'Set Neutral Thu Đông Boheme',
+   img:'images/outfit-3.jfif',
+   tag:'Minimalist · Ấm áp · Cá tính',
+   items:[
+    {n:'Áo tay dài loang màu tie-dye',p:399000,c:['Be','Xám']},
+    {n:'Quần short jean wash xám dây rút',p:429000,c:['Xám đậm']},
+    {n:'Túi đeo vai nâu da bóng',p:450000,c:['Nâu đậm']},
+    {n:'Ủng cao cổ da nâu',p:799000,c:['Nâu']}
+   ]
+ },
+ {
+   id:'explorer',
+   name:'Set Urban Explorer Phóng Khoáng',
+   img:'images/outfit-4.jfif',
+   tag:'Streetwear · Utility · Nam tính',
+   items:[
+    {n:'Áo sơ mi flannel kẻ sọc tối màu',p:499000,c:['Đen/Xám']},
+    {n:'Áo thun trắng basic',p:250000,c:['Trắng']},
+    {n:'Quần túi hộp cargo rêu nhiều ngăn',p:650000,c:['Xanh rêu']},
+    {n:'Giày cao cổ sneaker bản lớn',p:699000,c:['Đen/Trắng']}
+   ]
+ },
+ {
+   id:'comfy',
+   name:'Set Comfy Slytherin Green',
+   img:'images/outfit-5.png',
+   tag:'Comfy · Active · Daily Wear',
+   items:[
+    {n:'Áo nỉ sweatshirt xanh rêu Slytherin',p:550000,c:['Xanh rêu']},
+    {n:'Quần jogger nỉ xám lông chuột',p:450000,c:['Xám']},
+    {n:'Nón kết thêu chữ "Lười"',p:199000,c:['Đen']},
+    {n:'Giày sneaker thể thao xanh',p:599000,c:['Xanh lá']}
+   ]
+ }
 ];
 
 // Danh sách các thành phần để khách tự phối đồ kèm hình ảnh minh họa riêng cho từng món
