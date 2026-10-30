@@ -57,6 +57,9 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 
 .slot{border:1px solid #E7E4DD;border-radius:20px;padding:1.1rem;background:#fff;transition:box-shadow .3s,border-color .3s}
 .slot:hover{border-color:#BFD2F3;box-shadow:0 14px 30px -20px rgba(46,107,214,.55)}
+.slot select,.field{width:100%;border:1px solid #E1DED6;border-radius:14px;background:#FAFAF8;padding:.7rem .9rem;font-size:.9rem;transition:border-color .25s,box-shadow .25s,background .25s}
+.slot select{margin-top:.5rem}
+.slot select:focus,.field:focus{outline:none;border-color:#2E6BD6;background:#fff;box-shadow:0 0 0 4px rgba(46,107,214,.14)}
 
 #pill{transition:background .3s,color .3s}
 .bump{animation:bump .5s var(--ease)}
@@ -110,8 +113,43 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
     <div class="grid grid-cols-2 gap-4 rv" style="--d:.12s" aria-label="Không gian Fit Lab">
       <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/trang-chu-1.png" alt="Không gian Fit Lab BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
       <div class="zoom rounded-[1.5rem] shadow-sm mt-10"><img src="images/trang-chu-2.jpg" alt="Người mẫu BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
-      <div class="zoom rounded-[1.5rem] shadow-sm -mt-10"><img src="images/minh-hoa.jpg" alt="Minh hoạ BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
-      <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/minh-hoa-1.jpg" alt="Minh hoạ BOO 2" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="zoom rounded-[1.5rem] shadow-sm -mt-10"><img src="images/minh-hoa.jpg" alt="Hình minh hoạ" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/minh-hoa-1.jpg" alt="Hình minh hoạ 2" class="w-full aspect-square object-cover" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- Hành trình -->
+  <div class="bg-sand/60 border-y border-line">
+    <div class="max-w-6xl mx-auto px-5 py-24">
+      <div class="text-center max-w-2xl mx-auto mb-14 rv">
+        <span class="eyebrow">Cậu đang không biết bắt đầu từ đâu?</span>
+        <h2 class="text-3xl sm:text-5xl font-bold mt-3 leading-tight">Hành trình tìm đúng gu cùng BOO</h2>
+        <p class="mt-4 text-neutral-600">Quy trình 5 bước đơn giản để tối ưu tủ đồ và tỏa sáng chất riêng.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between">
+          <span class="text-4xl font-light text-accent/40">01</span>
+          <div><h3 class="font-semibold text-lg mt-6">Làm Style Quiz</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Trả lời 5 câu hỏi nhanh để tụi tớ bóc tách gu thời trang của cậu nha.</p></div>
+          <button data-go="quiz" class="mt-5 text-sm font-semibold text-accent text-left hover:underline">Bắt đầu ngay →</button>
+        </div>
+        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.06s">
+          <span class="text-4xl font-light text-accent/40">02</span>
+          <div><h3 class="font-semibold text-lg mt-6">Nhận gợi ý set đồ</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Nhận diện tên Gu Gen Z độc đáo và các set đồ chuẩn vibe nhất.</p></div>
+        </div>
+        <div class="rv lift bg-ink text-white rounded-3xl p-6 flex flex-col justify-between" style="--d:.12s">
+          <span class="text-4xl font-light text-white/40">03</span>
+          <div><h3 class="font-semibold text-lg mt-6">Lưu vào FIT CARD</h3><p class="text-sm mt-2 text-white/70 leading-relaxed">Lưu giữ tủ đồ ảo cá nhân và tự do mix-match theo ý thích.</p></div>
+          <button onclick="openFitCardModal()" class="mt-5 text-sm font-semibold text-mint text-left hover:underline">Xem & Lưu FIT CARD →</button>
+        </div>
+        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.18s">
+          <span class="text-4xl font-light text-accent/40">04</span>
+          <div><h3 class="font-semibold text-lg mt-6">Ra Fit Spot thử đồ</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Mang FIT CARD đến cửa hàng BOO gần nhất để trải nghiệm thực tế.</p></div>
+        </div>
+        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.24s">
+          <span class="text-4xl font-light text-accent/40">05</span>
+          <div><h3 class="font-semibold text-lg mt-6">Chốt đúng gu</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Sở hữu tủ đồ tinh gọn, mặc đẹp hơn và thỏa sức thể hiện chất riêng.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -135,9 +173,24 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       </div>
     </div>
   </div>
+
+  <!-- Lookbook (3 ảnh model gốc) -->
+  <div id="lookbook" class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
+    <div class="rv">
+      <span class="eyebrow">Bộ sưu tập thực tế</span>
+      <h2 class="text-4xl sm:text-5xl font-bold mt-3">Lookbook</h2>
+      <p class="mt-3 text-lg text-neutral-600 max-w-xl">Xem thử các outfit BOO được mặc ngoài đời thật. Tất nhiên chúng tớ vẫn recommend cậu nên tới FIT SPOT để có trải nghiệm tốt nhất nha</p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <figure class="rv"><div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-1.jpg" alt="Look 01" class="w-full aspect-[4/5] object-cover" loading="lazy"></div><figcaption class="mt-4 px-1 font-medium flex justify-between items-center"><span>Look 01 <span class="text-neutral-500 font-normal">· Xanh trời</span></span><button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('soft')">Lưu FIT CARD</button></figcaption></figure>
+      <figure class="rv md:mt-12" style="--d:.1s"><div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-2.jpg" alt="Look 02" class="w-full aspect-[4/5] object-cover" loading="lazy"></div><figcaption class="mt-4 px-1 font-medium flex justify-between items-center"><span>Look 02 <span class="text-neutral-500 font-normal">· Varsity 03</span></span><button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('street')">Lưu FIT CARD</button></figcaption></figure>
+      <figure class="rv" style="--d:.2s"><div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-3.jpg" alt="Look 03" class="w-full aspect-[4/5] object-cover" loading="lazy"></div><figcaption class="mt-4 px-1 font-medium flex justify-between items-center"><span>Look 03 <span class="text-neutral-500 font-normal">· Be nhẹ nhàng</span></span><button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('neutral')">Lưu FIT CARD</button></figcaption></figure>
+    </div>
+    <div class="text-center mt-16"><button data-go="quiz" class="btn btn-ink">Tìm look hợp gu của cậu</button></div>
+  </div>
 </section>
 
-<!-- ============ TRANG HÔM NAY BẬN GÌ? (ĐIỂM DANH 7 NGÀY + GIEO QUẺ RANDOM) ============ -->
+<!-- ============ TRANG HÔM NAY BẬN GÌ? (ĐIỂM DANH 7 NGÀY + GIEO QUẺ) ============ -->
 <section id="v-schedule" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <div class="rv text-center max-w-2xl mx-auto">
@@ -204,39 +257,6 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </section>
 
-<!-- ============ TRANG LOOKBOOK (BỘ LỌC ĐẨY XUỐNG DƯỚI, 5 SET OUTFIT) ============ -->
-<section id="v-lookbook" class="view">
-  <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
-    <div class="rv text-center max-w-2xl mx-auto">
-      <span class="eyebrow">Bộ sưu tập thực tế</span>
-      <h2 class="text-4xl sm:text-5xl font-bold mt-3">Lookbook</h2>
-      <p class="mt-3 text-lg text-neutral-600">Xem thử các outfit BOO được mặc ngoài đời thật. Lọc nhanh theo giới tính hoặc phong cách để tìm set hợp gu.</p>
-    </div>
-
-    <!-- Thanh bộ lọc đẩy xuống dưới tiêu đề -->
-    <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
-      <div class="flex flex-wrap items-center gap-2" id="genderFilters">
-        <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Giới tính:</span>
-        <button class="chip active" data-gender="all" onclick="filterLookbook()">Tất cả</button>
-        <button class="chip" data-gender="male" onclick="filterLookbook()">Nam</button>
-        <button class="chip" data-gender="female" onclick="filterLookbook()">Nữ</button>
-      </div>
-      <div class="flex flex-wrap items-center gap-2" id="styleFilters">
-        <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Style:</span>
-        <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
-        <button class="chip" data-style="soft" onclick="filterLookbook()">Ngọt ngào</button>
-        <button class="chip" data-style="street" onclick="filterLookbook()">Đường phố</button>
-        <button class="chip" data-style="neutral" onclick="filterLookbook()">Tối giản</button>
-        <button class="chip" data-style="explorer" onclick="filterLookbook()">Phóng khoáng</button>
-        <button class="chip" data-style="comfy" onclick="filterLookbook()">Năng động</button>
-      </div>
-    </div>
-
-    <!-- Danh sách 5 set outfit đầy đủ -->
-    <div id="fullLookbookGrid" class="grid md:grid-cols-3 gap-6 mt-12"></div>
-  </div>
-</section>
-
 <!-- ============ TRANG 2: QUIZ ============ -->
 <section id="v-quiz" class="view">
   <div class="max-w-2xl mx-auto px-5 py-16 sm:py-24 min-h-[75vh]">
@@ -273,12 +293,12 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </section>
 
-<!-- ============ TRANG 4: FIT CARD & PHÒNG TỰ PHỐI ĐỒ (BỐ CỤC CHUẨN ẢNH 3) ============ -->
+<!-- ============ TRANG 4: FIT CARD & PHÒNG TỰ PHỐI ĐỒ (CHUẨN ẢNH 3) ============ -->
 <section id="v-fit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <span class="eyebrow">Tủ đồ cá nhân</span>
     <h2 class="text-4xl sm:text-5xl font-bold mt-3">FIT CARD của cậu</h2>
-    <p class="mt-3 text-lg text-neutral-600">Những set cậu đã lưu và khu vực tự phối đồ trực quan.</p>
+    <p class="mt-3 text-lg text-neutral-600">Những set cậu đã lưu và khu vực tự phối đồ.</p>
 
     <div id="fitGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mt-10"></div>
 
@@ -366,6 +386,64 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </div>
 
+<!-- MODAL TẠO TÀI KHOẢN FIT LAB (ĐIỀN CONTACT) -->
+<div id="fitCardModal" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
+  <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
+    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">✕</button>
+    <div class="mb-6">
+      <span class="eyebrow">Để BOO FIT LAB hiểu và nhớ "đúng gu" cậu</span>
+      <h2 class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
+      <p class="text-sm text-neutral-500 mt-1">Đăng ký để tớ hỗ trợ cậu lưu FIT CARD và đồng bộ trải nghiệm FIT LAB – FIT SPOT</p>
+    </div>
+    <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
+        <input type="text" id="userName" placeholder="Ví dụ: Minh Anh (không cần tên thật)" class="field">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Email hoặc số điện thoại <span class="text-red-500">*</span></label>
+        <div class="flex gap-2">
+          <input type="text" id="userContact" required placeholder="Nhập email hoặc SĐT của cậu" class="field flex-1 min-w-0">
+          <button type="button" onclick="sendOtpCode()" class="btn btn-line !px-4 !py-2 text-xs whitespace-nowrap">Gửi mã OTP</button>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Mã xác thực OTP <span class="text-red-500">*</span></label>
+        <input type="text" id="userOtp" required placeholder="Nhập 6 số OTP" class="field tracking-widest" maxlength="6">
+      </div>
+      <div class="grid grid-cols-2 gap-3 pt-1">
+        <div>
+          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
+          <select id="userStore" class="field">
+            <option value="Online">Chỉ mua online</option>
+            <option value="BOO Q1">BOO Quận 1</option>
+            <option value="BOO Thu Duc">BOO Thủ Đức</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
+          <select id="userChannel" class="field">
+            <option value="Zalo OA">Zalo OA</option>
+            <option value="Email">Email</option>
+            <option value="SMS">SMS</option>
+          </select>
+        </div>
+      </div>
+      <div class="bg-paper border border-line p-3.5 rounded-2xl">
+        <div class="flex items-start gap-2.5">
+          <input type="checkbox" id="consentCheck" class="mt-1 h-4 w-4 accent-accent">
+          <label for="consentCheck" class="text-xs text-neutral-600 leading-relaxed cursor-pointer">
+            Tớ đồng ý nhận thông tin về sản phẩm mới, ưu đãi và chương trình của BOO qua kênh đã chọn.
+          </label>
+        </div>
+      </div>
+      <div class="pt-2">
+        <button type="submit" class="btn btn-ink w-full">Tạo tài khoản FIT LAB</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- WIDGET LEAD SCORE -->
 <aside id="lead" class="fixed right-3 bottom-3 sm:right-5 sm:bottom-5 z-50 w-56 bg-white/90 backdrop-blur-xl border border-line rounded-3xl p-4 shadow-[0_20px_50px_-20px_rgba(26,29,33,.4)]" aria-live="polite">
   <div class="flex items-center justify-between gap-2">
@@ -383,8 +461,6 @@ const SETS=[
    name:'Set Nơ Hồng Dịu Dàng',
    img:'images/outfit-2.png',
    tag:'Nhẹ nhàng · Nữ tính · Minimalist',
-   gender:'female',
-   style:'soft',
    items:[
     {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
     {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
@@ -397,8 +473,6 @@ const SETS=[
    name:'Set Varsity Đỏ Đường Phố',
    img:'images/outfit-1.png',
    tag:'Streetwear · Oversized · Năng động',
-   gender:'male',
-   style:'street',
    items:[
     {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
     {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
@@ -411,8 +485,6 @@ const SETS=[
    name:'Set Neutral Thu Đông Boheme',
    img:'images/outfit-3.jfif',
    tag:'Minimalist · Ấm áp · Cá tính',
-   gender:'female',
-   style:'neutral',
    items:[
     {n:'Áo tay dài loang màu tie-dye',p:399000,c:['Be','Xám']},
     {n:'Quần short jean wash xám dây rút',p:429000,c:['Xám đậm']},
@@ -425,8 +497,6 @@ const SETS=[
    name:'Set Urban Explorer Phóng Khoáng',
    img:'images/outfit-4.jfif',
    tag:'Streetwear · Utility · Nam tính',
-   gender:'male',
-   style:'explorer',
    items:[
     {n:'Áo sơ mi flannel kẻ sọc tối màu',p:499000,c:['Đen/Xám']},
     {n:'Áo thun trắng basic',p:250000,c:['Trắng']},
@@ -439,8 +509,6 @@ const SETS=[
    name:'Set Comfy Slytherin Green',
    img:'images/outfit-5.png',
    tag:'Comfy · Active · Daily Wear',
-   gender:'male',
-   style:'comfy',
    items:[
     {n:'Áo nỉ sweatshirt xanh rêu Slytherin',p:550000,c:['Xanh rêu']},
     {n:'Quần jogger nỉ xám lông chuột',p:450000,c:['Xám']},
@@ -526,7 +594,7 @@ const QS=[
 
 const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
-const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,resultVibe:null,cur:null,colors:{}};
+const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,resultVibe:null,cur:null,colors:{},userProfile:null};
 
 function addPts(n,why){
   const before=S.pts;S.pts=Math.min(100,S.pts+n);
@@ -538,19 +606,18 @@ function addPts(n,why){
   const w=$('#lead');w.classList.remove('bump');void w.offsetWidth;w.classList.add('bump');
 }
 
-function show(v){
+function show(v,scroll){
   document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
-  if(v==='lookbook') renderFullLookbook();
   if(v==='schedule') renderWeekSchedule();
   if(v==='fit') renderFit();
-  window.scrollTo(0,0);
+  if(scroll){setTimeout(()=>document.getElementById(scroll)?.scrollIntoView(),30)}else window.scrollTo(0,0);
 }
 document.addEventListener('click',e=>{
   const a=e.target.closest('[data-go]');if(!a)return;
   e.preventDefault();
   const v=a.dataset.go;
   if(v==='quiz')resetQuizUI();
-  show(v);
+  show(v,a.dataset.scroll);
 });
 
 function resetQuizUI(){
@@ -601,7 +668,7 @@ function renderOutfits(){
   $('#resultTitle').textContent=`Gu của cậu là: "${info.name}"`;
   $('#resultNote').textContent=`${info.desc} (Đúng gu gọn tủ, vẫn đủ chất riêng).`;
   
-  const filteredSets=SETS.filter(s => s.style === vibe);
+  const filteredSets=SETS.filter(s => s.id === vibe);
   $('#outfitList').innerHTML=filteredSets.map((s,i)=>`
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
       <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
@@ -613,51 +680,95 @@ function renderOutfits(){
         <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
       </div></article>`).join('');
 }
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
 
-/* LOOKBOOK 5 SET OUTFIT VỚI BỘ LỌC DƯỚI TIÊU ĐỀ */
-function filterLookbook() {
-  renderFullLookbook();
-}
+let lastFocus=null;
+function openModal(id){
+  const s=SETS.find(x=>x.id===id);S.cur=s;lastFocus=document.activeElement;
+  if(!S.colors[id])S.colors[id]=s.items.map(i=>i.c[0]);
+  $('#mImg').src=s.img;$('#mImg').alt=s.name;$('#mTitle').textContent=s.name;
+  
+  $('#mItems').innerHTML=s.items.map((it,i)=>`<li class="border-b border-neutral-200 pb-3">
+    <div class="flex justify-between gap-3 font-bold"><span>${it.n}</span><span>${fmt(it.p)}</span></div>
+    <div class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Màu cho ${it.n}">${it.c.map(c=>`<button class="chip" data-i="${i}" data-c="${c}" aria-pressed="${S.colors[id][i]===c}">${c}</button>`).join('')}</div></li>`).join('');
 
-function renderFullLookbook() {
-  const gender = document.querySelector('#genderFilters .chip.active')?.dataset.gender || 'all';
-  const style = document.querySelector('#styleFilters .chip.active')?.dataset.style || 'all';
-
-  const filtered = SETS.filter(s => {
-    const matchGender = (gender === 'all' || s.gender === gender);
-    const matchStyle = (style === 'all' || s.style === style);
-    return matchGender && matchStyle;
-  });
-
-  const grid = $('#fullLookbookGrid');
-  if(filtered.length === 0) {
-    grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-500 font-medium">Không tìm thấy set đồ phù hợp với bộ lọc này.</div>`;
-    return;
+  if(s.suggestions && s.suggestions.length > 0) {
+    $('#mSuggestionsBox').classList.remove('hidden');
+    $('#mSuggestionsList').innerHTML = s.suggestions.map(item => `<li>• ${item}</li>`).join('');
+  } else {
+    $('#mSuggestionsBox').classList.add('hidden');
   }
 
-  grid.innerHTML = filtered.map(s => `
-    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
-      <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
-      <div class="p-5">
-        <span class="text-xs uppercase font-bold text-accent">${s.gender === 'male' ? 'Thời trang Nam' : 'Thời trang Nữ'}</span>
-        <h3 class="text-xl font-bold mt-1">${s.name}</h3>
-        <p class="text-sm text-neutral-600 mt-1">${s.tag}</p>
-        <div class="mt-4 flex gap-2">
-          <button class="btn btn-ink text-xs !py-2 !px-4" data-open="${s.id}">Xem chi tiết</button>
-          <button class="btn btn-line text-xs !py-2 !px-4" onclick="quickSaveSet('${s.id}')">Lưu FIT CARD</button>
-        </div>
-      </div>
-    </article>
-  `).join('');
+  $('#mTotal').textContent=fmt(s.items.reduce((a,b)=>a+b.p,0));
+  refreshSave();
+  $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';$('#mClose').focus();
+  if(!S.seen.has(id)){S.seen.add(id);addPts(10,'Xem chi tiết sản phẩm');}
+}
+function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD ✓':'Lưu vào giỏ / FIT CARD';}
+$('#mItems').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
+  c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+});
+
+// Modal tài khoản / contact
+$('#mSave').onclick=()=>{
+  const s=S.cur;
+  if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return;}
+  closeModal();
+  openFitCardModal();
+};
+
+function closeModal(){$('#modal').classList.add('hidden');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+$('#mClose').onclick=closeModal;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+const updCount=()=>$('#fcCount').textContent=S.saved.length;
+
+function openFitCardModal() {
+  $('#fitCardModal').classList.remove('hidden');
+  $('#fitCardModal').classList.add('flex');
+}
+function closeFitCardModal() {
+  $('#fitCardModal').classList.remove('flex');
+  $('#fitCardModal').classList.add('hidden');
 }
 
-document.addEventListener('click', e => {
-  const btn = e.target.closest('#genderFilters .chip, #styleFilters .chip');
-  if(!btn) return;
-  btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  renderFullLookbook();
-});
+function sendOtpCode() {
+  const contact = $('#userContact').value;
+  if(!contact) {
+    alert('Vui lòng nhập Email hoặc Số điện thoại trước khi nhận mã OTP!');
+    $('#userContact').focus();
+    return;
+  }
+  alert('✨ Mã OTP giả lập đã được gửi đến: ' + contact + '\n(Mã xác nhận của cậu là: 123456)');
+  $('#userOtp').value = '123456';
+}
+
+function submitFitCard(event) {
+  event.preventDefault();
+  const profile = {
+    displayName: $('#userName').value || 'Thành viên FIT LAB',
+    contact: $('#userContact').value,
+    store: $('#userStore').value,
+    channel: $('#userChannel').value,
+    marketingConsent: $('#consentCheck').checked,
+    timestamp: new Date().toISOString()
+  };
+  S.userProfile = profile;
+  
+  if(S.cur && !S.saved.some(x=>x.id===S.cur.id)){
+    const s=S.cur;
+    S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
+    addPts(20,'Tạo tài khoản & Lưu set vào FIT CARD');
+    updCount();
+  } else {
+    addPts(20,'Đăng ký tài khoản FIT LAB thành công');
+  }
+
+  closeFitCardModal();
+  alert('🎉 Xin chào ' + profile.displayName + '! Tài khoản FIT LAB và mã FIT CARD của cậu đã được tạo thành công.');
+  show('fit');
+}
 
 function quickSaveSet(id) {
   const s = SETS.find(x => x.id === id);
@@ -665,13 +776,13 @@ function quickSaveSet(id) {
     S.saved.push({id: s.id, name: s.name, img: s.img, colors: s.items.map(i=>i.c[0])});
     addPts(15, 'Lưu nhanh Lookbook vào FIT CARD');
     updCount();
-    alert('✨ Đã lưu set vào FIT CARD thành công!');
+    alert('✨ Đã lưu set "' + s.name + '" vào FIT CARD thành công!');
   } else {
     alert('Set này đã có trong FIT CARD của cậu!');
   }
 }
 
-/* GIEO QUẺ RANDOM OUTFIT Ở TRANG HÔM NAY BẬN GÌ */
+/* GIEO QUẺ RANDOM OUTFIT */
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
   const box = $('#gieoQueResult');
@@ -721,7 +832,6 @@ function toggleCheckIn(idx) {
   renderWeekSchedule();
 }
 
-/* QUICK QUIZ THEO HOẠT ĐỘNG */
 function selectActivity(type) {
   const map = {
     study: { name: 'Outfit Đi Học', desc: 'Năng động, gọn gàng nhưng vẫn cực kỳ trendy.', set: SETS[4] },
@@ -749,127 +859,99 @@ function selectActivity(type) {
   `;
 }
 
-document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
-
-let lastFocus=null;
-function openModal(id){
-  const s=SETS.find(x=>x.id===id);S.cur=s;lastFocus=document.activeElement;
-  if(!S.colors[id])S.colors[id]=s.items.map(i=>i.c[0]);
-  $('#mImg').src=s.img;$('#mImg').alt=s.name;$('#mTitle').textContent=s.name;
-  
-  $('#mItems').innerHTML=s.items.map((it,i)=>`<li class="border-b border-neutral-200 pb-3">
-    <div class="flex justify-between gap-3 font-bold"><span>${it.n}</span><span>${fmt(it.p)}</span></div>
-    <div class="flex flex-wrap gap-2 mt-2">${it.c.map(c=>`<button class="chip" data-i="${i}" data-c="${c}" onclick="selectColor('${id}', ${i}, '${c}', this)">${c}</button>`).join('')}</div></li>`).join('');
-
-  if(s.suggestions && s.suggestions.length > 0) {
-    $('#mSuggestionsBox').classList.remove('hidden');
-    $('#mSuggestionsList').innerHTML = s.suggestions.map(item => `<li>• ${item}</li>`).join('');
-  } else {
-    $('#mSuggestionsBox').classList.add('hidden');
-  }
-
-  $('#mTotal').textContent=fmt(s.items.reduce((a,b)=>a+b.p,0));
-  $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';
-}
-
-function selectColor(id, index, color, btn) {
-  S.colors[id][index] = color;
-  btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function closeModal(){$('#modal').classList.add('hidden');document.body.style.overflow='';}
-$('#mClose').onclick=closeModal;
-
-$('#mSave').onclick=()=>{
-  const s=S.cur;
-  if(!S.saved.some(x=>x.id===s.id)){
-    S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
-    addPts(20,'Lưu set vào FIT CARD');
-    updCount();
-  }
-  closeModal();
-  show('fit');
-};
-
-const updCount=()=>$('#fcCount').textContent=S.saved.length;
-
-/* PHÒNG LAB TỰ PHỐI ĐỒ CHIA 4 Ô ẢNH (CHUẨN ẢNH 3) */
-let activeCategory = null;
-
-function openPicker(cat) {
-  activeCategory = cat;
-  const titles = { ao: 'Chọn Áo chính', quan: 'Chọn Quần / Chân váy', aokhoac: 'Chọn Áo khoác', phukien: 'Chọn Phụ kiện' };
-  $('#pickerTitle').textContent = titles[cat];
-  
-  const list = CUSTOM_DATA[cat];
-  $('#pickerList').innerHTML = list.map(item => `
-    <div onclick="selectCustomItem('${cat}', '${item.name}', '${item.img}')" class="border border-line rounded-2xl p-3 bg-paper cursor-pointer hover:border-accent transition text-center">
-      <img src="${item.img}" alt="" class="w-full aspect-square object-contain rounded-xl bg-white mb-2">
-      <p class="font-bold text-xs">${item.name}</p>
-    </div>
-  `).join('');
-  
-  $('#pickerModal').classList.remove('hidden');
-}
-
-function closePicker() {
-  $('#pickerModal').classList.add('hidden');
-}
-
-function selectCustomItem(cat, name, img) {
-  S.custom[cat] = { name, img };
-  $('#slotImg-' + cat).src = img;
-  $('#slotName-' + cat).textContent = name;
-  $('#customPreviewImg').src = img;
-  
-  const chosen = Object.values(S.custom);
-  $('#customDescText').textContent = 'Đã chọn: ' + chosen.map(i => i.name).join(' + ');
-  closePicker();
-}
-
-$('#saveCustom').onclick = () => {
-  const picks = Object.values(S.custom);
-  if(picks.length < 2) {
-    $('#customMsg').textContent = 'Vui lòng chọn ít nhất áo và quần.';
-    return;
-  }
-  
-  S.customSaved++;
-  const previewImg = $('#customPreviewImg').src;
-  S.saved.push({
-    id: 'custom' + S.customSaved,
-    name: 'Look tự phối #' + S.customSaved,
-    img: previewImg,
-    colors: picks.map(i => i.name)
-  });
-  S.custom = {};
-  
-  ['ao', 'quan', 'aokhoac', 'phukien'].forEach(cat => {
-    $('#slotImg-' + cat).src = 'images/BOO.png';
-    $('#slotName-' + cat).textContent = 'Bấm để chọn';
-  });
-  
-  addPts(20, 'Lưu look tự phối vào FIT CARD');
-  updCount();
-  $('#customMsg').textContent = 'Đã lưu look vào FIT CARD!';
-  show('fit');
-};
-
 function renderFit(){
   $('#fitGrid').innerHTML=S.saved.length?S.saved.map((s,i)=>`
    <div class="rounded-2xl border border-line overflow-hidden bg-white shadow-sm lift">
       <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
       <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
       <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
-      <button class="underline text-sm mt-2 text-red-600 font-bold" onclick="removeFitItem(${i})">Xoá khỏi tủ</button></div></div>`).join('')
+      <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
     :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center border border-line"><p class="font-bold text-lg">FIT CARD của cậu đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button></div>`;
+
+  const categories = [
+    { key: 'ao', label: '👕 Áo lựa chọn' },
+    { key: 'quan', label: '👖 Quần / Chân váy' },
+    { key: 'phukien', label: '👜 Phụ kiện / Nón' }
+  ];
+
+  if($('#customRow')) {
+    $('#customRow').innerHTML = categories.map(cat => `
+      <div class="slot">
+        <label class="font-bold block text-sm text-neutral-800">${cat.label}</label>
+        <select data-cat="${cat.key}" class="custom-select mt-2 w-full rounded-lg border border-line px-3 py-2 font-medium bg-white text-sm">
+          <option value="">+ Chọn ${cat.label.toLowerCase()}</option>
+          ${CUSTOM_ITEMS[cat.key].map(item => `
+            <option value="${item.name}" data-img="${item.img}" ${S.custom[cat.key]?.name===item.name?'selected':''}>${item.name}</option>
+          `).join('')}
+        </select>
+      </div>
+    `).join('');
+    updateCustomPreview();
+  }
 }
 
-function removeFitItem(idx) {
-  S.saved.splice(idx, 1);
-  updCount();
-  renderFit();
+document.addEventListener('change', e => {
+  if(e.target.classList.contains('custom-select')) {
+    const cat = e.target.dataset.cat;
+    const selectedOpt = e.target.options[e.target.selectedIndex];
+    const name = e.target.value;
+    const img = selectedOpt.dataset.img;
+
+    if(name) {
+      S.custom[cat] = { name, img };
+      if($('#customPreviewImg')) $('#customPreviewImg').src = img;
+    } else {
+      delete S.custom[cat];
+    }
+    updateCustomPreview();
+  }
+});
+
+function updateCustomPreview() {
+  const chosen = Object.values(S.custom);
+  if($('#customDescText')) {
+    if(chosen.length > 0) {
+      $('#customDescText').textContent = 'Đã chọn: ' + chosen.map(i => i.name).join(' + ');
+      if(S.custom.ao && $('#customPreviewImg')) {
+        $('#customPreviewImg').src = S.custom.ao.img;
+      } else if(S.custom.quan && $('#customPreviewImg')) {
+        $('#customPreviewImg').src = S.custom.quan.img;
+      } else if($('#customPreviewImg')) {
+        $('#customPreviewImg').src = chosen[0].img;
+      }
+    } else {
+      if($('#customPreviewImg')) $('#customPreviewImg').src = 'images/outfit-2.png';
+      $('#customDescText').textContent = 'Hãy chọn ít nhất một item để xem phối cảnh';
+    }
+  }
+}
+
+document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){S.saved.splice(+r.dataset.rm,1);updCount();renderFit()}});
+
+if($('#saveCustom')) {
+  $('#saveCustom').onclick=()=>{
+    const picks = Object.values(S.custom);
+    if(picks.length < 2){$('#customMsg').textContent='Chọn ít nhất 2 món để tạo look.';return}
+    
+    if(!S.userProfile) {
+      openFitCardModal();
+      return;
+    }
+
+    S.customSaved++;
+    const previewImg = $('#customPreviewImg').src;
+    S.saved.push({
+      id:'custom'+S.customSaved,
+      name:'Look tự phối #'+S.customSaved,
+      img: previewImg,
+      colors: picks.map(i => i.name)
+    });
+    S.custom={}; 
+    addPts(20,'Lưu look tự phối vào FIT CARD');
+    updCount();
+    $('#customMsg').textContent='Đã lưu look thành công vào FIT CARD!';
+    renderFit();
+  };
 }
 </script>
 
