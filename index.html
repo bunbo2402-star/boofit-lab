@@ -84,6 +84,64 @@ article.lift{border-radius:1.75rem}
 .chip{padding:.4rem 1rem}
 #lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
+ /* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER MỚI ===== */
+#lead {
+  transition: all 0.4s cubic-bezier(.2,.7,.2,1);
+  box-shadow: 0 20px 50px -20px rgba(26,29,33,.4);
+  overflow: hidden;
+}
+#lead:hover {
+  transform: translateY(-3px);
+}
+.lead-header {
+  background: linear-gradient(135deg, #FF7A59, #FF5C35);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.8rem;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.score-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: conic-gradient(#2E6BD6 var(--deg, 0deg), #E7E4DD 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0.75rem auto;
+}
+.score-circle::before {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border-radius: 50%;
+}
+.score-val {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1A1D21;
+}
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #F3EEE4;
+}
+.history-item:last-child {
+  border-bottom: none;
+}
 </style>
 </head>
 <body class="font-sans antialiased">
