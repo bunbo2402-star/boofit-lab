@@ -108,7 +108,8 @@ body{background:#fff;color:#0A0A0A}
             <h3 class="font-cute font-bold text-lg mt-3">Lưu vào FIT CARD</h3>
             <p class="text-sm mt-1 text-neutral-700">Lưu giữ tủ đồ ảo cá nhân và tự do mix-match theo ý thích.</p>
           </div>
-<button onclick="openFitCardModal()" class="mt-4 text-xs font-bold underline text-left focus:outline-none">Xem & Lưu FIT CARD</button>
+          <!-- Gắn trigger mở Modal đăng ký/định danh tại đây -->
+          <button onclick="openFitCardModal()" class="mt-4 text-xs font-bold underline text-left text-ink focus:outline-none">Xem & Lưu FIT CARD →</button>
         </div>
         <div class="bg-sand border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">04</span>
@@ -128,7 +129,7 @@ body{background:#fff;color:#0A0A0A}
     </div>
   </div>
 
-  <!-- PHẦN SỨ MỆNH & GIÁ TRỊ CỐT LÕI ĐÃ THAY NỀN BẰNG banner-2.png -->
+  <!-- PHẦN SỨ MỆNH & GIÁ TRỊ CỐT LÕI -->
   <div class="relative py-20" style="background:url('images/banner-2.png') center/cover">
     <div class="absolute inset-0 bg-black/70"></div>
     <div class="relative max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
@@ -237,7 +238,7 @@ body{background:#fff;color:#0A0A0A}
 <footer class="bg-ink text-white mt-10"><div class="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center gap-4 justify-between">
   <img src="images/BOO.png" alt="BOO" class="h-10 w-10 rounded-lg"><p>BOO FIT LAB · Đúng Gu cùng BOO</p></div></footer>
 
-<!-- MODAL CHI TIẾT -->
+<!-- MODAL CHI TIẾT SẢN PHẨM -->
 <div id="modal" class="fixed inset-0 z-50 hidden bg-black/60 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="bg-white rounded-3xl max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden border-2 border-ink">
     <img id="mImg" alt="" class="w-full h-full object-cover bg-sand">
@@ -247,6 +248,65 @@ body{background:#fff;color:#0A0A0A}
       <p class="mt-5 font-black text-xl">Tổng: <span id="mTotal"></span></p>
       <button id="mSave" class="btn btn-ink w-full mt-4">Lưu vào giỏ / FIT CARD</button>
     </div>
+  </div>
+</div>
+
+<!-- ================= MODAL ĐĂNG KÝ / ĐỊNH DANH (FIT CARD MEMBERSHIP) ================= -->
+<div id="fitCardModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4 overflow-y-auto">
+  <div class="bg-[#0A0A0A] text-white p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl relative border-2 border-white/20">
+    
+    <!-- Nút đóng popup -->
+    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white text-2xl font-bold" aria-label="Đóng">✕</button>
+    
+    <div class="mb-5">
+      <span class="bg-[#A9CBEF] text-[#0A0A0A] text-xs font-bold px-3 py-1 rounded-full">Xác thực thành viên</span>
+      <h2 class="text-2xl font-cute font-bold mt-2 text-white">✨ Nhận mã FIT CARD</h2>
+      <p class="text-xs text-neutral-400 mt-1">Đăng ký nhanh để đồng bộ tủ đồ cá nhân hóa lên hệ thống.</p>
+    </div>
+    
+    <!-- Form thu thập thông tin chuẩn mẫu bạn yêu cầu -->
+    <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-bold text-neutral-300 mb-1">Tên gọi (không cần tên thật)</label>
+        <input type="text" id="userName" required placeholder="Ví dụ: Minh Anh" class="w-full bg-[#1A1A1A] border-2 border-neutral-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-[#A9CBEF]">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-neutral-300 mb-1">Cửa hàng hay ghé</label>
+          <select id="userStore" class="w-full bg-[#1A1A1A] border-2 border-neutral-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-[#A9CBEF]">
+            <option value="Online">Chỉ mua online</option>
+            <option value="FIT SPOT Q1">FIT SPOT Quận 1</option>
+            <option value="FIT SPOT Thu Duc">FIT SPOT Thủ Đức</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-neutral-300 mb-1">Nhận tin qua</label>
+          <select id="userChannel" class="w-full bg-[#1A1A1A] border-2 border-neutral-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-[#A9CBEF]">
+            <option value="Zalo OA">Zalo OA</option>
+            <option value="Email">Email</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex items-start space-x-2 pt-2">
+        <input type="checkbox" id="consentCheck" required class="mt-1 accent-[#2F7D4F]">
+        <label for="consentCheck" class="text-[11px] text-neutral-400 leading-relaxed">
+          Đồng ý cá nhân hóa (bắt buộc để lưu). Lưu tuổi, gu đọc, cửa hàng và kênh liên lạc để trợ lý gợi ý phối đồ riêng cho bạn. Bạn có thể yêu cầu xóa bất cứ lúc nào.
+        </label>
+      </div>
+
+      <!-- Nút hành động -->
+      <div class="flex gap-3 pt-4">
+        <button type="submit" class="flex-1 bg-[#A9CBEF] hover:bg-[#CDEBDD] text-[#0A0A0A] font-bold py-3 rounded-xl text-sm transition">
+          Lưu và lấy mã thành viên
+        </button>
+        <button type="button" onclick="closeFitCardModal()" class="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 px-4 py-3 rounded-xl text-sm transition">
+          Không lưu
+        </button>
+      </div>
+    </form>
+    
   </div>
 </div>
 
@@ -263,7 +323,7 @@ body{background:#fff;color:#0A0A0A}
 <script>
 const SETS=[
  {
-   id:'soft', // Đảm bảo set nơ hồng mang id là 'soft'
+   id:'soft',
    name:'Set Nơ Hồng Dịu Dàng',
    img:'images/outfit-1.png',
    tag:'Nhẹ nhàng · Nữ tính · Minimalist',
@@ -275,7 +335,7 @@ const SETS=[
    ]
  },
  {
-   id:'street', // Set varsity đỏ đúng chuẩn đường phố mang id là 'street'
+   id:'street',
    name:'Set Varsity Đỏ Đường Phố',
    img:'images/outfit-2.png',
    tag:'Streetwear · Oversized · Năng động',
@@ -325,28 +385,28 @@ const SETS=[
 ];
 
 const CUSTOM_ITEMS = {
-  ao: [
+ ao: [
     { name: 'Áo sweatshirt trắng in nơ', img: 'images/outfit-1.png' },
     { name: 'Áo khoác varsity đỏ', img: 'images/outfit-2.png' },
     { name: 'Áo tay dài loang màu tie-dye', img: 'images/outfit-3.jfif' },
     { name: 'Áo sơ mi flannel sọc', img: 'images/outfit-4.jfif' },
     { name: 'Áo nỉ sweatshirt xanh rêu', img: 'images/outfit-5.png' }
   ],
-  quan: [
+ quan: [
     { name: 'Chân váy xếp ly caro hồng', img: 'images/outfit-1.png' },
     { name: 'Quần jeans cargo túi hộp', img: 'images/outfit-2.png' },
     { name: 'Quần short jean wash xám', img: 'images/outfit-3.jfif' },
     { name: 'Quần túi hộp cargo rêu', img: 'images/outfit-4.jfif' },
     { name: 'Quần jogger nỉ xám', img: 'images/outfit-5.png' }
   ],
-  giay: [
+ giay: [
     { name: 'Giày mary jane đen', img: 'images/outfit-1.png' },
     { name: 'Giày sneaker trắng chunky', img: 'images/outfit-2.png' },
     { name: 'Ủng cao cổ da nâu', img: 'images/outfit-3.jfif' },
     { name: 'Giày cao cổ sneaker', img: 'images/outfit-4.jfif' },
     { name: 'Giày thể thao xanh rêu', img: 'images/outfit-5.png' }
   ],
-  phukien: [
+ phukien: [
     { name: 'Túi đeo vai nơ hồng', img: 'images/outfit-1.png' },
     { name: 'Túi đeo vai nâu da bóng', img: 'images/outfit-3.jfif' },
     { name: 'Mắt kính Urban Explorer', img: 'images/outfit-4.jfif' },
@@ -409,7 +469,7 @@ const QS=[
 
 const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
-const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,resultVibe:null,cur:null,colors:{}};
+const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],custom:{},customSaved:0,resultVibe:null,cur:null,colors:{},userProfile:null};
 
 function addPts(n,why){
   const before=S.pts;S.pts=Math.min(100,S.pts+n);
@@ -482,19 +542,18 @@ function renderOutfits(){
   $('#resultTitle').textContent=`✨ Gu của bạn: "${info.name}"`;
   $('#resultNote').textContent=`${info.desc} (Đúng gu gọn tủ, vẫn đủ chất riêng).`;
   
-  // Lọc ra ĐÚNG set đồ có id trùng với kết quả quiz của khách
   const filteredSets=SETS.filter(s => s.id === vibe);
 
   $('#outfitList').innerHTML=filteredSets.map((s,i)=>`
    <article class="rounded-3xl border-2 border-ink overflow-hidden bg-white shadow-sm">
-     <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
-     <div class="p-5">
-       <p class="font-bold text-leaf">🔥 Set đồ chuẩn vibe nhất cho bạn · 100% hợp gu</p>
-       <h3 class="text-2xl font-cute font-bold mt-1">${s.name}</h3>
-       <p class="mt-1">${s.tag}</p>
-       <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho cả set</p>
-       <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
-     </div></article>`).join('');
+      <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
+      <div class="p-5">
+        <p class="font-bold text-leaf">🔥 Set đồ chuẩn vibe nhất cho bạn · 100% hợp gu</p>
+        <h3 class="text-2xl font-cute font-bold mt-1">${s.name}</h3>
+        <p class="mt-1">${s.tag}</p>
+        <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho cả set</p>
+        <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
+      </div></article>`).join('');
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
 
@@ -517,24 +576,64 @@ $('#mItems').addEventListener('click',e=>{
   S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
   c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
 });
+
+// Khi bấm nút Lưu ở Modal chi tiết sản phẩm -> Kích hoạt Popup định danh FIT CARD trước khi lưu thực sự
 $('#mSave').onclick=()=>{
-  const s=S.cur;if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return}
-  S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
-  addPts(20,'Lưu set vào FIT CARD');updCount();refreshSave();
+  const s=S.cur;
+  if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return;}
+  closeModal();
+  openFitCardModal(); // Mở popup đăng ký/định danh
 };
+
 function closeModal(){$('#modal').classList.add('hidden');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
 $('#mClose').onclick=closeModal;
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#modal').classList.contains('hidden'))closeModal()});
 const updCount=()=>$('#fcCount').textContent=S.saved.length;
 
+// Logic xử lý mở/đóng popup đăng ký FIT CARD
+function openFitCardModal() {
+  $('#fitCardModal').classList.remove('hidden');
+  $('#fitCardModal').classList.add('flex');
+}
+function closeFitCardModal() {
+  $('#fitCardModal').classList.remove('flex');
+  $('#fitCardModal').classList.add('hidden');
+}
+
+// Xử lý sự kiện Submit Form định danh từ người dùng
+function submitFitCard(event) {
+  event.preventDefault();
+  const profile = {
+    name: $('#userName').value,
+    store: $('#userStore').value,
+    channel: $('#userChannel').value,
+    timestamp: new Date().toISOString()
+  };
+  S.userProfile = profile;
+  
+  // Tiến hành lưu item hiện tại vào giỏ nếu đang bấm từ modal sản phẩm
+  if(S.cur && !S.saved.some(x=>x.id===S.cur.id)){
+    const s=S.cur;
+    S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
+    addPts(20,'Định danh thành viên & Lưu set vào FIT CARD');
+    updCount();
+  } else {
+    addPts(20,'Đăng ký mã thành viên FIT CARD thành công');
+  }
+
+  closeFitCardModal();
+  alert('✨ Đã lưu thông tin và cấp mã thành công cho ' + profile.name + '!');
+  show('fit');
+}
+
 function renderFit(){
   $('#fitGrid').innerHTML=S.saved.length?S.saved.map((s,i)=>`
    <div class="rounded-2xl border-2 border-ink overflow-hidden bg-white shadow-sm">
-     <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
-     <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
-     <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
-     <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
+      <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
+      <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
+      <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
+      <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
     :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center border-2 border-ink"><p class="font-bold text-lg">FIT CARD của bạn đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button></div>`;
 
   const categories = [
@@ -598,6 +697,13 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r
 $('#saveCustom').onclick=()=>{
   const picks = Object.values(S.custom);
   if(picks.length < 2){$('#customMsg').textContent='Chọn ít nhất 2 món để tạo look.';return}
+  
+  // Nếu chưa có profile định danh, bật popup trước khi cho lưu custom look
+  if(!S.userProfile) {
+    openFitCardModal();
+    return;
+  }
+
   S.customSaved++;
   const previewImg = $('#customPreviewImg').src;
   S.saved.push({
@@ -616,101 +722,5 @@ $('#saveCustom').onclick=()=>{
 <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
-  <!-- Nút bấm trên website để kích hoạt Popup -->
-<button onclick="openFitCardModal()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-indigo-700 transition">
-  Lưu vào FIT CARD 🖤
-</button>
-
-<!-- Giao diện Modal / Popup ẩn đi ban đầu -->
-<div id="fitCardModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
-  <div class="bg-gray-900 text-white p-6 rounded-2xl w-full max-w-md shadow-2xl relative border border-gray-800">
-    
-    <!-- Nút đóng popup -->
-    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
-    
-    <h2 class="text-xl font-bold mb-4 text-indigo-400">✨ Lưu Tủ Đồ FIT CARD</h2>
-    
-    <!-- Form thu thập thông tin -->
-    <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
-      <div>
-        <label class="block text-sm text-gray-300 mb-1">Tên gọi (không cần tên thật)</label>
-        <input type="text" id="userName" required placeholder="Ví dụ: Minh Anh" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
-      </div>
-
-      <div>
-        <label class="block text-sm text-gray-300 mb-1">Cửa hàng hay ghé</label>
-        <select id="userStore" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
-          <option value="Online">Chỉ mua online</option>
-          <option value="FIT SPOT Quan 1">FIT SPOT Quận 1</option>
-          <option value="FIT SPOT Thu Duc">FIT SPOT Thủ Đức</option>
-        </select>
-      </div>
-
-      <div>
-        <label class="block text-sm text-gray-300 mb-1">Muốn nhận tin qua</label>
-        <select id="userChannel" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
-          <option value="Zalo OA">Zalo OA</option>
-          <option value="Email">Email</option>
-        </select>
-      </div>
-
-      <div class="flex items-start space-x-2 pt-2">
-        <input type="checkbox" id="consentCheck" required class="mt-1">
-        <label for="consentCheck" class="text-xs text-gray-400 leading-relaxed">
-          Đồng ý cá nhân hóa (bắt buộc để lưu). Lưu tuổi, gu đọc, cửa hàng và kênh liên lạc để trợ lý gợi ý truyện/outfit riêng cho bạn.
-        </label>
-      </div>
-
-      <!-- Nút hành động -->
-      <div class="flex space-x-3 pt-4">
-        <button type="submit" class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2.5 rounded-lg transition">
-          Lưu và lấy mã thành viên
-        </button>
-        <button type="button" onclick="closeFitCardModal()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2.5 rounded-lg transition">
-          Không lưu
-        </button>
-      </div>
-    </form>
-    
-  </div>
-</div>
-
-<!-- Đoạn Script xử lý bật/tắt popup và bắn dữ liệu -->
-<script>
-  function openFitCardModal() {
-    document.getElementById('fitCardModal').classList.remove('hidden');
-    document.getElementById('fitCardModal').classList.add('flex');
-  }
-
-  function closeFitCardModal() {
-    document.getElementById('fitCardModal').classList.remove('flex');
-    document.getElementById('fitCardModal').classList.add('hidden');
-  }
-
-  function submitFitCard(event) {
-    event.preventDefault(); // Chặn load lại trang
-    
-    const formData = {
-      name: document.getElementById('userName').value,
-      store: document.getElementById('userStore').value,
-      channel: document.getElementById('userChannel').value,
-      timestamp: new Date().toISOString()
-    };
-
-    console.log("Dữ liệu gửi đi:", formData);
-    
-    // [QUAN TRỌNG] Tại đây nhóm có thể dùng fetch() để bắn dữ liệu này về Webhook của n8n hoặc HubSpot Form API
-    /*
-    fetch('ĐƯỜNG_DẪN_WEBHOOK_N8N_HOẶC_HUBSPOT', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-    */
-
-    alert("Lưu FIT CARD thành công! Dữ liệu đã được đồng bộ hệ thống.");
-    closeFitCardModal();
-  }
-</script>
 </body>
 </html>
