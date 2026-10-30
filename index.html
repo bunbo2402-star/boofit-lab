@@ -16,7 +16,7 @@ colors:{ink:'#1A1D21',paper:'#FAFAF8',sand:'#F3EEE4',line:'#E7E4DD',sky:'#E6EEFB
 <style>
 :root{--ease:cubic-bezier(.2,.7,.2,1)}
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
-body{background:#FAFAF8;color:#1A1D21;letter-spacing:-.005em}
+body{background:radial-gradient(900px 420px at 8% -6%,#E6EEFB 0,transparent 70%),radial-gradient(760px 420px at 100% 0,#DCEFE6 0,transparent 65%),#FAFAF8;background-repeat:no-repeat;color:#1A1D21;letter-spacing:-.005em}
 h1,h2,h3{letter-spacing:-.03em}
 ::selection{background:#2E6BD6;color:#fff}
 :focus-visible{outline:2px solid #2E6BD6;outline-offset:3px;border-radius:12px}
@@ -61,20 +61,43 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 @keyframes bump{40%{transform:scale(1.06)}}
 #ptsBar{background:linear-gradient(90deg,#2E6BD6,#1F7A5A)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js .rv{opacity:1;transform:none}}
+
+/* ===== Nâng cấp giao diện ===== */
+.nav-link.is-on{background:#1A1D21;color:#fff}
+.nav-cta{border:1px solid #1A1D21;color:#1A1D21}.nav-cta:hover{background:#1A1D21;color:#fff}
+.eyebrow::before{content:"";display:inline-block;width:1.4rem;height:1.5px;background:currentColor;vertical-align:middle;margin-right:.6rem;opacity:.7}
+.hero-c>*{animation:rise 1s var(--ease) both}
+.hero-c>:nth-child(2){animation-delay:.1s}.hero-c>:nth-child(3){animation-delay:.2s}.hero-c>:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+h1{text-wrap:balance}h2,h3{text-wrap:balance}
+#qOpts{counter-reset:o}
+#qOpts .opt{display:flex;align-items:center;gap:1rem}
+#qOpts .opt::before{counter-increment:o;content:counter(o,upper-alpha);flex:none;display:grid;place-items:center;height:2.1rem;width:2.1rem;border-radius:999px;background:#F0EEE8;font-size:.8rem;font-weight:700;color:#5B6169;transition:background .25s,color .25s}
+#qOpts .opt:hover::before{background:#2E6BD6;color:#fff}
+.act{position:relative;text-align:left;background:#fff;border:1px solid #E7E4DD;border-radius:22px;padding:1.4rem 1.3rem 1.5rem;cursor:pointer;
+ transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .3s,background .3s}
+.act:hover{transform:translateY(-5px);border-color:#2E6BD6;box-shadow:0 22px 40px -24px rgba(46,107,214,.55)}
+.act-n{display:block;font-size:.75rem;font-weight:700;letter-spacing:.14em;color:#2E6BD6;margin-bottom:2.2rem}
+.act span.font-bold{display:block;line-height:1.35}
+.lift img{transition:transform .9s var(--ease)}.lift:hover img{transform:scale(1.035)}
+article.lift{border-radius:1.75rem}
+.chip{padding:.4rem 1rem}
+#lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
 </style>
 </head>
 <body class="font-sans antialiased">
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-xl bg-paper/80 border-b border-line">
-  <div class="max-w-6xl mx-auto flex items-center justify-between gap-3 px-4 h-16">
+<header class="sticky top-3 z-40 mx-3 min-[1200px]:mx-auto max-w-6xl mt-3 rounded-full bg-white/75 backdrop-blur-xl border border-line shadow-[0_10px_40px_-18px_rgba(26,29,33,.35)]">
+  <div class="flex items-center justify-between gap-3 px-2 h-14">
     <a href="#home" data-go="home" aria-label="BOO – Trang chủ" class="shrink-0"><img src="images/BOO.png" alt="BOO" class="h-10 w-10 rounded-xl object-cover"></a>
     <nav class="flex items-center gap-1 overflow-x-auto" aria-label="Điều hướng chính">
       <a href="#home" data-go="home" class="nav-link">Trang chủ</a>
       <a href="#schedule" data-go="schedule" class="nav-link">Hôm nay bận gì?</a>
       <a href="#lookbook" data-go="lookbook" class="nav-link">Tủ đồ BOO</a>
       <a href="#quiz" data-go="quiz" class="nav-link">Style Quiz</a>
-      <a href="#fitcard" data-go="fit" class="nav-link !bg-ink !text-white hover:!bg-accent">FIT CARD <span id="fcCount" class="ml-1 bg-white/20 rounded-full px-2 py-0.5 text-xs">0</span></a>
+      <a href="#fitcard" data-nav="fit" onclick="return fitCardNav(event)" class="nav-link nav-cta">FIT CARD <span id="fcCount" class="ml-1 bg-accent text-white rounded-full px-2 py-0.5 text-xs">0</span></a>
     </nav>
   </div>
 </header>
@@ -85,13 +108,13 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   <div class="px-3 sm:px-5 pt-3">
     <div class="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.5rem] min-h-[80vh] flex items-end text-white" style="background:url('images/banner-boofit.jpg') center/cover">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
-      <div class="relative w-full max-w-6xl mx-auto px-5 sm:px-8 pb-10 sm:pb-16 pt-40">
+      <div class="hero-c relative w-full max-w-6xl mx-auto px-5 sm:px-8 pb-10 sm:pb-16 pt-40">
         <span class="inline-block backdrop-blur-md bg-white/15 border border-white/25 rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-5">BOO FIT LAB</span>
         <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1.02] max-w-4xl">Đúng Gu cùng BOO</h1>
         <p class="text-lg sm:text-2xl mt-5 max-w-xl text-white/85 font-light">Đúng gu gọn tủ, vẫn đủ chất riêng.</p>
         <div class="mt-9 flex flex-wrap gap-3">
-          <button data-go="quiz" class="btn btn-white text-base">Khám phá Style Quiz ngay →</button>
-          <button onclick="show('schedule')" class="btn border border-white/40 text-white hover:bg-white/10">🎲 Gieo quẻ Random Outfit</button>
+          <button data-go="quiz" class="btn btn-white text-base">Khám phá Style Quiz ngay</button>
+          <button onclick="show('schedule')" class="btn border border-white/40 text-white hover:bg-white/10">Gieo quẻ Random Outfit</button>
         </div>
       </div>
     </div>
@@ -163,11 +186,11 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
     <div class="mt-12 bg-ink text-white rounded-[2rem] p-6 sm:p-8 shadow-xl rv">
       <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
         <div>
-          <span class="text-xs uppercase font-bold text-accent tracking-widest">🎲 Khám phá nhanh</span>
+          <span class="text-xs uppercase font-bold text-accent tracking-widest">Khám phá nhanh</span>
           <h3 class="text-2xl sm:text-3xl font-bold mt-1">Gieo quẻ thời trang ngẫu nhiên</h3>
           <p class="text-sm text-white/70 mt-1">Không biết chọn gì? Để hệ thống phối ngẫu nhiên cho cậu một set cực độc.</p>
         </div>
-        <button onclick="randomGieoQue()" class="btn btn-white text-ink shrink-0">Lắc ngay ✨</button>
+        <button onclick="randomGieoQue()" class="btn btn-white text-ink shrink-0">Lắc ngay</button>
       </div>
       <div id="gieoQueResult" class="mt-6 hidden bg-white/10 border border-white/15 p-5 rounded-2xl"></div>
     </div>
@@ -176,7 +199,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
     <div class="mt-12 bg-white border border-line rounded-[2rem] p-6 sm:p-8 shadow-sm rv">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-          <h3 class="text-xl font-bold">📅 Lịch điểm danh 7 ngày (Thứ Hai – Chủ Nhật)</h3>
+          <h3 class="text-xl font-bold">Lịch điểm danh 7 ngày (Thứ Hai – Chủ Nhật)</h3>
           <p class="text-sm text-neutral-500 mt-1">Click vào từng ô để điểm danh mỗi ngày. Tích đủ 7/7 dấu tick nhận ngay Voucher tại FIT SPOT!</p>
         </div>
         <div id="checkinProgress" class="bg-sky/60 px-4 py-2 rounded-xl text-sm font-bold text-accent">Đã điểm danh: 0/7 ngày</div>
@@ -185,30 +208,30 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       <div id="weekDaysGrid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3"></div>
       
       <div id="voucherBox" class="mt-6 hidden bg-mint border border-leaf/30 p-4 rounded-2xl text-center">
-        <p class="font-bold text-leaf text-base">🎉 Chúc mừng cậu đã điểm danh đủ 7 ngày!</p>
+        <p class="font-bold text-leaf text-base">Chúc mừng cậu đã điểm danh đủ 7 ngày!</p>
         <p class="text-sm text-neutral-700 mt-1">Mã Voucher của cậu: <span class="font-bold text-accent">FITSPOT777</span> (-15% khi thử đồ trực tiếp tại cửa hàng).</p>
       </div>
     </div>
 
     <!-- Quick Quiz theo hoạt động -->
     <div class="mt-16 bg-sand/60 border border-line rounded-[2rem] p-6 sm:p-8 rv">
-      <h3 class="text-2xl font-bold">⚡ Cậu đang cần tìm outfit để đi đâu nè?</h3>
+      <h3 class="text-2xl font-bold">Cậu đang cần tìm outfit để đi đâu nè?</h3>
       <p class="text-sm text-neutral-600 mt-1">Chọn nhanh hoạt động để hệ thống gợi ý set đồ chuẩn xác nhất.</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-        <button onclick="selectActivity('study')" class="opt bg-white text-center py-6">
-          <span class="text-3xl block mb-2">📚</span>
+        <button onclick="selectActivity('study')" class="act">
+          <span class="act-n">01</span>
           <span class="font-bold text-lg">Đi học / Lên trường</span>
         </button>
-        <button onclick="selectActivity('cafe')" class="opt bg-white text-center py-6">
-          <span class="text-3xl block mb-2">☕</span>
+        <button onclick="selectActivity('cafe')" class="act">
+          <span class="act-n">02</span>
           <span class="font-bold text-lg">Cà phê / Dạo phố</span>
         </button>
-        <button onclick="selectActivity('work')" class="opt bg-white text-center py-6">
-          <span class="text-3xl block mb-2">💻</span>
+        <button onclick="selectActivity('work')" class="act">
+          <span class="act-n">03</span>
           <span class="font-bold text-lg">Đi làm / Thực tập</span>
         </button>
-        <button onclick="selectActivity('party')" class="opt bg-white text-center py-6">
-          <span class="text-3xl block mb-2">🔥</span>
+        <button onclick="selectActivity('party')" class="act">
+          <span class="act-n">04</span>
           <span class="font-bold text-lg">Quẩy tối / Chill đêm</span>
         </button>
       </div>
@@ -257,10 +280,10 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       <span class="eyebrow">Style Quiz</span>
       <h2 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight">Gu của cậu là gì?</h2>
       <p class="mt-5 text-lg text-neutral-600">5 câu hỏi nhanh. Chọn đúng gu để nhận set đồ chuẩn vibe nhất.</p>
-      <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay →</button>
+      <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
-      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/5</span><button id="qBack" class="hover:text-ink transition">← Quay lại</button></div>
+      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/5</span><button id="qBack" class="hover:text-ink transition">Quay lại</button></div>
       <div class="h-1.5 rounded-full bg-line overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="5" id="qBar"><div id="qFill" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0"></div></div>
       <h3 id="qText" class="text-2xl sm:text-4xl font-bold mt-10 leading-snug" aria-live="polite"></h3>
       <div id="qOpts" class="grid gap-3 mt-8"></div>
@@ -282,7 +305,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
     </div>
     <h3 class="text-2xl sm:text-3xl font-bold">Các set đồ gợi ý chuẩn vibe nhất dành cho cậu</h3>
     <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-8"></div>
-    <div class="mt-12"><button data-go="quiz" id="retake" class="btn btn-line">↺ Làm lại quiz</button></div>
+    <div class="mt-12"><button data-go="quiz" id="retake" class="btn btn-line">Làm lại quiz</button></div>
   </div>
 </section>
 
@@ -304,7 +327,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 </section>
 </main>
 
-<footer class="border-t border-line mt-10"><div class="max-w-6xl mx-auto px-5 py-10 flex flex-wrap items-center gap-4 justify-between text-sm text-neutral-600">
+<footer class="bg-ink text-white/60 mt-24"><div class="max-w-6xl mx-auto px-5 py-12 flex flex-wrap items-center gap-4 justify-between text-sm">
   <img src="images/BOO.png" alt="BOO" class="h-9 w-9 rounded-xl"><p>BOO FIT LAB · Đúng Gu cùng BOO</p></div></footer>
 
 <!-- MODAL CHI TIẾT SẢN PHẨM -->
@@ -316,7 +339,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
         <div class="flex justify-between items-start gap-2"><h3 id="mTitle" class="text-2xl font-bold leading-snug"></h3><button id="mClose" class="h-9 w-9 shrink-0 rounded-full hover:bg-sand text-xl leading-none transition" aria-label="Đóng">×</button></div>
         <ul id="mItems" class="mt-5 grid gap-4"></ul>
         <div id="mSuggestionsBox" class="mt-5 p-3.5 bg-paper rounded-2xl border border-line hidden">
-          <p class="text-xs font-bold text-leaf uppercase tracking-wider mb-2">💡 Tụi mình gợi ý bạn nên phối thêm:</p>
+          <p class="text-xs font-bold text-leaf uppercase tracking-wider mb-2">Tụi mình gợi ý bạn nên phối thêm:</p>
           <ul id="mSuggestionsList" class="text-xs text-neutral-600 space-y-1 font-medium"></ul>
         </div>
       </div>
@@ -331,7 +354,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 <!-- MODAL TẠO TÀI KHOẢN FIT LAB (CONTACT) -->
 <div id="fitCardModal" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
-    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">✕</button>
+    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">×</button>
     <div class="mb-6">
       <span class="eyebrow">Để BOO FIT LAB hiểu và nhớ "đúng gu" cậu</span>
       <h2 class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
@@ -605,7 +628,7 @@ function renderOutfits(){
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
       <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
       <div class="p-5">
-        <p class="font-bold text-leaf">🔥 Set đồ chuẩn vibe nhất cho cậu · 100% hợp gu</p>
+        <p class="font-bold text-leaf">Set đồ chuẩn vibe nhất cho cậu · 100% hợp gu</p>
         <h3 class="text-2xl font-bold mt-1">${s.name}</h3>
         <p class="mt-1">${s.tag}</p>
         <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho các item chính</p>
@@ -636,7 +659,7 @@ function openModal(id){
   $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';$('#mClose').focus();
   if(!S.seen.has(id)){S.seen.add(id);addPts(10,'Xem chi tiết sản phẩm');}
 }
-function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD ✓':'Lưu vào giỏ / FIT CARD';}
+function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD':'Lưu vào giỏ / FIT CARD';}
 $('#mItems').addEventListener('click',e=>{
   const c=e.target.closest('.chip');if(!c)return;
   S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
@@ -671,7 +694,7 @@ function sendOtpCode() {
     $('#userContact').focus();
     return;
   }
-  alert('✨ Mã OTP giả lập đã được gửi đến: ' + contact + '\n(Mã xác nhận của cậu là: 123456)');
+  alert('Mã OTP giả lập đã được gửi đến: ' + contact + '\n(Mã xác nhận của cậu là: 123456)');
   $('#userOtp').value = '123456';
 }
 
@@ -697,7 +720,7 @@ function submitFitCard(event) {
   }
 
   closeFitCardModal();
-  alert('🎉 Xin chào ' + profile.displayName + '! Tài khoản FIT LAB và mã FIT CARD của cậu đã được tạo thành công.');
+  alert('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB và mã FIT CARD của cậu đã được tạo thành công.');
   show('fit');
 }
 
@@ -707,7 +730,7 @@ function quickSaveSet(id) {
     S.saved.push({id: s.id, name: s.name, img: s.img, colors: s.items.map(i=>i.c[0])});
     addPts(15, 'Lưu nhanh vào FIT CARD');
     updCount();
-    alert('✨ Đã lưu set "' + s.name + '" vào FIT CARD thành công!');
+    alert('Đã lưu set "' + s.name + '" vào FIT CARD thành công!');
   } else {
     alert('Set này đã có trong FIT CARD của cậu!');
   }
@@ -767,7 +790,7 @@ function randomGieoQue() {
     <div class="flex flex-col sm:flex-row items-center gap-4">
       <img src="${randomSet.img}" alt="" class="w-24 h-24 object-contain rounded-xl bg-white p-1 shrink-0">
       <div class="flex-1 text-center sm:text-left">
-        <span class="text-xs font-bold text-mint uppercase">🎲 Gieo quẻ trúng: ${randomSet.name}</span>
+        <span class="text-xs font-bold text-mint uppercase">Gieo quẻ trúng: ${randomSet.name}</span>
         <p class="text-sm text-white/80 mt-1">${randomSet.tag}</p>
       </div>
       <button class="btn btn-white text-ink text-xs shrink-0" onclick="quickSaveSet('${randomSet.id}')">Lưu vào FIT CARD (+15đ)</button>
@@ -781,9 +804,9 @@ let checkedDays = [false, false, false, false, false, false, false];
 
 function renderWeekSchedule() {
   $('#weekDaysGrid').innerHTML = WEEK_DAYS.map((day, idx) => `
-    <div onclick="toggleCheckIn(${idx})" class="border-2 ${checkedDays[idx] ? 'border-leaf bg-mint/40' : 'border-line bg-paper'} rounded-2xl p-4 cursor-pointer text-center transition flex flex-col justify-between items-center">
+    <div onclick="toggleCheckIn(${idx})" class="border ${checkedDays[idx] ? 'border-leaf bg-mint/40' : 'border-line bg-paper'} rounded-2xl p-4 cursor-pointer text-center transition duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between items-center">
       <span class="text-xs font-bold text-neutral-500 uppercase">${day}</span>
-      <div class="my-3 h-10 w-10 rounded-full ${checkedDays[idx] ? 'bg-leaf text-white' : 'bg-line text-transparent'} flex items-center justify-center font-bold text-lg transition">✓</div>
+      <div class="my-3 h-9 w-9 rounded-full border-2 transition ${checkedDays[idx] ? 'bg-leaf border-leaf' : 'bg-white border-line'}"></div>
       <span class="text-xs font-semibold ${checkedDays[idx] ? 'text-leaf' : 'text-neutral-400'}">${checkedDays[idx] ? 'Đã điểm danh' : 'Chưa điểm danh'}</span>
     </div>
   `).join('');
@@ -859,5 +882,27 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
+<script>
+/* Đánh dấu mục menu đang mở */
+(function(){
+  var map={outfit:'quiz'};
+  function sync(){var on=document.querySelector('.view.on');if(!on)return;var k=on.id.slice(2);k=map[k]||k;
+    document.querySelectorAll('header .nav-link').forEach(function(a){a.classList.toggle('is-on',(a.dataset.go||a.dataset.nav)===k)})}
+  new MutationObserver(sync).observe(document.querySelector('main'),{attributes:true,subtree:true,attributeFilter:['class']});sync();
+})();
+</script>
+<script>
+/* Bấm FIT CARD trên menu: chưa đăng ký thì mở popup tạo tài khoản, đã đăng ký thì vào trang FIT CARD */
+function fitCardNav(e){
+  e.preventDefault();e.stopPropagation();
+  if(S.userProfile){show('fit')}else{openFitCardModal()}
+  return false;
+}
+(function(){
+  var m=document.getElementById('fitCardModal');
+  m.addEventListener('click',function(e){if(e.target===m)closeFitCardModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('flex'))closeFitCardModal()});
+})();
+</script>
 </body>
 </html>
