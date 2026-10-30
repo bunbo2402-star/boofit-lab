@@ -93,7 +93,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
         <p class="text-lg sm:text-2xl mt-5 max-w-xl text-white/85 font-light">Đúng gu gọn tủ, vẫn đủ chất riêng.</p>
         <div class="mt-9 flex flex-wrap gap-3">
           <button data-go="quiz" class="btn btn-white text-base">Khám phá Style Quiz ngay →</button>
-          <button onclick="randomGieoQue()" class="btn border border-white/40 text-white hover:bg-white/10">🎲 Gieo quẻ Random Outfit</button>
+          <button onclick="show('schedule')" class="btn border border-white/40 text-white hover:bg-white/10">🎲 Gieo quẻ Random Outfit</button>
         </div>
       </div>
     </div>
@@ -109,44 +109,9 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
     </div>
     <div class="grid grid-cols-2 gap-4 rv" style="--d:.12s" aria-label="Không gian Fit Lab">
       <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/trang-chu-1.png" alt="Không gian Fit Lab BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
-      <div class="zoom rounded-[1.5rem] shadow-sm mt-10"><img src="images/trang-chu-2.jpg" alt="Người mẫu BOO đứng trước bối cảnh phố" class="w-full aspect-square object-cover" loading="lazy"></div>
-      <div class="zoom rounded-[1.5rem] shadow-sm -mt-10"><img src="images/minh-hoa.jpg" alt="Hình minh hoạ chiến dịch BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
-      <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/minh-hoa-1.jpg" alt="Hình minh hoạ chiến dịch BOO – phiên bản 2" class="w-full aspect-square object-cover" loading="lazy"></div>
-    </div>
-  </div>
-
-  <!-- Hành trình -->
-  <div class="bg-sand/60 border-y border-line">
-    <div class="max-w-6xl mx-auto px-5 py-24">
-      <div class="text-center max-w-2xl mx-auto mb-14 rv">
-        <span class="eyebrow">Cậu đang không biết bắt đầu từ đâu?</span>
-        <h2 class="text-3xl sm:text-5xl font-bold mt-3 leading-tight">Hành trình tìm đúng gu cùng BOO</h2>
-        <p class="mt-4 text-neutral-600">Quy trình 5 bước đơn giản để tối ưu tủ đồ và tỏa sáng chất riêng.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between">
-          <span class="text-4xl font-light text-accent/40">01</span>
-          <div><h3 class="font-semibold text-lg mt-6">Làm Style Quiz</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Trả lời 5 câu hỏi nhanh để tụi tớ bóc tách gu thời trang của cậu nha.</p></div>
-          <button data-go="quiz" class="mt-5 text-sm font-semibold text-accent text-left hover:underline">Bắt đầu ngay →</button>
-        </div>
-        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.06s">
-          <span class="text-4xl font-light text-accent/40">02</span>
-          <div><h3 class="font-semibold text-lg mt-6">Nhận gợi ý set đồ</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Nhận diện tên Gu Gen Z độc đáo và các set đồ chuẩn vibe nhất.</p></div>
-        </div>
-        <div class="rv lift bg-ink text-white rounded-3xl p-6 flex flex-col justify-between" style="--d:.12s">
-          <span class="text-4xl font-light text-white/40">03</span>
-          <div><h3 class="font-semibold text-lg mt-6">Lưu vào FIT CARD</h3><p class="text-sm mt-2 text-white/70 leading-relaxed">Lưu giữ tủ đồ ảo cá nhân và tự do mix-match theo ý thích.</p></div>
-          <button data-go="fit" class="mt-5 text-sm font-semibold text-mint text-left hover:underline">Xem & Lưu FIT CARD →</button>
-        </div>
-        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.18s">
-          <span class="text-4xl font-light text-accent/40">04</span>
-          <div><h3 class="font-semibold text-lg mt-6">Ra Fit Spot thử đồ</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Mang FIT CARD đến cửa hàng BOO gần nhất để trải nghiệm thực tế.</p></div>
-        </div>
-        <div class="rv lift bg-white border border-line rounded-3xl p-6 flex flex-col justify-between" style="--d:.24s">
-          <span class="text-4xl font-light text-accent/40">05</span>
-          <div><h3 class="font-semibold text-lg mt-6">Chốt đúng gu</h3><p class="text-sm mt-2 text-neutral-600 leading-relaxed">Sở hữu tủ đồ tinh gọn, mặc đẹp hơn và thỏa sức thể hiện chất riêng.</p></div>
-        </div>
-      </div>
+      <div class="zoom rounded-[1.5rem] shadow-sm mt-10"><img src="images/trang-chu-2.jpg" alt="Người mẫu BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="zoom rounded-[1.5rem] shadow-sm -mt-10"><img src="images/minh-hoa.jpg" alt="Minh hoạ BOO" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/minh-hoa-1.jpg" alt="Minh hoạ BOO 2" class="w-full aspect-square object-cover" loading="lazy"></div>
     </div>
   </div>
 
@@ -172,13 +137,26 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </section>
 
-<!-- ============ TRANG HÔM NAY BẬN GÌ? (ĐIỂM DANH 7 NGÀY NHẬN VOUCHER) ============ -->
+<!-- ============ TRANG HÔM NAY BẬN GÌ? (ĐIỂM DANH 7 NGÀY + GIEO QUẺ RANDOM) ============ -->
 <section id="v-schedule" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <div class="rv text-center max-w-2xl mx-auto">
       <span class="eyebrow">Giữ chân mỗi ngày</span>
       <h2 class="text-4xl sm:text-5xl font-bold mt-3">Hôm nay bận gì?</h2>
-      <p class="mt-3 text-lg text-neutral-600">Điểm danh đủ 7 ngày để nhận Voucher ưu đãi đặc quyền khi đến hệ thống FIT SPOT!</p>
+      <p class="mt-3 text-lg text-neutral-600">Điểm danh nhận Voucher và gieo quẻ random outfit độc quyền cùng BOO!</p>
+    </div>
+
+    <!-- KHUNG GIEO QUẺ RANDOM OUTFIT -->
+    <div class="mt-12 bg-ink text-white rounded-[2rem] p-6 sm:p-8 shadow-xl rv">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+          <span class="text-xs uppercase font-bold text-accent tracking-widest">🎲 Khám phá nhanh</span>
+          <h3 class="text-2xl sm:text-3xl font-bold mt-1">Gieo quẻ thời trang ngẫu nhiên</h3>
+          <p class="text-sm text-white/70 mt-1">Không biết chọn gì? Để hệ thống phối ngẫu nhiên cho cậu một set cực độc.</p>
+        </div>
+        <button onclick="randomGieoQue()" class="btn btn-white text-ink shrink-0">Lắc ngay ✨</button>
+      </div>
+      <div id="gieoQueResult" class="mt-6 hidden bg-white/10 border border-white/15 p-5 rounded-2xl"></div>
     </div>
 
     <!-- Lịch điểm danh 7 ngày -->
@@ -186,7 +164,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
           <h3 class="text-xl font-bold">📅 Lịch điểm danh 7 ngày (Thứ Hai – Chủ Nhật)</h3>
-          <p class="text-sm text-neutral-500 mt-1">Click vào từng ô để điểm danh mỗi ngày. Tích đủ 7/7 dấu tick nhận ngay Voucher!</p>
+          <p class="text-sm text-neutral-500 mt-1">Click vào từng ô để điểm danh mỗi ngày. Tích đủ 7/7 dấu tick nhận ngay Voucher tại FIT SPOT!</p>
         </div>
         <div id="checkinProgress" class="bg-sky/60 px-4 py-2 rounded-xl text-sm font-bold text-accent">Đã điểm danh: 0/7 ngày</div>
       </div>
@@ -206,19 +184,19 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
         <button onclick="selectActivity('study')" class="opt bg-white text-center py-6">
           <span class="text-3xl block mb-2">📚</span>
-          <span class="font-bold text-lg">Đi học / Giảng đường</span>
+          <span class="font-bold text-lg">Đi học / Lên trường</span>
         </button>
         <button onclick="selectActivity('cafe')" class="opt bg-white text-center py-6">
           <span class="text-3xl block mb-2">☕</span>
-          <span class="font-bold text-lg">Cà phê chill cuối tuần</span>
+          <span class="font-bold text-lg">Cà phê / Dạo phố</span>
         </button>
         <button onclick="selectActivity('work')" class="opt bg-white text-center py-6">
           <span class="text-3xl block mb-2">💻</span>
-          <span class="font-bold text-lg">Đi làm / Hẹn gặp đối tác</span>
+          <span class="font-bold text-lg">Đi làm / Thực tập</span>
         </button>
         <button onclick="selectActivity('party')" class="opt bg-white text-center py-6">
-          <span class="text-3xl block mb-2">✨</span>
-          <span class="font-bold text-lg">Quẩy tối / Event</span>
+          <span class="text-3xl block mb-2">🔥</span>
+          <span class="font-bold text-lg">Quẩy tối / Chill đêm</span>
         </button>
       </div>
       <div id="activityResult" class="mt-8 hidden bg-white border border-line p-6 rounded-2xl"></div>
@@ -226,57 +204,36 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </section>
 
-<!-- ============ TRANG LOOKBOOK (GIỮ NGUYÊN BỐ CỤC GỐC + BỘ LỌC) ============ -->
+<!-- ============ TRANG LOOKBOOK (BỘ LỌC ĐẨY XUỐNG DƯỚI, 5 SET OUTFIT) ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
-    <div class="rv">
+    <div class="rv text-center max-w-2xl mx-auto">
       <span class="eyebrow">Bộ sưu tập thực tế</span>
       <h2 class="text-4xl sm:text-5xl font-bold mt-3">Lookbook</h2>
-      <p class="mt-3 text-lg text-neutral-600 max-w-xl">Xem thử các outfit BOO được mặc ngoài đời thật. Lọc nhanh theo giới tính hoặc phong cách để tìm set hợp gu.</p>
+      <p class="mt-3 text-lg text-neutral-600">Xem thử các outfit BOO được mặc ngoài đời thật. Lọc nhanh theo giới tính hoặc phong cách để tìm set hợp gu.</p>
     </div>
 
-    <!-- Thanh bộ lọc bổ sung -->
-    <div class="mt-8 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
+    <!-- Thanh bộ lọc đẩy xuống dưới tiêu đề -->
+    <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
         <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Giới tính:</span>
-        <button class="chip active" data-gender="all" onclick="filterLookbook('gender', 'all', this)">Tất cả</button>
-        <button class="chip" data-gender="male" onclick="filterLookbook('gender', 'male', this)">Nam</button>
-        <button class="chip" data-gender="female" onclick="filterLookbook('gender', 'female', this)">Nữ</button>
+        <button class="chip active" data-gender="all" onclick="filterLookbook()">Tất cả</button>
+        <button class="chip" data-gender="male" onclick="filterLookbook()">Nam</button>
+        <button class="chip" data-gender="female" onclick="filterLookbook()">Nữ</button>
       </div>
       <div class="flex flex-wrap items-center gap-2" id="styleFilters">
         <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Style:</span>
-        <button class="chip active" data-style="all" onclick="filterLookbook('style', 'all', this)">Tất cả</button>
-        <button class="chip" data-style="soft" onclick="filterLookbook('style', 'soft', this)">Ngọt ngào</button>
-        <button class="chip" data-style="street" onclick="filterLookbook('style', 'street', this)">Đường phố</button>
-        <button class="chip" data-style="neutral" onclick="filterLookbook('style', 'neutral', this)">Tối giản</button>
+        <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
+        <button class="chip" data-style="soft" onclick="filterLookbook()">Ngọt ngào</button>
+        <button class="chip" data-style="street" onclick="filterLookbook()">Đường phố</button>
+        <button class="chip" data-style="neutral" onclick="filterLookbook()">Tối giản</button>
+        <button class="chip" data-style="explorer" onclick="filterLookbook()">Phóng khoáng</button>
+        <button class="chip" data-style="comfy" onclick="filterLookbook()">Năng động</button>
       </div>
     </div>
 
-    <!-- Danh sách lookbook gốc -->
-    <div id="lookbookGrid" class="mt-12 grid md:grid-cols-3 gap-6">
-      <figure class="rv" data-gender="female" data-style="soft">
-        <div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-1.jpg" alt="Look 01" class="w-full aspect-[4/5] object-cover" loading="lazy"></div>
-        <figcaption class="mt-4 px-1 font-medium flex justify-between items-center">
-          <span>Look 01 <span class="text-neutral-500 font-normal">· Xanh trời</span></span>
-          <button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('soft')">Lưu FIT CARD</button>
-        </figcaption>
-      </figure>
-      <figure class="rv md:mt-12" style="--d:.1s" data-gender="male" data-style="street">
-        <div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-2.jpg" alt="Look 02" class="w-full aspect-[4/5] object-cover" loading="lazy"></div>
-        <figcaption class="mt-4 px-1 font-medium flex justify-between items-center">
-          <span>Look 02 <span class="text-neutral-500 font-normal">· Varsity 03</span></span>
-          <button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('street')">Lưu FIT CARD</button>
-        </figcaption>
-      </figure>
-      <figure class="rv" style="--d:.2s" data-gender="female" data-style="neutral">
-        <div class="zoom rounded-[1.75rem]"><img src="images/nguoi-mau-3.jpg" alt="Look 03" class="w-full aspect-[4/5] object-cover" loading="lazy"></div>
-        <figcaption class="mt-4 px-1 font-medium flex justify-between items-center">
-          <span>Look 03 <span class="text-neutral-500 font-normal">· Be nhẹ nhàng</span></span>
-          <button class="btn btn-ink text-xs !py-1.5 !px-3" onclick="quickSaveSet('neutral')">Lưu FIT CARD</button>
-        </figcaption>
-      </figure>
-    </div>
-    <div class="text-center mt-16"><button data-go="quiz" class="btn btn-ink">Tìm look hợp gu của cậu</button></div>
+    <!-- Danh sách 5 set outfit đầy đủ -->
+    <div id="fullLookbookGrid" class="grid md:grid-cols-3 gap-6 mt-12"></div>
   </div>
 </section>
 
@@ -316,12 +273,12 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   </div>
 </section>
 
-<!-- ============ TRANG 4: FIT CARD & PHÒNG TỰ PHỐI ĐỒ (CHIA 4 Ô ẢNH) ============ -->
+<!-- ============ TRANG 4: FIT CARD & PHÒNG TỰ PHỐI ĐỒ (BỐ CỤC CHUẨN ẢNH 3) ============ -->
 <section id="v-fit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <span class="eyebrow">Tủ đồ cá nhân</span>
     <h2 class="text-4xl sm:text-5xl font-bold mt-3">FIT CARD của cậu</h2>
-    <p class="mt-3 text-lg text-neutral-600">Những set cậu đã lưu và khu vực tự phối đồ trực quan bằng hình ảnh.</p>
+    <p class="mt-3 text-lg text-neutral-600">Những set cậu đã lưu và khu vực tự phối đồ trực quan.</p>
 
     <div id="fitGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mt-10"></div>
 
@@ -462,6 +419,34 @@ const SETS=[
     {n:'Túi đeo vai nâu da bóng',p:450000,c:['Nâu đậm']}
    ],
    suggestions:['Ủng cao cổ da nâu', 'Vớ cổ ngắn màu be']
+ },
+ {
+   id:'explorer',
+   name:'Set Urban Explorer Phóng Khoáng',
+   img:'images/outfit-4.jfif',
+   tag:'Streetwear · Utility · Nam tính',
+   gender:'male',
+   style:'explorer',
+   items:[
+    {n:'Áo sơ mi flannel kẻ sọc tối màu',p:499000,c:['Đen/Xám']},
+    {n:'Áo thun trắng basic',p:250000,c:['Trắng']},
+    {n:'Quần túi hộp cargo rêu nhiều ngăn',p:650000,c:['Xanh rêu']}
+   ],
+   suggestions:['Mắt kính râm phi công (Aviator)', 'Giày cao cổ sneaker bản lớn']
+ },
+ {
+   id:'comfy',
+   name:'Set Comfy Slytherin Green',
+   img:'images/outfit-5.png',
+   tag:'Comfy · Active · Daily Wear',
+   gender:'male',
+   style:'comfy',
+   items:[
+    {n:'Áo nỉ sweatshirt xanh rêu Slytherin',p:550000,c:['Xanh rêu']},
+    {n:'Quần jogger nỉ xám lông chuột',p:450000,c:['Xám']},
+    {n:'Nón kết thêu chữ "Lười"',p:199000,c:['Đen']}
+   ],
+   suggestions:['Giày thể thao sneaker xanh', 'Balo vải canvas năng động']
  }
 ];
 
@@ -492,31 +477,39 @@ const QS=[
    opts:[
     {t:'Ở nhà, nhẹ nhàng, xem phim, chụp ảnh ngọt ngào', vibe:'soft'},
     {t:'Đi phố, cà phê check-in, dạo phố sập sàn', vibe:'street'},
-    {t:'Khám phá các triển lãm nghệ thuật, không gian mộc mạc', vibe:'neutral'}
+    {t:'Khám phá các triển lãm nghệ thuật, không gian mộc mạc', vibe:'neutral'},
+    {t:'Săn ảnh street life, khám phá góc ngách mới', vibe:'explorer'},
+    {t:'Tụ tập chơi board game, cà phê chill', vibe:'comfy'}
    ]
  },
  {
    text:'Cậu chuộng phong cách thời trang nào nhất?',
    opts:[
     {t:'Minimalist nữ tính, trong trẻo, đáng yêu', vibe:'soft'},
-    {t:'Streetwear năng động, cá tính, hút mọi ánh nhìn', vibe:'street'},
-    {t:'Phong cách Thu Đông ấm áp, tinh tế, tối giản', vibe:'neutral'}
+    {t:'Streetwear năng động, cá tính', vibe:'street'},
+    {t:'Phong cách Thu Đông ấm áp, tối giản', vibe:'neutral'},
+    {t:'Utility / Urban Explorer phóng khoáng, bụi bặm', vibe:'explorer'},
+    {t:'Active / Comfy thoải mái tối đa', vibe:'comfy'}
    ]
  },
  {
    text:'Kiểu dáng trang phục ưu tiên trong tủ đồ?',
    opts:[
     {t:'Slim fit gọn gàng, xếp ly duyên dáng', vibe:'soft'},
-    {t:'Oversized rộng rãi, thoải mái thể hiện chất riêng', vibe:'street'},
-    {t:'Form suông vừa vặn, chất liệu vải dạ/nỉ ấm áp', vibe:'neutral'}
+    {t:'Oversized rộng rãi, thoải mái', vibe:'street'},
+    {t:'Form suông vừa vặn, chất liệu vải dạ/nỉ', vibe:'neutral'},
+    {t:'Nhiều túi hộp tiện dụng, layered', vibe:'explorer'},
+    {t:'Form rộng năng động, cotton nỉ mềm mịn', vibe:'comfy'}
    ]
  },
  {
    text:'Bảng màu sắc yêu thích khi cậu chọn đồ?',
    opts:[
-    {t:'Pastel ngọt ngào, trắng, hồng, be nhạt', vibe:'soft'},
-    {t:'Đỏ nổi bật, đen tương phản mạnh mẽ', vibe:'street'},
-    {t:'Be, nâu đất, xám tro trầm ấm', vibe:'neutral'}
+    {t:'Pastel ngọt ngào, trắng, hồng, be', vibe:'soft'},
+    {t:'Đỏ nổi bật, đen tương phản mạnh', vibe:'street'},
+    {t:'Be, nâu đất, xám tro trầm ấm', vibe:'neutral'},
+    {t:'Xanh rêu, đen, xám khói đậm chất lính', vibe:'explorer'},
+    {t:'Xanh lá đậm, xám lông chuột tươi trẻ', vibe:'comfy'}
    ]
  },
  {
@@ -524,7 +517,9 @@ const QS=[
    opts:[
     {t:'Nơ cài tóc, túi đeo vai xinh xắn', vibe:'soft'},
     {t:'Mũ lưỡi trai, vòng tay cá tính', vibe:'street'},
-    {t:'Túi da bóng phong cách retro', vibe:'neutral'}
+    {t:'Túi da bóng phong cách retro', vibe:'neutral'},
+    {t:'Kính râm, móc khóa utility', vibe:'explorer'},
+    {t:'Nón kết thêu slogan độc lạ', vibe:'comfy'}
    ]
  }
 ];
@@ -545,6 +540,7 @@ function addPts(n,why){
 
 function show(v){
   document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+  if(v==='lookbook') renderFullLookbook();
   if(v==='schedule') renderWeekSchedule();
   if(v==='fit') renderFit();
   window.scrollTo(0,0);
@@ -594,7 +590,9 @@ function finishQuiz(){
 const VIBE_TITLES={
   soft:{name:'BayBOO Ngọt Ngào',desc:'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi.'},
   street:{name:'Hop on da Street',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
-  neutral:{name:'Basic nhưng không miss trend',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'}
+  neutral:{name:'Basic nhưng không miss trend',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'},
+  explorer:{name:'Tắc Kè Lướt Phố',desc:'Bụi bặm, mạnh mẽ và sẵn sàng cho mọi hành trình khám phá.'},
+  comfy:{name:'Bật mode Sporty',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'}
 };
 
 function renderOutfits(){
@@ -616,19 +614,50 @@ function renderOutfits(){
       </div></article>`).join('');
 }
 
-/* LOOKBOOK BỘ LỌC GỐC */
-function filterLookbook(type, val, btn) {
+/* LOOKBOOK 5 SET OUTFIT VỚI BỘ LỌC DƯỚI TIÊU ĐỀ */
+function filterLookbook() {
+  renderFullLookbook();
+}
+
+function renderFullLookbook() {
+  const gender = document.querySelector('#genderFilters .chip.active')?.dataset.gender || 'all';
+  const style = document.querySelector('#styleFilters .chip.active')?.dataset.style || 'all';
+
+  const filtered = SETS.filter(s => {
+    const matchGender = (gender === 'all' || s.gender === gender);
+    const matchStyle = (style === 'all' || s.style === style);
+    return matchGender && matchStyle;
+  });
+
+  const grid = $('#fullLookbookGrid');
+  if(filtered.length === 0) {
+    grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-500 font-medium">Không tìm thấy set đồ phù hợp với bộ lọc này.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(s => `
+    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
+      <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
+      <div class="p-5">
+        <span class="text-xs uppercase font-bold text-accent">${s.gender === 'male' ? 'Thời trang Nam' : 'Thời trang Nữ'}</span>
+        <h3 class="text-xl font-bold mt-1">${s.name}</h3>
+        <p class="text-sm text-neutral-600 mt-1">${s.tag}</p>
+        <div class="mt-4 flex gap-2">
+          <button class="btn btn-ink text-xs !py-2 !px-4" data-open="${s.id}">Xem chi tiết</button>
+          <button class="btn btn-line text-xs !py-2 !px-4" onclick="quickSaveSet('${s.id}')">Lưu FIT CARD</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('#genderFilters .chip, #styleFilters .chip');
+  if(!btn) return;
   btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
-  const gender = document.querySelector('#genderFilters .chip.active').dataset.gender;
-  const style = document.querySelector('#styleFilters .chip.active').dataset.style;
-  
-  document.querySelectorAll('#lookbookGrid figure').forEach(fig => {
-    const matchG = (gender === 'all' || fig.dataset.gender === gender);
-    const matchS = (style === 'all' || fig.dataset.style === style);
-    fig.style.display = (matchG && matchS) ? 'block' : 'none';
-  });
-}
+  renderFullLookbook();
+});
 
 function quickSaveSet(id) {
   const s = SETS.find(x => x.id === id);
@@ -642,16 +671,21 @@ function quickSaveSet(id) {
   }
 }
 
-/* GIEO QUẺ RANDOM OUTFIT */
+/* GIEO QUẺ RANDOM OUTFIT Ở TRANG HÔM NAY BẬN GÌ */
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
-  if(!S.saved.some(x => x.id === randomSet.id)) {
-    S.saved.push({id: randomSet.id, name: randomSet.name, img: randomSet.img, colors: randomSet.items.map(i=>i.c[0])});
-    addPts(20, 'Gieo quẻ random nhận set ' + randomSet.name);
-    updCount();
-  }
-  alert('🎲 Gieo quẻ thành công! Tụi mình vừa tặng cậu set: "' + randomSet.name + '" vào FIT CARD!');
-  show('fit');
+  const box = $('#gieoQueResult');
+  box.classList.remove('hidden');
+  box.innerHTML = `
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <img src="${randomSet.img}" alt="" class="w-24 h-24 object-contain rounded-xl bg-white p-1 shrink-0">
+      <div class="flex-1 text-center sm:text-left">
+        <span class="text-xs font-bold text-mint uppercase">🎲 Gieo quẻ trúng: ${randomSet.name}</span>
+        <p class="text-sm text-white/80 mt-1">${randomSet.tag}</p>
+      </div>
+      <button class="btn btn-white text-ink text-xs shrink-0" onclick="quickSaveSet('${randomSet.id}')">Lưu vào FIT CARD (+15đ)</button>
+    </div>
+  `;
 }
 
 /* LỊCH ĐIỂM DANH 7 NGÀY */
@@ -690,7 +724,7 @@ function toggleCheckIn(idx) {
 /* QUICK QUIZ THEO HOẠT ĐỘNG */
 function selectActivity(type) {
   const map = {
-    study: { name: 'Outfit Đi Học', desc: 'Năng động, gọn gàng nhưng vẫn cực kỳ trendy.', set: SETS[0] },
+    study: { name: 'Outfit Đi Học', desc: 'Năng động, gọn gàng nhưng vẫn cực kỳ trendy.', set: SETS[4] },
     cafe: { name: 'Outfit Cà Phê Chill', desc: 'Thoải mái, ngọt ngào, thỏa sức check-in sống ảo.', set: SETS[0] },
     work: { name: 'Outfit Đi Làm / Hẹn Gặp', desc: 'Tinh tế, tối giản, lịch sự nhưng không cứng nhắc.', set: SETS[2] },
     party: { name: 'Outfit Quẩy Tối / Event', desc: 'Thu hút mọi ánh nhìn, cá tính và cực chất.', set: SETS[1] }
@@ -760,7 +794,7 @@ $('#mSave').onclick=()=>{
 
 const updCount=()=>$('#fcCount').textContent=S.saved.length;
 
-/* PHÒNG LAB TỰ PHỐI ĐỒ CHIA 4 Ô ẢNH */
+/* PHÒNG LAB TỰ PHỐI ĐỒ CHIA 4 Ô ẢNH (CHUẨN ẢNH 3) */
 let activeCategory = null;
 
 function openPicker(cat) {
