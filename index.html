@@ -108,7 +108,7 @@ body{background:#fff;color:#0A0A0A}
             <h3 class="font-cute font-bold text-lg mt-3">Lưu vào FIT CARD</h3>
             <p class="text-sm mt-1 text-neutral-700">Lưu giữ tủ đồ ảo cá nhân và tự do mix-match theo ý thích.</p>
           </div>
-          <a href="#fitcard" data-go="fit" class="mt-4 text-xs font-bold underline text-left">Xem FIT CARD →</a>
+<button onclick="openFitCardModal()" class="mt-4 text-xs font-bold underline text-left focus:outline-none">Xem & Lưu FIT CARD</button>
         </div>
         <div class="bg-sand border-2 border-ink rounded-2xl p-5 flex flex-col justify-between">
           <span class="text-3xl font-black text-leaf">04</span>
@@ -616,5 +616,101 @@ $('#saveCustom').onclick=()=>{
 <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
+  <!-- Nút bấm trên website để kích hoạt Popup -->
+<button onclick="openFitCardModal()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-indigo-700 transition">
+  Lưu vào FIT CARD 🖤
+</button>
+
+<!-- Giao diện Modal / Popup ẩn đi ban đầu -->
+<div id="fitCardModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+  <div class="bg-gray-900 text-white p-6 rounded-2xl w-full max-w-md shadow-2xl relative border border-gray-800">
+    
+    <!-- Nút đóng popup -->
+    <button onclick="closeFitCardModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+    
+    <h2 class="text-xl font-bold mb-4 text-indigo-400">✨ Lưu Tủ Đồ FIT CARD</h2>
+    
+    <!-- Form thu thập thông tin -->
+    <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Tên gọi (không cần tên thật)</label>
+        <input type="text" id="userName" required placeholder="Ví dụ: Minh Anh" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Cửa hàng hay ghé</label>
+        <select id="userStore" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
+          <option value="Online">Chỉ mua online</option>
+          <option value="FIT SPOT Quan 1">FIT SPOT Quận 1</option>
+          <option value="FIT SPOT Thu Duc">FIT SPOT Thủ Đức</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Muốn nhận tin qua</label>
+        <select id="userChannel" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-indigo-500">
+          <option value="Zalo OA">Zalo OA</option>
+          <option value="Email">Email</option>
+        </select>
+      </div>
+
+      <div class="flex items-start space-x-2 pt-2">
+        <input type="checkbox" id="consentCheck" required class="mt-1">
+        <label for="consentCheck" class="text-xs text-gray-400 leading-relaxed">
+          Đồng ý cá nhân hóa (bắt buộc để lưu). Lưu tuổi, gu đọc, cửa hàng và kênh liên lạc để trợ lý gợi ý truyện/outfit riêng cho bạn.
+        </label>
+      </div>
+
+      <!-- Nút hành động -->
+      <div class="flex space-x-3 pt-4">
+        <button type="submit" class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2.5 rounded-lg transition">
+          Lưu và lấy mã thành viên
+        </button>
+        <button type="button" onclick="closeFitCardModal()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2.5 rounded-lg transition">
+          Không lưu
+        </button>
+      </div>
+    </form>
+    
+  </div>
+</div>
+
+<!-- Đoạn Script xử lý bật/tắt popup và bắn dữ liệu -->
+<script>
+  function openFitCardModal() {
+    document.getElementById('fitCardModal').classList.remove('hidden');
+    document.getElementById('fitCardModal').classList.add('flex');
+  }
+
+  function closeFitCardModal() {
+    document.getElementById('fitCardModal').classList.remove('flex');
+    document.getElementById('fitCardModal').classList.add('hidden');
+  }
+
+  function submitFitCard(event) {
+    event.preventDefault(); // Chặn load lại trang
+    
+    const formData = {
+      name: document.getElementById('userName').value,
+      store: document.getElementById('userStore').value,
+      channel: document.getElementById('userChannel').value,
+      timestamp: new Date().toISOString()
+    };
+
+    console.log("Dữ liệu gửi đi:", formData);
+    
+    // [QUAN TRỌNG] Tại đây nhóm có thể dùng fetch() để bắn dữ liệu này về Webhook của n8n hoặc HubSpot Form API
+    /*
+    fetch('ĐƯỜNG_DẪN_WEBHOOK_N8N_HOẶC_HUBSPOT', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    */
+
+    alert("Lưu FIT CARD thành công! Dữ liệu đã được đồng bộ hệ thống.");
+    closeFitCardModal();
+  }
+</script>
 </body>
 </html>
