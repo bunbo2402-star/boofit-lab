@@ -277,13 +277,13 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
     <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">✕</button>
     <div class="mb-6">
-      <span class="eyebrow">Xác thực thành viên</span>
+      <span class="eyebrow">Để BOO FIT LAB hiểu và nhớ "đúng gu" bạn</span>
       <h2 class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
-      <p class="text-sm text-neutral-500 mt-1">Đăng ký để lưu Outfit và đồng bộ trải nghiệm FIT LAB – FIT SPOT.</p>
+      <p class="text-sm text-neutral-500 mt-1">Đăng ký để tớ hỗ trợ cậu lưu FIT CARD và đồng bộ trải nghiệm FIT LAB – FIT SPOT</p>
     </div>
     <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
       <div>
-        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Tên hiển thị (tùy chọn)</label>
+        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
         <input type="text" id="userName" placeholder="Ví dụ: Minh Anh (không cần tên thật)" class="field">
       </div>
       <div>
@@ -299,15 +299,15 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
       </div>
       <div class="grid grid-cols-2 gap-3 pt-1">
         <div>
-          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO ghé</label>
+          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
           <select id="userStore" class="field">
             <option value="Online">Chỉ mua online</option>
-            <option value="FIT SPOT Q1">FIT SPOT Quận 1</option>
-            <option value="FIT SPOT Thu Duc">FIT SPOT Thủ Đức</option>
+            <option value="BOO Q1">BOO Quận 1</option>
+            <option value="BOO Thu Duc">BOO Thủ Đức</option>
           </select>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh nhận ưu đãi</label>
+          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
           <select id="userChannel" class="field">
             <option value="Zalo OA">Zalo OA</option>
             <option value="Email">Email</option>
@@ -319,14 +319,14 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
         <div class="flex items-start gap-2.5">
           <input type="checkbox" id="consentCheck" class="mt-1 h-4 w-4 accent-accent">
           <label for="consentCheck" class="text-xs text-neutral-600 leading-relaxed cursor-pointer">
-            Tôi đồng ý nhận thông tin về sản phẩm mới, ưu đãi và chương trình của BOO qua kênh đã chọn. <span class="text-neutral-400 block mt-0.5">(Tùy chọn. Không ảnh hưởng đến việc tạo tài khoản hoặc sử dụng FIT CARD).</span>
+            Tớ đồng ý nhận thông tin về sản phẩm mới, ưu đãi và chương trình của BOO qua kênh đã chọn. <span class="text-neutral-400 block mt-0.5">(Tùy chọn. Không ảnh hưởng đến việc tạo tài khoản hoặc sử dụng FIT CARD).</span>
           </label>
         </div>
       </div>
       <div class="pt-2">
         <button type="submit" class="btn btn-ink w-full">Tạo tài khoản FIT LAB</button>
         <div class="flex justify-between items-center px-1 text-xs text-neutral-500 mt-4">
-          <span>Đã có tài khoản?</span>
+          <span>Tớ đã có tài khoản rùi</span>
           <button type="button" onclick="alert('Tính năng đăng nhập bằng OTP nhanh đang sẵn sàng!')" class="text-accent font-semibold hover:underline">Đăng nhập ngay</button>
         </div>
       </div>
