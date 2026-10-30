@@ -816,6 +816,10 @@ document.addEventListener('click', e => {
 /* GIEO QUẺ RANDOM OUTFIT */
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
+  
+  // 👉 Gọi hàm cộng điểm hành vi gieo quẻ (+15đ)
+  addPts(BEHAVIOR_SCORES.random_spin, 'Gieo quẻ / Lắc quẻ Random Outfit');
+
   const box = $('#gieoQueResult');
   box.classList.remove('hidden');
   box.innerHTML = `
@@ -825,7 +829,7 @@ function randomGieoQue() {
         <span class="text-xs font-bold text-mint uppercase">Gieo quẻ trúng: ${randomSet.name}</span>
         <p class="text-sm text-white/80 mt-1">${randomSet.tag}</p>
       </div>
-      <button class="btn btn-white text-ink text-xs shrink-0" onclick="quickSaveSet('${randomSet.id}')">Lưu vào FIT CARD (+15đ)</button>
+      <button class="btn btn-white text-ink text-xs shrink-0" onclick="quickSaveSet('${randomSet.id}')">Lưu vào FIT CARD</button>
     </div>
   `;
 }
