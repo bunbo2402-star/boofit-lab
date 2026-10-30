@@ -449,14 +449,33 @@ article.lift{border-radius:1.75rem}
   </div>
 </div>
 
-<!-- WIDGET LEAD SCORE -->
-<aside id="lead" class="fixed left-3 top-20 sm:left-5 sm:top-24 z-50 w-56 bg-white/90 backdrop-blur-xl border border-line rounded-3xl p-4 shadow-[0_20px_50px_-20px_rgba(26,29,33,.4)]" aria-live="polite">
-  <div class="flex items-center justify-between gap-2">
-    <span class="font-bold"><span id="ptsNum" class="text-xl">0</span><span class="text-xs text-neutral-500 font-medium"> / 100 PTS</span></span>
-    <span id="pill" class="text-[11px] font-semibold rounded-full px-2.5 py-1 bg-sky">Cold Lead</span>
+<!-- WIDGET LEAD SCORE KIỂU HUBSPOT TRACKER -->
+<aside id="lead" class="fixed right-3 bottom-3 sm:right-5 sm:bottom-5 z-50 w-64 bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-live="polite">
+  <div class="lead-header">
+    <span>🔥 HubSpot Lead Tracker</span>
+    <button onclick="toggleLeadBox()" id="leadToggleBtn" class="text-white hover:bg-black/10 px-1.5 py-0.5 rounded text-xs transition">Thu gọn 🗕</button>
   </div>
-  <div class="h-1.5 rounded-full bg-line mt-3 overflow-hidden"><div id="ptsBar" class="h-full rounded-full transition-all duration-700" style="width:0"></div></div>
-  <p id="ptsLog" class="text-xs mt-2.5 text-neutral-500 min-h-[1rem]">Làm quiz hoặc điểm danh để tích điểm.</p>
+  <div id="leadBody" class="p-4">
+    <div class="text-center">
+      <div id="scoreCircleElem" class="score-circle" style="--deg: 0deg;">
+        <span id="ptsNum" class="score-val">0</span>
+      </div>
+      <p class="text-xs font-bold text-neutral-700"><span id="ptsMax">0</span> / 100 PTS</p>
+      <div class="mt-2 inline-block">
+        <span id="pill" class="text-[11px] font-semibold rounded-full px-3 py-0.5 bg-sky text-neutral-800">Cold Lead</span>
+      </div>
+    </div>
+    <div class="h-1.5 rounded-full bg-line mt-3 overflow-hidden">
+      <div id="ptsBar" class="h-full rounded-full transition-all duration-700 bg-accent" style="width:0"></div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-line">
+      <p class="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-2">Hành động gần nhất</p>
+      <div id="recentActionsList" class="space-y-1.5 max-h-28 overflow-y-auto pr-1">
+        <div class="history-item text-neutral-500 italic"><span>Chưa có hành động nào gần đây</span></div>
+      </div>
+    </div>
+    <p id="ptsLog" class="text-[11px] mt-2.5 text-neutral-500 text-center font-medium bg-sand/60 py-1 px-2 rounded-lg truncate">Làm quiz hoặc điểm danh để tích điểm.</p>
+  </div>
 </aside>
 
 <script>
