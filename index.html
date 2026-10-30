@@ -532,15 +532,65 @@ const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
 const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],resultVibe:null,cur:null,colors:{},userProfile:null};
 
-function addPts(n,why){
-  const before=S.pts;S.pts=Math.min(100,S.pts+n);
-  if(S.pts===before)return;
-  $('#ptsNum').textContent=S.pts;$('#ptsBar').style.width=S.pts+'%';
-  const l=S.pts>=70?['Hot Lead','#1F7A5A','#fff']:S.pts>=30?['Warm Lead','#DCEFE6','#1A1D21']:['Cold Lead','#E6EEFB','#1A1D21'];
-  const p=$('#pill');p.textContent=l[0];p.style.background=l[1];p.style.color=l[2];
-  $('#ptsLog').textContent='+'+(S.pts-before)+' điểm · '+why;
-  const w=$('#lead');w.classList.remove('bump');void w.offsetWidth;w.classList.add('bump');
+// Định nghĩa quy ước điểm hành vi chuẩn MarTech
+const BEHAVIOR_SCORES = {
+  view_lookbook: 5,      // Xem trang Tủ đồ BOO
+  view_detail: 10,       // Xem chi tiết sản phẩm / Set đồ
+  fit_assist: 3,         // Dùng FIT ASSIST (mỗi lần hỏi)
+  random_spin: 15,       // Gieo quẻ / Lắc quẻ Random Outfit
+  save_fitcard: 15,      // Lưu set đồ vào tủ ảo FIT CARD
+  complete_quiz: 20,     // Hoàn thành Style Quiz (Xác định Vibe)
+  register_contact: 25,  // Tạo tài khoản / Điền form Contact thành công
+  checkin_qr: 15         // Check-in QR tại cửa hàng FIT SPOT
+};
+
+// Hàm cập nhật điểm (hỗ trợ cả điểm cộng lẫn điểm trừ)
+function addPts(delta, why){
+  const before = S.pts;
+  S.pts = Math.max(0, Math.min(100, S.pts + delta)); // Giới hạn điểm từ 0 đến 100
+  if(S.pts === before && delta > 0) return;
+
+  $('#ptsNum').textContent = S.pts;
+  $('#ptsBar').style.width = S.pts + '%';
+  
+  const l = S.pts >= 70 ? ['Hot Lead', '#1F7A5A', '#fff'] : S.pts >= 30 ? ['Warm Lead', '#DCEFE6', '#1A1D21'] : ['Cold Lead', '#E6EEFB', '#1A1D21'];
+  const p = $('#pill');
+  p.textContent = l[0];
+  p.style.background = l[1];
+  p.style.color = l[2];
+  
+  const sign = delta > 0 ? '+' : '';
+  $('#ptsLog').textContent = `${sign}${delta} điểm · ${why}`;
+  
+  const w = $('#lead');
+  w.classList.remove('bump');
+  void w.offsetWidth;
+  w.classList.add('bump');
 }
+
+// Kiểm tra thời gian không quay lại để trừ điểm tự động (Inactivity Scoring)
+function checkInactivityPenalty() {
+  const lastActiveTime = localStorage.getItem('boo_last_active');
+  const now = new Date().getTime();
+  
+  if (lastActiveTime) {
+    const daysPassed = (now - parseInt(lastActiveTime)) / (1000 * 60 * 60 * 24);
+    if (daysPassed >= 30) {
+      addPts(-20, 'Quá 30 ngày không quay lại BOO FIT LAB');
+    } else if (daysPassed >= 14) {
+      addPts(-10, 'Quá 14 ngày không quay lại BOO FIT LAB');
+    } else if (daysPassed >= 7) {
+      addPts(-5, 'Quá 7 ngày không quay lại BOO FIT LAB');
+    }
+  }
+  localStorage.setItem('boo_last_active', now.toString());
+}
+
+// Kích hoạt kiểm tra ngay khi load trang và cộng điểm truy cập website
+window.addEventListener('DOMContentLoaded', () => {
+  checkInactivityPenalty();
+  addPts(BEHAVIOR_SCORES.view_lookbook, 'Xem trang Tủ đồ BOO');
+});
 
 function show(v,scroll){
   document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
