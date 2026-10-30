@@ -622,14 +622,36 @@ const BEHAVIOR_SCORES = {
 };
 
 // Hàm cập nhật điểm (hỗ trợ cả điểm cộng lẫn điểm trừ)
+let isLeadMinimized = false;
+function toggleLeadBox() {
+  isLeadMinimized = !isLeadMinimized;
+  const body = document.getElementById('leadBody');
+  const btn = document.getElementById('leadToggleBtn');
+  if (isLeadMinimized) {
+    body.style.display = 'none';
+    btn.textContent = 'Mở rộng 🗖';
+  } else {
+    body.style.display = 'block';
+    btn.textContent = 'Thu gọn 🗕';
+  }
+}
+
+let actionHistory = [];
+
 function addPts(delta, why){
   const before = S.pts;
-  S.pts = Math.max(0, Math.min(100, S.pts + delta)); // Giới hạn điểm từ 0 đến 100
+  S.pts = Math.max(0, Math.min(100, S.pts + delta));
   if(S.pts === before && delta > 0) return;
 
   $('#ptsNum').textContent = S.pts;
+  const maxElem = document.getElementById('ptsMax');
+  if(maxElem) maxElem.textContent = S.pts;
   $('#ptsBar').style.width = S.pts + '%';
   
+  const deg = (S.pts / 100) * 360;
+  const circleElem = document.getElementById('scoreCircleElem');
+  if(circleElem) circleElem.style.setProperty('--deg', deg + 'deg');
+
   const l = S.pts >= 70 ? ['Hot Lead', '#1F7A5A', '#fff'] : S.pts >= 30 ? ['Warm Lead', '#DCEFE6', '#1A1D21'] : ['Cold Lead', '#E6EEFB', '#1A1D21'];
   const p = $('#pill');
   p.textContent = l[0];
@@ -638,11 +660,26 @@ function addPts(delta, why){
   
   const sign = delta > 0 ? '+' : '';
   $('#ptsLog').textContent = `${sign}${delta} điểm · ${why}`;
+
+  actionHistory.unshift({ text: why, score: `${sign}${delta}` });
+  if(actionHistory.length > 4) actionHistory.pop();
+
+  const listContainer = document.getElementById('recentActionsList');
+  if(listContainer) {
+    listContainer.innerHTML = actionHistory.map(act => `
+      <div class="history-item">
+        <span class="text-neutral-600 truncate max-w-[140px]">${act.text}</span>
+        <span class="font-bold text-accent">${act.score}</span>
+      </div>
+    `).join('');
+  }
   
   const w = $('#lead');
-  w.classList.remove('bump');
-  void w.offsetWidth;
-  w.classList.add('bump');
+  if(w) {
+    w.classList.remove('bump');
+    void w.offsetWidth;
+    w.classList.add('bump');
+  }
 }
 
 // Kiểm tra thời gian không quay lại để trừ điểm tự động (Inactivity Scoring)
