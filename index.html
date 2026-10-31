@@ -329,7 +329,7 @@ article.lift{border-radius:1.75rem}
     <div id="quizIntro" class="text-center py-10">
       <span class="eyebrow">Style Quiz</span>
       <h2 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight">Gu của cậu là gì?</h2>
-      <p class="mt-5 text-lg text-neutral-600">13 câu hỏi chi tiết từ chuyên gia BOO. Chọn đúng gu để nhận set đồ chuẩn vibe nhất.</p>
+      <p class="mt-5 text-lg text-neutral-600">Bộ 13 câu hỏi cực kì chi tiết. Cậu hãy làm để chọn đúng gu và nhận gợi ý set đồ chuẩn vibe nhất nha.</p>
       <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
@@ -340,7 +340,7 @@ article.lift{border-radius:1.75rem}
     </div>
     <div id="quizDone" class="hidden text-center py-24">
       <div class="mx-auto h-10 w-10 rounded-full border-4 border-line border-t-accent animate-spin"></div>
-      <p class="text-2xl font-semibold mt-6">Đang bóc tách 13 chỉ số phong cách và gọi tên Gu của cậu…</p>
+      <p class="text-2xl font-semibold mt-6">Chúng tớ đang bóc tách chỉ số phong cách và gọi tên Gu của cậu…</p>
     </div>
   </div>
 </section>
@@ -610,10 +610,10 @@ const QS=[
  {
    text:'3. Phong cách thời trang thường ngày mà cậu hướng tới là gì?',
    opts:[
-    {t:'Tối giản, thanh lịch, tinh tế', vibe:'neutral'},
+    {t:'Tối giản, thanh lịch, tinh tế', vibe:'neutral', 'soft'},
     {t:'Năng động, cá tính, đường phố', vibe:'street'},
-    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibe:'soft'},
-    {t:'Quyến rũ, táo bạo, hiện đại', vibe:'coquette'},
+    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibe:'coquette'},
+    {t:'Quyến rũ, táo bạo, hiện đại', vibe:'explorer'},
     {t:'Phá cách, Y2K, phối layer', vibe:'y2k'}
    ]
  },
@@ -633,7 +633,7 @@ const QS=[
     {t:'Ngắn trên gối', vibe:'coquette'},
     {t:'Vừa chạm gối hoặc lửng', vibe:'comfy'},
     {t:'Dài chạm mắt cá / phủ gót', vibe:'street'},
-    {t:'Linh hoạt thay đổi tùy kiểu dáng áo phối cùng', vibe:'y2k'}
+    {t:'Linh hoạt thay đổi tùy kiểu dáng áo phối cùng', vibe:'neutral'}
    ]
  },
  {
@@ -651,9 +651,9 @@ const QS=[
    opts:[
     {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibe:'neutral'},
     {t:'Áo sơ mi/Blazer + Quần tây ống rộng hoặc chân váy chữ A', vibe:'soft'},
-    {t:'Váy liền / Set bộ công sở nữ tính, chỉn chu', vibe:'coquette'},
-    {t:'Set đồ thể thao / Sweater + Quần jogger cá tính', vibe:'comfy'},
-    {t:'Phối đồ tự do, miễn sao thoải mái và phá cách', vibe:'y2k'}
+    {t:'Váy liền / Set bộ công sở đầy nữ tính chỉn chu', vibe:'coquette'},
+    {t:'Set đồ thể thao / Sweater + Quần jogger cá tính', vibe:'explorer'},
+    {t:'Phối đồ tự do, miễn sao thoải mái và phá cách', vibe:'comfy'}
    ]
  },
  {
@@ -661,6 +661,7 @@ const QS=[
    opts:[
     {t:'Vải trơn hoàn toàn, màu đơn sắc, không họa tiết', vibe:'neutral'},
     {t:'Họa tiết cơ bản (Sọc kẻ, caro, chấm bi)', vibe:'soft'},
+    {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren mỏng', vibe:'coquette'},
     {t:'Họa tiết in hình / Graphic tee', vibe:'street'},
     {t:'Bề mặt vải có dệt gân, dệt kim hoặc phối chất liệu cá tính', vibe:'explorer'},
     {t:'Điểm nhấn cắt xẻ, may rách phá cách hoặc phối khóa zip, túi hộp', vibe:'y2k'}
@@ -670,10 +671,10 @@ const QS=[
    text:'9. Loại giày cậu hay phối cùng set đồ nhất?',
    opts:[
     {t:'Giày Sneaker / Giày thể thao năng động', vibe:'street'},
-    {t:'Giày cao gót / Giày sandal thanh lịch', vibe:'coquette'},
-    {t:'Giày Búp bê', vibe:'soft'},
+    {t:'Giày cao gót thấp thanh lịch', vibe:'soft'},
+    {t:'Giày Búp bê', vibe:'coquette'},
     {t:'Boots cổ ngắn / cổ cao cá tính', vibe:'y2k'},
-    {t:'Dép / Guốc thoải mái', vibe:'comfy'}
+    {t:'Dép/Sandal thoải mái', vibe:'comfy'}
    ]
  },
  {
@@ -701,7 +702,7 @@ const QS=[
    opts:[
     {t:'Váy liền điệu đàng, thướt tha, mộng mơ', vibe:'coquette'},
     {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibe:'street'},
-    {t:'Áo thiết kế điệu đà + Quần ống rộng', vibe:'soft'},
+    {t:'Áo thiết kế kiểu nhẹ nhàng + Quần ống rộng', vibe:'soft'},
     {t:'Phong cách Sexy, ôm sát, táo bạo', vibe:'y2k'},
     {t:'Áo Blazer / Vest khoác ngoài lịch lãm', vibe:'neutral'}
    ]
