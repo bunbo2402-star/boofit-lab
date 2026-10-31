@@ -288,7 +288,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 
-<!-- ============ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ BỘ LỌC) ============ -->
+<!-- ============ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ 5 SET + BỘ LỌC) ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv text-center max-w-2xl mx-auto">
@@ -297,7 +297,7 @@ article.lift{border-radius:1.75rem}
       <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc phong cách.</p>
     </div>
 
-    <!-- Thanh bộ lọc (Đã thêm Y2K và Coquette) -->
+    <!-- Thanh bộ lọc -->
     <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
         <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Giới tính:</span>
@@ -329,18 +329,18 @@ article.lift{border-radius:1.75rem}
     <div id="quizIntro" class="text-center py-10">
       <span class="eyebrow">Style Quiz</span>
       <h2 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight">Gu của cậu là gì?</h2>
-      <p class="mt-5 text-lg text-neutral-600">5 câu hỏi nhanh. Chọn đúng gu để nhận set đồ chuẩn vibe nhất.</p>
+      <p class="mt-5 text-lg text-neutral-600">13 câu hỏi chi tiết từ chuyên gia BOO. Chọn đúng gu để nhận set đồ chuẩn vibe nhất.</p>
       <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
-      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/5</span><button id="qBack" class="hover:text-ink transition">Quay lại</button></div>
-      <div class="h-1.5 rounded-full bg-line overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="5" id="qBar"><div id="qFill" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0"></div></div>
+      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/13</span><button id="qBack" class="hover:text-ink transition">Quay lại</button></div>
+      <div class="h-1.5 rounded-full bg-line overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="13" id="qBar"><div id="qFill" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0"></div></div>
       <h3 id="qText" class="text-2xl sm:text-4xl font-bold mt-10 leading-snug" aria-live="polite"></h3>
       <div id="qOpts" class="grid gap-3 mt-8"></div>
     </div>
     <div id="quizDone" class="hidden text-center py-24">
       <div class="mx-auto h-10 w-10 rounded-full border-4 border-line border-t-accent animate-spin"></div>
-      <p class="text-2xl font-semibold mt-6">Đang bóc tách vibe và gọi tên Gu của cậu…</p>
+      <p class="text-2xl font-semibold mt-6">Đang bóc tách 13 chỉ số phong cách và gọi tên Gu của cậu…</p>
     </div>
   </div>
 </section>
@@ -489,7 +489,6 @@ article.lift{border-radius:1.75rem}
 </aside>
 
 <script>
-// Đã bổ sung 2 set outfit mới cho y2k và coquette
 const SETS=[
  {
    id:'soft',
@@ -589,66 +588,132 @@ const SETS=[
  }
 ];
 
-// Cập nhật bộ câu hỏi Style Quiz tích hợp đáp án Y2K & Coquette
+// TOÀN BỘ 13 CÂU HỎI STYLE QUIZ CHUẨN TỪ BỘ TÀI LIỆU PDF
 const QS=[
  {
-   text:'Cuối tuần của cậu thường là…',
+   text:'1. Cậu muốn chọn thời trang Nam hay Nữ?',
    opts:[
-    {t:'Ở nhà, nhẹ nhàng, xem phim, chụp ảnh ngọt ngào', vibe:'soft'},
-    {t:'Đi phố, cà phê check-in, dạo phố sập sàn', vibe:'street'},
-    {t:'Khám phá các triển lãm nghệ thuật, không gian mộc mạc', vibe:'neutral'},
-    {t:'Săn ảnh street life, khám phá góc ngách mới', vibe:'explorer'},
-    {t:'Tụ tập chơi board game, cà phê chill', vibe:'comfy'},
-    {t:'Săn lùng các quán cafe cyber, chụp ảnh flash lấp lánh', vibe:'y2k'},
-    {t:'Dạo phố trà chiều, chụp ảnh góc công viên thơ mộng', vibe:'coquette'}
+    {t:'Thời trang Nam', vibe:'explorer'},
+    {t:'Thời trang Nữ', vibe:'soft'}
    ]
  },
  {
-   text:'Cậu chuộng phong cách thời trang nào nhất?',
+   text:'2. Dáng áo/quần mà cậu cảm thấy thoải mái và tự tin nhất khi mặc?',
    opts:[
-    {t:'Minimalist nữ tính, trong trẻo, đáng yêu', vibe:'soft'},
-    {t:'Streetwear năng động, cá tính', vibe:'street'},
-    {t:'Phong cách Thu Đông ấm áp, tối giản', vibe:'neutral'},
-    {t:'Utility / Urban Explorer phóng khoáng, bụi bặm', vibe:'explorer'},
-    {t:'Active / Comfy thoải mái tối đa', vibe:'comfy'},
-    {t:'Phá cách, Y2K, phối layer độc đáo', vibe:'y2k'},
-    {t:'Bánh bèo, tiểu thư, nữ tính mộng mơ', vibe:'coquette'}
+    {t:'Form rộng thoải mái', vibe:'comfy'},
+    {t:'Form vừa vặn, gọn gàng', vibe:'neutral'},
+    {t:'Form ôm sát tôn dáng', vibe:'coquette'},
+    {t:'Kết hợp: Áo ôm + Quần rộng (hoặc ngược lại)', vibe:'y2k'},
+    {t:'Tùy tâm trạng và từng dịp cụ thể', vibe:'street'}
    ]
  },
  {
-   text:'Kiểu dáng trang phục ưu tiên trong tủ đồ?',
+   text:'3. Phong cách thời trang thường ngày mà cậu hướng tới là gì?',
    opts:[
-    {t:'Slim fit gọn gàng, xếp ly duyên dáng', vibe:'soft'},
-    {t:'Oversized rộng rãi, thoải mái', vibe:'street'},
-    {t:'Form suông vừa vặn, chất liệu vải dạ/nỉ', vibe:'neutral'},
-    {t:'Nhiều túi hộp tiện dụng, layered', vibe:'explorer'},
-    {t:'Form rộng năng động, cotton nỉ mềm mịn', vibe:'comfy'},
-    {t:'Croptop ôm sát kết hợp cạp trễ cá tính', vibe:'y2k'},
-    {t:'Váy tầng bồng bềnh, chi tiết thắt nơ ruy băng', vibe:'coquette'}
+    {t:'Tối giản, thanh lịch, tinh tế', vibe:'neutral'},
+    {t:'Năng động, cá tính, đường phố', vibe:'street'},
+    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibe:'soft'},
+    {t:'Quyến rũ, táo bạo, hiện đại', vibe:'coquette'},
+    {t:'Phá cách, Y2K, phối layer', vibe:'y2k'}
    ]
  },
  {
-   text:'Bảng màu sắc yêu thích khi cậu chọn đồ?',
+   text:'4. Tông màu sắc chủ đạo mà cậu thích nhất trong tủ đồ của mình?',
    opts:[
-    {t:'Pastel ngọt ngào, trắng, hồng, be', vibe:'soft'},
-    {t:'Đỏ nổi bật, đen tương phản mạnh', vibe:'street'},
-    {t:'Be, nâu đất, xám tro trầm ấm', vibe:'neutral'},
-    {t:'Xanh rêu, đen, xám khói đậm chất lính', vibe:'explorer'},
-    {t:'Xanh lá đậm, xám lông chuột tươi trẻ', vibe:'comfy'},
-    {t:'Ánh kim, bạc, đen tương phản, neon nổi bật', vibe:'y2k'},
-    {t:'Hồng phấn, trắng ngà, màu kem ngọt lịm', vibe:'coquette'}
+    {t:'Gam màu trung tính (Đen, trắng, xám, ghi)', vibe:'neutral'},
+    {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibe:'explorer'},
+    {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibe:'soft'},
+    {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban, vàng)', vibe:'street'},
+    {t:'Phối ngẫu nhiên, không giới hạn màu sắc', vibe:'y2k'}
    ]
  },
  {
-   text:'Món phụ kiện "must-have" không thể thiếu?',
+   text:'5. Chiều dài quần/chân váy cậu ưa chuộng nhất?',
    opts:[
-    {t:'Nơ cài tóc, túi đeo vai xinh xắn', vibe:'soft'},
-    {t:'Mũ lưỡi trai, vòng tay cá tính', vibe:'street'},
-    {t:'Túi da bóng phong cách retro', vibe:'neutral'},
-    {t:'Kính râm, móc khóa utility', vibe:'explorer'},
-    {t:'Nón kết thêu slogan độc lạ', vibe:'comfy'},
-    {t:'Kính râm gọng nhỏ, tai ngheụp tai chunky', vibe:'y2k'},
-    {t:'Ruy băng buộc tóc, kẹp ngọc trai lấp lánh', vibe:'coquette'}
+    {t:'Ngắn trên gối', vibe:'coquette'},
+    {t:'Vừa chạm gối hoặc lửng', vibe:'comfy'},
+    {t:'Dài chạm mắt cá / phủ gót', vibe:'street'},
+    {t:'Linh hoạt thay đổi tùy kiểu dáng áo phối cùng', vibe:'y2k'}
+   ]
+ },
+ {
+   text:'6. Chất liệu vải nào cậu thích ưu tiên sử dụng nhất?',
+   opts:[
+    {t:'Cotton, thun co giãn (Thoáng mát, dễ vận động)', vibe:'comfy'},
+    {t:'Linen, đũi (Nhẹ nhàng, mộc mạc, phóng khoáng)', vibe:'explorer'},
+    {t:'Denim / Jean (Bền bỉ, bụi bặm, cá tính)', vibe:'street'},
+    {t:'Lụa, satin, len dệt kim (Mềm mại, sang trọng, nữ tính)', vibe:'coquette'},
+    {t:'Da, kaki hoặc vải thô cứng cáp (Tạo form dáng chuẩn)', vibe:'y2k'}
+   ]
+ },
+ {
+   text:'7. Khi đi làm / đi học, outfit ưu tiên hàng đầu của cậu là gì?',
+   opts:[
+    {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibe:'neutral'},
+    {t:'Áo sơ mi/Blazer + Quần tây ống rộng hoặc chân váy chữ A', vibe:'soft'},
+    {t:'Váy liền / Set bộ công sở nữ tính, chỉn chu', vibe:'coquette'},
+    {t:'Set đồ thể thao / Sweater + Quần jogger cá tính', vibe:'comfy'},
+    {t:'Phối đồ tự do, miễn sao thoải mái và phá cách', vibe:'y2k'}
+   ]
+ },
+ {
+   text:'8. Chi tiết thiết kế trên áo nào thu hút cậu nhất?',
+   opts:[
+    {t:'Vải trơn hoàn toàn, màu đơn sắc, không họa tiết', vibe:'neutral'},
+    {t:'Họa tiết cơ bản (Sọc kẻ, caro, chấm bi)', vibe:'soft'},
+    {t:'Họa tiết in hình / Graphic tee', vibe:'street'},
+    {t:'Bề mặt vải có dệt gân, dệt kim hoặc phối chất liệu cá tính', vibe:'explorer'},
+    {t:'Điểm nhấn cắt xẻ, may rách phá cách hoặc phối khóa zip, túi hộp', vibe:'y2k'}
+   ]
+ },
+ {
+   text:'9. Loại giày cậu hay phối cùng set đồ nhất?',
+   opts:[
+    {t:'Giày Sneaker / Giày thể thao năng động', vibe:'street'},
+    {t:'Giày cao gót / Giày sandal thanh lịch', vibe:'coquette'},
+    {t:'Giày Búp bê', vibe:'soft'},
+    {t:'Boots cổ ngắn / cổ cao cá tính', vibe:'y2k'},
+    {t:'Dép / Guốc thoải mái', vibe:'comfy'}
+   ]
+ },
+ {
+   text:'10. Thói quen bổ sung trang phục mới vào tủ đồ của cậu như thế nào?',
+   opts:[
+    {t:'Chỉ mua đồ cơ bản, mặc được nhiều năm không sợ lỗi mốt', vibe:'neutral'},
+    {t:'Mua theo mùa hoặc khi có dịp đặc biệt mới sắm đồ mới', vibe:'soft'},
+    {t:'Thường xuyên cập nhật trang phục theo các xu hướng mới nhất', vibe:'y2k'},
+    {t:'Mua sắm ngẫu hứng, thấy món nào lạ mắt là chốt', vibe:'street'},
+    {t:'Ưu tiên săn đồ 2hand, vintage hoặc thiết kế limited', vibe:'explorer'}
+   ]
+ },
+ {
+   text:'11. Cậu thấy tự tin nhất khi bộ trang phục mang lại cảm giác gì?',
+   opts:[
+    {t:'Cảm giác thon gọn, nhẹ nhàng', vibe:'soft'},
+    {t:'Cảm giác đầy đặn, vững chãi và cá tính hơn', vibe:'street'},
+    {t:'Cảm giác thanh thoát, cao ráo', vibe:'neutral'},
+    {t:'Cảm giác tôn trọn vẹn sự khỏe khoắn, tự nhiên', vibe:'explorer'},
+    {t:'Cảm giác hoàn toàn tự do, nổi bật', vibe:'y2k'}
+   ]
+ },
+ {
+   text:'12. Khi đi chơi, hẹn hò hoặc dự tiệc cuối tuần, cậu thích ăn mặc ra sao?',
+   opts:[
+    {t:'Váy liền điệu đàng, thướt tha, mộng mơ', vibe:'coquette'},
+    {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibe:'street'},
+    {t:'Áo thiết kế điệu đà + Quần ống rộng', vibe:'soft'},
+    {t:'Phong cách Sexy, ôm sát, táo bạo', vibe:'y2k'},
+    {t:'Áo Blazer / Vest khoác ngoài lịch lãm', vibe:'neutral'}
+   ]
+ },
+ {
+   text:'13. Mức độ sẵn sàng thử nghiệm các xu hướng phối đồ mới của cậu?',
+   opts:[
+    {t:'Chỉ trung thành với các trang phục an toàn, cơ bản', vibe:'neutral'},
+    {t:'Thích sự an toàn nhưng thỉnh thoảng sẽ nhấn nhá chút phụ kiện', vibe:'soft'},
+    {t:'Thích cập nhật trend mới nhưng có chọn lọc', vibe:'explorer'},
+    {t:'Rất thích thử nghiệm phong cách mới lạ, độc đáo', vibe:'y2k'},
+    {t:'Biến hóa liên tục, tùy thuộc vào nguồn cảm hứng mỗi ngày', vibe:'street'}
    ]
  }
 ];
@@ -769,13 +834,13 @@ $('#qBack').onclick=()=>{if(S.q>0){S.q--;S.answers.pop();renderQ()}};
 
 function renderQ(){
   const q=QS[S.q];
-  $('#qStep').textContent='Câu '+(S.q+1)+'/5';
-  $('#qFill').style.width=(S.q/5*100)+'%';$('#qBar').setAttribute('aria-valuenow',S.q);
+  $('#qStep').textContent='Câu '+(S.q+1)+'/13';
+  $('#qFill').style.width=(S.q/13*100)+'%';$('#qBar').setAttribute('aria-valuenow',S.q);
   $('#qText').textContent=q.text;
   $('#qOpts').innerHTML='';
   q.opts.forEach(opt=>{
     const b=document.createElement('button');b.className='opt';b.textContent=opt.t;
-    b.onclick=()=>{S.answers.push(opt.vibe);S.q++;S.q<5?renderQ():finishQuiz()};
+    b.onclick=()=>{S.answers.push(opt.vibe);S.q++;S.q<13?renderQ():finishQuiz()};
     $('#qOpts').append(b);
   });
   $('#qBack').style.visibility=S.q?'visible':'hidden';
@@ -789,12 +854,11 @@ function finishQuiz(){
   let bestVibe='soft', maxCount=0;
   for(let v in counts){if(counts[v]>maxCount){maxCount=counts[v];bestVibe=v;}}
   S.resultVibe=bestVibe;
-  if(!S.done){S.done=true;addPts(30,'Hoàn thành Style Quiz chuẩn vibe');}
+  if(!S.done){S.done=true;addPts(30,'Hoàn thành Style Quiz 13 câu chuẩn vibe');}
   S.q=0;
   setTimeout(()=>{renderOutfits();show('outfit')},900);
 }
 
-// Cập nhật tên tiêu đề kết quả cho 2 gu mới
 const VIBE_TITLES={
   soft:{name:'BayBOO Ngọt Ngào',desc:'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi.'},
   street:{name:'Hop on da Street',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
@@ -924,7 +988,7 @@ function quickSaveSet(id) {
   }
 }
 
-/* HIỂN THỊ TRANG TỦ ĐỒ BOO (LỌC THEO VIBE Y2K & COQUETTE) */
+/* HIỂN THỊ TRANG TỦ ĐỒ BOO */
 function filterLookbook() {
   renderFullLookbook();
 }
@@ -986,33 +1050,6 @@ function randomGieoQue() {
       <button class="btn btn-white text-ink text-xs shrink-0" onclick="quickSaveSet('${randomSet.id}')">Lưu vào FIT CARD</button>
     </div>
   `;
-}
-
-/* LỊCH ĐIỂM DANH 7 NGÀY */
-const WEEK_DAYS = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật'];
-let checkedDays = [false, false, false, false, false, false, false];
-
-function renderWeekSchedule() {
-  $('#weekDaysGrid').innerHTML = WEEK_DAYS.map((day, idx) => `
-    <div onclick="toggleCheckIn(${idx})" class="border ${checkedDays[idx] ? 'border-leaf bg-mint/40' : 'border-line bg-paper'} rounded-2xl p-4 cursor-pointer text-center transition duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between items-center">
-      <span class="text-xs font-bold text-neutral-500 uppercase">${day}</span>
-      <div class="my-3 h-9 w-9 rounded-full border-2 transition ${checkedDays[idx] ? 'bg-leaf border-leaf' : 'bg-white border-line'}"></div>
-      <span class="text-xs font-semibold ${checkedDays[idx] ? 'text-leaf' : 'text-neutral-400'}">${checkedDays[idx] ? 'Đã điểm danh' : 'Chưa điểm danh'}</span>
-    </div>
-  `).join('');
-
-  const count = checkedDays.filter(Boolean).length;
-  $('#checkinProgress').textContent = `Đã điểm danh: ${count}/7 ngày`;
-}
-
-function toggleCheckIn(idx) {
-  if(!checkedDays[idx]) {
-    checkedDays[idx] = true;
-    addPts(10, 'Điểm danh ngày ' + WEEK_DAYS[idx]);
-  } else {
-    checkedDays[idx] = false;
-  }
-  renderWeekSchedule();
 }
 
 function selectActivity(type) {
