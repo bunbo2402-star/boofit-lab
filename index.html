@@ -17,7 +17,7 @@ colors:{ink:'#1A1D21',paper:'#FAFAF8',sand:'#F3EEE4',line:'#E7E4DD',sky:'#E6EEFB
 :root{--ease:cubic-bezier(.2,.7,.2,1)}
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{background:radial-gradient(900px 420px at 8% -6%,#E6EEFB 0,transparent 70%),radial-gradient(760px 420px at 100% 0,#DCEFE6 0,transparent 65%),#FAFAF8;background-repeat:no-repeat;color:#1A1D21;letter-spacing:-.005em}
-h1,h2,h3{letter-spacing:-.03em}
+h1,h2,h3{letter-spacing:-.02em}
 ::selection{background:#2E6BD6;color:#fff}
 :focus-visible{outline:2px solid #2E6BD6;outline-offset:3px;border-radius:12px}
 .view{display:none}.view.on{display:block;animation:in .5s var(--ease)}
@@ -150,6 +150,23 @@ article.lift{border-radius:1.75rem}
 .history-item:last-child {
   border-bottom: none;
 }
+
+/* ===== Tinh chỉnh giao diện v2 ===== */
+.lift:hover{border-color:#C9D9F5}
+.btn-ink{background:linear-gradient(180deg,#252A30,#1A1D21)}.btn-ink:hover{background:#2E6BD6}
+.zoom{box-shadow:0 18px 40px -26px rgba(26,29,33,.45)}
+.field:hover{border-color:#C9C4B8}
+.lead-header{background:linear-gradient(135deg,#DCEFE6,#E6EEFB)}
+.lead-header button{border-radius:999px}
+.score-circle{width:64px;height:64px}.score-circle::before{width:50px;height:50px}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wk-day{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.6rem .2rem;border:1px solid #E7E4DD;border-radius:16px;background:#FAFAF8;font-size:.72rem;color:#5B6169}
+.wk-day b{font-size:1.05rem;color:#1A1D21}.wk-day i{font-style:normal;height:1rem;font-weight:700;color:#fff}
+.wk-day.on{background:#1F7A5A;border-color:#1F7A5A;color:#fff}.wk-day.on b{color:#fff}
+.wk-day.today{box-shadow:0 0 0 2px #2E6BD6}
+.toast{position:fixed;left:50%;bottom:1.5rem;z-index:60;max-width:min(92vw,28rem);transform:translate(-50%,16px);opacity:0;background:#1A1D21;color:#fff;font-size:.875rem;font-weight:500;padding:.8rem 1.25rem;border-radius:999px;box-shadow:0 18px 40px -16px rgba(26,29,33,.6);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body class="font-sans antialiased">
@@ -158,7 +175,7 @@ article.lift{border-radius:1.75rem}
 <header class="sticky top-3 z-40 mx-3 min-[1200px]:mx-auto max-w-6xl mt-3 rounded-full bg-white/75 backdrop-blur-xl border border-line shadow-[0_10px_40px_-18px_rgba(26,29,33,.35)]">
   <div class="flex items-center justify-between gap-3 px-2 h-14">
     <a href="#home" data-go="home" aria-label="BOO – Trang chủ" class="shrink-0"><img src="images/BOO.png" alt="BOO" class="h-10 w-10 rounded-xl object-cover"></a>
-    <nav class="flex items-center gap-1 overflow-x-auto" aria-label="Điều hướng chính">
+    <nav class="flex items-center gap-1 overflow-x-auto min-w-0 p-1" aria-label="Điều hướng chính">
       <a href="#home" data-go="home" class="nav-link">Trang chủ</a>
       <a href="#schedule" data-go="schedule" class="nav-link">Hôm nay bận gì?</a>
       <a href="#lookbook" data-go="lookbook" class="nav-link">Tủ đồ BOO</a>
@@ -191,7 +208,7 @@ article.lift{border-radius:1.75rem}
     <div class="rv">
       <span class="eyebrow">Về chiến dịch</span>
       <h2 class="text-4xl sm:text-5xl font-bold leading-[1.08] mt-3">Tủ đồ gọn hơn,<br>mặc đẹp hơn.</h2>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-600 max-w-prose">Fit Lab là nơi BOO giúp cậu định hình phong cách cá nhân một cách thông minh. Trả lời các câu hỏi nhanh để nhận diện chính xác gu thẩm mỹ của riêng cậu</p>
+      <p class="mt-6 text-lg leading-relaxed text-neutral-600 max-w-prose">Fit Lab là nơi BOO giúp cậu định hình phong cách cá nhân một cách thông minh. Trả lời các câu hỏi nhanh để nhận diện chính xác gu thẩm mỹ của riêng cậu.</p>
       <p class="mt-4 text-lg leading-relaxed text-neutral-600 max-w-prose">Mỗi set được phối sẵn để mặc lại được nhiều lần, tối ưu không gian tủ đồ mà vẫn giữ trọn chất tôi độc bản.</p>
     </div>
     <div class="grid grid-cols-2 gap-4 rv" style="--d:.12s">
@@ -248,11 +265,13 @@ article.lift{border-radius:1.75rem}
       <p class="mt-3 text-lg text-neutral-600">Điểm danh nhận Voucher và gieo quẻ random outfit độc quyền cùng BOO!</p>
     </div>
 
+    <section id="weekSchedule" class="mt-10 bg-white border border-line rounded-[2rem] p-6 sm:p-8 shadow-sm" aria-label="Điểm danh"></section>
+
     <!-- GIEO QUẺ RANDOM OUTFIT -->
     <div class="mt-12 bg-ink text-white rounded-[2rem] p-6 sm:p-8 shadow-xl rv">
       <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
         <div>
-          <span class="text-xs uppercase font-bold text-accent tracking-widest">Khám phá nhanh</span>
+          <span class="text-xs uppercase font-bold text-[#9DBBFF] tracking-widest">Khám phá nhanh</span>
           <h3 class="text-2xl sm:text-3xl font-bold mt-1">Gieo quẻ thời trang ngẫu nhiên</h3>
           <p class="text-sm text-white/70 mt-1">Không biết chọn gì? Để hệ thống phối ngẫu nhiên cho cậu một set cực độc.</p>
         </div>
@@ -300,13 +319,13 @@ article.lift{border-radius:1.75rem}
     <!-- Thanh bộ lọc -->
     <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
-        <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Giới tính:</span>
+        <span class="text-xs font-bold text-neutral-600 uppercase mr-2">Giới tính:</span>
         <button class="chip active" data-gender="all" onclick="filterLookbook()">Tất cả</button>
         <button class="chip" data-gender="male" onclick="filterLookbook()">Nam</button>
         <button class="chip" data-gender="female" onclick="filterLookbook()">Nữ</button>
       </div>
       <div class="flex flex-wrap items-center gap-2" id="styleFilters">
-        <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Style:</span>
+        <span class="text-xs font-bold text-neutral-600 uppercase mr-2">Style:</span>
         <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
         <button class="chip" data-style="soft" onclick="filterLookbook()">Ngọt ngào</button>
         <button class="chip" data-style="street" onclick="filterLookbook()">Đường phố</button>
@@ -329,12 +348,12 @@ article.lift{border-radius:1.75rem}
     <div id="quizIntro" class="text-center py-10">
       <span class="eyebrow">Style Quiz</span>
       <h2 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight">Gu của cậu là gì?</h2>
-      <p class="mt-5 text-lg text-neutral-600">Bộ 13 câu hỏi cực kì chi tiết. Cậu hãy làm để chọn đúng gu và nhận gợi ý set đồ chuẩn vibe nhất nha.</p>
+      <p class="mt-5 text-lg text-neutral-600">Bộ 13 câu hỏi cực kỳ chi tiết. Cậu hãy làm để chọn đúng gu và nhận gợi ý set đồ chuẩn vibe nhất nha.</p>
       <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
-      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/13</span><button id="qBack" class="hover:text-ink transition">Quay lại</button></div>
-      <div class="h-1.5 rounded-full bg-line overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="13" id="qBar"><div id="qFill" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0"></div></div>
+      <div class="flex justify-between items-center text-sm font-medium mb-3 text-neutral-600"><span id="qStep">Câu 1/13</span><button id="qBack" class="hover:text-ink transition px-3 py-2 -mr-3 rounded-full">Quay lại</button></div>
+      <div class="h-1.5 rounded-full bg-line overflow-hidden" role="progressbar" aria-label="Tiến độ Style Quiz" aria-valuemin="0" aria-valuemax="13" id="qBar"><div id="qFill" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0"></div></div>
       <h3 id="qText" class="text-2xl sm:text-4xl font-bold mt-10 leading-snug" aria-live="polite"></h3>
       <div id="qOpts" class="grid gap-3 mt-8"></div>
     </div>
@@ -383,52 +402,52 @@ article.lift{border-radius:1.75rem}
 <!-- MODAL CHI TIẾT SẢN PHẨM -->
 <div id="modal" class="fixed inset-0 z-50 hidden bg-ink/50 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="bg-white rounded-[2rem] max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden shadow-2xl">
-    <img id="mImg" alt="" class="w-full h-full object-cover bg-sand">
+    <img id="mImg" alt="" class="w-full h-full object-contain bg-sand">
     <div class="p-6 sm:p-8 flex flex-col justify-between">
       <div>
         <div class="flex justify-between items-start gap-2"><h3 id="mTitle" class="text-2xl font-bold leading-snug"></h3><button id="mClose" class="h-9 w-9 shrink-0 rounded-full hover:bg-sand text-xl leading-none transition" aria-label="Đóng">×</button></div>
         <ul id="mItems" class="mt-5 grid gap-4"></ul>
         <div id="mSuggestionsBox" class="mt-5 p-3.5 bg-paper rounded-2xl border border-line hidden">
-          <p class="text-xs font-bold text-leaf uppercase tracking-wider mb-2">Tụi mình gợi ý bạn nên phối thêm:</p>
+          <p class="text-xs font-bold text-leaf uppercase tracking-wider mb-2">Tụi tớ gợi ý cậu nên phối thêm:</p>
           <ul id="mSuggestionsList" class="text-xs text-neutral-600 space-y-1 font-medium"></ul>
         </div>
       </div>
       <div>
         <p class="mt-6 font-bold text-xl border-t border-line pt-4">Tổng các item chính: <span id="mTotal" class="text-accent"></span></p>
-        <button id="mSave" class="btn btn-ink w-full mt-4">Lưu vào giỏ / FIT CARD</button>
+        <button id="mSave" class="btn btn-ink w-full mt-4">Lưu vào FIT CARD</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- MODAL TẠO TÀI KHOẢN FIT LAB -->
-<div id="fitCardModal" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
+<div id="fitCardModal" role="dialog" aria-modal="true" aria-labelledby="fcTitle" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
     <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">×</button>
     <div class="mb-6">
       <span class="eyebrow">Để BOO FIT LAB hiểu và nhớ "đúng gu" cậu</span>
-      <h2 class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
+      <h2 id="fcTitle" class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
       <p class="text-sm text-neutral-500 mt-1">Đăng ký để tớ hỗ trợ cậu lưu FIT CARD và đồng bộ trải nghiệm FIT LAB – FIT SPOT</p>
     </div>
     <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
       <div>
-        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
-        <input type="text" id="userName" placeholder="Ví dụ: Minh Anh" class="field">
+        <label for="userName" class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
+        <input type="text" id="userName" autocomplete="name" placeholder="Ví dụ: Minh Anh" class="field">
       </div>
       <div>
-        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Email hoặc số điện thoại <span class="text-red-500">*</span></label>
+        <label for="userContact" class="block text-xs font-semibold text-neutral-600 mb-1.5">Email hoặc số điện thoại <span class="text-red-600" aria-hidden="true">*</span></label>
         <div class="flex gap-2">
           <input type="text" id="userContact" required placeholder="Nhập email hoặc SĐT của cậu" class="field flex-1 min-w-0">
           <button type="button" onclick="sendOtpCode()" class="btn btn-line !px-4 !py-2 text-xs whitespace-nowrap">Gửi mã OTP</button>
         </div>
       </div>
       <div>
-        <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Mã xác thực OTP <span class="text-red-500">*</span></label>
-        <input type="text" id="userOtp" required placeholder="Nhập 6 số OTP" class="field tracking-widest" maxlength="6">
+        <label for="userOtp" class="block text-xs font-semibold text-neutral-600 mb-1.5">Mã xác thực OTP <span class="text-red-600" aria-hidden="true">*</span></label>
+        <input type="text" id="userOtp" required inputmode="numeric" autocomplete="one-time-code" placeholder="Nhập 6 số OTP" class="field tracking-widest" maxlength="6">
       </div>
       <div class="grid grid-cols-2 gap-3 pt-1">
         <div>
-          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
+          <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
           <select id="userStore" class="field">
             <option value="Online">Chỉ mua online</option>
             <option value="BOO Q1">BOO Quận 1</option>
@@ -436,7 +455,7 @@ article.lift{border-radius:1.75rem}
           </select>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
+          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
           <select id="userChannel" class="field">
             <option value="Zalo OA">Zalo OA</option>
             <option value="Email">Email</option>
@@ -460,10 +479,10 @@ article.lift{border-radius:1.75rem}
 </div>
 
 <!-- WIDGET LEAD SCORE -->
-<aside id="lead" class="fixed left-3 top-20 sm:left-5 sm:top-24 z-50 w-64 bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-live="polite">
+<aside id="lead" class="fixed left-3 bottom-3 sm:left-5 sm:bottom-5 z-30 w-64 max-w-[calc(100vw-1.5rem)] bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-label="Điểm tích luỹ">
   <div class="lead-header">
     <span>HubSpot Lead Tracker</span>
-    <button onclick="toggleLeadBox()" id="leadToggleBtn" class="text-white hover:bg-black/10 px-1.5 py-0.5 rounded text-xs transition">Thu gọn 🗕</button>
+    <button onclick="toggleLeadBox()" id="leadToggleBtn" aria-expanded="true" aria-controls="leadBody" class="hover:bg-black/10 px-2.5 py-1 rounded text-xs transition">Thu gọn</button>
   </div>
   <div id="leadBody" class="p-4">
     <div class="text-center">
@@ -479,12 +498,12 @@ article.lift{border-radius:1.75rem}
       <div id="ptsBar" class="h-full rounded-full transition-all duration-700 bg-accent" style="width:0"></div>
     </div>
     <div class="mt-4 pt-3 border-t border-line">
-      <p class="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-2">Hành động gần nhất</p>
+      <p class="text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-2">Hành động gần nhất</p>
       <div id="recentActionsList" class="space-y-1.5 max-h-28 overflow-y-auto pr-1">
         <div class="history-item text-neutral-500 italic"><span>Chưa có hành động nào gần đây</span></div>
       </div>
     </div>
-    <p id="ptsLog" class="text-[11px] mt-2.5 text-neutral-500 text-center font-medium bg-sand/60 py-1 px-2 rounded-lg truncate">Làm quiz hoặc điểm danh để tích điểm.</p>
+    <p id="ptsLog" role="status" aria-live="polite" class="text-[11px] mt-2.5 text-neutral-500 text-center font-medium bg-sand/60 py-1 px-2 rounded-lg truncate">Làm quiz hoặc điểm danh để tích điểm.</p>
   </div>
 </aside>
 
@@ -593,8 +612,8 @@ const QS=[
  {
    text:'1. Cậu muốn chọn thời trang Nam hay Nữ?',
    opts:[
-    {t:'Thời trang Nam', vibe:'explorer'},
-    {t:'Thời trang Nữ', vibe:'soft'}
+    {t:'Thời trang Nam', g:'male'},
+    {t:'Thời trang Nữ', g:'female'}
    ]
  },
  {
@@ -610,7 +629,7 @@ const QS=[
  {
    text:'3. Phong cách thời trang thường ngày mà cậu hướng tới là gì?',
    opts:[
-    {t:'Tối giản, thanh lịch, tinh tế', vibe:'neutral', 'soft'},
+    {t:'Tối giản, thanh lịch, tinh tế', vibe:'neutral'},
     {t:'Năng động, cá tính, đường phố', vibe:'street'},
     {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibe:'coquette'},
     {t:'Quyến rũ, táo bạo, hiện đại', vibe:'explorer'},
@@ -741,10 +760,10 @@ function toggleLeadBox() {
   const btn = document.getElementById('leadToggleBtn');
   if (isLeadMinimized) {
     body.style.display = 'none';
-    btn.textContent = 'Mở rộng 🗖';
+    btn.textContent = 'Mở rộng';btn.setAttribute('aria-expanded','false');
   } else {
     body.style.display = 'block';
-    btn.textContent = 'Thu gọn 🗕';
+    btn.textContent = 'Thu gọn';btn.setAttribute('aria-expanded','true');
   }
 }
 
@@ -753,7 +772,7 @@ let actionHistory = [];
 function addPts(delta, why){
   const before = S.pts;
   S.pts = Math.max(0, Math.min(100, S.pts + delta));
-  if(S.pts === before && delta > 0) return;
+  if(S.pts === before) return;
 
   $('#ptsNum').textContent = S.pts;
   const maxElem = document.getElementById('ptsMax');
@@ -795,7 +814,7 @@ function addPts(delta, why){
 }
 
 function checkInactivityPenalty() {
-  const lastActiveTime = localStorage.getItem('boo_last_active');
+  let lastActiveTime=null;try{lastActiveTime=localStorage.getItem('boo_last_active')}catch(e){}
   const now = new Date().getTime();
   if (lastActiveTime) {
     const daysPassed = (now - parseInt(lastActiveTime)) / (1000 * 60 * 60 * 24);
@@ -803,14 +822,48 @@ function checkInactivityPenalty() {
     else if (daysPassed >= 14) addPts(-10, 'Quá 14 ngày không quay lại BOO FIT LAB');
     else if (daysPassed >= 7) addPts(-5, 'Quá 7 ngày không quay lại BOO FIT LAB');
   }
-  localStorage.setItem('boo_last_active', now.toString());
+  try{localStorage.setItem('boo_last_active', now.toString())}catch(e){}
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  if(window.innerWidth<640) toggleLeadBox();
   checkInactivityPenalty();
   addPts(BEHAVIOR_SCORES.view_lookbook, 'Xem trang Tủ đồ BOO');
 });
 
+function toast(msg){
+  const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=msg;
+  document.body.append(t);requestAnimationFrame(()=>t.classList.add('on'));
+  setTimeout(()=>{t.classList.remove('on');setTimeout(()=>t.remove(),400)},3200);
+}
+const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function loadCheckins(){try{return JSON.parse(localStorage.getItem('boo_checkins')||'[]')}catch(e){return[]}}
+function checkInToday(){
+  const list=loadCheckins(),k=dkey(new Date());
+  if(!list.includes(k)){list.push(k);try{localStorage.setItem('boo_checkins',JSON.stringify(list.slice(-60)))}catch(e){}
+    addPts(5,'Điểm danh hôm nay');toast('Điểm danh thành công!');}
+  renderWeekSchedule();
+}
+function renderWeekSchedule(){
+  const box=$('#weekSchedule');if(!box)return;
+  const list=loadCheckins(),names=['CN','T2','T3','T4','T5','T6','T7'],today=new Date();
+  let cells='',n=0;
+  for(let i=6;i>=0;i--){
+    const d=new Date(today);d.setDate(today.getDate()-i);
+    const on=list.includes(dkey(d));if(on)n++;
+    cells+=`<div class="wk-day${on?' on':''}${i===0?' today':''}"><span>${names[d.getDay()]}</span><b>${d.getDate()}</b><i aria-hidden="true">${on?'✓':''}</i><span class="sr-only">${on?'đã điểm danh':'chưa điểm danh'}</span></div>`;
+  }
+  const done=list.includes(dkey(today));
+  box.innerHTML=`<div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+    <div><h3 class="text-2xl font-bold">Điểm danh 7 ngày</h3>
+    <p class="text-sm text-neutral-600 mt-1">${n>=7?'Đủ 7/7 ngày — Voucher đã mở khoá!':'Đã điểm danh '+n+'/7 ngày gần nhất. Đủ 7 ngày để mở khoá Voucher.'}</p></div>
+    <button class="btn btn-ink shrink-0" onclick="checkInToday()" ${done?'disabled aria-disabled="true"':''}>${done?'Hôm nay đã điểm danh':'Điểm danh hôm nay'}</button></div>
+    <div class="grid grid-cols-7 gap-2 mt-5">${cells}</div>`;
+}
+function resetLookbookFilters(){
+  document.querySelectorAll('#genderFilters .chip, #styleFilters .chip').forEach(c=>c.classList.toggle('active',c.dataset.gender==='all'||c.dataset.style==='all'));
+  renderFullLookbook();
+}
 function show(v,scroll){
   document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
   if(v==='lookbook') renderFullLookbook();
@@ -837,11 +890,11 @@ function renderQ(){
   const q=QS[S.q];
   $('#qStep').textContent='Câu '+(S.q+1)+'/13';
   $('#qFill').style.width=(S.q/13*100)+'%';$('#qBar').setAttribute('aria-valuenow',S.q);
-  $('#qText').textContent=q.text;
+  $('#qText').textContent=q.text.replace(/^\d+\.\s*/,'');
   $('#qOpts').innerHTML='';
   q.opts.forEach(opt=>{
     const b=document.createElement('button');b.className='opt';b.textContent=opt.t;
-    b.onclick=()=>{S.answers.push(opt.vibe);S.q++;S.q<13?renderQ():finishQuiz()};
+    b.onclick=()=>{if(opt.g)S.gender=opt.g;S.answers.push(opt.vibe||null);S.q++;S.q<13?renderQ():finishQuiz()};
     $('#qOpts').append(b);
   });
   $('#qBack').style.visibility=S.q?'visible':'hidden';
@@ -851,9 +904,10 @@ function finishQuiz(){
   $('#qFill').style.width='100%';
   $('#quizBox').classList.add('hidden');$('#quizDone').classList.remove('hidden');
   const counts={};
-  S.answers.forEach(v=>counts[v]=(counts[v]||0)+1);
-  let bestVibe='soft', maxCount=0;
-  for(let v in counts){if(counts[v]>maxCount){maxCount=counts[v];bestVibe=v;}}
+  S.answers.forEach(v=>{if(v)counts[v]=(counts[v]||0)+1});
+  const pool=SETS.filter(x=>!S.gender||x.gender===S.gender);
+  let bestVibe=pool[0].id, maxCount=-1;
+  pool.forEach(x=>{const c=counts[x.id]||0;if(c>maxCount){maxCount=c;bestVibe=x.id;}});
   S.resultVibe=bestVibe;
   if(!S.done){S.done=true;addPts(30,'Hoàn thành Style Quiz 13 câu chuẩn vibe');}
   S.q=0;
@@ -867,7 +921,7 @@ const VIBE_TITLES={
   explorer:{name:'Tắc Kè Lướt Phố',desc:'Bụi bặm, mạnh mẽ và sẵn sàng cho mọi hành trình khám phá.'},
   comfy:{name:'Bật mode Sporty',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'},
   y2k:{name:'Dân Chơi Pixel Y2K',desc:'Phá cách, phối layer cực chất, mang đậm hơi thở tương lai.'},
-  coquette:{name:'Mộng mơ Coquette',desc:'Ngọt ngào, đài cát, thắt nơ ruy băng đầy lãng mạn và nữ tính.'}
+  coquette:{name:'Mộng mơ Coquette',desc:'Ngọt ngào, đài các, thắt nơ ruy băng đầy lãng mạn và nữ tính.'}
 };
 
 function renderOutfits(){
@@ -912,7 +966,7 @@ function openModal(id){
   $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';$('#mClose').focus();
   if(!S.seen.has(id)){S.seen.add(id);addPts(10,'Xem chi tiết sản phẩm');}
 }
-function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD':'Lưu vào giỏ / FIT CARD';}
+function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD':'Lưu vào FIT CARD';}
 $('#mItems').addEventListener('click',e=>{
   const c=e.target.closest('.chip');if(!c)return;
   S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
@@ -922,6 +976,8 @@ $('#mItems').addEventListener('click',e=>{
 $('#mSave').onclick=()=>{
   const s=S.cur;
   if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return;}
+  if(S.userProfile){S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});addPts(BEHAVIOR_SCORES.save_fitcard,'Lưu set vào FIT CARD');updCount();closeModal();toast('Đã lưu "'+s.name+'" vào FIT CARD');return;}
+  S.pendingSave=s.id;
   closeModal();
   openFitCardModal();
 };
@@ -934,25 +990,30 @@ const updCount=()=>$('#fcCount').textContent=S.saved.length;
 function openFitCardModal() {
   $('#fitCardModal').classList.remove('hidden');
   $('#fitCardModal').classList.add('flex');
+  setTimeout(()=>$('#userName').focus(),30);
 }
 function closeFitCardModal() {
   $('#fitCardModal').classList.remove('flex');
   $('#fitCardModal').classList.add('hidden');
+  S.pendingSave=null;
 }
 
 function sendOtpCode() {
   const contact = $('#userContact').value;
   if(!contact) {
-    alert('Vui lòng nhập Email hoặc Số điện thoại trước khi nhận mã OTP!');
+    toast('Vui lòng nhập email hoặc số điện thoại trước khi nhận mã OTP.');
     $('#userContact').focus();
     return;
   }
-  alert('Mã OTP giả lập đã được gửi đến: ' + contact + '\n(Mã xác nhận của cậu là: 123456)');
+  S.otp='123456';toast('Mã OTP demo đã gửi tới '+contact+' (mã: 123456)');
   $('#userOtp').value = '123456';
 }
 
 function submitFitCard(event) {
   event.preventDefault();
+  const cv=$('#userContact').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv)&&!/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g,''))){toast('Email hoặc số điện thoại chưa đúng định dạng.');$('#userContact').focus();return;}
+  if(!S.otp||$('#userOtp').value.trim()!==S.otp){toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.');$('#userOtp').focus();return;}
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
     contact: $('#userContact').value,
@@ -963,9 +1024,10 @@ function submitFitCard(event) {
   };
   S.userProfile = profile;
   
-  if(S.cur && !S.saved.some(x=>x.id===S.cur.id)){
-    const s=S.cur;
-    S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});
+  const pend=SETS.find(x=>x.id===S.pendingSave);S.pendingSave=null;
+  if(pend && !S.saved.some(x=>x.id===pend.id)){
+    const s=pend;
+    S.saved.push({id:s.id,name:s.name,img:s.img,colors:S.colors[s.id]?[...S.colors[s.id]]:s.items.map(i=>i.c[0])});
     addPts(20,'Tạo tài khoản & Lưu set vào FIT CARD');
     updCount();
   } else {
@@ -973,19 +1035,21 @@ function submitFitCard(event) {
   }
 
   closeFitCardModal();
-  alert('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB và mã FIT CARD của cậu đã được tạo thành công.');
+  toast('Xin chào '+profile.displayName+'! Tài khoản FIT LAB của cậu đã được tạo.');
   show('fit');
 }
 
 function quickSaveSet(id) {
   const s = SETS.find(x => x.id === id);
-  if(s && !S.saved.some(x => x.id === s.id)) {
+  if(!s) return;
+  if(!S.userProfile) { S.pendingSave = s.id; openFitCardModal(); return; }
+  if(!S.saved.some(x => x.id === s.id)) {
     S.saved.push({id: s.id, name: s.name, img: s.img, colors: s.items.map(i=>i.c[0])});
     addPts(15, 'Lưu nhanh vào FIT CARD');
     updCount();
-    alert('Đã lưu set "' + s.name + '" vào FIT CARD thành công!');
+    toast('Đã lưu set "'+s.name+'" vào FIT CARD');
   } else {
-    alert('Set này đã có trong FIT CARD của cậu!');
+    toast('Set này đã có trong FIT CARD của cậu rồi nha.');
   }
 }
 
@@ -1006,7 +1070,7 @@ function renderFullLookbook() {
 
   const grid = $('#fullLookbookGrid');
   if(filtered.length === 0) {
-    grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-500 font-medium">Không tìm thấy set đồ phù hợp với bộ lọc này.</div>`;
+    grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-600 font-medium">Chưa có set nào khớp bộ lọc này.<br><button class="btn btn-line mt-4" onclick="resetLookbookFilters()">Xoá bộ lọc</button></div>`;
     return;
   }
 
@@ -1121,7 +1185,7 @@ function fitCardNav(e){
 (function(){
   var m=document.getElementById('fitCardModal');
   m.addEventListener('click',function(e){if(e.target===m)closeFitCardModal()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('flex'))closeFitCardModal()});
+  document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(m.classList.contains('flex'))closeFitCardModal();else if(!$('#modal').classList.contains('hidden'))closeModal()});
 })();
 </script>
 </body>
