@@ -855,8 +855,8 @@ function renderWeekSchedule(){
   }
   const done=list.includes(dkey(today));
   box.innerHTML=`<div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
-    <div><h3 class="text-2xl font-bold">Điểm danh 7 ngày</h3>
-    <p class="text-sm text-neutral-600 mt-1">${n>=7?'Đủ 7/7 ngày — Voucher đã mở khoá!':'Đã điểm danh '+n+'/7 ngày gần nhất. Đủ 7 ngày để mở khoá Voucher.'}</p></div>
+    <div><h3 class="text-2xl font-bold">Giữ chuỗi 7 ngày cùng BOO FIT LAB</h3>
+    <p class="text-sm text-neutral-600 mt-1">${n>=7?'Đủ 7/7 ngày — Voucher đã mở khoá!':'Đã điểm danh '+n+'/7 ngày gần nhất. Hãy giữ chuỗi điểm danh đủ 7 ngày để mở khoá Voucher.'}</p></div>
     <button class="btn btn-ink shrink-0" onclick="checkInToday()" ${done?'disabled aria-disabled="true"':''}>${done?'Hôm nay đã điểm danh':'Điểm danh hôm nay'}</button></div>
     <div class="grid grid-cols-7 gap-2 mt-5">${cells}</div>`;
 }
