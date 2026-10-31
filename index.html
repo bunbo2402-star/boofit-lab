@@ -85,7 +85,7 @@ article.lift{border-radius:1.75rem}
 #lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
 
-/* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER MỚI ===== */
+/* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER ===== */
 #lead {
   transition: all 0.4s cubic-bezier(.2,.7,.2,1);
   box-shadow: 0 20px 50px -20px rgba(26,29,33,.4);
@@ -151,7 +151,6 @@ article.lift{border-radius:1.75rem}
   border-bottom: none;
 }
 
-/* ===== Tinh chỉnh giao diện v2 ===== */
 .lift:hover{border-color:#C9D9F5}
 .btn-ink{background:linear-gradient(180deg,#252A30,#1A1D21)}.btn-ink:hover{background:#2E6BD6}
 .zoom{box-shadow:0 18px 40px -26px rgba(26,29,33,.45)}
@@ -240,7 +239,7 @@ article.lift{border-radius:1.75rem}
     </div>
   </div>
 
-  <!-- Lookbook (3 ảnh model gốc) -->
+  <!-- Lookbook -->
   <div id="lookbook-home" class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv">
       <span class="eyebrow">Bộ sưu tập thực tế</span>
@@ -307,7 +306,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 
-<!-- ============ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ 5 SET + BỘ LỌC) ============ -->
+<!-- ============ TRANG TỦ ĐỒ BOO (8 STYLE FILTER) ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv text-center max-w-2xl mx-auto">
@@ -316,7 +315,7 @@ article.lift{border-radius:1.75rem}
       <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc phong cách.</p>
     </div>
 
-    <!-- Thanh bộ lọc -->
+    <!-- Thanh bộ lọc 8 Style -->
     <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
         <span class="text-xs font-bold text-neutral-600 uppercase mr-2">Giới tính:</span>
@@ -332,8 +331,9 @@ article.lift{border-radius:1.75rem}
         <button class="chip" data-style="neutral" onclick="filterLookbook()">Tối giản</button>
         <button class="chip" data-style="explorer" onclick="filterLookbook()">Phóng khoáng</button>
         <button class="chip" data-style="comfy" onclick="filterLookbook()">Năng động</button>
-        <button class="chip" data-style="y2k" onclick="filterLookbook()">Y2K Pixel</button>
+        <button class="chip" data-style="y2k" onclick="filterLookbook()">Y2K Cyber</button>
         <button class="chip" data-style="coquette" onclick="filterLookbook()">Coquette</button>
+        <button class="chip" data-style="cozy" onclick="filterLookbook()">Thu Đông Ấm Áp</button>
       </div>
     </div>
 
@@ -508,6 +508,7 @@ article.lift{border-radius:1.75rem}
 </aside>
 
 <script>
+// DỮ LIỆU BỘ 8 OUTFIT MẪU (BỔ SUNG STYLE COZY)
 const SETS=[
  {
    id:'soft',
@@ -541,7 +542,7 @@ const SETS=[
    id:'neutral',
    name:'Set Neutral Thu Đông Boheme',
    img:'images/outfit-3.jfif',
-   tag:'Minimalist · Ấm áp · Cá tính',
+   tag:'Minimalist · Tối giản · Cá tính',
    gender:'female',
    style:'neutral',
    items:[
@@ -604,10 +605,38 @@ const SETS=[
     {n:'Chân váy voan tầng ngắn',p:390000,c:['Trắng']}
    ],
    suggestions:['Giày búp bê satin', 'Kẹp tóc nơ nhung lớn']
+ },
+ {
+   id:'cozy',
+   name:'Set Cozy Bông Xốp Ấm Áp',
+   img:'images/outfit-3.jfif',
+   tag:'Cozy · Len & Nỉ · Thu Đông Warm',
+   gender:'female',
+   style:'cozy',
+   items:[
+    {n:'Áo cardigan len dệt kim lông xù',p:520000,c:['Be','Kem']},
+    {n:'Chân váy dạ ngắn xếp ly',p:380000,c:['Nâu','Xám']},
+    {n:'Vớ dệt kim cổ cao',p:99000,c:['Trắng kem']}
+   ],
+   suggestions:['Giày boot cổ ngắn da lộn', 'Mũ nồi dạ beret']
+ },
+ {
+   id:'cozy_male',
+   name:'Set Cozy Sweater Nỉ Bông Thu Đông',
+   img:'images/outfit-5.png',
+   tag:'Cozy · Oversized · Ấm Áp',
+   gender:'male',
+   style:'cozy',
+   items:[
+    {n:'Áo Sweater nỉ bông cổ tròn oversize',p:490000,c:['Rêu','Nâu đất']},
+    {n:'Quần kaki form rộng lót nỉ ấm',p:580000,c:['Kem','Đen']},
+    {n:'Mũ len dệt kim Beanie',p:179000,c:['Nâu đậm']}
+   ],
+   suggestions:['Giày sneaker da lộn', 'Khăn quàng cổ len tối màu']
  }
 ];
 
-// TOÀN BỘ 13 CÂU HỎI STYLE QUIZ CHUẨN TỪ BỘ TÀI LIỆU PDF
+// TOÀN BỘ 13 CÂU HỎI STYLE QUIZ CHUẨN TỪ BỘ TÀI LIỆU PDF (ĐÃ GÁN VIBE COZY)
 const QS=[
  {
    text:'1. Cậu muốn chọn thời trang Nam hay Nữ?',
@@ -640,7 +669,7 @@ const QS=[
    text:'4. Tông màu sắc chủ đạo mà cậu thích nhất trong tủ đồ của mình?',
    opts:[
     {t:'Gam màu trung tính (Đen, trắng, xám, ghi)', vibe:'neutral'},
-    {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibe:'explorer'},
+    {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibe:'cozy'},
     {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibe:'soft'},
     {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban, vàng)', vibe:'street'},
     {t:'Phối ngẫu nhiên, không giới hạn màu sắc', vibe:'y2k'}
@@ -661,7 +690,7 @@ const QS=[
     {t:'Cotton, thun co giãn (Thoáng mát, dễ vận động)', vibe:'comfy'},
     {t:'Linen, đũi (Nhẹ nhàng, mộc mạc, phóng khoáng)', vibe:'explorer'},
     {t:'Denim / Jean (Bền bỉ, bụi bặm, cá tính)', vibe:'street'},
-    {t:'Lụa, satin, len dệt kim (Mềm mại, sang trọng, nữ tính)', vibe:'coquette'},
+    {t:'Lụa, satin, len dệt kim (Mềm mại, sang trọng, ấm áp)', vibe:'cozy'},
     {t:'Da, kaki hoặc vải thô cứng cáp (Tạo form dáng chuẩn)', vibe:'y2k'}
    ]
  },
@@ -671,7 +700,7 @@ const QS=[
     {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibe:'neutral'},
     {t:'Áo sơ mi/Blazer + Quần tây ống rộng hoặc chân váy chữ A', vibe:'soft'},
     {t:'Váy liền / Set bộ công sở đầy nữ tính chỉn chu', vibe:'coquette'},
-    {t:'Set đồ thể thao / Sweater + Quần jogger cá tính', vibe:'explorer'},
+    {t:'Set đồ thể thao / Sweater + Quần jogger cá tính', vibe:'cozy'},
     {t:'Phối đồ tự do, miễn sao thoải mái và phá cách', vibe:'comfy'}
    ]
  },
@@ -682,7 +711,7 @@ const QS=[
     {t:'Họa tiết cơ bản (Sọc kẻ, caro, chấm bi)', vibe:'soft'},
     {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren mỏng', vibe:'coquette'},
     {t:'Họa tiết in hình / Graphic tee', vibe:'street'},
-    {t:'Bề mặt vải có dệt gân, dệt kim hoặc phối chất liệu cá tính', vibe:'explorer'},
+    {t:'Bề mặt vải có dệt gân, dệt kim hoặc phối chất liệu cá tính', vibe:'cozy'},
     {t:'Điểm nhấn cắt xẻ, may rách phá cách hoặc phối khóa zip, túi hộp', vibe:'y2k'}
    ]
  },
@@ -700,7 +729,7 @@ const QS=[
    text:'10. Thói quen bổ sung trang phục mới vào tủ đồ của cậu như thế nào?',
    opts:[
     {t:'Chỉ mua đồ cơ bản, mặc được nhiều năm không sợ lỗi mốt', vibe:'neutral'},
-    {t:'Mua theo mùa hoặc khi có dịp đặc biệt mới sắm đồ mới', vibe:'soft'},
+    {t:'Mua theo mùa (Thu Đông, Mùa Hè) hoặc khi có dịp đặc biệt', vibe:'cozy'},
     {t:'Thường xuyên cập nhật trang phục theo các xu hướng mới nhất', vibe:'y2k'},
     {t:'Mua sắm ngẫu hứng, thấy món nào lạ mắt là chốt', vibe:'street'},
     {t:'Ưu tiên săn đồ 2hand, vintage hoặc thiết kế limited', vibe:'explorer'}
@@ -914,30 +943,34 @@ function finishQuiz(){
   setTimeout(()=>{renderOutfits();show('outfit')},900);
 }
 
+// BỘ TÊN GU DÂN CHƠI CHUẨN VẦN VIỆT - ANH TRỌN BỘ 8 STYLE
 const VIBE_TITLES={
-  soft:{name:'BayBOO Ngọt Ngào',desc:'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi.'},
-  street:{name:'Hop on da Street',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
-  neutral:{name:'Basic nhưng không miss trend',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'},
-  explorer:{name:'Tắc Kè Lướt Phố',desc:'Bụi bặm, mạnh mẽ và sẵn sàng cho mọi hành trình khám phá.'},
-  comfy:{name:'Bật mode Sporty',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'},
-  y2k:{name:'Dân Chơi Pixel Y2K',desc:'Phá cách, phối layer cực chất, mang đậm hơi thở tương lai.'},
-  coquette:{name:'Mộng mơ Coquette',desc:'Ngọt ngào, đài các, thắt nơ ruy băng đầy lãng mạn và nữ tính.'}
+  soft:{name:'Tone Soft Wave – Đẹp Đã Eye',desc:'Vibe nhẹ nhàng, ngọt ngào và thanh thoát trong từng bước đi.'},
+  street:{name:'Vibe CD – Chất Cực Kỳ',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
+  neutral:{name:'Tone Satin – Nhìn Là Tin',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'},
+  explorer:{name:'Ren & Denim – Chất Và Im',desc:'Bụi bặm, phóng khoáng và sẵn sàng cho mọi hành trình khám phá.'},
+  comfy:{name:'Sóng Cyber – Phá Mọi Barrier',desc:'Thoải mái tối đa nhưng vẫn cực kỳ năng động và bắt mắt.'},
+  y2k:{name:'Cyber Phố – Ngầu Bá Cháy',desc:'Phá cách, phối layer cực chất, mang đậm hơi thở futuristic 2000s.'},
+  coquette:{name:'Vibe Thắt Nơ – Ngọt Như Thơ',desc:'Ngọt ngào, đài các, thắt nơ ruy bằng đầy lãng mạn và tinh tế.'},
+  cozy:{name:'Gu Thu Đông – Ấm Cực Kỳ',desc:'Ấm áp, êm ái và mềm mại như một cái ôm giữa ngày thu đông.'}
 };
 
 function renderOutfits(){
   const vibe=S.resultVibe||'soft';
-  const info=VIBE_TITLES[vibe];
+  const info=VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
   $('#resultTitle').textContent=`Gu của cậu là: "${info.name}"`;
   $('#resultNote').textContent=`${info.desc} (Đúng gu gọn tủ, vẫn đủ chất riêng).`;
   
-  const filteredSets=SETS.filter(s => s.id === vibe);
-  $('#outfitList').innerHTML=filteredSets.map((s,i)=>`
+  const filteredSets=SETS.filter(s => s.style === vibe && (!S.gender || s.gender === S.gender));
+  const displaySets = filteredSets.length > 0 ? filteredSets : SETS.filter(s => s.style === vibe);
+
+  $('#outfitList').innerHTML=displaySets.map((s,i)=>`
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
       <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
       <div class="p-5">
         <p class="font-bold text-leaf">Set đồ chuẩn vibe nhất cho cậu · 100% hợp gu</p>
         <h3 class="text-2xl font-bold mt-1">${s.name}</h3>
-        <p class="mt-1">${s.tag}</p>
+        <p class="mt-1 text-sm text-neutral-600">${s.tag}</p>
         <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho các item chính</p>
         <button class="btn btn-ink mt-4" data-open="${s.id}">Xem chi tiết set đồ</button>
       </div></article>`).join('');
