@@ -84,7 +84,8 @@ article.lift{border-radius:1.75rem}
 .chip{padding:.4rem 1rem}
 #lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
- /* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER MỚI ===== */
+
+/* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER MỚI ===== */
 #lead {
   transition: all 0.4s cubic-bezier(.2,.7,.2,1);
   box-shadow: 0 20px 50px -20px rgba(26,29,33,.4);
@@ -94,8 +95,8 @@ article.lift{border-radius:1.75rem}
   transform: translateY(-3px);
 }
 .lead-header {
-  background: linear-gradient(135deg, #DCEFE6, #BCE3D2); /* Xanh pastel đồng bộ với web */
-  color: #1A1D21; /* Chữ tối màu cho dễ nhìn */
+  background: linear-gradient(135deg, #DCEFE6, #BCE3D2);
+  color: #1A1D21;
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -106,12 +107,12 @@ article.lift{border-radius:1.75rem}
   justify-content: space-between;
   align-items: center;
 }
- /* Thêm đoạn này để ép nút "Thu gọn" thành màu đen */
 .lead-header button {
-  color: #1A1D21 !important; 
+  color: #1A1D21 !important;
+  background: transparent !important;
 }
 .lead-header button:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.08) !important;
 }
 .score-circle {
   width: 70px;
@@ -287,7 +288,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 
-<!-- ============ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ 5 SET + BỘ LỌC) ============ -->
+<!-- ============ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ BỘ LỌC) ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv text-center max-w-2xl mx-auto">
@@ -296,7 +297,7 @@ article.lift{border-radius:1.75rem}
       <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc phong cách.</p>
     </div>
 
-    <!-- Thanh bộ lọc -->
+    <!-- Thanh bộ lọc (Đã thêm Y2K và Coquette) -->
     <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
         <span class="text-xs font-bold text-neutral-500 uppercase mr-2">Giới tính:</span>
@@ -312,6 +313,8 @@ article.lift{border-radius:1.75rem}
         <button class="chip" data-style="neutral" onclick="filterLookbook()">Tối giản</button>
         <button class="chip" data-style="explorer" onclick="filterLookbook()">Phóng khoáng</button>
         <button class="chip" data-style="comfy" onclick="filterLookbook()">Năng động</button>
+        <button class="chip" data-style="y2k" onclick="filterLookbook()">Y2K Pixel</button>
+        <button class="chip" data-style="coquette" onclick="filterLookbook()">Coquette</button>
       </div>
     </div>
 
@@ -356,7 +359,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 
-<!-- ============ TRANG 4: FIT CARD (KHÔNG CÒN PHÒNG LAB TỰ PHỐI) ============ -->
+<!-- ============ TRANG 4: FIT CARD ============ -->
 <section id="v-fit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <span class="eyebrow">Tủ đồ cá nhân</span>
@@ -398,7 +401,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </div>
 
-<!-- MODAL TẠO TÀI KHOẢN FIT LAB (CONTACT) -->
+<!-- MODAL TẠO TÀI KHOẢN FIT LAB -->
 <div id="fitCardModal" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
     <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">×</button>
@@ -456,7 +459,7 @@ article.lift{border-radius:1.75rem}
   </div>
 </div>
 
-<!-- WIDGET LEAD SCORE KIỂU HUBSPOT TRACKER -->
+<!-- WIDGET LEAD SCORE -->
 <aside id="lead" class="fixed left-3 top-20 sm:left-5 sm:top-24 z-50 w-64 bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-live="polite">
   <div class="lead-header">
     <span>HubSpot Lead Tracker</span>
@@ -486,6 +489,7 @@ article.lift{border-radius:1.75rem}
 </aside>
 
 <script>
+// Đã bổ sung 2 set outfit mới cho y2k và coquette
 const SETS=[
  {
    id:'soft',
@@ -556,9 +560,36 @@ const SETS=[
     {n:'Nón kết thêu chữ "Lười"',p:199000,c:['Đen']}
    ],
    suggestions:['Giày thể thao sneaker xanh', 'Balo vải canvas năng động']
+ },
+ {
+   id:'y2k',
+   name:'Set Y2K Cyber Graphic Tee',
+   img:'images/outfit-1.png',
+   tag:'Y2K · Phá cách · Layering',
+   gender:'female',
+   style:'y2k',
+   items:[
+    {n:'Áo croptop graphic pixel',p:350000,c:['Đen','Bạc']},
+    {n:'Quần jeans cạp trễ túi hộp',p:590000,c:['Xanh wash']}
+   ],
+   suggestions:['Kính râm gọng bản lớn', 'Túi kẹp nách ánh kim']
+ },
+ {
+   id:'coquette',
+   name:'Set Coquette Nơ Hồng Mộng Mơ',
+   img:'images/outfit-2.png',
+   tag:'Coquette · Nữ tính · Thướt tha',
+   gender:'female',
+   style:'coquette',
+   items:[
+    {n:'Áo trễ vai thắt nơ ruy băng',p:410000,c:['Trắng','Hồng pastel']},
+    {n:'Chân váy voan tầng ngắn',p:390000,c:['Trắng']}
+   ],
+   suggestions:['Giày búp bê satin', 'Kẹp tóc nơ nhung lớn']
  }
 ];
 
+// Cập nhật bộ câu hỏi Style Quiz tích hợp đáp án Y2K & Coquette
 const QS=[
  {
    text:'Cuối tuần của cậu thường là…',
@@ -567,7 +598,9 @@ const QS=[
     {t:'Đi phố, cà phê check-in, dạo phố sập sàn', vibe:'street'},
     {t:'Khám phá các triển lãm nghệ thuật, không gian mộc mạc', vibe:'neutral'},
     {t:'Săn ảnh street life, khám phá góc ngách mới', vibe:'explorer'},
-    {t:'Tụ tập chơi board game, cà phê chill', vibe:'comfy'}
+    {t:'Tụ tập chơi board game, cà phê chill', vibe:'comfy'},
+    {t:'Săn lùng các quán cafe cyber, chụp ảnh flash lấp lánh', vibe:'y2k'},
+    {t:'Dạo phố trà chiều, chụp ảnh góc công viên thơ mộng', vibe:'coquette'}
    ]
  },
  {
@@ -577,7 +610,9 @@ const QS=[
     {t:'Streetwear năng động, cá tính', vibe:'street'},
     {t:'Phong cách Thu Đông ấm áp, tối giản', vibe:'neutral'},
     {t:'Utility / Urban Explorer phóng khoáng, bụi bặm', vibe:'explorer'},
-    {t:'Active / Comfy thoải mái tối đa', vibe:'comfy'}
+    {t:'Active / Comfy thoải mái tối đa', vibe:'comfy'},
+    {t:'Phá cách, Y2K, phối layer độc đáo', vibe:'y2k'},
+    {t:'Bánh bèo, tiểu thư, nữ tính mộng mơ', vibe:'coquette'}
    ]
  },
  {
@@ -587,7 +622,9 @@ const QS=[
     {t:'Oversized rộng rãi, thoải mái', vibe:'street'},
     {t:'Form suông vừa vặn, chất liệu vải dạ/nỉ', vibe:'neutral'},
     {t:'Nhiều túi hộp tiện dụng, layered', vibe:'explorer'},
-    {t:'Form rộng năng động, cotton nỉ mềm mịn', vibe:'comfy'}
+    {t:'Form rộng năng động, cotton nỉ mềm mịn', vibe:'comfy'},
+    {t:'Croptop ôm sát kết hợp cạp trễ cá tính', vibe:'y2k'},
+    {t:'Váy tầng bồng bềnh, chi tiết thắt nơ ruy băng', vibe:'coquette'}
    ]
  },
  {
@@ -597,7 +634,9 @@ const QS=[
     {t:'Đỏ nổi bật, đen tương phản mạnh', vibe:'street'},
     {t:'Be, nâu đất, xám tro trầm ấm', vibe:'neutral'},
     {t:'Xanh rêu, đen, xám khói đậm chất lính', vibe:'explorer'},
-    {t:'Xanh lá đậm, xám lông chuột tươi trẻ', vibe:'comfy'}
+    {t:'Xanh lá đậm, xám lông chuột tươi trẻ', vibe:'comfy'},
+    {t:'Ánh kim, bạc, đen tương phản, neon nổi bật', vibe:'y2k'},
+    {t:'Hồng phấn, trắng ngà, màu kem ngọt lịm', vibe:'coquette'}
    ]
  },
  {
@@ -607,7 +646,9 @@ const QS=[
     {t:'Mũ lưỡi trai, vòng tay cá tính', vibe:'street'},
     {t:'Túi da bóng phong cách retro', vibe:'neutral'},
     {t:'Kính râm, móc khóa utility', vibe:'explorer'},
-    {t:'Nón kết thêu slogan độc lạ', vibe:'comfy'}
+    {t:'Nón kết thêu slogan độc lạ', vibe:'comfy'},
+    {t:'Kính râm gọng nhỏ, tai ngheụp tai chunky', vibe:'y2k'},
+    {t:'Ruy băng buộc tóc, kẹp ngọc trai lấp lánh', vibe:'coquette'}
    ]
  }
 ];
@@ -616,19 +657,17 @@ const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
 const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],resultVibe:null,cur:null,colors:{},userProfile:null};
 
-// Định nghĩa quy ước điểm hành vi chuẩn MarTech
 const BEHAVIOR_SCORES = {
-  view_lookbook: 5,      // Xem trang Tủ đồ BOO
-  view_detail: 10,       // Xem chi tiết sản phẩm / Set đồ
-  fit_assist: 3,         // Dùng FIT ASSIST (mỗi lần hỏi)
-  random_spin: 5,       // Gieo quẻ / Lắc quẻ Random Outfit
-  save_fitcard: 15,      // Lưu set đồ vào tủ ảo FIT CARD
-  complete_quiz: 20,     // Hoàn thành Style Quiz (Xác định Vibe)
-  register_contact: 25,  // Tạo tài khoản / Điền form Contact thành công
-  checkin_qr: 15         // Check-in QR tại cửa hàng FIT SPOT
+  view_lookbook: 5,
+  view_detail: 10,
+  fit_assist: 3,
+  random_spin: 5,
+  save_fitcard: 15,
+  complete_quiz: 20,
+  register_contact: 25,
+  checkin_qr: 15
 };
 
-// Hàm cập nhật điểm (hỗ trợ cả điểm cộng lẫn điểm trừ)
 let isLeadMinimized = false;
 function toggleLeadBox() {
   isLeadMinimized = !isLeadMinimized;
@@ -689,25 +728,18 @@ function addPts(delta, why){
   }
 }
 
-// Kiểm tra thời gian không quay lại để trừ điểm tự động (Inactivity Scoring)
 function checkInactivityPenalty() {
   const lastActiveTime = localStorage.getItem('boo_last_active');
   const now = new Date().getTime();
-  
   if (lastActiveTime) {
     const daysPassed = (now - parseInt(lastActiveTime)) / (1000 * 60 * 60 * 24);
-    if (daysPassed >= 30) {
-      addPts(-20, 'Quá 30 ngày không quay lại BOO FIT LAB');
-    } else if (daysPassed >= 14) {
-      addPts(-10, 'Quá 14 ngày không quay lại BOO FIT LAB');
-    } else if (daysPassed >= 7) {
-      addPts(-5, 'Quá 7 ngày không quay lại BOO FIT LAB');
-    }
+    if (daysPassed >= 30) addPts(-20, 'Quá 30 ngày không quay lại BOO FIT LAB');
+    else if (daysPassed >= 14) addPts(-10, 'Quá 14 ngày không quay lại BOO FIT LAB');
+    else if (daysPassed >= 7) addPts(-5, 'Quá 7 ngày không quay lại BOO FIT LAB');
   }
   localStorage.setItem('boo_last_active', now.toString());
 }
 
-// Kích hoạt kiểm tra ngay khi load trang và cộng điểm truy cập website
 window.addEventListener('DOMContentLoaded', () => {
   checkInactivityPenalty();
   addPts(BEHAVIOR_SCORES.view_lookbook, 'Xem trang Tủ đồ BOO');
@@ -762,12 +794,15 @@ function finishQuiz(){
   setTimeout(()=>{renderOutfits();show('outfit')},900);
 }
 
+// Cập nhật tên tiêu đề kết quả cho 2 gu mới
 const VIBE_TITLES={
   soft:{name:'BayBOO Ngọt Ngào',desc:'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi.'},
   street:{name:'Hop on da Street',desc:'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được.'},
   neutral:{name:'Basic nhưng không miss trend',desc:'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu.'},
   explorer:{name:'Tắc Kè Lướt Phố',desc:'Bụi bặm, mạnh mẽ và sẵn sàng cho mọi hành trình khám phá.'},
-  comfy:{name:'Bật mode Sporty',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'}
+  comfy:{name:'Bật mode Sporty',desc:'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động.'},
+  y2k:{name:'Dân Chơi Pixel Y2K',desc:'Phá cách, phối layer cực chất, mang đậm hơi thở tương lai.'},
+  coquette:{name:'Mộng mơ Coquette',desc:'Ngọt ngào, đài cát, thắt nơ ruy băng đầy lãng mạn và nữ tính.'}
 };
 
 function renderOutfits(){
@@ -889,7 +924,7 @@ function quickSaveSet(id) {
   }
 }
 
-/* HIỂN THỊ TRANG TỦ ĐỒ BOO (LOOKBOOK ĐẦY ĐỦ BỘ LỌC) */
+/* HIỂN THỊ TRANG TỦ ĐỒ BOO (LỌC THEO VIBE Y2K & COQUETTE) */
 function filterLookbook() {
   renderFullLookbook();
 }
@@ -937,8 +972,6 @@ document.addEventListener('click', e => {
 /* GIEO QUẺ RANDOM OUTFIT */
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
-  
-  // 👉 Gọi hàm cộng điểm hành vi gieo quẻ (+15đ)
   addPts(BEHAVIOR_SCORES.random_spin, 'Gieo quẻ / Lắc quẻ Random Outfit');
 
   const box = $('#gieoQueResult');
@@ -970,12 +1003,6 @@ function renderWeekSchedule() {
 
   const count = checkedDays.filter(Boolean).length;
   $('#checkinProgress').textContent = `Đã điểm danh: ${count}/7 ngày`;
-  
-  if(count === 7) {
-    $('#voucherBox').classList.remove('hidden');
-  } else {
-    $('#voucherBox').classList.add('hidden');
-  }
 }
 
 function toggleCheckIn(idx) {
@@ -1040,7 +1067,6 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
 <script>
-/* Đánh dấu mục menu đang mở */
 (function(){
   var map={outfit:'quiz'};
   function sync(){var on=document.querySelector('.view.on');if(!on)return;var k=on.id.slice(2);k=map[k]||k;
@@ -1049,7 +1075,6 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r
 })();
 </script>
 <script>
-/* Bấm FIT CARD trên menu: chưa đăng ký thì mở popup tạo tài khoản, đã đăng ký thì vào trang FIT CARD */
 function fitCardNav(e){
   e.preventDefault();e.stopPropagation();
   if(S.userProfile){show('fit')}else{openFitCardModal()}
