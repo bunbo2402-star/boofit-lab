@@ -1180,7 +1180,7 @@ function sendOtpCode() {
 }
 
 // ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
-async function submitFitCard(event) {
+function submitFitCard(event) {
   event.preventDefault();
   const cv = $('#userContact').value.trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g, ''))) { 
@@ -1193,17 +1193,25 @@ async function submitFitCard(event) {
     $('#userOtp').focus(); 
     return; 
   }
-  
+
+  // ===== SỬA TẠI ĐÂY =====
+  const contactVal = $('#userContact').value.trim();
+  const isEmail = contactVal.includes('@');
+
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
-    contact: $('#userContact').value,
+    email: isEmail ? contactVal : '',   // Tự động gán vào trường email nếu chứa @
+    phone: !isEmail ? contactVal : '',  // Tự động gán vào trường phone nếu là số
     store: $('#userStore').value,
     channel: $('#userChannel').value,
     styleVibe: S.resultVibe || 'Chưa làm quiz',
     marketingConsent: $('#consentCheck').checked,
     timestamp: new Date().toISOString()
   };
+  // ========================
+
   S.userProfile = profile;
+  // ...
 
   // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n (Thay URL bên dưới bằng Production URL từ n8n của nhóm)
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook-test/e2e66b4f-fde1-400e-9018-322dc4b5b663';
