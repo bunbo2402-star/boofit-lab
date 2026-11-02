@@ -1215,7 +1215,7 @@ async function submitFitCard(event) {
   S.userProfile = profile;
 
   // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n 
-  const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook-test/e2e66b4f-fde1-400e-9018-322dc4b5b663';
+  const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
   try {
     await fetch(N8N_WEBHOOK_URL, {
