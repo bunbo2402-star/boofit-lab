@@ -305,16 +305,16 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 
-<!-- ============ TRANG TỦ ĐỒ BOO (ĐÃ ĐIỀU CHỈNH HÀNG NÚT & THỨ TỰ BỘ LỌC) ============ -->
+<!-- ============ TRANG TỦ ĐỒ BOO ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv text-center max-w-2xl mx-auto">
       <span class="eyebrow">Bộ sưu tập thực tế</span>
       <h2 class="text-4xl sm:text-5xl font-bold mt-3">Tủ đồ BOO</h2>
-      <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc phong cách.</p>
+      <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc 8 nhãn dán phong cách.</p>
     </div>
 
-    <!-- Thanh bộ lọc cải tiến bố cục Hàng Giới tính & Thứ tự Style chính xác -->
+    <!-- Thanh bộ lọc giới tính & 8 nhãn dán phong cách -->
     <div class="mt-10 bg-sand/60 p-5 rounded-2xl border border-line flex flex-col gap-4 rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
         <span class="text-xs font-bold text-neutral-600 uppercase mr-2 shrink-0">Giới tính:</span>
@@ -325,17 +325,17 @@ article.lift{border-radius:1.75rem}
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-2" id="styleFilters">
-        <span class="text-xs font-bold text-neutral-600 uppercase mr-2 shrink-0">Style:</span>
+        <span class="text-xs font-bold text-neutral-600 uppercase mr-2 shrink-0">Nhãn dán (Tags):</span>
         <div class="flex flex-wrap items-center gap-2">
-          <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
-          <button class="chip" data-style="neutral" onclick="filterLookbook()">Neutral</button>
-          <button class="chip" data-style="comfy" onclick="filterLookbook()">Comfy</button>
-          <button class="chip" data-style="soft" onclick="filterLookbook()">Soft</button>
-          <button class="chip" data-style="street" onclick="filterLookbook()">Streetwear</button>
-          <button class="chip" data-style="y2k" onclick="filterLookbook()">Y2K</button>
-          <button class="chip" data-style="coquette" onclick="filterLookbook()">Coquette</button>
-          <button class="chip" data-style="cozy" onclick="filterLookbook()">Cozy</button>
-          <button class="chip" data-style="explorer" onclick="filterLookbook()">Explorer</button>
+          <button class="chip active" data-tag="all" onclick="filterLookbook()">Tất cả</button>
+          <button class="chip" data-tag="soft" onclick="filterLookbook()">#soft</button>
+          <button class="chip" data-tag="street" onclick="filterLookbook()">#street</button>
+          <button class="chip" data-tag="coquette" onclick="filterLookbook()">#coquette</button>
+          <button class="chip" data-tag="comfy" onclick="filterLookbook()">#comfy</button>
+          <button class="chip" data-tag="y2k" onclick="filterLookbook()">#y2k</button>
+          <button class="chip" data-tag="explorer" onclick="filterLookbook()">#explorer</button>
+          <button class="chip" data-tag="neutral" onclick="filterLookbook()">#neutral</button>
+          <button class="chip" data-tag="cozy" onclick="filterLookbook()">#cozy</button>
         </div>
       </div>
     </div>
@@ -375,7 +375,7 @@ article.lift{border-radius:1.75rem}
       <h2 id="resultTitle" class="text-3xl sm:text-5xl font-bold mt-5 leading-tight"></h2>
       <p id="resultNote" class="mt-4 text-lg text-neutral-600 max-w-2xl leading-relaxed"></p>
     </div>
-    <h3 class="text-2xl sm:text-3xl font-bold">Các set đồ gợi ý chuẩn vibe dành cho cậu</h3>
+    <h3 class="text-2xl sm:text-3xl font-bold">Các set đồ gợi ý (Sắp xếp theo độ % hợp gu từ cao đến thấp)</h3>
     <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-8"></div>
     <div class="mt-12"><button onclick="restartQuizExplicitly()" id="retake" class="btn btn-line">Làm lại quiz</button></div>
   </div>
@@ -458,7 +458,7 @@ article.lift{border-radius:1.75rem}
           </select>
         </div>
         <div>
-          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
+          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh mua sắm chính</label>
           <select id="userChannel" class="field">
             <option value="Zalo OA">Zalo OA</option>
             <option value="Email">Email</option>
@@ -511,17 +511,16 @@ article.lift{border-radius:1.75rem}
 </aside>
 
 <script>
-// DỮ LIỆU CÁC SETS: SET URBAN ĐÃ ĐỔI TÊN THÀNH "Set Streetwise Urban Explorer" VÀ CHUYỂN THUỘC TÍNH SANG STREETWEAR
+// DỮ LIỆU CÁC SETS THUỘC 6 GU CHÍNH VÀ 8 NHÃN DÁN (TAGS)
 const SETS=[
  {
    id:'soft',
    name:'Set Nơ Hồng Dịu Dàng',
    img:'images/outfit-2.png',
    tag:'Nhẹ nhàng · Nữ tính · Minimalist',
-   matchText:'100% Chuẩn Gu',
-   tags:['soft', 'coquette', 'Pastel_Hồng'],
+   tags:['soft', 'coquette'],
    gender:'female',
-   style:'soft',
+   style:'soft', // BayBOO Ngọt Ngào
    items:[
     {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
     {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
@@ -530,14 +529,27 @@ const SETS=[
    suggestions:['Giày mary jane đen', 'Vớ trắng cổ cao']
  },
  {
+   id:'coquette',
+   name:'Set Coquette Nơ Hồng Mộng Mơ',
+   img:'images/outfit-2.png',
+   tag:'Coquette · Nữ tính · Thướt tha',
+   tags:['coquette', 'soft'],
+   gender:'female',
+   style:'soft', // BayBOO Ngọt Ngào
+   items:[
+    {n:'Áo trễ vai thắt nơ ruy băng',p:410000,c:['Trắng','Hồng pastel']},
+    {n:'Chân váy voan tầng ngắn',p:390000,c:['Trắng']}
+   ],
+   suggestions:['Giày búp bê satin', 'Kẹp tóc nơ nhung lớn']
+ },
+ {
    id:'street',
    name:'Set Varsity Đỏ Đường Phố',
    img:'images/outfit-1.png',
    tag:'Streetwear · Oversized · Năng động',
-   matchText:'100% Chuẩn Gu',
-   tags:['street', 'comfy', 'Varsity_Oversize'],
+   tags:['street', 'comfy'],
    gender:'male',
-   style:'street',
+   style:'street', // Hop on da Street
    items:[
     {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
     {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
@@ -546,30 +558,27 @@ const SETS=[
    suggestions:['Giày sneaker trắng chunky', 'Mũ lưỡi trai đen basic']
  },
  {
-   id:'neutral',
-   name:'Set Neutral Thu Đông Boheme',
-   img:'images/outfit-3.jfif',
-   tag:'Minimalist · Tối giản · Cá tính',
-   matchText:'100% Chuẩn Gu',
-   tags:['neutral', 'cozy', 'Tone_Be_Trầm'],
+   id:'y2k',
+   name:'Set Y2K Cyber Graphic Tee',
+   img:'images/outfit-1.png',
+   tag:'Y2K · Phá cách · Layering',
+   tags:['y2k', 'street'],
    gender:'female',
-   style:'neutral',
+   style:'street', // Hop on da Street
    items:[
-    {n:'Áo tay dài loang màu tie-dye',p:399000,c:['Be','Xám']},
-    {n:'Quần short jean wash xám dây rút',p:429000,c:['Xám đậm']},
-    {n:'Túi đeo vai nâu da bóng',p:450000,c:['Nâu đậm']}
+    {n:'Áo croptop graphic pixel',p:350000,c:['Đen','Bạc']},
+    {n:'Quần jeans cạp trễ túi hộp',p:590000,c:['Xanh wash']}
    ],
-   suggestions:['Ủng cao cổ da nâu', 'Vớ cổ ngắn màu be']
+   suggestions:['Kính râm gọng bản lớn', 'Túi kẹp nách ánh kim']
  },
  {
    id:'explorer',
-   name:'Set Streetwise Urban Explorer', // Đã linh động đổi tên set hợp với Streetwear
+   name:'Set Streetwise Urban Explorer',
    img:'images/outfit-4.jfif',
    tag:'Streetwear · Utility · Bụi Bặm',
-   matchText:'100% Chuẩn Gu',
-   tags:['street', 'explorer', 'Cargo_Utility'], // Chuyển sang nhãn Streetwear
+   tags:['street', 'explorer'],
    gender:'male',
-   style:'street', // Đã chuyển style từ explorer sang street
+   style:'explorer', // Tắc Kè Xuống Phố
    items:[
     {n:'Áo sơ mi flannel kẻ sọc tối màu',p:499000,c:['Đen/Xám']},
     {n:'Áo thun trắng basic',p:250000,c:['Trắng']},
@@ -578,14 +587,28 @@ const SETS=[
    suggestions:['Mắt kính râm phi công (Aviator)', 'Giày cao cổ sneaker bản lớn']
  },
  {
+   id:'neutral',
+   name:'Set Neutral Thu Đông Boheme',
+   img:'images/outfit-3.jfif',
+   tag:'Minimalist · Tối giản · Cá tính',
+   tags:['neutral', 'cozy'],
+   gender:'female',
+   style:'neutral', // Basic Tối Giản
+   items:[
+    {n:'Áo tay dài loang màu tie-dye',p:399000,c:['Be','Xám']},
+    {n:'Quần short jean wash xám dây rút',p:429000,c:['Xám đậm']},
+    {n:'Túi đeo vai nâu da bóng',p:450000,c:['Nâu đậm']}
+   ],
+   suggestions:['Ủng cao cổ da nâu', 'Vớ cổ ngắn màu be']
+ },
+ {
    id:'comfy',
    name:'Set Comfy Slytherin Green',
    img:'images/outfit-5.png',
    tag:'Comfy · Active · Daily Wear',
-   matchText:'100% Chuẩn Gu',
-   tags:['comfy', 'cozy', 'Thun_Nỉ_Sporty'],
+   tags:['comfy', 'cozy'],
    gender:'male',
-   style:'comfy',
+   style:'comfy', // Bật mode Sporty
    items:[
     {n:'Áo nỉ sweatshirt xanh rêu Slytherin',p:550000,c:['Xanh rêu']},
     {n:'Quần jogger nỉ xám lông chuột',p:450000,c:['Xám']},
@@ -594,44 +617,13 @@ const SETS=[
    suggestions:['Giày thể thao sneaker xanh', 'Balo vải canvas năng động']
  },
  {
-   id:'y2k',
-   name:'Set Y2K Cyber Graphic Tee',
-   img:'images/outfit-1.png',
-   tag:'Y2K · Phá cách · Layering',
-   matchText:'100% Chuẩn Gu',
-   tags:['y2k', 'street', 'Pixel_Cyber'],
-   gender:'female',
-   style:'y2k',
-   items:[
-    {n:'Áo croptop graphic pixel',p:350000,c:['Đen','Bạc']},
-    {n:'Quần jeans cạp trễ túi hộp',p:590000,c:['Xanh wash']}
-   ],
-   suggestions:['Kính râm gọng bản lớn', 'Túi kẹp nách ánh kim']
- },
- {
-   id:'coquette',
-   name:'Set Coquette Nơ Hồng Mộng Mơ',
-   img:'images/outfit-2.png',
-   tag:'Coquette · Nữ tính · Thướt tha',
-   matchText:'100% Chuẩn Gu',
-   tags:['coquette', 'soft', 'Thắt_Nơ_RuyBăng'],
-   gender:'female',
-   style:'coquette',
-   items:[
-    {n:'Áo trễ vai thắt nơ ruy băng',p:410000,c:['Trắng','Hồng pastel']},
-    {n:'Chân váy voan tầng ngắn',p:390000,c:['Trắng']}
-   ],
-   suggestions:['Giày búp bê satin', 'Kẹp tóc nơ nhung lớn']
- },
- {
    id:'cozy',
    name:'Set Cozy Bông Xốp Ấm Áp',
    img:'images/outfit-3.jfif',
    tag:'Cozy · Len & Nỉ · Thu Đông Warm',
-   matchText:'100% Chuẩn Gu',
-   tags:['cozy', 'soft', 'Len_Dệt_Kim'],
+   tags:['cozy', 'soft'],
    gender:'female',
-   style:'cozy',
+   style:'cozy', // Gu Thu Đông
    items:[
     {n:'Áo cardigan len dệt kim lông xù',p:520000,c:['Be','Kem']},
     {n:'Chân váy dạ ngắn xếp ly',p:380000,c:['Nâu','Xám']},
@@ -644,10 +636,9 @@ const SETS=[
    name:'Set Cozy Sweater Nỉ Bông Thu Đông',
    img:'images/outfit-5.png',
    tag:'Cozy · Oversized · Ấm Áp',
-   matchText:'Hợp Gu 95%',
-   tags:['cozy', 'comfy', 'Sweater_Nỉ_Bông'],
+   tags:['cozy', 'comfy'],
    gender:'male',
-   style:'cozy',
+   style:'cozy', // Gu Thu Đông
    items:[
     {n:'Áo Sweater nỉ bông cổ tròn oversize',p:490000,c:['Rêu','Nâu đất']},
     {n:'Quần kaki form rộng lót nỉ ấm',p:580000,c:['Kem','Đen']},
@@ -657,7 +648,7 @@ const SETS=[
  }
 ];
 
-// MA TRẬN 13 CÂU HỎI MAPPING MULTI-VIBE
+// MA TRẬN 13 CÂU HỎI MAPPING MỚI (QUY VỀ 6 GU CHÍNH)
 const QS=[
  {
    text:'1. Cậu muốn chọn thời trang Nam hay Nữ?',
@@ -671,8 +662,8 @@ const QS=[
    opts:[
     {t:'Form rộng thoải mái', vibes:['comfy','cozy']},
     {t:'Form vừa vặn, gọn gàng', vibes:['neutral','soft']},
-    {t:'Form ôm sát tôn dáng', vibes:['coquette','y2k']},
-    {t:'Kết hợp: Áo ôm + Quần rộng (hoặc ngược lại)', vibes:['y2k','street']},
+    {t:'Form ôm sát tôn dáng', vibes:['soft','street']},
+    {t:'Kết hợp: Áo ôm + Quần rộng (hoặc ngược lại)', vibes:['street','explorer']},
     {t:'Tùy tâm trạng và từng dịp cụ thể', vibes:['explorer']}
    ]
  },
@@ -681,9 +672,9 @@ const QS=[
    opts:[
     {t:'Tối giản, thanh lịch, tinh tế', vibes:['neutral']},
     {t:'Năng động, cá tính, đường phố', vibes:['street']},
-    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibes:['coquette','soft']},
-    {t:'Quyến rũ, táo bạo, hiện đại', vibes:['y2k']},
-    {t:'Phá cách, phối layer nhiều kiểu', vibes:['explorer','y2k']},
+    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibes:['soft']},
+    {t:'Quyến rũ, táo bạo, hiện đại', vibes:['street']},
+    {t:'Phá cách, phối layer nhiều kiểu', vibes:['explorer']},
     {t:'Ấm áp, êm ái, thích đồ len nỉ / mùa đông', vibes:['cozy']}
    ]
  },
@@ -692,15 +683,15 @@ const QS=[
    opts:[
     {t:'Gam màu trung tính (Đen, trắng, xám, ghi)', vibes:['neutral','street']},
     {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibes:['cozy','explorer']},
-    {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibes:['soft','coquette']},
-    {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban, vàng)', vibes:['street','y2k']},
+    {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibes:['soft']},
+    {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban, vàng)', vibes:['street']},
     {t:'Phối ngẫu nhiên, không giới hạn màu sắc', vibes:['explorer']}
    ]
  },
  {
    text:'5. Chiều dài quần/chân váy cậu ưa chuộng nhất?',
    opts:[
-    {t:'Ngắn trên gối', vibes:['coquette','y2k']},
+    {t:'Ngắn trên gối', vibes:['soft','street']},
     {t:'Vừa chạm gối hoặc lửng', vibes:['comfy','neutral']},
     {t:'Dài chạm mắt cá / phủ gót', vibes:['street','explorer']},
     {t:'Linh hoạt thay đổi tùy kiểu dáng áo phối cùng', vibes:['explorer']}
@@ -712,9 +703,9 @@ const QS=[
     {t:'Cotton, thun co giãn (Thoáng mát, dễ vận động)', vibes:['comfy','street']},
     {t:'Linen, đũi, kaki (Nhẹ nhàng, mộc mạc, phóng khoáng)', vibes:['explorer']},
     {t:'Denim / Jean (Bền bỉ, bụi bặm, cá tính)', vibes:['street','explorer']},
-    {t:'Lụa, satin, ren mỏng (Mềm mại, sang trọng, nữ tính)', vibes:['soft','coquette']},
+    {t:'Lụa, satin, ren mỏng (Mềm mại, sang trọng, nữ tính)', vibes:['soft']},
     {t:'Len dệt kim, nỉ bông, lông xù (Ấm áp, êm ái)', vibes:['cozy']},
-    {t:'Da, vải bắt sáng hoặc phối khóa zip cá tính', vibes:['y2k']}
+    {t:'Da, vải bắt sáng hoặc phối khóa zip cá tính', vibes:['street']}
    ]
  },
  {
@@ -722,9 +713,9 @@ const QS=[
    opts:[
     {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibes:['neutral','street']},
     {t:'Áo sơ mi/Blazer + Quần tây ống rộng hoặc chân váy chữ A', vibes:['neutral','soft']},
-    {t:'Váy liền / Set bộ công sở nữ tính, chỉn chu', vibes:['coquette','soft']},
+    {t:'Váy liền / Set bộ công sở nữ tính, chỉn chu', vibes:['soft']},
     {t:'Set đồ thể thao / Sweater / Cardigan ấm áp', vibes:['comfy','cozy']},
-    {t:'Phối đồ tự do, biến hóa liên tục', vibes:['explorer','y2k']}
+    {t:'Phối đồ tự do, biến hóa liên tục', vibes:['explorer','street']}
    ]
  },
  {
@@ -732,10 +723,10 @@ const QS=[
    opts:[
     {t:'Vải trơn hoàn toàn, màu đơn sắc, không họa tiết', vibes:['neutral']},
     {t:'Họa tiết cơ bản (Sọc kẻ, caro, chấm bi)', vibes:['soft','neutral']},
-    {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren', vibes:['coquette']},
+    {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren', vibes:['soft']},
     {t:'Họa tiết in hình / Graphic tee', vibes:['street']},
     {t:'Bề mặt dệt gân, len lông xù, vải bông êm', vibes:['cozy']},
-    {t:'Điểm nhấn cắt xẻ, may rách, zip, túi hộp', vibes:['y2k','explorer']}
+    {t:'Điểm nhấn cắt xẻ, may rách, zip, túi hộp', vibes:['street','explorer']}
    ]
  },
  {
@@ -743,8 +734,8 @@ const QS=[
    opts:[
     {t:'Giày Sneaker / Giày thể thao năng động', vibes:['street','comfy']},
     {t:'Giày cao gót / Sandal thanh lịch', vibes:['soft','neutral']},
-    {t:'Giày Búp bê / Mary Jane', vibes:['coquette']},
-    {t:'Boots cổ ngắn / cổ cao / da bóng', vibes:['y2k','cozy']},
+    {t:'Giày Búp bê / Mary Jane', vibes:['soft']},
+    {t:'Boots cổ ngắn / cổ cao / da bóng', vibes:['cozy','explorer']},
     {t:'Dép / Guốc thoải mái', vibes:['comfy']}
    ]
  },
@@ -753,28 +744,28 @@ const QS=[
    opts:[
     {t:'Chỉ mua đồ cơ bản, mặc được nhiều năm', vibes:['neutral']},
     {t:'Sắm đồ theo mùa Thu Đông / Mùa Hè', vibes:['cozy','soft']},
-    {t:'Thường xuyên cập nhật trang phục theo trend mới nhất', vibes:['y2k','street']},
+    {t:'Thường xuyên cập nhật trang phục theo trend mới nhất', vibes:['street']},
     {t:'Thấy món nào lạ mắt, độc đáo là chốt ngay', vibes:['explorer']},
-    {t:'Ưu tiên săn đồ 2hand, vintage limited', vibes:['explorer','y2k']}
+    {t:'Ưu tiên săn đồ 2hand, vintage limited', vibes:['explorer']}
    ]
  },
  {
    text:'11. Cậu thấy tự tin nhất khi bộ trang phục mang lại cảm giác gì?',
    opts:[
-    {t:'Cảm giác thon gọn, nhẹ nhàng', vibes:['soft','coquette']},
+    {t:'Cảm giác thon gọn, nhẹ nhàng', vibes:['soft']},
     {t:'Cảm giác đầy đặn, vững chãi và cá tính hơn', vibes:['street','explorer']},
     {t:'Cảm giác thanh thoát, cao ráo, chỉn chu', vibes:['neutral']},
     {t:'Cảm giác ấm áp, êm ả, dễ chịu', vibes:['cozy','comfy']},
-    {t:'Cảm giác hoàn toàn tự do, nổi bật, biến hóa', vibes:['explorer','y2k']}
+    {t:'Cảm giác hoàn toàn tự do, nổi bật, biến hóa', vibes:['explorer']}
    ]
  },
  {
    text:'12. Khi đi chơi, hẹn hò hoặc dự tiệc cuối tuần, cậu thích ăn mặc ra sao?',
    opts:[
-    {t:'Váy liền điệu đàng, thướt tha, thắt nơ', vibes:['coquette']},
-    {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibes:['street','y2k']},
+    {t:'Váy liền điệu đàng, thướt tha, thắt nơ', vibes:['soft']},
+    {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibes:['street']},
     {t:'Áo thiết kế kiểu nhẹ nhàng + Quần ống rộng', vibes:['soft','neutral']},
-    {t:'Phong cách Sexy, ôm sát, boots cao', vibes:['y2k']},
+    {t:'Phong cách Sexy, ôm sát, boots cao', vibes:['street']},
     {t:'Phối cardigan/áo lông + quần short ngầu', vibes:['cozy','explorer']}
    ]
  },
@@ -783,8 +774,8 @@ const QS=[
    opts:[
     {t:'Chỉ trung thành với các trang phục an toàn, cơ bản', vibes:['neutral']},
     {t:'Thích sự an toàn nhưng thỉnh thoảng sẽ nhấn nhá chút phụ kiện', vibes:['soft','comfy']},
-    {t:'Thích cập nhật trend mới nhưng có chọn lọc', vibes:['cozy','coquette']},
-    {t:'Rất thích thử nghiệm phong cách mới lạ, độc đáo', vibes:['y2k','street']},
+    {t:'Thích cập nhật trend mới nhưng có chọn lọc', vibes:['cozy']},
+    {t:'Rất thích thử nghiệm phong cách mới lạ, độc đáo', vibes:['street']},
     {t:'Biến hóa liên tục, tùy thuộc vào nguồn cảm hứng mỗi ngày', vibes:['explorer']}
    ]
  }
@@ -792,7 +783,7 @@ const QS=[
 
 const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
-const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],resultVibe:null,cur:null,colors:{},userProfile:null};
+const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],resultVibe:null,cur:null,colors:{},userProfile:null,vibeScores:{}};
 
 const BEHAVIOR_SCORES = {
   view_lookbook: 5,
@@ -913,7 +904,7 @@ function renderWeekSchedule(){
     <div class="grid grid-cols-7 gap-2 mt-5">${cells}</div>`;
 }
 function resetLookbookFilters(){
-  document.querySelectorAll('#genderFilters .chip, #styleFilters .chip').forEach(c=>c.classList.toggle('active',c.dataset.gender==='all'||c.dataset.style==='all'));
+  document.querySelectorAll('#genderFilters .chip, #styleFilters .chip').forEach(c=>c.classList.toggle('active',c.dataset.gender==='all'||c.dataset.tag==='all'));
   renderFullLookbook();
 }
 
@@ -991,23 +982,50 @@ function renderQ() {
   $('#qBack').style.visibility = S.q ? 'visible' : 'hidden';
 }
 
+// BỘ 6 GU CHÍNH
+const VIBE_TITLES = {
+  soft: { name: 'BayBOO Ngọt Ngào', desc: 'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi. Ưu tiên chất liệu mềm mại, màu pastel và phom dáng dịu dàng.' },
+  street: { name: 'Hop on da Street', desc: 'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được. Chuẩn thần thái streetwear với phom oversized năng động.' },
+  neutral: { name: 'Basic Tối Giản', desc: 'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu. Sự kết hợp hoàn hảo giữa gam màu trung tính và phom dáng chỉn chu.' },
+  explorer: { name: 'Tắc Kè Xuống Phố', desc: 'Đa dạng style, biến hóa linh hoạt, bụi bặm và sẵn sàng cân mọi outfit. Không gò bó trong một khuôn mẫu cố định nào.' },
+  comfy: { name: 'Bật mode Sporty', desc: 'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động. Ưu tiên chất thun co giãn, đồ nỉ và sneakers cho ngày dài tự do.' },
+  cozy: { name: 'Gu Thu Đông', desc: 'Ấm áp, êm ái và mềm mại nhưng vẫn cực ngầu cho những ngày thu đông. Phối layer đỉnh cao với áo len dệt kim, sweater nỉ và phụ kiện bông.' }
+};
+
 function finishQuiz() {
   $('#qFill').style.width = '100%';
   $('#quizBox').classList.add('hidden');
   $('#quizDone').classList.remove('hidden');
   
-  const counts = {};
-  S.answers.forEach(v => { if (v) counts[v] = (counts[v] || 0) + 1; });
-  
+  const counts = { soft:0, street:0, neutral:0, explorer:0, comfy:0, cozy:0 };
+  let totalPoints = 0;
+
+  S.answers.forEach(v => {
+    if (!v) return;
+    if (counts[v] !== undefined) {
+      counts[v] += 1;
+      totalPoints += 1;
+    }
+  });
+
+  if (totalPoints === 0) totalPoints = 1;
+
+  const scoresPct = {};
+  Object.keys(counts).forEach(k => {
+    scoresPct[k] = Math.round((counts[k] / totalPoints) * 100);
+  });
+
   let bestVibe = 'soft', maxCount = -1;
-  Object.keys(counts).forEach(v => {
-    if (counts[v] > maxCount) {
-      maxCount = counts[v];
-      bestVibe = v;
+  Object.keys(counts).forEach(k => {
+    if (counts[k] > maxCount) {
+      maxCount = counts[k];
+      bestVibe = k;
     }
   });
 
   S.resultVibe = bestVibe;
+  S.vibeScores = scoresPct;
+
   if (!S.done) { 
     S.done = true; 
     addPts(30, 'Hoàn thành Style Quiz 13 câu chuẩn vibe'); 
@@ -1016,17 +1034,6 @@ function finishQuiz() {
   setTimeout(() => { renderOutfits(); show('outfit'); }, 900);
 }
 
-const VIBE_TITLES = {
-  soft: { name: 'BayBOO Ngọt Ngào', desc: 'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi. Ưu tiên chất liệu mềm mại, màu pastel và phom dáng dịu dàng.' },
-  street: { name: 'Hop on da Street', desc: 'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được. Chuẩn thần thái streetwear với phom oversized năng động.' },
-  neutral: { name: 'Basic nhưng không miss trend', desc: 'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu. Sự kết hợp hoàn hảo giữa gam màu trung tính và phom dáng chỉn chu.' },
-  explorer: { name: 'Tắc Kè Xuống Phố', desc: 'Đa dạng style, biến hóa linh hoạt, bụi bặm và sẵn sàng cân mọi outfit. Không gò bó trong một khuôn mẫu cố định nào.' },
-  comfy: { name: 'Bật mode Sporty', desc: 'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động. Ưu tiên chất thun co giãn, đồ nỉ và sneakers cho ngày dài tự do.' },
-  y2k: { name: 'Dân Chơi Pixel Y2K', desc: 'Phá cách, phối layer cực chất, mang đậm hơi thở futuristic 2000s. Nổi bật với croptop, cạp trễ và chi tiết ánh kim.' },
-  coquette: { name: 'Mộng mơ Coquette', desc: 'Ngọt ngào, đài các, thắt nơ ruy băng đầy lãng mạn và nữ tính. Điểm nhấn là ren, xếp nhún và phụ kiện xinh xắn.' },
-  cozy: { name: 'Gu Thu Đông – Ấm Cực Kỳ', desc: 'Ấm áp, êm ái và mềm mại nhưng vẫn cực ngầu cho những ngày thu đông. Phối layer đỉnh cao với áo len dệt kim, sweater nỉ và phụ kiện bông.' }
-};
-
 function renderOutfits() {
   const vibe = S.resultVibe || 'soft';
   const info = VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
@@ -1034,21 +1041,29 @@ function renderOutfits() {
   $('#resultTitle').textContent = `Gu của cậu là: "${info.name}"`;
   $('#resultNote').textContent = `${info.desc}`;
   
-  const filteredSets = SETS.filter(s => s.style === vibe && (!S.gender || s.gender === S.gender));
-  const displaySets = filteredSets.length > 0 ? filteredSets : SETS.filter(s => s.style === vibe);
+  let matchedSets = SETS.map(s => {
+    const matchPct = S.vibeScores[s.style] || 40;
+    return { ...s, matchPct };
+  });
 
-  $('#outfitList').innerHTML = displaySets.map((s, i) => `
+  if (S.gender) {
+    matchedSets = matchedSets.filter(s => s.gender === S.gender);
+  }
+
+  matchedSets.sort((a, b) => b.matchPct - a.matchPct);
+
+  $('#outfitList').innerHTML = matchedSets.map((s) => `
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift flex flex-col justify-between">
       <div>
         <div class="bg-sand relative">
           <img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain">
           <span class="absolute top-4 left-4 bg-ink text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-md">
-            ${s.matchText || '100% Chuẩn Gu'}
+            Độ hợp: ${s.matchPct}% Chuẩn Gu
           </span>
         </div>
         <div class="p-5">
           <div class="flex flex-wrap gap-2 mb-3">
-            ${(s.tags || [vibe, 'BOO_Lab', 'Trendy']).map(t => `
+            ${(s.tags || [s.style]).map(t => `
               <span class="inline-block border border-line bg-paper text-neutral-700 text-[11px] font-bold px-2.5 py-1 rounded-lg">
                 #${t}
               </span>
@@ -1163,7 +1178,8 @@ function sendOtpCode() {
   $('#userOtp').value = '123456';
 }
 
-function submitFitCard(event) {
+// ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
+async function submitFitCard(event) {
   event.preventDefault();
   const cv = $('#userContact').value.trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g, ''))) { 
@@ -1176,16 +1192,31 @@ function submitFitCard(event) {
     $('#userOtp').focus(); 
     return; 
   }
+  
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
     contact: $('#userContact').value,
     store: $('#userStore').value,
     channel: $('#userChannel').value,
+    styleVibe: S.resultVibe || 'Chưa làm quiz',
     marketingConsent: $('#consentCheck').checked,
     timestamp: new Date().toISOString()
   };
   S.userProfile = profile;
+
+  // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n (Thay URL bên dưới bằng Production URL từ n8n của nhóm)
+  const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
+  try {
+    await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(profile)
+    });
+  } catch (err) {
+    console.error('Lỗi kết nối n8n webhook:', err);
+  }
+
   const pend = SETS.find(x => x.id === S.pendingSave); 
   S.pendingSave = null;
   if (pend && !S.saved.some(x => x.id === pend.id)) {
@@ -1198,7 +1229,7 @@ function submitFitCard(event) {
   }
 
   closeFitCardModal();
-  toast('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB của cậu đã được tạo.');
+  toast('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB đã lưu thông tin.');
   show('fit');
 }
 
@@ -1222,12 +1253,12 @@ function filterLookbook() {
 
 function renderFullLookbook() {
   const gender = document.querySelector('#genderFilters .chip.active')?.dataset.gender || 'all';
-  const style = document.querySelector('#styleFilters .chip.active')?.dataset.style || 'all';
+  const tag = document.querySelector('#styleFilters .chip.active')?.dataset.tag || 'all';
 
   const filtered = SETS.filter(s => {
     const matchGender = (gender === 'all' || s.gender === gender);
-    const matchStyle = (style === 'all' || s.style === style);
-    return matchGender && matchStyle;
+    const matchTag = (tag === 'all' || (s.tags && s.tags.includes(tag)));
+    return matchGender && matchTag;
   });
 
   const grid = $('#fullLookbookGrid');
