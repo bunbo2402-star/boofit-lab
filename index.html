@@ -1148,9 +1148,19 @@ function sendOtpCode() {
 
 function submitFitCard(event) {
   event.preventDefault();
-  const cv=$('#userContact').value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv)&&!/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g,''))){toast('Email hoặc số điện thoại chưa đúng định dạng.');$('#userContact').focus();return;}
-  if(!S.otp||$('#userOtp').value.trim()!==S.otp){toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.');$('#userOtp').focus();return;}
+  const cv = $('#userContact').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g,''))){
+    toast('Email hoặc số điện thoại chưa đúng định dạng.');
+    $('#userContact').focus();
+    return;
+  }
+  if(!S.otp || $('#userOtp').value.trim() !== S.otp){
+    toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.');
+    $('#userOtp').focus();
+    return;
+  }
+
+  // Gom dữ liệu từ form của người dùng
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
     contact: $('#userContact').value,
@@ -1160,15 +1170,30 @@ function submitFitCard(event) {
     timestamp: new Date().toISOString()
   };
   S.userProfile = profile;
-  
-  const pend=SETS.find(x=>x.id===S.pendingSave);S.pendingSave=null;
-  if(pend && !S.saved.some(x=>x.id===pend.id)){
-    const s=pend;
-    S.saved.push({id:s.id,name:s.name,img:s.img,colors:S.colors[s.id]?[...S.colors[s.id]]:s.items.map(i=>i.c[0])});
-    addPts(20,'Tạo tài khoản & Lưu set vào FIT CARD');
+
+  // ===== BẮN DỮ LIỆU SANG N8N WEBHOOK =====
+  try {
+    fetch('https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(profile)
+    }).catch(err => console.error('Lỗi gửi webhook:', err));
+  } catch (error) {
+    console.error('Network error:', error);
+  }
+  // =======================================
+
+  const pend = SETS.find(x => x.id === S.pendingSave);
+  S.pendingSave = null;
+  if(pend && !S.saved.some(x => x.id === pend.id)){
+    const s = pend;
+    S.saved.push({id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i=>i.c[0])});
+    addPts(20, 'Tạo tài khoản & Lưu set vào FIT CARD');
     updCount();
   } else {
-    addPts(20,'Đăng ký tài khoản FIT LAB thành công');
+    addPts(20, 'Đăng ký tài khoản FIT LAB thành công');
   }
 
   closeFitCardModal();
