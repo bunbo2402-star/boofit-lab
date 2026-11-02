@@ -1197,16 +1197,19 @@ async function submitFitCard(event) {
 
   const isEmail = contactVal.includes('@');
 
-  const profile = {
-    displayName: $('#userName').value || 'Thành viên FIT LAB',
-    email: isEmail ? contactVal : '',   // Tự động gán vào trường email nếu chứa @
-    phone: !isEmail ? contactVal : '',  // Tự động gán vào trường phone nếu là số
-    store: $('#userStore').value,
-    channel: $('#userChannel').value,
-    styleVibe: S.resultVibe || 'Chưa làm quiz',
-    marketingConsent: $('#consentCheck').checked,
-    timestamp: new Date().toISOString()
-  };
+  const cleanPhone = !isEmail ? contactVal.replace(/[\s.-]/g, '') : '';
+    const finalEmail = isEmail ? contactVal : `${cleanPhone}@fitlab.boo`;
+
+    const profile = {
+      displayName: $('#userName').value || 'Thành viên FIT LAB',
+      email: finalEmail,          // Tự động tạo email giả định nếu người dùng nhập SĐT để HubSpot không bị lỗi undefined
+      phone: cleanPhone,          // Lưu số điện thoại thật vào đây
+      store: $('#userStore').value,
+      channel: $('#userChannel').value,
+      styleVibe: S.resultVibe || 'Chưa làm quiz',
+      marketingConsent: $('#consentCheck').checked,
+      timestamp: new Date().toISOString()
+    };
 
   S.userProfile = profile;
 
