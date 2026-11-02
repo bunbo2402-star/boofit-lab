@@ -50,7 +50,7 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 .opt{background:#fff;border:1px solid #E7E4DD;border-radius:18px;padding:1.1rem 1.3rem;text-align:left;font-weight:500;line-height:1.5;cursor:pointer;
  transition:transform .3s var(--ease),border-color .25s,box-shadow .3s,background .25s}
 .opt:hover{border-color:#2E6BD6;background:#F5F8FE;transform:translateX(6px);box-shadow:0 8px 24px -14px rgba(46,107,214,.5)}
-.chip{border:1px solid #D9D5CC;border-radius:999px;padding:.3rem .85rem;font-size:.82rem;font-weight:500;cursor:pointer;background:#fff;transition:all .25s}
+.chip{border:1px solid #D9D5CC;border-radius:999px;padding:.35rem 1rem;font-size:.82rem;font-weight:500;cursor:pointer;background:#fff;transition:all .25s;white-space:nowrap}
 .chip:hover{border-color:#1A1D21}
 .chip[aria-pressed=true], .chip.active{background:#1A1D21;color:#fff;border-color:#1A1D21}
 .field{width:100%;border:1px solid #E1DED6;border-radius:14px;background:#FAFAF8;padding:.7rem .9rem;font-size:.9rem;transition:border-color .25s,box-shadow .25s,background .25s}
@@ -81,7 +81,6 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}
 .act span.font-bold{display:block;line-height:1.35}
 .lift img{transition:transform .9s var(--ease)}.lift:hover img{transform:scale(1.035)}
 article.lift{border-radius:1.75rem}
-.chip{padding:.4rem 1rem}
 #lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
 
@@ -315,23 +314,27 @@ article.lift{border-radius:1.75rem}
       <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc phong cách.</p>
     </div>
 
-    <!-- Thanh bộ lọc -->
-    <div class="mt-10 bg-sand/60 p-4 rounded-2xl border border-line flex flex-col md:flex-row gap-4 justify-between items-center rv">
+    <!-- Thanh bộ lọc 6 gu -->
+    <div class="mt-10 bg-sand/60 p-5 rounded-2xl border border-line flex flex-col gap-4 rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
-        <span class="text-xs font-bold text-neutral-600 uppercase mr-2">Giới tính:</span>
-        <button class="chip active" data-gender="all" onclick="filterLookbook()">Tất cả</button>
-        <button class="chip" data-gender="male" onclick="filterLookbook()">Nam</button>
-        <button class="chip" data-gender="female" onclick="filterLookbook()">Nữ</button>
+        <span class="text-xs font-bold text-neutral-600 uppercase mr-2 shrink-0">Giới tính:</span>
+        <div class="flex items-center gap-2">
+          <button class="chip active" data-gender="all" onclick="filterLookbook()">Tất cả</button>
+          <button class="chip" data-gender="male" onclick="filterLookbook()">Nam</button>
+          <button class="chip" data-gender="female" onclick="filterLookbook()">Nữ</button>
+        </div>
       </div>
       <div class="flex flex-wrap items-center gap-2" id="styleFilters">
-        <span class="text-xs font-bold text-neutral-600 uppercase mr-2">Style:</span>
-        <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
-        <button class="chip" data-style="soft" onclick="filterLookbook()">BayBOO Ngọt Ngào</button>
-        <button class="chip" data-style="street" onclick="filterLookbook()">Hop on da Street</button>
-        <button class="chip" data-style="neutral" onclick="filterLookbook()">Basic Tối Giản</button>
-        <button class="chip" data-style="explorer" onclick="filterLookbook()">Tắc Kè Xuống Phố</button>
-        <button class="chip" data-style="comfy" onclick="filterLookbook()">Bật mode Sporty</button>
-        <button class="chip" data-style="cozy" onclick="filterLookbook()">Gu Thu Đông</button>
+        <span class="text-xs font-bold text-neutral-600 uppercase mr-2 shrink-0">Style:</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="chip active" data-style="all" onclick="filterLookbook()">Tất cả</button>
+          <button class="chip" data-style="soft" onclick="filterLookbook()">BayBOO Ngọt Ngào</button>
+          <button class="chip" data-style="street" onclick="filterLookbook()">Hop on da Street</button>
+          <button class="chip" data-style="neutral" onclick="filterLookbook()">Basic Tối Giản</button>
+          <button class="chip" data-style="explorer" onclick="filterLookbook()">Tắc Kè Xuống Phố</button>
+          <button class="chip" data-style="comfy" onclick="filterLookbook()">Bật mode Sporty</button>
+          <button class="chip" data-style="cozy" onclick="filterLookbook()">Gu Thu Đông</button>
+        </div>
       </div>
     </div>
 
@@ -344,9 +347,9 @@ article.lift{border-radius:1.75rem}
 <section id="v-quiz" class="view">
   <div class="max-w-2xl mx-auto px-5 py-16 sm:py-24 min-h-[75vh]">
     <div id="quizIntro" class="text-center py-10">
-      <span class="eyebrow">Style Quiz Đa Nhãn</span>
+      <span class="eyebrow">Style Quiz</span>
       <h2 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight">Gu của cậu là gì?</h2>
-      <p class="mt-5 text-lg text-neutral-600">Bộ 13 câu hỏi bóc tách phong cách multi-mapping. Cậu hãy chọn đáp án gần nhất để nhận chỉ số % hợp gu cực chuẩn nha.</p>
+      <p class="mt-5 text-lg text-neutral-600">Bộ 13 câu hỏi cực kỳ chi tiết. Cậu hãy làm để chọn đúng gu và nhận gợi ý set đồ chuẩn vibe nhất nha.</p>
       <button id="startQuiz" class="btn btn-ink mt-10 text-base">Bắt đầu ngay</button>
     </div>
     <div id="quizBox" class="hidden">
@@ -357,7 +360,7 @@ article.lift{border-radius:1.75rem}
     </div>
     <div id="quizDone" class="hidden text-center py-24">
       <div class="mx-auto h-10 w-10 rounded-full border-4 border-line border-t-accent animate-spin"></div>
-      <p class="text-2xl font-semibold mt-6">BOO FIT LAB đang bóc tách phần trăm hợp gu của cậu…</p>
+      <p class="text-2xl font-semibold mt-6">Chúng tớ đang bóc tách chỉ số phong cách và gọi tên Gu của cậu…</p>
     </div>
   </div>
 </section>
@@ -366,20 +369,13 @@ article.lift{border-radius:1.75rem}
 <section id="v-outfit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <div class="rounded-[2rem] p-8 sm:p-14 mb-14 bg-gradient-to-br from-sky via-white to-mint border border-line shadow-sm">
-      <span class="inline-block bg-ink text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">Kết quả Style Quiz 6 Gu</span>
+      <span class="inline-block bg-ink text-white text-xs font-semibold px-3.5 py-1.5 rounded-full">Kết quả Style Quiz của cậu</span>
       <h2 id="resultTitle" class="text-3xl sm:text-5xl font-bold mt-5 leading-tight"></h2>
       <p id="resultNote" class="mt-4 text-lg text-neutral-600 max-w-2xl leading-relaxed"></p>
-
-      <!-- KHU VỰC HIỂN THỊ CHỈ SỐ % HỢP GU CỤ THỂ -->
-      <div class="mt-8 pt-8 border-t border-line/80">
-        <h4 class="text-sm font-bold uppercase tracking-widest text-neutral-600 mb-4">Phân tích mức độ hợp gu của cậu:</h4>
-        <div id="vibeBreakdown" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-      </div>
     </div>
-
     <h3 class="text-2xl sm:text-3xl font-bold">Các set đồ gợi ý (Sắp xếp theo độ % hợp gu từ cao đến thấp)</h3>
     <div id="outfitList" class="grid md:grid-cols-2 gap-8 mt-8"></div>
-    <div class="mt-12"><button data-go="quiz" id="retake" class="btn btn-line">Làm lại quiz</button></div>
+    <div class="mt-12"><button onclick="restartQuizExplicitly()" id="retake" class="btn btn-line">Làm lại quiz</button></div>
   </div>
 </section>
 
@@ -452,17 +448,16 @@ article.lift{border-radius:1.75rem}
       </div>
       <div class="grid grid-cols-2 gap-3 pt-1">
         <div>
-          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh mua sắm chính</label>
-          <select id="userChannel" class="field">
-            <option value="TikTok Shop">TikTok Shop</option>
-            <option value="Shopee">Shopee</option>
-            <option value="Website BOO">Website BOO</option>
-            <option value="Cửa hàng vật lý">Cửa hàng vật lý</option>
+          <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
+          <select id="userStore" class="field">
+            <option value="Online">Chỉ mua online</option>
+            <option value="BOO Q1">BOO Quận 1</option>
+            <option value="BOO Thu Duc">BOO Thủ Đức</option>
           </select>
         </div>
         <div>
-          <label for="userNoticeChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh nhận ưu đãi</label>
-          <select id="userNoticeChannel" class="field">
+          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận ưu đãi</label>
+          <select id="userChannel" class="field">
             <option value="Zalo OA">Zalo OA</option>
             <option value="Email">Email</option>
             <option value="SMS">SMS</option>
@@ -514,15 +509,16 @@ article.lift{border-radius:1.75rem}
 </aside>
 
 <script>
-// DỮ LIỆU CÁC SET OUTFIT VỚI 6 GU CHÍNH (GOM TỪ 8 GU CŨ)
+// DỮ LIỆU CÁC SETS ĐÃ GOM VỀ 6 GU CHÍNH (VẪN GIỮ ĐẦY ĐỦ NHÃN DÁN VÀ CHI TIẾT)
 const SETS=[
  {
    id:'soft',
    name:'Set Nơ Hồng Dịu Dàng',
    img:'images/outfit-2.png',
    tag:'Nhẹ nhàng · Nữ tính · Minimalist',
+   tags:['soft', 'coquette', 'Pastel_Hồng'],
    gender:'female',
-   style:'soft', // BayBOO Ngọt Ngào (Gom soft & coquette)
+   style:'soft', // BayBOO Ngọt Ngào
    items:[
     {n:'Áo sweatshirt trắng in nơ',p:429000,c:['Trắng','Be nhạt']},
     {n:'Chân váy xếp ly caro hồng',p:389000,c:['Hồng','Xanh dương']},
@@ -535,8 +531,9 @@ const SETS=[
    name:'Set Coquette Nơ Hồng Mộng Mơ',
    img:'images/outfit-2.png',
    tag:'Coquette · Nữ tính · Thướt tha',
+   tags:['coquette', 'soft', 'Thắt_Nơ_RuyBăng'],
    gender:'female',
-   style:'soft', // Thuộc nhóm BayBOO Ngọt Ngào
+   style:'soft', // BayBOO Ngọt Ngào
    items:[
     {n:'Áo trễ vai thắt nơ ruy băng',p:410000,c:['Trắng','Hồng pastel']},
     {n:'Chân váy voan tầng ngắn',p:390000,c:['Trắng']}
@@ -548,8 +545,9 @@ const SETS=[
    name:'Set Varsity Đỏ Đường Phố',
    img:'images/outfit-1.png',
    tag:'Streetwear · Oversized · Năng động',
+   tags:['street', 'comfy', 'Varsity_Oversize'],
    gender:'male',
-   style:'street', // Hop on da Street (Gom street & y2k)
+   style:'street', // Hop on da Street
    items:[
     {n:'Áo khoác varsity',p:699000,c:['Đỏ/Be','Xanh dương/Trắng']},
     {n:'Áo sơ mi flannel',p:459000,c:['Xanh dương','Xanh lá']},
@@ -562,8 +560,9 @@ const SETS=[
    name:'Set Y2K Cyber Graphic Tee',
    img:'images/outfit-1.png',
    tag:'Y2K · Phá cách · Layering',
+   tags:['y2k', 'street', 'Pixel_Cyber'],
    gender:'female',
-   style:'street', // Thuộc nhóm Hop on da Street
+   style:'street', // Hop on da Street
    items:[
     {n:'Áo croptop graphic pixel',p:350000,c:['Đen','Bạc']},
     {n:'Quần jeans cạp trễ túi hộp',p:590000,c:['Xanh wash']}
@@ -574,7 +573,8 @@ const SETS=[
    id:'explorer',
    name:'Set Streetwise Urban Explorer',
    img:'images/outfit-4.jfif',
-   tag:'Streetwear · Utility · Phóng khoáng',
+   tag:'Streetwear · Utility · Bụi Bặm',
+   tags:['street', 'explorer', 'Cargo_Utility'],
    gender:'male',
    style:'explorer', // Tắc Kè Xuống Phố
    items:[
@@ -588,7 +588,8 @@ const SETS=[
    id:'neutral',
    name:'Set Neutral Thu Đông Boheme',
    img:'images/outfit-3.jfif',
-   tag:'Minimalist · Tối giản · Tinh tế',
+   tag:'Minimalist · Tối giản · Cá tính',
+   tags:['neutral', 'cozy', 'Tone_Be_Trầm'],
    gender:'female',
    style:'neutral', // Basic Tối Giản
    items:[
@@ -602,7 +603,8 @@ const SETS=[
    id:'comfy',
    name:'Set Comfy Slytherin Green',
    img:'images/outfit-5.png',
-   tag:'Comfy · Active · Sporty',
+   tag:'Comfy · Active · Daily Wear',
+   tags:['comfy', 'cozy', 'Thun_Nỉ_Sporty'],
    gender:'male',
    style:'comfy', // Bật mode Sporty
    items:[
@@ -617,6 +619,7 @@ const SETS=[
    name:'Set Cozy Bông Xốp Ấm Áp',
    img:'images/outfit-3.jfif',
    tag:'Cozy · Len & Nỉ · Thu Đông Warm',
+   tags:['cozy', 'soft', 'Len_Dệt_Kim'],
    gender:'female',
    style:'cozy', // Gu Thu Đông
    items:[
@@ -624,13 +627,14 @@ const SETS=[
     {n:'Chân váy dạ ngắn xếp ly',p:380000,c:['Nâu','Xám']},
     {n:'Vớ dệt kim cổ cao',p:99000,c:['Trắng kem']}
    ],
-   suggestions:['Giày boot cổ ngắn da lộn', 'Chụp tai lông xù']
+   suggestions:['Giày boot cổ ngắn da lộn', 'Mũ nồi dạ beret']
  },
  {
    id:'cozy_male',
    name:'Set Cozy Sweater Nỉ Bông Thu Đông',
    img:'images/outfit-5.png',
    tag:'Cozy · Oversized · Ấm Áp',
+   tags:['cozy', 'comfy', 'Sweater_Nỉ_Bông'],
    gender:'male',
    style:'cozy', // Gu Thu Đông
    items:[
@@ -642,7 +646,7 @@ const SETS=[
  }
 ];
 
-// MA TRẬN 13 CÂU HỎI MAPPING VỀ 6 GU CHÍNH
+// MA TRẬN 13 CÂU HỎI MAPPING MỚI (QUY VỀ 6 GU CHÍNH)
 const QS=[
  {
    text:'1. Cậu muốn chọn thời trang Nam hay Nữ?',
@@ -654,123 +658,123 @@ const QS=[
  {
    text:'2. Dáng áo/quần mà cậu cảm thấy thoải mái và tự tin nhất khi mặc?',
    opts:[
-    {t:'Form rộng thoải mái (Oversized)', vibe:['comfy','cozy']},
-    {t:'Form vừa vặn, gọn gàng chỉn chu', vibe:['neutral','soft']},
-    {t:'Form ôm sát tôn dáng quyến rũ', vibe:['soft','street']},
-    {t:'Phối ngẫu nhiên: Áo ôm + Quần rộng (hoặc ngược lại)', vibe:['street','explorer']},
-    {t:'Tùy tâm trạng và từng dịp cụ thể', vibe:['explorer']}
+    {t:'Form rộng thoải mái', vibes:['comfy','cozy']},
+    {t:'Form vừa vặn, gọn gàng', vibes:['neutral','soft']},
+    {t:'Form ôm sát tôn dáng', vibes:['soft','street']},
+    {t:'Kết hợp: Áo ôm + Quần rộng (hoặc ngược lại)', vibes:['street','explorer']},
+    {t:'Tùy tâm trạng và từng dịp cụ thể', vibes:['explorer']}
    ]
  },
  {
    text:'3. Phong cách thời trang thường ngày mà cậu hướng tới là gì?',
    opts:[
-    {t:'Tối giản, thanh lịch, tinh tế', vibe:['neutral']},
-    {t:'Năng động, cá tính, đường phố', vibe:['street']},
-    {t:'Bánh bèo, nữ tính, dịu dàng', vibe:['soft']},
-    {t:'Quyến rũ, táo bạo, hiện đại 2000s', vibe:['street']},
-    {t:'Phá cách, phối layer linh hoạt', vibe:['explorer']},
-    {t:'Ấm áp, êm ái, thích đồ nỉ/len mùa thu đông', vibe:['cozy']}
+    {t:'Tối giản, thanh lịch, tinh tế', vibes:['neutral']},
+    {t:'Năng động, cá tính, đường phố', vibes:['street']},
+    {t:'Bánh bèo, nữ tính, nhẹ nhàng', vibes:['soft']},
+    {t:'Quyến rũ, táo bạo, hiện đại', vibes:['street']},
+    {t:'Phá cách, phối layer nhiều kiểu', vibes:['explorer']},
+    {t:'Ấm áp, êm ái, thích đồ len nỉ / mùa đông', vibes:['cozy']}
    ]
  },
  {
    text:'4. Tông màu sắc chủ đạo mà cậu thích nhất trong tủ đồ của mình?',
    opts:[
-    {t:'Gam màu trung tính (Đen, trắng, xám, ghi)', vibe:['neutral','street']},
-    {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibe:['cozy','explorer']},
-    {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibe:['soft']},
-    {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban)', vibe:['street']},
-    {t:'Phối ngẫu nhiên, ngầu bụi hoặc ánh kim metallic', vibe:['explorer']}
+    {t:'Gam màu trung tính (Đen, trắng, xám, ghi)', vibes:['neutral','street']},
+    {t:'Gam màu đất & ấm (Nâu, be, kem, rêu)', vibes:['cozy','explorer']},
+    {t:'Gam màu Pastel ngọt ngào (Hồng nhạt, xanh baby, bơ)', vibes:['soft']},
+    {t:'Gam màu nổi bật, sặc sỡ (Đỏ, cam, xanh coban, vàng)', vibes:['street']},
+    {t:'Phối ngẫu nhiên, không giới hạn màu sắc', vibes:['explorer']}
    ]
  },
  {
    text:'5. Chiều dài quần/chân váy cậu ưa chuộng nhất?',
    opts:[
-    {t:'Ngắn trên gối năng động', vibe:['soft','street']},
-    {t:'Vừa chạm gối hoặc lửng thoải mái', vibe:['comfy','neutral']},
-    {t:'Dài chạm mắt cá / phủ gót cá tính', vibe:['street','explorer']},
-    {t:'Linh hoạt thay đổi tùy thuộc vào outfit phối cùng', vibe:['explorer']}
+    {t:'Ngắn trên gối', vibes:['soft','street']},
+    {t:'Vừa chạm gối hoặc lửng', vibes:['comfy','neutral']},
+    {t:'Dài chạm mắt cá / phủ gót', vibes:['street','explorer']},
+    {t:'Linh hoạt thay đổi tùy kiểu dáng áo phối cùng', vibes:['explorer']}
    ]
  },
  {
    text:'6. Chất liệu vải nào cậu thích ưu tiên sử dụng nhất?',
    opts:[
-    {t:'Cotton, thun co giãn (Thoáng mát, dễ vận động)', vibe:['comfy','street']},
-    {t:'Linen, đũi, kaki (Mộc mạc, phóng khoáng, utility)', vibe:['explorer']},
-    {t:'Denim / Jean wash (Bền bỉ, bụi bặm, cá tính)', vibe:['street','explorer']},
-    {t:'Lụa, satin, ren mỏng (Mềm mại, nữ tính)', vibe:['soft']},
-    {t:'Len dệt kim, nỉ bông, lông xù (Ấm áp, êm ái)', vibe:['cozy']},
-    {t:'Da bóng, chất liệu ánh kim bắt sáng', vibe:['street']}
+    {t:'Cotton, thun co giãn (Thoáng mát, dễ vận động)', vibes:['comfy','street']},
+    {t:'Linen, đũi, kaki (Nhẹ nhàng, mộc mạc, phóng khoáng)', vibes:['explorer']},
+    {t:'Denim / Jean (Bền bỉ, bụi bặm, cá tính)', vibes:['street','explorer']},
+    {t:'Lụa, satin, ren mỏng (Mềm mại, sang trọng, nữ tính)', vibes:['soft']},
+    {t:'Len dệt kim, nỉ bông, lông xù (Ấm áp, êm ái)', vibes:['cozy']},
+    {t:'Da, vải bắt sáng hoặc phối khóa zip cá tính', vibes:['street']}
    ]
  },
  {
    text:'7. Khi đi làm / đi học, outfit ưu tiên hàng đầu của cậu là gì?',
    opts:[
-    {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibe:['neutral','street']},
-    {t:'Áo sơ mi/Blazer + Quần tây ống rộng', vibe:['neutral','soft']},
-    {t:'Váy liền / Set bộ nữ tính chỉn chu', vibe:['soft']},
-    {t:'Set đồ thể thao / Sweater + Quần jogger', vibe:['comfy','cozy']},
-    {t:'Phối đồ tự do, layer phá cách theo cảm hứng', vibe:['explorer','street']}
+    {t:'Áo phông/Sơ mi + Quần jeans/kaki tối giản', vibes:['neutral','street']},
+    {t:'Áo sơ mi/Blazer + Quần tây ống rộng hoặc chân váy chữ A', vibes:['neutral','soft']},
+    {t:'Váy liền / Set bộ công sở nữ tính, chỉn chu', vibes:['soft']},
+    {t:'Set đồ thể thao / Sweater / Cardigan ấm áp', vibes:['comfy','cozy']},
+    {t:'Phối đồ tự do, biến hóa liên tục', vibes:['explorer','street']}
    ]
  },
  {
    text:'8. Chi tiết thiết kế trên áo nào thu hút cậu nhất?',
    opts:[
-    {t:'Vải trơn hoàn toàn, đơn sắc, không họa tiết', vibe:['neutral']},
-    {t:'Họa tiết cơ bản (Sọc kẻ, caro, tie-dye)', vibe:['soft','neutral']},
-    {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren mỏng', vibe:['soft']},
-    {t:'Họa tiết in hình / Graphic tee', vibe:['street']},
-    {t:'Bề mặt dệt gân, len lông xù, vải bông ấm', vibe:['cozy']},
-    {t:'Cắt xẻ, may rách, zip hoặc nhiều túi hộp', vibe:['street','explorer']}
+    {t:'Vải trơn hoàn toàn, màu đơn sắc, không họa tiết', vibes:['neutral']},
+    {t:'Họa tiết cơ bản (Sọc kẻ, caro, chấm bi)', vibes:['soft','neutral']},
+    {t:'Chi tiết thắt nơ ruy băng, bèo nhún hoặc ren', vibes:['soft']},
+    {t:'Họa tiết in hình / Graphic tee', vibes:['street']},
+    {t:'Bề mặt dệt gân, len lông xù, vải bông êm', vibes:['cozy']},
+    {t:'Điểm nhấn cắt xẻ, may rách, zip, túi hộp', vibes:['street','explorer']}
    ]
  },
  {
    text:'9. Loại giày cậu hay phối cùng set đồ nhất?',
    opts:[
-    {t:'Giày Sneaker / Giày thể thao năng động', vibe:['street','comfy']},
-    {t:'Giày cao gót / Sandal thanh lịch', vibe:['soft','neutral']},
-    {t:'Giày Búp bê / Mary Jane ngọt ngào', vibe:['soft']},
-    {t:'Boots da cổ cao / cổ ngắn cá tính', vibe:['cozy','explorer']},
-    {t:'Dép / Sandal thoải mái nhẹ nhàng', vibe:['comfy']}
+    {t:'Giày Sneaker / Giày thể thao năng động', vibes:['street','comfy']},
+    {t:'Giày cao gót / Sandal thanh lịch', vibes:['soft','neutral']},
+    {t:'Giày Búp bê / Mary Jane', vibes:['soft']},
+    {t:'Boots cổ ngắn / cổ cao / da bóng', vibes:['cozy','explorer']},
+    {t:'Dép / Guốc thoải mái', vibes:['comfy']}
    ]
  },
  {
    text:'10. Thói quen bổ sung trang phục mới vào tủ đồ của cậu như thế nào?',
    opts:[
-    {t:'Chỉ mua đồ cơ bản, mặc được nhiều năm không sợ lỗi mốt', vibe:['neutral']},
-    {t:'Sắm đồ theo mùa (Mùa Thu Đông, Mùa Hè)', vibe:['cozy','soft']},
-    {t:'Thường xuyên cập nhật trang phục theo trend mới nhất', vibe:['street']},
-    {t:'Thấy món nào lạ mắt, độc đáo là chốt ngay', vibe:['explorer']},
-    {t:'Ưu tiên săn đồ 2hand, vintage limited', vibe:['explorer']}
+    {t:'Chỉ mua đồ cơ bản, mặc được nhiều năm', vibes:['neutral']},
+    {t:'Sắm đồ theo mùa Thu Đông / Mùa Hè', vibes:['cozy','soft']},
+    {t:'Thường xuyên cập nhật trang phục theo trend mới nhất', vibes:['street']},
+    {t:'Thấy món nào lạ mắt, độc đáo là chốt ngay', vibes:['explorer']},
+    {t:'Ưu tiên săn đồ 2hand, vintage limited', vibes:['explorer']}
    ]
  },
  {
    text:'11. Cậu thấy tự tin nhất khi bộ trang phục mang lại cảm giác gì?',
    opts:[
-    {t:'Cảm giác thon gọn, nhẹ nhàng', vibe:['soft']},
-    {t:'Cảm giác đầy đặn, vững chãi và cá tính hơn', vibe:['street','explorer']},
-    {t:'Cảm giác thanh thoát, cao ráo, chỉn chu', vibe:['neutral']},
-    {t:'Cảm giác ấm áp, êm ả, dễ chịu', vibe:['cozy','comfy']},
-    {t:'Cảm giác hoàn toàn tự do, biến hóa nổi bật', vibe:['explorer']}
+    {t:'Cảm giác thon gọn, nhẹ nhàng', vibes:['soft']},
+    {t:'Cảm giác đầy đặn, vững chãi và cá tính hơn', vibes:['street','explorer']},
+    {t:'Cảm giác thanh thoát, cao ráo, chỉn chu', vibes:['neutral']},
+    {t:'Cảm giác ấm áp, êm ả, dễ chịu', vibes:['cozy','comfy']},
+    {t:'Cảm giác hoàn toàn tự do, nổi bật, biến hóa', vibes:['explorer']}
    ]
  },
  {
    text:'12. Khi đi chơi, hẹn hò hoặc dự tiệc cuối tuần, cậu thích ăn mặc ra sao?',
    opts:[
-    {t:'Váy liền điệu đàng, thướt tha mộng mơ', vibe:['soft']},
-    {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibe:['street']},
-    {t:'Áo thiết kế nhẹ nhàng + Quần ống rộng', vibe:['soft','neutral']},
-    {t:'Phong cách Sexy, ôm sát, táo bạo', vibe:['street']},
-    {t:'Phối cardigan/áo lông + boots da ngầu', vibe:['cozy','explorer']}
+    {t:'Váy liền điệu đàng, thướt tha, thắt nơ', vibes:['soft']},
+    {t:'Set đồ năng động: Croptop + Quần cạp cao/Chân váy', vibes:['street']},
+    {t:'Áo thiết kế kiểu nhẹ nhàng + Quần ống rộng', vibes:['soft','neutral']},
+    {t:'Phong cách Sexy, ôm sát, boots cao', vibes:['street']},
+    {t:'Phối cardigan/áo lông + quần short ngầu', vibes:['cozy','explorer']}
    ]
  },
  {
    text:'13. Mức độ sẵn sàng thử nghiệm các xu hướng phối đồ mới của cậu?',
    opts:[
-    {t:'Chỉ trung thành với các trang phục an toàn, cơ bản', vibe:['neutral']},
-    {t:'Thích sự an toàn nhưng thỉnh thoảng nhấn nhá chút phụ kiện', vibe:['soft','comfy']},
-    {t:'Thích cập nhật trend mới nhưng có chọn lọc', vibe:['cozy']},
-    {t:'Rất thích thử nghiệm phong cách mới lạ, độc đáo', vibe:['street']},
-    {t:'Biến hóa liên tục, không ngần ngại cân mọi thể loại outfit', vibe:['explorer']}
+    {t:'Chỉ trung thành với các trang phục an toàn, cơ bản', vibes:['neutral']},
+    {t:'Thích sự an toàn nhưng thỉnh thoảng sẽ nhấn nhá chút phụ kiện', vibes:['soft','comfy']},
+    {t:'Thích cập nhật trend mới nhưng có chọn lọc', vibes:['cozy']},
+    {t:'Rất thích thử nghiệm phong cách mới lạ, độc đáo', vibes:['street']},
+    {t:'Biến hóa liên tục, tùy thuộc vào nguồn cảm hứng mỗi ngày', vibes:['explorer']}
    ]
  }
 ];
@@ -901,91 +905,104 @@ function resetLookbookFilters(){
   document.querySelectorAll('#genderFilters .chip, #styleFilters .chip').forEach(c=>c.classList.toggle('active',c.dataset.gender==='all'||c.dataset.style==='all'));
   renderFullLookbook();
 }
-function show(v,scroll){
-  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
-  if(v==='lookbook') renderFullLookbook();
-  if(v==='schedule') renderWeekSchedule();
-  if(v==='fit') renderFit();
-  if(scroll){setTimeout(()=>document.getElementById(scroll)?.scrollIntoView(),30)}else window.scrollTo(0,0);
+
+function show(v, scroll) { 
+  document.querySelectorAll('.view').forEach(e => e.classList.toggle('on', e.id === 'v-' + v));
+  if (v === 'lookbook') renderFullLookbook();
+  if (v === 'schedule') renderWeekSchedule();
+  if (v === 'fit') renderFit();
+  if (scroll) {
+    setTimeout(() => document.getElementById(scroll)?.scrollIntoView(), 30);
+  } else {
+    window.scrollTo(0, 0);
+  }
 }
-document.addEventListener('click',e=>{
-  const a=e.target.closest('[data-go]');if(!a)return;
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-go]');
+  if (!a) return;
   e.preventDefault();
-  const v=a.dataset.go;
-  if(v==='quiz')resetQuizUI();
-  show(v,a.dataset.scroll);
+  let v = a.dataset.go;
+  
+  if (v === 'quiz') { 
+    if (S.done) { 
+      v = 'outfit'; 
+      renderOutfits(); 
+    } else { 
+      if (S.q === 0) resetQuizUI(); 
+    } 
+  }
+  show(v, a.dataset.scroll);
 });
 
-function resetQuizUI(){
-  if(S.done||S.q>0){S.q=0;S.answers=[];}
-  $('#quizIntro').classList.remove('hidden');$('#quizBox').classList.add('hidden');$('#quizDone').classList.add('hidden');
+function resetQuizUI() { 
+  S.q = 0; 
+  S.answers = []; 
+  $('#quizIntro').classList.remove('hidden');
+  $('#quizBox').classList.add('hidden');
+  $('#quizDone').classList.add('hidden');
 }
-$('#startQuiz').onclick=()=>{$('#quizIntro').classList.add('hidden');$('#quizBox').classList.remove('hidden');renderQ()};
-$('#qBack').onclick=()=>{if(S.q>0){S.q--;S.answers.pop();renderQ()}};
 
-function renderQ(){
-  const q=QS[S.q];
-  $('#qStep').textContent='Câu '+(S.q+1)+'/13';
-  $('#qFill').style.width=(S.q/13*100)+'%';$('#qBar').setAttribute('aria-valuenow',S.q);
-  $('#qText').textContent=q.text.replace(/^\d+\.\s*/,'');
-  $('#qOpts').innerHTML='';
-  q.opts.forEach(opt=>{
-    const b=document.createElement('button');b.className='opt';b.textContent=opt.t;
-    b.onclick=()=>{if(opt.g)S.gender=opt.g;S.answers.push(opt.vibe||null);S.q++;S.q<13?renderQ():finishQuiz()};
+function restartQuizExplicitly() {
+  S.done = false;
+  S.resultVibe = null;
+  resetQuizUI();
+  show('quiz');
+}
+
+$('#startQuiz').onclick = () => {
+  $('#quizIntro').classList.add('hidden');
+  $('#quizBox').classList.remove('hidden');
+  renderQ();
+};
+$('#qBack').onclick = () => { if (S.q > 0) { S.q--; S.answers.pop(); renderQ(); } };
+
+function renderQ() {
+  const q = QS[S.q];
+  $('#qStep').textContent = 'Câu ' + (S.q + 1) + '/13';
+  $('#qFill').style.width = (S.q / 13 * 100) + '%';
+  $('#qBar').setAttribute('aria-valuenow', S.q);
+  $('#qText').textContent = q.text.replace(/^\d+\.\s*/, '');
+  $('#qOpts').innerHTML = '';
+  q.opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = opt.t;
+    b.onclick = () => {
+      if (opt.g) S.gender = opt.g;
+      if (opt.vibes) S.answers.push(...opt.vibes);
+      else if (opt.vibe) S.answers.push(opt.vibe);
+      S.q++;
+      S.q < 13 ? renderQ() : finishQuiz();
+    };
     $('#qOpts').append(b);
   });
-  $('#qBack').style.visibility=S.q?'visible':'hidden';
+  $('#qBack').style.visibility = S.q ? 'visible' : 'hidden';
 }
 
-// BỘ 6 GU CHÍNH (GOM TỪ 8 GU CŨ)
+// BỘ 6 GU CHÍNH
 const VIBE_TITLES = {
-  soft: { 
-    name: 'BayBOO Ngọt Ngào', 
-    desc: 'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi. Ưu tiên chất liệu mềm mại, gam màu pastel và phom dáng thướt tha.' 
-  },
-  street: { 
-    name: 'Hop on da Street', 
-    desc: 'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được. Chuẩn thần thái streetwear năng động với phom oversized cá tính.' 
-  },
-  neutral: { 
-    name: 'Basic Tối Giản', 
-    desc: 'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu. Sự kết hợp hoàn hảo giữa các gam màu trung tính và đường cắt chỉn chu.' 
-  },
-  explorer: { 
-    name: 'Tắc Kè Xuống Phố', 
-    desc: 'Đa dạng style, biến hóa linh hoạt, bụi bặm và sẵn sàng cân mọi outfit. Không gò bó trong một khuôn mẫu cố định nào.' 
-  },
-  comfy: { 
-    name: 'Bật mode Sporty', 
-    desc: 'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động. Ưu tiên chất thun co giãn, đồ nỉ và sneakers cho ngày dài tự do.' 
-  },
-  cozy: { 
-    name: 'Gu Thu Đông', 
-    desc: 'Ấm áp, êm ái và mềm mại nhưng vẫn cực ngầu cho những ngày thu đông. Phối layer đỉnh cao với áo len dệt kim và sweater nỉ.' 
-  }
+  soft: { name: 'BayBOO Ngọt Ngào', desc: 'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi. Ưu tiên chất liệu mềm mại, màu pastel và phom dáng dịu dàng.' },
+  street: { name: 'Hop on da Street', desc: 'Cá tính, nổi bật, đậm chất đường phố và không lẫn vào đâu được. Chuẩn thần thái streetwear với phom oversized năng động.' },
+  neutral: { name: 'Basic Tối Giản', desc: 'Tinh tế, trầm ấm và tối giản nhưng cực kỳ có gu. Sự kết hợp hoàn hảo giữa gam màu trung tính và phom dáng chỉn chu.' },
+  explorer: { name: 'Tắc Kè Xuống Phố', desc: 'Đa dạng style, biến hóa linh hoạt, bụi bặm và sẵn sàng cân mọi outfit. Không gò bó trong một khuôn mẫu cố định nào.' },
+  comfy: { name: 'Bật mode Sporty', desc: 'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động. Ưu tiên chất thun co giãn, đồ nỉ và sneakers cho ngày dài tự do.' },
+  cozy: { name: 'Gu Thu Đông', desc: 'Ấm áp, êm ái và mềm mại nhưng vẫn cực ngầu cho những ngày thu đông. Phối layer đỉnh cao với áo len dệt kim, sweater nỉ và phụ kiện bông.' }
 };
 
-function finishQuiz(){
-  $('#qFill').style.width='100%';
-  $('#quizBox').classList.add('hidden');$('#quizDone').classList.remove('hidden');
+function finishQuiz() {
+  $('#qFill').style.width = '100%';
+  $('#quizBox').classList.add('hidden');
+  $('#quizDone').classList.remove('hidden');
   
   const counts = { soft:0, street:0, neutral:0, explorer:0, comfy:0, cozy:0 };
   let totalPoints = 0;
 
   S.answers.forEach(v => {
     if (!v) return;
-    if (Array.isArray(v)) {
-      v.forEach(tag => {
-        if (counts[tag] !== undefined) {
-          counts[tag] += 1;
-          totalPoints += 1;
-        }
-      });
-    } else if (typeof v === 'string') {
-      if (counts[v] !== undefined) {
-        counts[v] += 1;
-        totalPoints += 1;
-      }
+    if (counts[v] !== undefined) {
+      counts[v] += 1;
+      totalPoints += 1;
     }
   });
 
@@ -996,8 +1013,7 @@ function finishQuiz(){
     scoresPct[k] = Math.round((counts[k] / totalPoints) * 100);
   });
 
-  let bestVibe = 'soft';
-  let maxCount = -1;
+  let bestVibe = 'soft', maxCount = -1;
   Object.keys(counts).forEach(k => {
     if (counts[k] > maxCount) {
       maxCount = counts[k];
@@ -1008,182 +1024,188 @@ function finishQuiz(){
   S.resultVibe = bestVibe;
   S.vibeScores = scoresPct;
 
-  if (!S.done) {
-    S.done = true;
-    addPts(30, 'Hoàn thành Style Quiz 13 câu chuẩn vibe');
+  if (!S.done) { 
+    S.done = true; 
+    addPts(30, 'Hoàn thành Style Quiz 13 câu chuẩn vibe'); 
   }
   S.q = 0;
   setTimeout(() => { renderOutfits(); show('outfit'); }, 900);
 }
 
-function renderOutfits(){
+function renderOutfits() {
   const vibe = S.resultVibe || 'soft';
   const info = VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
   
-  const topPct = S.vibeScores[vibe] || 45;
-  $('#resultTitle').textContent = `Gu chính của cậu là: "${info.name}"`;
+  $('#resultTitle').textContent = `Gu của cậu là: "${info.name}"`;
   $('#resultNote').textContent = `${info.desc}`;
   
-  // Hiển thị bảng % các gu
-  const sortedVibes = Object.keys(S.vibeScores)
-    .sort((a,b) => S.vibeScores[b] - S.vibeScores[a]);
-
-  const breakdownBox = $('#vibeBreakdown');
-  if (breakdownBox) {
-    breakdownBox.innerHTML = sortedVibes.map(k => {
-      const vInfo = VIBE_TITLES[k];
-      const pct = S.vibeScores[k];
-      return `
-        <div class="bg-white p-3.5 rounded-2xl border border-line">
-          <div class="flex justify-between items-center text-xs font-bold mb-1.5">
-            <span class="text-neutral-800">${vInfo.name}</span>
-            <span class="text-accent">${pct}%</span>
-          </div>
-          <div class="h-2 rounded-full bg-sand overflow-hidden">
-            <div class="h-full bg-accent rounded-full transition-all duration-700" style="width:${pct}%"></div>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  // Lấy các set đồ phù hợp và tính độ hợp cho từng set dựa theo vibe của set đó
+  // Tính % hợp gu cho từng set đồ và sắp xếp từ cao xuống thấp
   let matchedSets = SETS.map(s => {
-    const matchPct = S.vibeScores[s.style] || 30;
+    const matchPct = S.vibeScores[s.style] || 40;
     return { ...s, matchPct };
   });
 
-  if(S.gender) {
+  if (S.gender) {
     matchedSets = matchedSets.filter(s => s.gender === S.gender);
   }
 
-  // Sắp xếp các set đồ theo % hợp gu từ cao xuống thấp
+  // Sắp xếp theo % hợp gu giảm dần
   matchedSets.sort((a, b) => b.matchPct - a.matchPct);
 
   $('#outfitList').innerHTML = matchedSets.map((s) => `
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift flex flex-col justify-between">
-      <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
-      <div class="p-5 flex-1 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-between items-center">
-            <span class="text-xs uppercase font-bold text-neutral-500">${s.gender === 'male' ? 'Thời trang Nam' : 'Thời trang Nữ'}</span>
-            <span class="inline-block bg-accent/10 text-accent font-bold text-xs px-2.5 py-1 rounded-full">Độ hợp: ${s.matchPct}%</span>
-          </div>
-          <h3 class="text-2xl font-bold mt-2">${s.name}</h3>
-          <p class="mt-1 text-sm text-neutral-600">${s.tag}</p>
-          <p class="mt-2 font-bold">Từ ${fmt(s.items.reduce((a,b)=>a+b.p,0))} cho các item chính</p>
+      <div>
+        <div class="bg-sand relative">
+          <img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain">
+          <span class="absolute top-4 left-4 bg-ink text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-md">
+            Độ hợp: ${s.matchPct}% Chuẩn Gu
+          </span>
         </div>
-        <button class="btn btn-ink mt-6 w-full" data-open="${s.id}">Xem chi tiết set đồ</button>
-      </div></article>`).join('');
+        <div class="p-5">
+          <div class="flex flex-wrap gap-2 mb-3">
+            {(s.tags || [s.style, 'BOO_Lab']).map(t => `
+              <span class="inline-block border border-line bg-paper text-neutral-700 text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                #${t}
+              </span>
+            `).join('')}
+          </div>
+          
+          <h3 class="text-2xl font-bold mt-1">${s.name}</h3>
+          <p class="mt-1 text-sm text-neutral-600">${s.tag}</p>
+          <p class="mt-3 font-bold text-accent">Từ ${fmt(s.items.reduce((a, b) => a + b.p, 0))} cho các item chính</p>
+        </div>
+      </div>
+      <div class="p-5 pt-0">
+        <button class="btn btn-ink w-full" data-open="${s.id}">Xem chi tiết set đồ</button>
+      </div>
+   </article>`).join('');
 }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openModal(b.dataset.open)});
 
-let lastFocus=null;
-function openModal(id){
-  const s=SETS.find(x=>x.id===id);S.cur=s;lastFocus=document.activeElement;
-  if(!S.colors[id])S.colors[id]=s.items.map(i=>i.c[0]);
-  $('#mImg').src=s.img;$('#mImg').alt=s.name;$('#mTitle').textContent=s.name;
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-open]');
+  if (b) openModal(b.dataset.open);
+});
+
+let lastFocus = null;
+function openModal(id) {
+  const s = SETS.find(x => x.id === id);
+  if (!s) return;
+  S.cur = s;
+  lastFocus = document.activeElement;
+  if (!S.colors[id]) S.colors[id] = s.items.map(i => i.c[0]);
+  $('#mImg').src = s.img;
+  $('#mImg').alt = s.name;
+  $('#mTitle').textContent = s.name;
   
-  $('#mItems').innerHTML=s.items.map((it,i)=>`<li class="border-b border-neutral-200 pb-3">
+  $('#mItems').innerHTML = s.items.map((it, i) => `<li class="border-b border-neutral-200 pb-3">
     <div class="flex justify-between gap-3 font-bold"><span>${it.n}</span><span>${fmt(it.p)}</span></div>
-    <div class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Màu cho ${it.n}">${it.c.map(c=>`<button class="chip" data-i="${i}" data-c="${c}" aria-pressed="${S.colors[id][i]===c}">${c}</button>`).join('')}</div></li>`).join('');
+    <div class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Màu cho ${it.n}">${it.c.map(c => `<button class="chip" data-i="${i}" data-c="${c}" aria-pressed="${S.colors[id][i] === c}">${c}</button>`).join('')}</div></li>`).join('');
 
-  if(s.suggestions && s.suggestions.length > 0) {
+  if (s.suggestions && s.suggestions.length > 0) {
     $('#mSuggestionsBox').classList.remove('hidden');
     $('#mSuggestionsList').innerHTML = s.suggestions.map(item => `<li>• ${item}</li>`).join('');
   } else {
     $('#mSuggestionsBox').classList.add('hidden');
   }
 
-  $('#mTotal').textContent=fmt(s.items.reduce((a,b)=>a+b.p,0));
+  $('#mTotal').textContent = fmt(s.items.reduce((a, b) => a + b.p, 0));
   refreshSave();
-  $('#modal').classList.remove('hidden');document.body.style.overflow='hidden';$('#mClose').focus();
-  if(!S.seen.has(id)){S.seen.add(id);addPts(10,'Xem chi tiết sản phẩm');}
+  $('#modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  $('#mClose').focus();
+  if (!S.seen.has(id)) { S.seen.add(id); addPts(10, 'Xem chi tiết sản phẩm'); }
 }
-function refreshSave(){const on=S.saved.some(x=>x.id===S.cur.id);$('#mSave').textContent=on?'Đã lưu trong FIT CARD':'Lưu vào FIT CARD';}
-$('#mItems').addEventListener('click',e=>{
-  const c=e.target.closest('.chip');if(!c)return;
-  S.colors[S.cur.id][+c.dataset.i]=c.dataset.c;
-  c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+
+function refreshSave() { 
+  const on = S.saved.some(x => x.id === S.cur.id); 
+  $('#mSave').textContent = on ? 'Đã lưu trong FIT CARD' : 'Lưu vào FIT CARD'; 
+}
+
+$('#mItems').addEventListener('click', e => {
+  const c = e.target.closest('.chip'); 
+  if (!c) return;
+  S.colors[S.cur.id][+c.dataset.i] = c.dataset.c;
+  c.parentElement.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c));
 });
 
-$('#mSave').onclick=()=>{
-  const s=S.cur;
-  if(S.saved.some(x=>x.id===s.id)){closeModal();show('fit');return;}
-  if(S.userProfile){S.saved.push({id:s.id,name:s.name,img:s.img,colors:[...S.colors[s.id]]});addPts(BEHAVIOR_SCORES.save_fitcard,'Lưu set vào FIT CARD');updCount();closeModal();toast('Đã lưu "'+s.name+'" vào FIT CARD');return;}
-  S.pendingSave=s.id;
+$('#mSave').onclick = () => {
+  const s = S.cur;
+  if (S.saved.some(x => x.id === s.id)) { closeModal(); show('fit'); return; }
+  if (S.userProfile) { 
+    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: [...S.colors[s.id]] }); 
+    addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD'); 
+    updCount(); 
+    closeModal(); 
+    toast('Đã lưu "' + s.name + '" vào FIT CARD'); 
+    return; 
+  }
+  S.pendingSave = s.id;
   closeModal();
   openFitCardModal();
 };
 
-function closeModal(){$('#modal').classList.add('hidden');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
-$('#mClose').onclick=closeModal;
-$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
-const updCount=()=>$('#fcCount').textContent=S.saved.length;
+function closeModal() { 
+  $('#modal').classList.add('hidden'); 
+  document.body.style.overflow = ''; 
+  lastFocus && lastFocus.focus(); 
+}
+
+$('#mClose').onclick = closeModal;
+$('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+const updCount = () => $('#fcCount').textContent = S.saved.length;
 
 function openFitCardModal() {
   $('#fitCardModal').classList.remove('hidden');
   $('#fitCardModal').classList.add('flex');
-  setTimeout(()=>$('#userName').focus(),30);
+  setTimeout(() => $('#userName').focus(), 30);
 }
+
 function closeFitCardModal() {
   $('#fitCardModal').classList.remove('flex');
   $('#fitCardModal').classList.add('hidden');
-  S.pendingSave=null;
+  S.pendingSave = null;
 }
 
 function sendOtpCode() {
   const contact = $('#userContact').value;
-  if(!contact) {
+  if (!contact) {
     toast('Vui lòng nhập email hoặc số điện thoại trước khi nhận mã OTP.');
     $('#userContact').focus();
     return;
   }
-  S.otp='123456';toast('Mã OTP demo đã gửi tới '+contact+' (mã: 123456)');
+  S.otp = '123456'; 
+  toast('Mã OTP demo đã gửi tới ' + contact + ' (mã: 123456)');
   $('#userOtp').value = '123456';
 }
 
 function submitFitCard(event) {
   event.preventDefault();
   const cv = $('#userContact').value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g,''))){
-    toast('Email hoặc số điện thoại chưa đúng định dạng.');
-    $('#userContact').focus();
-    return;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g, ''))) { 
+    toast('Email hoặc số điện thoại chưa đúng định dạng.'); 
+    $('#userContact').focus(); 
+    return; 
   }
-  if(!S.otp || $('#userOtp').value.trim() !== S.otp){
-    toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.');
-    $('#userOtp').focus();
-    return;
+  if (!S.otp || $('#userOtp').value.trim() !== S.otp) { 
+    toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.'); 
+    $('#userOtp').focus(); 
+    return; 
   }
-
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
     contact: $('#userContact').value,
+    store: $('#userStore').value,
     channel: $('#userChannel').value,
-    noticeChannel: $('#userNoticeChannel').value,
     marketingConsent: $('#consentCheck').checked,
     timestamp: new Date().toISOString()
   };
   S.userProfile = profile;
-
-  try {
-    fetch('https://boofitlab.app.n8n.cloud/webhook-test/e2e66b4f-fde1-400e-9018-322dc4b5b663', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(profile)
-    }).catch(err => console.error('Lỗi gửi webhook:', err));
-  } catch (error) {
-    console.error('Network error:', error);
-  }
-
-  const pend = SETS.find(x => x.id === S.pendingSave);
+  
+  const pend = SETS.find(x => x.id === S.pendingSave); 
   S.pendingSave = null;
-  if(pend && !S.saved.some(x => x.id === pend.id)){
+  if (pend && !S.saved.some(x => x.id === pend.id)) {
     const s = pend;
-    S.saved.push({id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i=>i.c[0])});
+    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i => i.c[0]) });
     addPts(20, 'Tạo tài khoản & Lưu set vào FIT CARD');
     updCount();
   } else {
@@ -1191,19 +1213,19 @@ function submitFitCard(event) {
   }
 
   closeFitCardModal();
-  toast('Xin chào '+profile.displayName+'! Tài khoản FIT LAB của cậu đã được tạo.');
+  toast('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB của cậu đã được tạo.');
   show('fit');
 }
 
 function quickSaveSet(id) {
   const s = SETS.find(x => x.id === id);
-  if(!s) return;
-  if(!S.userProfile) { S.pendingSave = s.id; openFitCardModal(); return; }
-  if(!S.saved.some(x => x.id === s.id)) {
-    S.saved.push({id: s.id, name: s.name, img: s.img, colors: s.items.map(i=>i.c[0])});
+  if (!s) return;
+  if (!S.userProfile) { S.pendingSave = s.id; openFitCardModal(); return; }
+  if (!S.saved.some(x => x.id === s.id)) {
+    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: s.items.map(i => i.c[0]) });
     addPts(15, 'Lưu nhanh vào FIT CARD');
     updCount();
-    toast('Đã lưu set "'+s.name+'" vào FIT CARD');
+    toast('Đã lưu set "' + s.name + '" vào FIT CARD');
   } else {
     toast('Set này đã có trong FIT CARD của cậu rồi nha.');
   }
@@ -1224,7 +1246,7 @@ function renderFullLookbook() {
   });
 
   const grid = $('#fullLookbookGrid');
-  if(filtered.length === 0) {
+  if (filtered.length === 0) {
     grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-600 font-medium">Chưa có set nào khớp bộ lọc này.<br><button class="btn btn-line mt-4" onclick="resetLookbookFilters()">Xoá bộ lọc</button></div>`;
     return;
   }
@@ -1247,7 +1269,7 @@ function renderFullLookbook() {
 
 document.addEventListener('click', e => {
   const btn = e.target.closest('#genderFilters .chip, #styleFilters .chip');
-  if(!btn) return;
+  if (!btn) return;
   btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
   renderFullLookbook();
@@ -1298,17 +1320,45 @@ function selectActivity(type) {
   `;
 }
 
-function renderFit(){
-  $('#fitGrid').innerHTML=S.saved.length?S.saved.map((s,i)=>`
-   <div class="rounded-2xl border border-line overflow-hidden bg-white shadow-sm lift">
-      <div class="bg-sand"><img src="${s.img||'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain"></div>
-      <div class="p-3"><p class="font-bold leading-tight">${s.name}</p>
-      <p class="text-sm mt-1 text-neutral-600">${Array.isArray(s.colors)?s.colors.join(' · '):''}</p>
-      <button class="underline text-sm mt-2 text-red-600 font-bold" data-rm="${i}">Xoá khỏi tủ</button></div></div>`).join('')
-    :`<div class="col-span-full rounded-2xl bg-mint p-8 text-center border border-line"><p class="font-bold text-lg">FIT CARD của cậu đang trống.</p><button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button></div>`;
+function renderFit() {
+  const container = $('#fitGrid');
+  if (!container) return;
+
+  if (S.saved && S.saved.length > 0) {
+    container.innerHTML = S.saved.map((s, i) => `
+      <div class="rounded-2xl border border-line overflow-hidden bg-white shadow-sm lift cursor-pointer" onclick="openModal('${s.id}')">
+        <div class="bg-sand">
+          <img src="${s.img || 'images/BOO.png'}" alt="${s.name}" class="w-full aspect-square object-contain">
+        </div>
+        <div class="p-3">
+          <p class="font-bold leading-tight text-ink">${s.name}</p>
+          <p class="text-xs mt-1 text-neutral-500">${Array.isArray(s.colors) ? s.colors.join(' · ') : ''}</p>
+          <div class="mt-3 flex items-center justify-between gap-2">
+            <button class="text-xs font-bold text-accent hover:underline" onclick="event.stopPropagation(); openModal('${s.id}')">Xem chi tiết</button>
+            <button class="text-xs font-bold text-red-600 hover:underline" data-rm="${i}" onclick="event.stopPropagation();">Xoá khỏi tủ</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } else {
+    container.innerHTML = `
+      <div class="col-span-full rounded-2xl bg-mint p-8 text-center border border-line">
+        <p class="font-bold text-lg text-ink">FIT CARD của cậu đang trống.</p>
+        <button data-go="quiz" class="btn btn-ink mt-4">Làm Style Quiz ngay</button>
+      </div>
+    `;
+  }
 }
 
-document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){S.saved.splice(+r.dataset.rm,1);updCount();renderFit()}});
+document.addEventListener('click', e => {
+  const r = e.target.closest('[data-rm]');
+  if (r) {
+    e.stopPropagation();
+    S.saved.splice(+r.dataset.rm, 1);
+    updCount();
+    renderFit();
+  }
+});
 </script>
 
 <script>
@@ -1319,27 +1369,43 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
+
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
+
 <script>
 (function(){
   var map={outfit:'quiz'};
-  function sync(){var on=document.querySelector('.view.on');if(!on)return;var k=on.id.slice(2);k=map[k]||k;
-    document.querySelectorAll('header .nav-link').forEach(function(a){a.classList.toggle('is-on',(a.dataset.go||a.dataset.nav)===k)})}
-  new MutationObserver(sync).observe(document.querySelector('main'),{attributes:true,subtree:true,attributeFilter:['class']});sync();
+  function sync(){
+    var on=document.querySelector('.view.on');
+    if(!on)return;
+    var k=on.id.slice(2);
+    k=map[k]||k;
+    document.querySelectorAll('header .nav-link').forEach(function(a){
+      a.classList.toggle('is-on',(a.dataset.go||a.dataset.nav)===k)
+    });
+  }
+  new MutationObserver(sync).observe(document.querySelector('main'),{attributes:true,subtree:true,attributeFilter:['class']});
+  sync();
 })();
 </script>
+
 <script>
 function fitCardNav(e){
-  e.preventDefault();e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
   if(S.userProfile){show('fit')}else{openFitCardModal()}
   return false;
 }
 (function(){
   var m=document.getElementById('fitCardModal');
   m.addEventListener('click',function(e){if(e.target===m)closeFitCardModal()});
-  document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(m.classList.contains('flex'))closeFitCardModal();else if(!$('#modal').classList.contains('hidden'))closeModal()});
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(m.classList.contains('flex'))closeFitCardModal();
+    else if(!$('#modal').classList.contains('hidden'))closeModal();
+  });
 })();
 </script>
 </body>
