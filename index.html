@@ -450,16 +450,15 @@ article.lift{border-radius:1.75rem}
       </div>
       <div class="grid grid-cols-2 gap-3 pt-1">
         <div>
-          <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cậu hay mua sản phẩm của BOO qua?</label>
+          <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cửa hàng BOO mà cậu hay ghé</label>
           <select id="userStore" class="field">
-            <option value="Online">Cửa hàng vật lý</option>
-            <option value="Online">Website BOO</option>
-            <option value="BOO Q1">Shopee</option>
-            <option value="BOO Thu Duc">Tiktok Shop</option>
+            <option value="Online">Chỉ mua online</option>
+            <option value="BOO Q1">BOO Quận 1</option>
+            <option value="BOO Thu Duc">BOO Thủ Đức</option>
           </select>
         </div>
         <div>
-          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh cậu muốn nhận thông tin ưu đãi</label>
+          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh mua sắm chính</label>
           <select id="userChannel" class="field">
             <option value="Zalo OA">Zalo OA</option>
             <option value="Email">Email</option>
@@ -1180,7 +1179,7 @@ function sendOtpCode() {
 }
 
 // ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
-function submitFitCard(event) {
+async function submitFitCard(event) {
   event.preventDefault();
   
   const contactVal = $('#userContact').value.trim();
@@ -1210,9 +1209,8 @@ function submitFitCard(event) {
   };
 
   S.userProfile = profile;
-  // ...
 
-  // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n (Thay URL bên dưới bằng Production URL từ n8n của nhóm)
+  // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n 
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook-test/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
   try {
@@ -1434,5 +1432,3 @@ function fitCardNav(e){
 </script>
 </body>
 </html>
-
-```
