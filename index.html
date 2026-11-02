@@ -1182,8 +1182,10 @@ function sendOtpCode() {
 // ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
 function submitFitCard(event) {
   event.preventDefault();
-  const cv = $('#userContact').value.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv) && !/^(\+?84|0)\d{9}$/.test(cv.replace(/[\s.-]/g, ''))) { 
+  
+  const contactVal = $('#userContact').value.trim();
+  
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactVal) && !/^(\+?84|0)\d{9}$/.test(contactVal.replace(/[\s.-]/g, ''))) { 
     toast('Email hoặc số điện thoại chưa đúng định dạng.'); 
     $('#userContact').focus(); 
     return; 
@@ -1194,8 +1196,6 @@ function submitFitCard(event) {
     return; 
   }
 
-  // ===== SỬA TẠI ĐÂY =====
-  const contactVal = $('#userContact').value.trim();
   const isEmail = contactVal.includes('@');
 
   const profile = {
@@ -1208,7 +1208,6 @@ function submitFitCard(event) {
     marketingConsent: $('#consentCheck').checked,
     timestamp: new Date().toISOString()
   };
-  // ========================
 
   S.userProfile = profile;
   // ...
