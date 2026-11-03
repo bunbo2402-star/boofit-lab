@@ -424,6 +424,25 @@ article.lift{border-radius:1.75rem}
 </div>
  
 <!-- MODAL TẠO TÀI KHOẢN FIT LAB -->
+<!-- MODAL MÃ THÀNH VIÊN (hiện sau khi đăng ký FIT CARD thành công) -->
+<div id="memberCodeModal" role="dialog" aria-modal="true" aria-labelledby="mcTitle" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-[60] p-4 overflow-y-auto">
+  <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto text-center">
+    <button onclick="closeMemberCodeModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">×</button>
+    <span class="eyebrow">Chào mừng đến BOO FIT LAB</span>
+    <h2 id="mcTitle" class="text-2xl font-bold mt-2">Chúc mừng <span id="mcName">cậu</span>!</h2>
+    <p class="text-sm text-neutral-500 mt-1">Đây là mã thành viên của cậu. Hãy đưa mã này khi đến FIT SPOT nhé.</p>
+    <div class="mt-6 bg-paper border border-dashed border-line rounded-2xl py-5 px-4">
+      <p class="text-[11px] font-semibold uppercase tracking-[.14em] text-neutral-500">Mã thành viên</p>
+      <p id="mcCode" class="mt-2 text-3xl font-bold tracking-widest select-all">BOO-XXXXXX</p>
+    </div>
+    <p class="text-xs text-neutral-500 mt-3">Chụp màn hình hoặc sao chép lại để không bị quên nha.</p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <button type="button" onclick="copyMemberCode()" class="btn btn-line flex-1">Sao chép mã</button>
+      <button type="button" onclick="closeMemberCodeModal()" class="btn btn-ink flex-1">Xem FIT CARD của tớ</button>
+    </div>
+  </div>
+</div>
+ 
 <div id="fitCardModal" role="dialog" aria-modal="true" aria-labelledby="fcTitle" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
     <button onclick="closeFitCardModal()" class="absolute top-4 right-4 h-9 w-9 rounded-full hover:bg-sand text-xl transition" aria-label="Đóng">×</button>
@@ -1208,6 +1227,43 @@ function sendOtpCode() {
 }
  
 // ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
+// ===== MÃ THÀNH VIÊN =====
+// Tạo 1 lần khi khách đăng ký, lưu localStorage để lần đăng ký sau dùng lại đúng mã.
+// Bỏ các ký tự dễ nhầm (0/O, 1/I) để nhân viên FIT SPOT đọc mã không sai.
+function getMemberCode() {
+  try {
+    const saved = localStorage.getItem('boo_member_code');
+    if (saved) return saved;
+  } catch (e) {}
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'BOO-';
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  try { localStorage.setItem('boo_member_code', code); } catch (e) {}
+  return code;
+}
+ 
+function showMemberCodeModal(code, name) {
+  $('#mcCode').textContent = code;
+  $('#mcName').textContent = name;
+  $('#memberCodeModal').classList.remove('hidden');
+  $('#memberCodeModal').classList.add('flex');
+}
+ 
+function closeMemberCodeModal() {
+  $('#memberCodeModal').classList.remove('flex');
+  $('#memberCodeModal').classList.add('hidden');
+}
+ 
+function copyMemberCode() {
+  const code = $('#mcCode').textContent;
+  const done = () => toast('Đã sao chép mã ' + code);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).then(done).catch(() => toast('Không sao chép được, cậu chụp màn hình giúp tớ nha.'));
+  } else {
+    toast('Không sao chép được, cậu chụp màn hình giúp tớ nha.');
+  }
+}
+ 
 async function submitFitCard(event) {
   event.preventDefault();
   
@@ -1252,6 +1308,7 @@ async function submitFitCard(event) {
     didQuiz: hasDoneQuiz ? 'TRUE' : 'FALSE',  // Trạng thái TRUE / FALSE dạng chuỗi cho dễ đồng bộ
     vibeName: currentVibeName,               // Tên Gu đề xuất cụ thể
     marketingConsent: $('#consentCheck').checked,
+    customerId: getMemberCode(),             // Mã thành viên BOO-XXXXXX (map sang property boo_customer_id trên HubSpot)
     timestamp: new Date().toISOString()
   };
  
@@ -1289,8 +1346,8 @@ async function submitFitCard(event) {
   }
  
   closeFitCardModal();
-  toast('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB đã lưu thông tin.');
   show('fit');
+  showMemberCodeModal(profile.customerId, profile.displayName);
 }
  
 function quickSaveSet(id) {
@@ -1477,9 +1534,13 @@ function fitCardNav(e){
 (function(){
   var m=document.getElementById('fitCardModal');
   m.addEventListener('click',function(e){if(e.target===m)closeFitCardModal()});
+  var mcm=document.getElementById('memberCodeModal');
+  mcm.addEventListener('click',function(e){if(e.target===mcm)closeMemberCodeModal()});
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
-    if(m.classList.contains('flex'))closeFitCardModal();
+    var mc=document.getElementById('memberCodeModal');
+    if(mc.classList.contains('flex'))closeMemberCodeModal();
+    else if(m.classList.contains('flex'))closeFitCardModal();
     else if(!$('#modal').classList.contains('hidden'))closeModal();
   });
 })();
