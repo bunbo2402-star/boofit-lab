@@ -22,7 +22,7 @@ h1,h2,h3{letter-spacing:-.02em}
 :focus-visible{outline:2px solid #2E6BD6;outline-offset:3px;border-radius:12px}
 .view{display:none}.view.on{display:block;animation:in .5s var(--ease)}
 @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
+ 
 /* Nút */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:.95rem;padding:.8rem 1.5rem;cursor:pointer;
  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background-color .25s,color .25s,border-color .25s}
@@ -32,12 +32,12 @@ h1,h2,h3{letter-spacing:-.02em}
 .btn-sky{background:#2E6BD6;color:#fff}.btn-sky:hover{background:#1A1D21}
 .btn-line{border:1px solid #CFCBC1;background:#fff}.btn-line:hover{border-color:#1A1D21}
 .btn-white{background:#fff;color:#1A1D21}.btn-white:hover{background:#DCEFE6}
-
+ 
 /* Nav */
 .nav-link{padding:.5rem .9rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#5B6169;white-space:nowrap;transition:background .25s,color .25s}
 .nav-link:hover{background:#F0EEE8;color:#1A1D21}
 nav::-webkit-scrollbar{display:none}
-
+ 
 /* Thẻ & hiệu ứng */
 .lift{transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
 .lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(26,29,33,.28)}
@@ -45,7 +45,7 @@ nav::-webkit-scrollbar{display:none}
 .eyebrow{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#2E6BD6}
 .rv{transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transform:none}
-
+ 
 /* Quiz, chip, field */
 .opt{background:#fff;border:1px solid #E7E4DD;border-radius:18px;padding:1.1rem 1.3rem;text-align:left;font-weight:500;line-height:1.5;cursor:pointer;
  transition:transform .3s var(--ease),border-color .25s,box-shadow .3s,background .25s}
@@ -55,13 +55,13 @@ html.js .rv{opacity:0;transform:translateY(22px)}html.js .rv.in{opacity:1;transf
 .chip[aria-pressed=true], .chip.active{background:#1A1D21;color:#fff;border-color:#1A1D21}
 .field{width:100%;border:1px solid #E1DED6;border-radius:14px;background:#FAFAF8;padding:.7rem .9rem;font-size:.9rem;transition:border-color .25s,box-shadow .25s,background .25s}
 .field:focus{outline:none;border-color:#2E6BD6;background:#fff;box-shadow:0 0 0 4px rgba(46,107,214,.14)}
-
+ 
 #pill{transition:background .3s,color .3s}
 .bump{animation:bump .5s var(--ease)}
 @keyframes bump{40%{transform:scale(1.06)}}
 #ptsBar{background:linear-gradient(90deg,#2E6BD6,#1F7A5A)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js .rv{opacity:1;transform:none}}
-
+ 
 /* ===== Nâng cấp giao diện ===== */
 .nav-link.is-on{background:#1A1D21;color:#fff}
 .nav-cta{border:1px solid #1A1D21;color:#1A1D21}.nav-cta:hover{background:#1A1D21;color:#fff}
@@ -83,7 +83,7 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}
 article.lift{border-radius:1.75rem}
 #lead{transition:transform .4s var(--ease),box-shadow .4s}#lead:hover{transform:translateY(-3px)}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#D5D1C7;border-radius:10px;border:2px solid #FAFAF8}
-
+ 
 /* ===== GIAO DIỆN WIDGET HUBSPOT LEAD TRACKER ===== */
 #lead {
   transition: all 0.4s cubic-bezier(.2,.7,.2,1);
@@ -149,7 +149,7 @@ article.lift{border-radius:1.75rem}
 .history-item:last-child {
   border-bottom: none;
 }
-
+ 
 .lift:hover{border-color:#C9D9F5}
 .btn-ink{background:linear-gradient(180deg,#252A30,#1A1D21)}.btn-ink:hover{background:#2E6BD6}
 .zoom{box-shadow:0 18px 40px -26px rgba(26,29,33,.45)}
@@ -168,7 +168,7 @@ article.lift{border-radius:1.75rem}
 </style>
 </head>
 <body class="font-sans antialiased">
-
+ 
 <!-- HEADER -->
 <header class="sticky top-3 z-40 mx-3 min-[1200px]:mx-auto max-w-6xl mt-3 rounded-full bg-white/75 backdrop-blur-xl border border-line shadow-[0_10px_40px_-18px_rgba(26,29,33,.35)]">
   <div class="flex items-center justify-between gap-3 px-2 h-14">
@@ -182,7 +182,7 @@ article.lift{border-radius:1.75rem}
     </nav>
   </div>
 </header>
-
+ 
 <main>
 <!-- ============ TRANG 1: LANDING ============ -->
 <section id="v-home" class="view on">
@@ -200,7 +200,7 @@ article.lift{border-radius:1.75rem}
       </div>
     </div>
   </div>
-
+ 
   <!-- Giới thiệu -->
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32 grid lg:grid-cols-2 gap-14 items-center">
     <div class="rv">
@@ -216,7 +216,7 @@ article.lift{border-radius:1.75rem}
       <div class="zoom rounded-[1.5rem] shadow-sm"><img src="images/minh-hoa-1.jpg" alt="Minh hoạ BOO 2" class="w-full aspect-square object-cover" loading="lazy"></div>
     </div>
   </div>
-
+ 
   <!-- Sứ mệnh -->
   <div class="relative py-24 sm:py-32" style="background:url('images/banner-2.png') center/cover,#1A1D21">
     <div class="absolute inset-0 bg-ink/70"></div>
@@ -237,7 +237,7 @@ article.lift{border-radius:1.75rem}
       </div>
     </div>
   </div>
-
+ 
   <!-- Lookbook -->
   <div id="lookbook-home" class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
     <div class="rv">
@@ -253,7 +253,7 @@ article.lift{border-radius:1.75rem}
     <div class="text-center mt-16"><button data-go="lookbook" class="btn btn-ink">Xem toàn bộ Tủ đồ BOO</button></div>
   </div>
 </section>
-
+ 
 <!-- ============ TRANG HÔM NAY BẬN GÌ? ============ -->
 <section id="v-schedule" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
@@ -262,9 +262,9 @@ article.lift{border-radius:1.75rem}
       <h2 class="text-4xl sm:text-5xl font-bold mt-3">Hôm nay bận gì?</h2>
       <p class="mt-3 text-lg text-neutral-600">Giữ chuỗi nhận Voucher và gieo quẻ random outfit độc quyền cùng BOO!</p>
     </div>
-
+ 
     <section id="weekSchedule" class="mt-10 bg-white border border-line rounded-[2rem] p-6 sm:p-8 shadow-sm" aria-label="Điểm danh"></section>
-
+ 
     <!-- GIEO QUẺ RANDOM OUTFIT -->
     <div class="mt-12 bg-ink text-white rounded-[2rem] p-6 sm:p-8 shadow-xl rv">
       <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -277,7 +277,7 @@ article.lift{border-radius:1.75rem}
       </div>
       <div id="gieoQueResult" class="mt-6 hidden bg-white/10 border border-white/15 p-5 rounded-2xl"></div>
     </div>
-
+ 
     <!-- Quick Quiz theo hoạt động -->
     <div class="mt-16 bg-sand/60 border border-line rounded-[2rem] p-6 sm:p-8 rv">
       <h3 class="text-2xl font-bold">Cậu đang cần tìm outfit để đi đâu nè?</h3>
@@ -304,7 +304,7 @@ article.lift{border-radius:1.75rem}
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ TRANG TỦ ĐỒ BOO ============ -->
 <section id="v-lookbook" class="view">
   <div class="max-w-6xl mx-auto px-5 py-24 sm:py-32">
@@ -313,7 +313,7 @@ article.lift{border-radius:1.75rem}
       <h2 class="text-4xl sm:text-5xl font-bold mt-3">Tủ đồ BOO</h2>
       <p class="mt-3 text-lg text-neutral-600">Khám phá toàn bộ set outfit chuẩn gu từ BOO. Lọc nhanh theo giới tính hoặc 8 nhãn dán phong cách.</p>
     </div>
-
+ 
     <!-- Thanh bộ lọc giới tính & 8 nhãn dán phong cách -->
     <div class="mt-10 bg-sand/60 p-5 rounded-2xl border border-line flex flex-col gap-4 rv">
       <div class="flex flex-wrap items-center gap-2" id="genderFilters">
@@ -339,12 +339,12 @@ article.lift{border-radius:1.75rem}
         </div>
       </div>
     </div>
-
+ 
     <!-- Danh sách set outfit -->
     <div id="fullLookbookGrid" class="grid md:grid-cols-3 gap-6 mt-12"></div>
   </div>
 </section>
-
+ 
 <!-- ============ TRANG 2: QUIZ ============ -->
 <section id="v-quiz" class="view">
   <div class="max-w-2xl mx-auto px-5 py-16 sm:py-24 min-h-[75vh]">
@@ -366,7 +366,7 @@ article.lift{border-radius:1.75rem}
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ TRANG 3: OUTFIT ============ -->
 <section id="v-outfit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
@@ -380,16 +380,16 @@ article.lift{border-radius:1.75rem}
     <div class="mt-12"><button onclick="restartQuizExplicitly()" id="retake" class="btn btn-line">Làm lại quiz</button></div>
   </div>
 </section>
-
+ 
 <!-- ============ TRANG 4: FIT CARD ============ -->
 <section id="v-fit" class="view">
   <div class="max-w-6xl mx-auto px-5 py-14 sm:py-20">
     <span class="eyebrow">Tủ đồ cá nhân</span>
     <h2 class="text-4xl sm:text-5xl font-bold mt-3">FIT CARD của cậu</h2>
     <p class="mt-3 text-lg text-neutral-600">Những set đồ cậu đã lưu trong tủ ảo cá nhân.</p>
-
+ 
     <div id="fitGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mt-10"></div>
-
+ 
     <div class="mt-20 rounded-[2rem] bg-ink text-white p-8 sm:p-12 text-center">
       <h3 class="text-2xl sm:text-3xl font-bold">Sẵn sàng trải nghiệm tại Fit Spot?</h3>
       <p class="mt-4 text-white/70 max-w-xl mx-auto leading-relaxed">Mang theo FIT CARD này đến hệ thống cửa hàng BOO để nhân viên hỗ trợ cậu thử trực tiếp các set đồ đã lưu.</p>
@@ -398,10 +398,10 @@ article.lift{border-radius:1.75rem}
   </div>
 </section>
 </main>
-
+ 
 <footer class="bg-ink text-white/60 mt-24"><div class="max-w-6xl mx-auto px-5 py-12 flex flex-wrap items-center gap-4 justify-between text-sm">
   <img src="images/BOO.png" alt="BOO" class="h-9 w-9 rounded-xl"><p>BOO FIT LAB · Đúng Gu cùng BOO</p></div></footer>
-
+ 
 <!-- MODAL CHI TIẾT SẢN PHẨM -->
 <div id="modal" class="fixed inset-0 z-50 hidden bg-ink/50 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="bg-white rounded-[2rem] max-w-3xl mx-auto my-6 grid md:grid-cols-2 overflow-hidden shadow-2xl">
@@ -422,7 +422,7 @@ article.lift{border-radius:1.75rem}
     </div>
   </div>
 </div>
-
+ 
 <!-- MODAL TẠO TÀI KHOẢN FIT LAB -->
 <div id="fitCardModal" role="dialog" aria-modal="true" aria-labelledby="fcTitle" class="fixed inset-0 bg-ink/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4 overflow-y-auto">
   <div class="bg-white p-6 sm:p-8 rounded-[2rem] w-full max-w-md shadow-2xl relative my-auto">
@@ -481,7 +481,7 @@ article.lift{border-radius:1.75rem}
     </form>
   </div>
 </div>
-
+ 
 <!-- WIDGET LEAD SCORE -->
 <aside id="lead" class="fixed left-3 bottom-3 sm:left-5 sm:bottom-5 z-30 w-64 max-w-[calc(100vw-1.5rem)] bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-label="Điểm tích luỹ">
   <div class="lead-header">
@@ -495,7 +495,7 @@ article.lift{border-radius:1.75rem}
       </div>
       <p class="text-xs font-bold text-neutral-700"><span id="ptsMax">0</span> / 100 PTS</p>
       <div class="mt-2 inline-block">
-        <span id="pill" class="text-[11px] font-semibold rounded-full px-3 py-0.5 bg-sky text-neutral-800">Cold Lead</span>
+        <span id="pill" class="text-[11px] font-semibold rounded-full px-3 py-0.5 bg-sky text-neutral-800">Subscriber</span>
       </div>
     </div>
     <div class="h-1.5 rounded-full bg-line mt-3 overflow-hidden">
@@ -510,7 +510,7 @@ article.lift{border-radius:1.75rem}
     <p id="ptsLog" role="status" aria-live="polite" class="text-[11px] mt-2.5 text-neutral-500 text-center font-medium bg-sand/60 py-1 px-2 rounded-lg truncate">Làm quiz hoặc điểm danh để tích điểm.</p>
   </div>
 </aside>
-
+ 
 <script>
 // DỮ LIỆU CÁC SETS THUỘC 6 GU CHÍNH VÀ 8 NHÃN DÁN (TAGS)
 const SETS=[
@@ -648,7 +648,7 @@ const SETS=[
    suggestions:['Giày sneaker da lộn', 'Khăn quàng cổ len tối màu']
  }
 ];
-
+ 
 // MA TRẬN 13 CÂU HỎI MAPPING MỚI (QUY VỀ 6 GU CHÍNH)
 const QS=[
  {
@@ -781,11 +781,11 @@ const QS=[
    ]
  }
 ];
-
+ 
 const fmt=n=>n.toLocaleString('vi-VN')+'đ';
 const $=s=>document.querySelector(s);
 const S={pts:0,answers:[],q:0,done:false,seen:new Set(),saved:[],resultVibe:null,cur:null,colors:{},userProfile:null,vibeScores:{}};
-
+ 
 const BEHAVIOR_SCORES = {
   view_lookbook: 5,
   view_detail: 10,
@@ -796,7 +796,7 @@ const BEHAVIOR_SCORES = {
   register_contact: 25,
   checkin_qr: 15
 };
-
+ 
 let isLeadMinimized = false;
 function toggleLeadBox() {
   isLeadMinimized = !isLeadMinimized;
@@ -810,14 +810,40 @@ function toggleLeadBox() {
     btn.textContent = 'Thu gọn';btn.setAttribute('aria-expanded','true');
   }
 }
-
+ 
 let actionHistory = [];
-
+ 
+// ===== QUY ƯỚC ĐIỂM (khớp bảng điểm BOO FIT LAB) =====
+// Ghi đè lại các mốc điểm cho đúng bảng: lưu FIT CARD +7, Quiz +20, Đăng ký +25...
+Object.assign(BEHAVIOR_SCORES, {
+  view_lookbook: 5,
+  view_detail: 10,
+  random_spin: 5,
+  fit_assist: 3,
+  complete_quiz: 20,
+  register_contact: 25,
+  save_fitcard: 7,
+  checkin_qr: 15
+});
+ 
+// ===== PHÂN LOẠI LIFECYCLE STAGE THEO ĐIỂM =====
+//  0 - 19  : Subscriber
+// 20 - 39  : Lead
+// 40 - 69  : Marketing Qualified Lead
+// 70 - 100 : Customer
+// `hubspot` là giá trị chuẩn (internal value) của HubSpot Lifecycle Stage.
+function getLifecycleStage(pts) {
+  if (pts >= 70) return { key: 'customer',   label: 'Customer',                  hubspot: 'customer',               bg: '#1F7A5A', color: '#fff' };
+  if (pts >= 40) return { key: 'mql',        label: 'Marketing Qualified Lead',  hubspot: 'marketingqualifiedlead', bg: '#FBE3A8', color: '#1A1D21' };
+  if (pts >= 20) return { key: 'lead',       label: 'Lead',                      hubspot: 'lead',                   bg: '#DCEFE6', color: '#1A1D21' };
+  return           { key: 'subscriber', label: 'Subscriber',                hubspot: 'subscriber',             bg: '#E6EEFB', color: '#1A1D21' };
+}
+ 
 function addPts(delta, why){
   const before = S.pts;
   S.pts = Math.max(0, Math.min(100, S.pts + delta));
   if(S.pts === before) return;
-
+ 
   $('#ptsNum').textContent = S.pts;
   const maxElem = document.getElementById('ptsMax');
   if(maxElem) maxElem.textContent = S.pts;
@@ -826,19 +852,21 @@ function addPts(delta, why){
   const deg = (S.pts / 100) * 360;
   const circleElem = document.getElementById('scoreCircleElem');
   if(circleElem) circleElem.style.setProperty('--deg', deg + 'deg');
-
-  const l = S.pts >= 70 ? ['Hot Lead', '#1F7A5A', '#fff'] : S.pts >= 30 ? ['Warm Lead', '#DCEFE6', '#1A1D21'] : ['Cold Lead', '#E6EEFB', '#1A1D21'];
+ 
+  const stage = getLifecycleStage(S.pts);
+  S.lifecycleStage = stage.hubspot;
   const p = $('#pill');
-  p.textContent = l[0];
-  p.style.background = l[1];
-  p.style.color = l[2];
+  p.textContent = stage.label;
+  p.style.background = stage.bg;
+  p.style.color = stage.color;
+  p.style.whiteSpace = 'nowrap';
   
   const sign = delta > 0 ? '+' : '';
   $('#ptsLog').textContent = `${sign}${delta} điểm · ${why}`;
-
+ 
   actionHistory.unshift({ text: why, score: `${sign}${delta}` });
   if(actionHistory.length > 4) actionHistory.pop();
-
+ 
   const listContainer = document.getElementById('recentActionsList');
   if(listContainer) {
     listContainer.innerHTML = actionHistory.map(act => `
@@ -856,7 +884,7 @@ function addPts(delta, why){
     w.classList.add('bump');
   }
 }
-
+ 
 function checkInactivityPenalty() {
   let lastActiveTime=null;try{lastActiveTime=localStorage.getItem('boo_last_active')}catch(e){}
   const now = new Date().getTime();
@@ -868,13 +896,13 @@ function checkInactivityPenalty() {
   }
   try{localStorage.setItem('boo_last_active', now.toString())}catch(e){}
 }
-
+ 
 window.addEventListener('DOMContentLoaded', () => {
   if(window.innerWidth<640) toggleLeadBox();
   checkInactivityPenalty();
   addPts(BEHAVIOR_SCORES.view_lookbook, 'Xem trang Tủ đồ BOO');
 });
-
+ 
 function toast(msg){
   const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=msg;
   document.body.append(t);requestAnimationFrame(()=>t.classList.add('on'));
@@ -908,7 +936,7 @@ function resetLookbookFilters(){
   document.querySelectorAll('#genderFilters .chip, #styleFilters .chip').forEach(c=>c.classList.toggle('active',c.dataset.gender==='all'||c.dataset.tag==='all'));
   renderFullLookbook();
 }
-
+ 
 function show(v, scroll) { 
   document.querySelectorAll('.view').forEach(e => e.classList.toggle('on', e.id === 'v-' + v));
   if (v === 'lookbook') renderFullLookbook();
@@ -920,7 +948,7 @@ function show(v, scroll) {
     window.scrollTo(0, 0);
   }
 }
-
+ 
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-go]');
   if (!a) return;
@@ -937,7 +965,7 @@ document.addEventListener('click', e => {
   }
   show(v, a.dataset.scroll);
 });
-
+ 
 function resetQuizUI() { 
   S.q = 0; 
   S.answers = []; 
@@ -945,21 +973,21 @@ function resetQuizUI() {
   $('#quizBox').classList.add('hidden');
   $('#quizDone').classList.add('hidden');
 }
-
+ 
 function restartQuizExplicitly() {
   S.done = false;
   S.resultVibe = null;
   resetQuizUI();
   show('quiz');
 }
-
+ 
 $('#startQuiz').onclick = () => {
   $('#quizIntro').classList.add('hidden');
   $('#quizBox').classList.remove('hidden');
   renderQ();
 };
 $('#qBack').onclick = () => { if (S.q > 0) { S.q--; S.answers.pop(); renderQ(); } };
-
+ 
 function renderQ() {
   const q = QS[S.q];
   $('#qStep').textContent = 'Câu ' + (S.q + 1) + '/13';
@@ -982,7 +1010,7 @@ function renderQ() {
   });
   $('#qBack').style.visibility = S.q ? 'visible' : 'hidden';
 }
-
+ 
 // BỘ 6 GU CHÍNH
 const VIBE_TITLES = {
   soft: { name: 'BayBOO Ngọt Ngào', desc: 'Vibe nhẹ nhàng, nữ tính và thanh thoát trong từng bước đi. Ưu tiên chất liệu mềm mại, màu pastel và phom dáng dịu dàng.' },
@@ -992,7 +1020,7 @@ const VIBE_TITLES = {
   comfy: { name: 'Bật mode Sporty', desc: 'Thoải mái tối đa nhưng vẫn cực kỳ bắt mắt và năng động. Ưu tiên chất thun co giãn, đồ nỉ và sneakers cho ngày dài tự do.' },
   cozy: { name: 'Ấm áp mùa Thu Đông', desc: 'Ấm áp, êm ái và mềm mại nhưng vẫn cực ngầu cho những ngày thu đông. Phối layer đỉnh cao với áo len dệt kim, sweater nỉ và phụ kiện bông.' }
 };
-
+ 
 function finishQuiz() {
   $('#qFill').style.width = '100%';
   $('#quizBox').classList.add('hidden');
@@ -1000,7 +1028,7 @@ function finishQuiz() {
   
   const counts = { soft:0, street:0, neutral:0, explorer:0, comfy:0, cozy:0 };
   let totalPoints = 0;
-
+ 
   S.answers.forEach(v => {
     if (!v) return;
     if (counts[v] !== undefined) {
@@ -1008,14 +1036,14 @@ function finishQuiz() {
       totalPoints += 1;
     }
   });
-
+ 
   if (totalPoints === 0) totalPoints = 1;
-
+ 
   const scoresPct = {};
   Object.keys(counts).forEach(k => {
     scoresPct[k] = Math.round((counts[k] / totalPoints) * 100);
   });
-
+ 
   let bestVibe = 'soft', maxCount = -1;
   Object.keys(counts).forEach(k => {
     if (counts[k] > maxCount) {
@@ -1023,18 +1051,18 @@ function finishQuiz() {
       bestVibe = k;
     }
   });
-
+ 
   S.resultVibe = bestVibe;
   S.vibeScores = scoresPct;
-
+ 
   if (!S.done) { 
     S.done = true; 
-    addPts(30, 'Hoàn thành Style Quiz 13 câu chuẩn vibe'); 
+    addPts(BEHAVIOR_SCORES.complete_quiz, 'Hoàn thành Style Quiz (Xác định Vibe)'); 
   }
   S.q = 0;
   setTimeout(() => { renderOutfits(); show('outfit'); }, 900);
 }
-
+ 
 function renderOutfits() {
   const vibe = S.resultVibe || 'soft';
   const info = VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
@@ -1046,13 +1074,13 @@ function renderOutfits() {
     const matchPct = S.vibeScores[s.style] || 40;
     return { ...s, matchPct };
   });
-
+ 
   if (S.gender) {
     matchedSets = matchedSets.filter(s => s.gender === S.gender);
   }
-
+ 
   matchedSets.sort((a, b) => b.matchPct - a.matchPct);
-
+ 
   $('#outfitList').innerHTML = matchedSets.map((s) => `
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift flex flex-col justify-between">
       <div>
@@ -1081,12 +1109,12 @@ function renderOutfits() {
       </div>
    </article>`).join('');
 }
-
+ 
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-open]');
   if (b) openModal(b.dataset.open);
 });
-
+ 
 let lastFocus = null;
 function openModal(id) {
   const s = SETS.find(x => x.id === id);
@@ -1101,14 +1129,14 @@ function openModal(id) {
   $('#mItems').innerHTML = s.items.map((it, i) => `<li class="border-b border-neutral-200 pb-3">
     <div class="flex justify-between gap-3 font-bold"><span>${it.n}</span><span>${fmt(it.p)}</span></div>
     <div class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Màu cho ${it.n}">${it.c.map(c => `<button class="chip" data-i="${i}" data-c="${c}" aria-pressed="${S.colors[id][i] === c}">${c}</button>`).join('')}</div></li>`).join('');
-
+ 
   if (s.suggestions && s.suggestions.length > 0) {
     $('#mSuggestionsBox').classList.remove('hidden');
     $('#mSuggestionsList').innerHTML = s.suggestions.map(item => `<li>• ${item}</li>`).join('');
   } else {
     $('#mSuggestionsBox').classList.add('hidden');
   }
-
+ 
   $('#mTotal').textContent = fmt(s.items.reduce((a, b) => a + b.p, 0));
   refreshSave();
   $('#modal').classList.remove('hidden');
@@ -1116,19 +1144,19 @@ function openModal(id) {
   $('#mClose').focus();
   if (!S.seen.has(id)) { S.seen.add(id); addPts(10, 'Xem chi tiết sản phẩm'); }
 }
-
+ 
 function refreshSave() { 
   const on = S.saved.some(x => x.id === S.cur.id); 
   $('#mSave').textContent = on ? 'Đã lưu trong FIT CARD' : 'Lưu vào FIT CARD'; 
 }
-
+ 
 $('#mItems').addEventListener('click', e => {
   const c = e.target.closest('.chip'); 
   if (!c) return;
   S.colors[S.cur.id][+c.dataset.i] = c.dataset.c;
   c.parentElement.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c));
 });
-
+ 
 $('#mSave').onclick = () => {
   const s = S.cur;
   if (S.saved.some(x => x.id === s.id)) { closeModal(); show('fit'); return; }
@@ -1144,29 +1172,29 @@ $('#mSave').onclick = () => {
   closeModal();
   openFitCardModal();
 };
-
+ 
 function closeModal() { 
   $('#modal').classList.add('hidden'); 
   document.body.style.overflow = ''; 
   lastFocus && lastFocus.focus(); 
 }
-
+ 
 $('#mClose').onclick = closeModal;
 $('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
 const updCount = () => $('#fcCount').textContent = S.saved.length;
-
+ 
 function openFitCardModal() {
   $('#fitCardModal').classList.remove('hidden');
   $('#fitCardModal').classList.add('flex');
   setTimeout(() => $('#userName').focus(), 30);
 }
-
+ 
 function closeFitCardModal() {
   $('#fitCardModal').classList.remove('flex');
   $('#fitCardModal').classList.add('hidden');
   S.pendingSave = null;
 }
-
+ 
 function sendOtpCode() {
   const contact = $('#userContact').value;
   if (!contact) {
@@ -1178,7 +1206,7 @@ function sendOtpCode() {
   toast('Mã OTP demo đã gửi tới ' + contact + ' (mã: 123456)');
   $('#userOtp').value = '123456';
 }
-
+ 
 // ================= KẾT NỐI n8n WEBHOOK & HUBSPOT =================
 async function submitFitCard(event) {
   event.preventDefault();
@@ -1195,11 +1223,11 @@ async function submitFitCard(event) {
     $('#userOtp').focus(); 
     return; 
   }
-
+ 
   const isEmail = contactVal.includes('@');
   const cleanPhone = !isEmail ? contactVal.replace(/[\s.-]/g, '') : '';
   const finalEmail = isEmail ? contactVal : `${cleanPhone}@fitlab.boo`;
-
+ 
   // Kiểm tra xem khách hàng đã làm quiz chưa
   const hasDoneQuiz = Boolean(S.done && S.resultVibe);
   
@@ -1213,7 +1241,7 @@ async function submitFitCard(event) {
     cozy: 'Ấm áp mùa Thu Đông'
   };
   const currentVibeName = hasDoneQuiz ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz';
-
+ 
   const profile = {
     displayName: $('#userName').value || 'Thành viên FIT LAB',
     email: finalEmail,
@@ -1226,9 +1254,27 @@ async function submitFitCard(event) {
     marketingConsent: $('#consentCheck').checked,
     timestamp: new Date().toISOString()
   };
-
+ 
   S.userProfile = profile;
-
+ 
+  // Cộng điểm đăng ký (+25) và lưu set đang chờ (+7) TRƯỚC khi gửi n8n,
+  // để lifecycleStage phản ánh đúng hành vi thực tế: Quiz -> Đăng ký thông tin
+  addPts(BEHAVIOR_SCORES.register_contact, 'Tạo tài khoản / Điền form Contact thành công');
+ 
+  const pend = SETS.find(x => x.id === S.pendingSave); 
+  S.pendingSave = null;
+  if (pend && !S.saved.some(x => x.id === pend.id)) {
+    const s = pend;
+    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i => i.c[0]) });
+    addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD');
+    updCount();
+  }
+ 
+  // Xác định lifecycleStage chuẩn HubSpot dựa trên điểm hiện tại
+  const stage = getLifecycleStage(S.pts);
+  profile.leadScore = S.pts;
+  profile.lifecycleStage = stage.hubspot; // 'subscriber' | 'lead' | 'marketingqualifiedlead' | 'customer'
+ 
   // Sử dụng Production URL của n8n (bỏ chữ -test khi chạy thật)
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook-test/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
@@ -1241,57 +1287,46 @@ async function submitFitCard(event) {
   } catch (err) {
     console.error('Lỗi kết nối n8n webhook:', err);
   }
-
-  const pend = SETS.find(x => x.id === S.pendingSave); 
-  S.pendingSave = null;
-  if (pend && !S.saved.some(x => x.id === pend.id)) {
-    const s = pend;
-    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i => i.c[0]) });
-    addPts(20, 'Tạo tài khoản & Lưu set vào FIT CARD');
-    updCount();
-  } else {
-    addPts(20, 'Đăng ký tài khoản FIT LAB thành công');
-  }
-
+ 
   closeFitCardModal();
   toast('Xin chào ' + profile.displayName + '! Tài khoản FIT LAB đã lưu thông tin.');
   show('fit');
 }
-
+ 
 function quickSaveSet(id) {
   const s = SETS.find(x => x.id === id);
   if (!s) return;
   if (!S.userProfile) { S.pendingSave = s.id; openFitCardModal(); return; }
   if (!S.saved.some(x => x.id === s.id)) {
     S.saved.push({ id: s.id, name: s.name, img: s.img, colors: s.items.map(i => i.c[0]) });
-    addPts(15, 'Lưu nhanh vào FIT CARD');
+    addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD');
     updCount();
     toast('Đã lưu set "' + s.name + '" vào FIT CARD');
   } else {
     toast('Set này đã có trong FIT CARD của cậu rồi nha.');
   }
 }
-
+ 
 function filterLookbook() {
   renderFullLookbook();
 }
-
+ 
 function renderFullLookbook() {
   const gender = document.querySelector('#genderFilters .chip.active')?.dataset.gender || 'all';
   const tag = document.querySelector('#styleFilters .chip.active')?.dataset.tag || 'all';
-
+ 
   const filtered = SETS.filter(s => {
     const matchGender = (gender === 'all' || s.gender === gender);
     const matchTag = (tag === 'all' || (s.tags && s.tags.includes(tag)));
     return matchGender && matchTag;
   });
-
+ 
   const grid = $('#fullLookbookGrid');
   if (filtered.length === 0) {
     grid.innerHTML = `<div class="col-span-full py-16 text-center text-neutral-600 font-medium">Chưa có set nào khớp bộ lọc này.<br><button class="btn btn-line mt-4" onclick="resetLookbookFilters()">Xoá bộ lọc</button></div>`;
     return;
   }
-
+ 
   grid.innerHTML = filtered.map(s => `
     <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift">
       <div class="bg-sand"><img src="${s.img}" alt="${s.name}" class="w-full aspect-[4/5] object-contain"></div>
@@ -1307,7 +1342,7 @@ function renderFullLookbook() {
     </article>
   `).join('');
 }
-
+ 
 document.addEventListener('click', e => {
   const btn = e.target.closest('#genderFilters .chip, #styleFilters .chip');
   if (!btn) return;
@@ -1315,11 +1350,11 @@ document.addEventListener('click', e => {
   btn.classList.add('active');
   renderFullLookbook();
 });
-
+ 
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
   addPts(BEHAVIOR_SCORES.random_spin, 'Gieo quẻ / Lắc quẻ Random Outfit');
-
+ 
   const box = $('#gieoQueResult');
   box.classList.remove('hidden');
   box.innerHTML = `
@@ -1333,7 +1368,7 @@ function randomGieoQue() {
     </div>
   `;
 }
-
+ 
 function selectActivity(type) {
   const map = {
     study: { name: 'Outfit Đi Học', desc: 'Năng động, gọn gàng nhưng vẫn cực kỳ trendy.', set: SETS[4] },
@@ -1360,11 +1395,11 @@ function selectActivity(type) {
     </div>
   `;
 }
-
+ 
 function renderFit() {
   const container = $('#fitGrid');
   if (!container) return;
-
+ 
   if (S.saved && S.saved.length > 0) {
     container.innerHTML = S.saved.map((s, i) => `
       <div class="rounded-2xl border border-line overflow-hidden bg-white shadow-sm lift cursor-pointer" onclick="openModal('${s.id}')">
@@ -1390,7 +1425,7 @@ function renderFit() {
     `;
   }
 }
-
+ 
 document.addEventListener('click', e => {
   const r = e.target.closest('[data-rm]');
   if (r) {
@@ -1401,7 +1436,7 @@ document.addEventListener('click', e => {
   }
 });
 </script>
-
+ 
 <script>
 (function(){
   var els=document.querySelectorAll('.rv');
@@ -1410,11 +1445,11 @@ document.addEventListener('click', e => {
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
-
+ 
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247690687.js"></script>
 <!-- End of HubSpot Embed Code -->
-
+ 
 <script>
 (function(){
   var map={outfit:'quiz'};
@@ -1431,7 +1466,7 @@ document.addEventListener('click', e => {
   sync();
 })();
 </script>
-
+ 
 <script>
 function fitCardNav(e){
   e.preventDefault();
@@ -1451,3 +1486,4 @@ function fitCardNav(e){
 </script>
 </body>
 </html>
+ 
