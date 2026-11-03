@@ -1197,24 +1197,39 @@ async function submitFitCard(event) {
   }
 
   const isEmail = contactVal.includes('@');
-
   const cleanPhone = !isEmail ? contactVal.replace(/[\s.-]/g, '') : '';
-    const finalEmail = isEmail ? contactVal : `${cleanPhone}@fitlab.boo`;
+  const finalEmail = isEmail ? contactVal : `${cleanPhone}@fitlab.boo`;
 
-    const profile = {
-      displayName: $('#userName').value || 'Thành viên FIT LAB',
-      email: finalEmail,          // Tự động tạo email giả định nếu người dùng nhập SĐT để HubSpot không bị lỗi undefined
-      phone: cleanPhone,          // Lưu số điện thoại thật vào đây
-      store: $('#userStore').value,
-      channel: $('#userChannel').value,
-      styleVibe: S.resultVibe || 'Chưa làm quiz',
-      marketingConsent: $('#consentCheck').checked,
-      timestamp: new Date().toISOString()
-    };
+  // Kiểm tra xem khách hàng đã làm quiz chưa
+  const hasDoneQuiz = Boolean(S.done && S.resultVibe);
+  
+  // Ánh xạ từ mã Gu sang tên hiển thị tiếng Việt
+  const vibeNames = {
+    soft: 'BayBOO Ngọt Ngào',
+    street: 'Hop on da Street',
+    neutral: 'Basic Tối Giản',
+    explorer: 'Tắc Kè Xuống Phố',
+    comfy: 'Bật mode Sporty',
+    cozy: 'Ấm áp mùa Thu Đông'
+  };
+  const currentVibeName = hasDoneQuiz ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz';
+
+  const profile = {
+    displayName: $('#userName').value || 'Thành viên FIT LAB',
+    email: finalEmail,
+    phone: cleanPhone,
+    store: $('#userStore').value,
+    channel: $('#userChannel').value,
+    styleVibe: S.resultVibe || 'Chưa làm quiz',
+    didQuiz: hasDoneQuiz ? 'TRUE' : 'FALSE',  // Trạng thái TRUE / FALSE dạng chuỗi cho dễ đồng bộ
+    vibeName: currentVibeName,               // Tên Gu đề xuất cụ thể
+    marketingConsent: $('#consentCheck').checked,
+    timestamp: new Date().toISOString()
+  };
 
   S.userProfile = profile;
 
-  // GỬI DỮ LIỆU ĐẾN WEBHOOK n8n 
+  // Sử dụng Production URL của n8n (bỏ chữ -test khi chạy thật)
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
   try {
