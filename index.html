@@ -1650,9 +1650,11 @@ async function submitFitCard(event) {
   }
  
   // Xác định lifecycleStage chuẩn HubSpot dựa trên điểm hiện tại
+ addPts(BEHAVIOR_SCORES.register_contact, 'Đăng ký lưu FIT CARD');
   const stage = getLifecycleStage(S.pts);
   profile.leadScore = S.pts;
   profile.lifecycleStage = stage.hubspot; // 'subscriber' | 'lead' | 'marketingqualifiedlead' | 'customer'
+ profile.savedOutfits = S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào';
  
   // Sử dụng Production URL của n8n (bỏ chữ -test khi chạy thật)
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
