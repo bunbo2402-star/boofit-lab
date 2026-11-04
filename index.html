@@ -1393,7 +1393,12 @@ function finishQuiz() {
   S.q = 0;
   setTimeout(() => { renderOutfits(); show('outfit'); }, 900);
 }
- 
+function renderOutfits() {
+  const vibe = S.resultVibe || 'soft';
+  const info = VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
+
+  $('#resultTitle').textContent = `Gu của cậu là: "${info.name}"`;
+  $('#resultNote').textContent = `${info.desc}`; 
 const TAG_VIBE = { coquette:'soft', y2k:'street' }; // nhãn phụ -> gu tương ứng
 const sc = S.vibeScores || {};
 
