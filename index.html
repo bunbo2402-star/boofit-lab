@@ -1146,19 +1146,6 @@ function toggleLeadBox() {
  
 let actionHistory = [];
  
-// ===== QUY ƯỚC ĐIỂM (khớp bảng điểm BOO FIT LAB) =====
-// Ghi đè lại các mốc điểm cho đúng bảng: lưu FIT CARD +7, Quiz +20, Đăng ký +25...
-Object.assign(BEHAVIOR_SCORES, {
-  view_lookbook: 5,
-  view_detail: 10,
-  random_spin: 5,
-  fit_assist: 3,
-  complete_quiz: 20,
-  register_contact: 25,
-  save_fitcard: 7,
-  checkin_qr: 15
-});
- 
 // ===== PHÂN LOẠI LIFECYCLE STAGE THEO ĐIỂM =====
 //  0 - 19  : Subscriber
 // 20 - 39  : Lead
@@ -1650,7 +1637,6 @@ async function submitFitCard(event) {
   }
  
   // Xác định lifecycleStage chuẩn HubSpot dựa trên điểm hiện tại
- addPts(BEHAVIOR_SCORES.register_contact, 'Đăng ký lưu FIT CARD');
   const stage = getLifecycleStage(S.pts);
   profile.leadScore = S.pts;
   profile.lifecycleStage = stage.hubspot; // 'subscriber' | 'lead' | 'marketingqualifiedlead' | 'customer'
@@ -1731,7 +1717,6 @@ document.addEventListener('click', e => {
   btn.classList.add('active');
   renderFullLookbook();
 });
-let todaySpinCount = 0; 
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
 if (todaySpinCount < 1) {
