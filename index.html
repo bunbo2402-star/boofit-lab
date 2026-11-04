@@ -1146,17 +1146,14 @@ function toggleLeadBox() {
  
 let actionHistory = [];
  
-// ===== PHÂN LOẠI LIFECYCLE STAGE THEO ĐIỂM =====
-//  0 - 19  : Subscriber
-// 20 - 39  : Lead
-// 40 - 69  : Marketing Qualified Lead
-// 70 - 100 : Customer
-// `hubspot` là giá trị chuẩn (internal value) của HubSpot Lifecycle Stage.
+// ===== PHÂN LOẠI LIFECYCLE STAGE THEO ĐIỂM (KHỚP BẢNG ẢNH 2) =====
+// 0 - 29 điểm : Lead (Cold Lead)
+// 30 - 49 điểm : MQL (Warm Lead)
+// >= 50 điểm   : SQL (Hot Lead)
 function getLifecycleStage(pts) {
- if (pts >= 50) return { key: 'sql', label: 'Sales Qualified Lead', hubspot: 'salesqualifiedlead' };
-if (pts >= 30) return { key: 'mql', label: 'Marketing Qualified Lead', hubspot: 'marketingqualifiedlead' };
-if (pts >= 0)  return { key: 'lead', label: 'Lead (Cold Lead)', hubspot: 'lead' };
-return { key: 'subscriber', label: 'Subscriber', hubspot: 'subscriber' };
+  if (pts >= 50) return { key: 'sql', label: 'Sales Qualified Lead', hubspot: 'salesqualifiedlead' };
+  if (pts >= 30) return { key: 'mql', label: 'Marketing Qualified Lead', hubspot: 'marketingqualifiedlead' };
+  return { key: 'lead', label: 'Lead (Cold Lead)', hubspot: 'lead' };
 }
  
 function addPts(delta, why){
