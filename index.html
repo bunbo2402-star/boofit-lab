@@ -1394,23 +1394,26 @@ function finishQuiz() {
   setTimeout(() => { renderOutfits(); show('outfit'); }, 900);
 }
  
-function renderOutfits() {
-  const vibe = S.resultVibe || 'soft';
-  const info = VIBE_TITLES[vibe] || VIBE_TITLES['soft'];
-  
-  $('#resultTitle').textContent = `Gu của cậu là: "${info.name}"`;
-  $('#resultNote').textContent = `${info.desc}`;
-  
-  let matchedSets = SETS.map(s => {
-    const matchPct = S.vibeScores[s.style] || 40;
-    return { ...s, matchPct };
+const TAG_VIBE = { coquette:'soft', y2k:'street' }; // nhãn phụ -> gu tương ứng
+const sc = S.vibeScores || {};
+
+let matchedSets = SETS
+  .filter(s => !S.gender || s.gender === S.gender)
+  .map(s => {
+    let raw = sc[s.style] || 0;                 // điểm gu chính
+    (s.tags || []).forEach(t => {               // nhãn phụ cộng nửa điểm
+      const v = TAG_VIBE[t] || t;
+      if (v !== s.style && sc[v]) raw += sc[v] * 0.5;
+    });
+    return { ...s, raw, tie: Math.random() };   // tie: xáo ngẫu nhiên khi bằng điểm
   });
- 
-  if (S.gender) {
-    matchedSets = matchedSets.filter(s => s.gender === S.gender);
-  }
- 
-  matchedSets.sort((a, b) => b.matchPct - a.matchPct);
+
+const maxRaw = Math.max(0, ...matchedSets.map(s => s.raw));
+
+matchedSets = matchedSets
+  .map(s => ({ ...s, matchPct: maxRaw ? Math.round(s.raw / maxRaw * 100) : 60 }))
+  .sort((a, b) => b.matchPct - a.matchPct || b.tie - a.tie)
+  .slice(0, 5);                                 // chỉ 5 set hợp nhất
  
   $('#outfitList').innerHTML = matchedSets.map((s) => `
    <article class="rounded-[1.75rem] border border-line overflow-hidden bg-white shadow-sm lift flex flex-col justify-between">
