@@ -1729,11 +1729,13 @@ document.addEventListener('click', e => {
   btn.classList.add('active');
   renderFullLookbook();
 });
- 
+let todaySpinCount = 0; 
 function randomGieoQue() {
   const randomSet = SETS[Math.floor(Math.random() * SETS.length)];
+if (todaySpinCount < 1) {
+  todaySpinCount++;
   addPts(BEHAVIOR_SCORES.random_spin, 'Gieo quẻ / Lắc quẻ Random Outfit');
- 
+} 
   const box = $('#gieoQueResult');
   box.classList.remove('hidden');
   box.innerHTML = `
