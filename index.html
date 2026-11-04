@@ -1857,7 +1857,7 @@ function fitCardNav(e){
     else if(!$('#modal').classList.contains('hidden'))closeModal();
   });
 })();
- // 🟢 HÀM BẬT/TẮT CONSOLE DÀNH CHO ADMIN
+// 🟢 HÀM BẬT/TẮT CONSOLE DÀNH CHO ADMIN
 function toggleAdminConsole() {
   const widget = document.getElementById('lead');
   const btn = document.getElementById('adminToggleBtn');
@@ -1875,24 +1875,24 @@ function toggleAdminConsole() {
   }
 }
 
-// 🟢 KIỂM TRA THAM SỐ URL (?demo=admin) ĐỂ ẨN/HIỆN NÚT ADMIN
-// 🟢 CẬP NHẬT ĐOẠN ĐỌC URL BẬT/TẮT ADMIN (BẮT ĐƯỢC CẢ TRƯỚC VÀ SAU DẤU #)
-window.addEventListener('DOMContentLoaded', () => {
-  // Lấy toàn bộ đường link URL
+// 🟢 KIỂM TRA ĐƯỜNG LINK VÀ BẬT BẰNG CHECKURL THỜI GIAN THỰC
+function checkAdminMode() {
   const fullUrl = window.location.href;
-  
-  // Kiểm tra xem trong link có chứa chuỗi "demo=admin" hay không
   const isAdminMode = fullUrl.includes('demo=admin');
-  
   const adminBtn = document.getElementById('adminToggleBtn');
+  
   if (adminBtn) {
     if (isAdminMode) {
-      adminBtn.classList.remove('hidden'); // Hiện nút Admin
+      adminBtn.classList.remove('hidden');
     } else {
-      adminBtn.classList.add('hidden');    // Ẩn nút Admin
+      adminBtn.classList.add('hidden');
     }
   }
-});
+}
+
+// Lắng nghe cả khi vừa load trang và khi đổi hashtag URL (#home)
+window.addEventListener('DOMContentLoaded', checkAdminMode);
+window.addEventListener('hashchange', checkAdminMode);
 </script>
 </body>
 </html>
