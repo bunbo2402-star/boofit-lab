@@ -502,7 +502,12 @@ article.lift{border-radius:1.75rem}
 </div>
  
 <!-- WIDGET LEAD SCORE -->
-<aside id="lead" class="fixed left-3 bottom-3 sm:left-5 sm:bottom-5 z-30 w-64 max-w-[calc(100vw-1.5rem)] bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl" aria-label="Điểm tích luỹ">
+<!-- 🟢 DÒNG 505 SAU KHI THÊM HIDDEN: -->
+<aside id="lead" class="fixed left-3 bottom-3 sm:left-5 sm:bottom-5 z-30 w-64 max-w-[calc(100vw-1.5rem)] bg-white/95 backdrop-blur-xl border border-line rounded-2xl shadow-2xl hidden" aria-label="Điểm tích luỹ">
+ <!-- 🟢 THÊM NÚT NÀY NGAY TẠI DÒNG 532 (NGAY DƯỚI </aside>): -->
+<button id="adminToggleBtn" onclick="toggleAdminConsole()" class="fixed right-3 bottom-3 z-40 bg-ink/80 hover:bg-ink text-white text-[11px] font-mono px-3 py-1.5 rounded-full backdrop-blur border border-white/20 shadow-lg transition hidden">
+  [⚙️ Admin Demo View: OFF]
+</button>
   <div class="lead-header">
     <span>BOO MarTech Scoring Engine (Demo Console)</span>
     <button onclick="toggleLeadBox()" id="leadToggleBtn" aria-expanded="true" aria-controls="leadBody" class="hover:bg-black/10 px-2.5 py-1 rounded text-xs transition">Thu gọn</button>
