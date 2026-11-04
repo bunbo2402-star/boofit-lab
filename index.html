@@ -1166,10 +1166,10 @@ Object.assign(BEHAVIOR_SCORES, {
 // 70 - 100 : Customer
 // `hubspot` là giá trị chuẩn (internal value) của HubSpot Lifecycle Stage.
 function getLifecycleStage(pts) {
-  if (pts >= 70) return { key: 'customer',   label: 'Customer',                  hubspot: 'customer',               bg: '#1F7A5A', color: '#fff' };
-  if (pts >= 40) return { key: 'mql',        label: 'Marketing Qualified Lead',  hubspot: 'marketingqualifiedlead', bg: '#FBE3A8', color: '#1A1D21' };
-  if (pts >= 20) return { key: 'lead',       label: 'Lead',                      hubspot: 'lead',                   bg: '#DCEFE6', color: '#1A1D21' };
-  return           { key: 'subscriber', label: 'Subscriber',                hubspot: 'subscriber',             bg: '#E6EEFB', color: '#1A1D21' };
+ if (pts >= 50) return { key: 'sql', label: 'Sales Qualified Lead', hubspot: 'salesqualifiedlead' };
+if (pts >= 30) return { key: 'mql', label: 'Marketing Qualified Lead', hubspot: 'marketingqualifiedlead' };
+if (pts >= 0)  return { key: 'lead', label: 'Lead (Cold Lead)', hubspot: 'lead' };
+return { key: 'subscriber', label: 'Subscriber', hubspot: 'subscriber' };
 }
  
 function addPts(delta, why){
