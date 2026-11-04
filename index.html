@@ -1876,16 +1876,20 @@ function toggleAdminConsole() {
 }
 
 // 🟢 KIỂM TRA THAM SỐ URL (?demo=admin) ĐỂ ẨN/HIỆN NÚT ADMIN
+// 🟢 CẬP NHẬT ĐOẠN ĐỌC URL BẬT/TẮT ADMIN (BẮT ĐƯỢC CẢ TRƯỚC VÀ SAU DẤU #)
 window.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const isAdminMode = urlParams.get('demo') === 'admin';
-  const adminBtn = document.getElementById('adminToggleBtn');
+  // Lấy toàn bộ đường link URL
+  const fullUrl = window.location.href;
   
+  // Kiểm tra xem trong link có chứa chuỗi "demo=admin" hay không
+  const isAdminMode = fullUrl.includes('demo=admin');
+  
+  const adminBtn = document.getElementById('adminToggleBtn');
   if (adminBtn) {
     if (isAdminMode) {
-      adminBtn.classList.remove('hidden'); // Hiện nút khi dùng link ?demo=admin
+      adminBtn.classList.remove('hidden'); // Hiện nút Admin
     } else {
-      adminBtn.classList.add('hidden');    // Khách dùng link thường sẽ bị ẩn nút
+      adminBtn.classList.add('hidden');    // Ẩn nút Admin
     }
   }
 });
