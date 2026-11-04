@@ -451,53 +451,67 @@ article.lift{border-radius:1.75rem}
       <h2 id="fcTitle" class="text-2xl font-bold mt-2">Tạo tài khoản FIT LAB</h2>
       <p class="text-sm text-neutral-500 mt-1">Đăng ký để tớ hỗ trợ cậu lưu FIT CARD và đồng bộ trải nghiệm FIT LAB – FIT SPOT</p>
     </div>
-    <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
-      <div>
-        <label for="userName" class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
-        <input type="text" id="userName" autocomplete="name" placeholder="Ví dụ: Minh Anh" class="field">
-      </div>
-      <div>
-        <label for="userContact" class="block text-xs font-semibold text-neutral-600 mb-1.5">Email hoặc số điện thoại <span class="text-red-600" aria-hidden="true">*</span></label>
-        <div class="flex gap-2">
-          <input type="text" id="userContact" required placeholder="Nhập email hoặc SĐT của cậu" class="field flex-1 min-w-0">
-          <button type="button" onclick="sendOtpCode()" class="btn btn-line !px-4 !py-2 text-xs whitespace-nowrap">Gửi mã OTP</button>
-        </div>
-      </div>
-      <div>
-        <label for="userOtp" class="block text-xs font-semibold text-neutral-600 mb-1.5">Mã xác thực OTP <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="text" id="userOtp" required inputmode="numeric" autocomplete="one-time-code" placeholder="Nhập 6 số OTP" class="field tracking-widest" maxlength="6">
-      </div>
-      <div class="grid grid-cols-2 gap-3 pt-1">
-        <div>
-          <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cậu hay mua sản phẩm của BOO qua</label>
-          <select id="userStore" class="field">
-            <option value="Cửa hàng vật lý">Cửa hàng vật lý</option>
-            <option value="Website BOO">Website BOO</option>
-             <option value="TikTok Shop">TikTok Shop</option>
-            <option value="Shopee">Shopee</option>
-          </select>
-        </div>
-        <div>
-          <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cậu muốn nhận thông tin từ chúng mình qua</label>
-          <select id="userChannel" class="field">
-            <option value="Zalo OA">Zalo OA</option>
-            <option value="Email">Email</option>
-            <option value="SMS">SMS</option>
-          </select>
-        </div>
-      </div>
-      <div class="bg-paper border border-line p-3.5 rounded-2xl">
-        <div class="flex items-start gap-2.5">
-          <input type="checkbox" id="consentCheck" class="mt-1 h-4 w-4 accent-accent">
-          <label for="consentCheck" class="text-xs text-neutral-600 leading-relaxed cursor-pointer">
-            Tớ đồng ý nhận thông tin về sản phẩm mới, ưu đãi và chương trình của BOO qua kênh đã chọn.
-          </label>
-        </div>
-      </div>
-      <div class="pt-2">
-        <button type="submit" class="btn btn-ink w-full">Tạo tài khoản FIT LAB</button>
-      </div>
-    </form>
+   <form id="fitCardForm" onsubmit="submitFitCard(event)" class="space-y-4">
+  <div>
+    <label for="userName" class="block text-xs font-semibold text-neutral-600 mb-1.5">Tớ nên gọi cậu là</label>
+    <input type="text" id="userName" autocomplete="name" required placeholder="Ví dụ: Minh Anh" class="field">
+  </div>
+
+  <!-- EMAIL BẮT BUỘC & SỐ ĐIỆN THOẠI KHÔNG BẮT BUỘC -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+      <label for="userEmail" class="block text-xs font-semibold text-neutral-600 mb-1.5">Email <span class="text-red-600">*</span></label>
+      <input type="email" id="userEmail" required placeholder="name@example.com" class="field">
+    </div>
+    <div>
+      <label for="userPhone" class="block text-xs font-semibold text-neutral-600 mb-1.5">Số điện thoại <span class="text-neutral-400 font-normal">(Không bắt buộc)</span></label>
+      <input type="tel" id="userPhone" placeholder="0901234567" class="field">
+    </div>
+  </div>
+
+  <!-- MÃ OTP XÁC THỰC QUA EMAIL -->
+  <div>
+    <div class="flex justify-between items-center mb-1.5">
+      <label for="userOtp" class="block text-xs font-semibold text-neutral-600">Mã xác thực OTP <span class="text-red-600">*</span></label>
+      <button type="button" onclick="sendOtpCode()" class="text-xs font-bold text-accent hover:underline">Gửi mã OTP về Email</button>
+    </div>
+    <input type="text" id="userOtp" required inputmode="numeric" placeholder="Nhập 6 số OTP" class="field tracking-widest" maxlength="6">
+  </div>
+
+  <!-- KÊNH MUA VÀ KÊNH NHẬN TIN -->
+  <div class="grid grid-cols-2 gap-3 pt-1">
+    <div>
+      <label for="userStore" class="block text-xs font-semibold text-neutral-600 mb-1.5">Cậu hay mua sản phẩm qua</label>
+      <select id="userStore" class="field">
+        <option value="Cửa hàng vật lý">Cửa hàng FIT SPOT</option>
+        <option value="Website BOO">Website BOO</option>
+        <option value="TikTok Shop">TikTok Shop</option>
+        <option value="Shopee">Shopee</option>
+      </select>
+    </div>
+    <div>
+      <label for="userChannel" class="block text-xs font-semibold text-neutral-600 mb-1.5">Kênh nhận tin ưu tiên</label>
+      <select id="userChannel" class="field">
+        <option value="Email">Email Marketing (Khuyên dùng)</option>
+        <option value="Zalo OA">Zalo OA (Sắp ra mắt)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- CHECKBOX CONSENT (KHÔNG BẮT BUỘC TICK) -->
+  <div class="bg-paper border border-line p-3.5 rounded-2xl">
+    <div class="flex items-start gap-2.5">
+      <input type="checkbox" id="consentCheck" class="mt-1 h-4 w-4 accent-accent cursor-pointer">
+      <label for="consentCheck" class="text-xs text-neutral-600 leading-relaxed cursor-pointer select-none">
+        Tớ đồng ý nhận thông tin về sản phẩm mới, ưu đãi và chương trình của BOO qua kênh đã chọn.
+      </label>
+    </div>
+  </div>
+
+  <div class="pt-2">
+    <button type="submit" class="btn btn-ink w-full">Tạo tài khoản FIT LAB</button>
+  </div>
+</form>
   </div>
 </div>
  
@@ -1526,14 +1540,14 @@ function closeFitCardModal() {
 }
  
 function sendOtpCode() {
-  const contact = $('#userContact').value;
-  if (!contact) {
-    toast('Vui lòng nhập email hoặc số điện thoại trước khi nhận mã OTP.');
-    $('#userContact').focus();
+  const emailVal = $('#userEmail').value.trim();
+  if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+    toast('Vui lòng nhập Email hợp lệ trước khi nhận mã OTP.');
+    $('#userEmail').focus();
     return;
   }
   S.otp = '123456'; 
-  toast('Mã OTP demo đã gửi tới ' + contact + ' (mã: 123456)');
+  toast('Mã OTP demo đã gửi tới Email: ' + emailVal + ' (Mã: 123456)');
   $('#userOtp').value = '123456';
 }
  
@@ -1578,27 +1592,32 @@ function copyMemberCode() {
 async function submitFitCard(event) {
   event.preventDefault();
   
-  const contactVal = $('#userContact').value.trim();
+  const emailVal = $('#userEmail').value.trim();
+  const phoneVal = $('#userPhone').value.trim();
   
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactVal) && !/^(\+?84|0)\d{9}$/.test(contactVal.replace(/[\s.-]/g, ''))) { 
-    toast('Email hoặc số điện thoại chưa đúng định dạng.'); 
-    $('#userContact').focus(); 
+  // Validate định dạng Email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { 
+    toast('Email chưa đúng định dạng.'); 
+    $('#userEmail').focus(); 
     return; 
   }
+
+  // Nếu điền SĐT thì kiểm tra định dạng
+  if (phoneVal && !/^(\+?84|0)\d{9}$/.test(phoneVal.replace(/[\s.-]/g, ''))) { 
+    toast('Số điện thoại không đúng định dạng.'); 
+    $('#userPhone').focus(); 
+    return; 
+  }
+
   if (!S.otp || $('#userOtp').value.trim() !== S.otp) { 
-    toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP" để nhận mã.'); 
+    toast('Mã OTP chưa đúng. Bấm "Gửi mã OTP về Email" để nhận mã (123456).'); 
     $('#userOtp').focus(); 
     return; 
   }
- 
-  const isEmail = contactVal.includes('@');
-  const cleanPhone = !isEmail ? contactVal.replace(/[\s.-]/g, '') : '';
-  const finalEmail = isEmail ? contactVal : `${cleanPhone}@fitlab.boo`;
- 
-  // Kiểm tra xem khách hàng đã làm quiz chưa
+
+  const cleanPhone = phoneVal ? phoneVal.replace(/[\s.-]/g, '') : '';
   const hasDoneQuiz = Boolean(S.done && S.resultVibe);
   
-  // Ánh xạ từ mã Gu sang tên hiển thị tiếng Việt
   const vibeNames = {
     soft: 'BayBOO Ngọt Ngào',
     street: 'Hop on da Street',
@@ -1607,28 +1626,30 @@ async function submitFitCard(event) {
     comfy: 'Bật mode Sporty',
     cozy: 'Ấm áp mùa Thu Đông'
   };
+
   const currentVibeName = hasDoneQuiz ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz';
- 
+
+  // Đóng gói Payload gửi n8n
   const profile = {
-    displayName: $('#userName').value || 'Thành viên FIT LAB',
-    email: finalEmail,
+    displayName: $('#userName').value.trim() || 'Thành viên FIT LAB',
+    email: emailVal,
     phone: cleanPhone,
     store: $('#userStore').value,
     channel: $('#userChannel').value,
     styleVibe: S.resultVibe || 'Chưa làm quiz',
-    didQuiz: hasDoneQuiz ? 'TRUE' : 'FALSE',  // Trạng thái TRUE / FALSE dạng chuỗi cho dễ đồng bộ
-    vibeName: currentVibeName,               // Tên Gu đề xuất cụ thể
+    didQuiz: hasDoneQuiz ? 'TRUE' : 'FALSE',
+    vibeName: currentVibeName,
     marketingConsent: $('#consentCheck').checked,
-    customerId: getMemberCode(),             // Mã thành viên BOO-XXXXXX (map sang property boo_customer_id trên HubSpot)
+    customerId: getMemberCode(),
     timestamp: new Date().toISOString()
   };
- 
+
   S.userProfile = profile;
- 
-  // Cộng điểm đăng ký (+25) và lưu set đang chờ (+7) TRƯỚC khi gửi n8n,
-  // để lifecycleStage phản ánh đúng hành vi thực tế: Quiz -> Đăng ký thông tin
+
+  // Cộng điểm hành động
   addPts(BEHAVIOR_SCORES.register_contact, 'Tạo tài khoản / Điền form Contact thành công');
- 
+
+  // Lưu set đồ đang chờ
   const pend = SETS.find(x => x.id === S.pendingSave); 
   S.pendingSave = null;
   if (pend && !S.saved.some(x => x.id === pend.id)) {
@@ -1637,14 +1658,12 @@ async function submitFitCard(event) {
     addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD');
     updCount();
   }
- 
-  // Xác định lifecycleStage chuẩn HubSpot dựa trên điểm hiện tại
-  const stage = getLifecycleStage(S.pts);
-profile.leadScore = S.pts;
-profile.lifecycleStage = 'subscriber'; // Gán cố định Subscriber để kích hoạt WF1 (Welcome Email)
-profile.savedOutfits = S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào';
- 
-  // Sử dụng Production URL của n8n (bỏ chữ -test khi chạy thật)
+
+  profile.leadScore = S.pts;
+  profile.lifecycleStage = 'subscriber';
+  profile.savedOutfits = S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào';
+
+  // Bắn Webhook sang n8n
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
   try {
@@ -1656,7 +1675,7 @@ profile.savedOutfits = S.saved && S.saved.length > 0 ? S.saved.map(item => item.
   } catch (err) {
     console.error('Lỗi kết nối n8n webhook:', err);
   }
- 
+
   closeFitCardModal();
   show('fit');
   showMemberCodeModal(profile.customerId, profile.displayName);
@@ -1890,7 +1909,6 @@ function checkAdminMode() {
   }
 }
 
-// Lắng nghe cả khi vừa load trang và khi đổi hashtag URL (#home)
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
