@@ -1852,6 +1852,38 @@ function fitCardNav(e){
     else if(!$('#modal').classList.contains('hidden'))closeModal();
   });
 })();
+ // 🟢 HÀM BẬT/TẮT CONSOLE DÀNH CHO ADMIN
+function toggleAdminConsole() {
+  const widget = document.getElementById('lead');
+  const btn = document.getElementById('adminToggleBtn');
+  if (!widget || !btn) return;
+  
+  if (widget.classList.contains('hidden')) {
+    widget.classList.remove('hidden');
+    btn.innerHTML = '[⚙️ Admin Demo View: ON]';
+    btn.classList.replace('bg-ink/80', 'bg-accent');
+    if (typeof toast === 'function') toast('Đã bật BOO Scoring Engine Console!');
+  } else {
+    widget.classList.add('hidden');
+    btn.innerHTML = '[⚙️ Admin Demo View: OFF]';
+    btn.classList.replace('bg-accent', 'bg-ink/80');
+  }
+}
+
+// 🟢 KIỂM TRA THAM SỐ URL (?demo=admin) ĐỂ ẨN/HIỆN NÚT ADMIN
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const isAdminMode = urlParams.get('demo') === 'admin';
+  const adminBtn = document.getElementById('adminToggleBtn');
+  
+  if (adminBtn) {
+    if (isAdminMode) {
+      adminBtn.classList.remove('hidden'); // Hiện nút khi dùng link ?demo=admin
+    } else {
+      adminBtn.classList.add('hidden');    // Khách dùng link thường sẽ bị ẩn nút
+    }
+  }
+});
 </script>
 </body>
 </html>
