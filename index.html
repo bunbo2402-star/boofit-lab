@@ -165,17 +165,19 @@ article.lift{border-radius:1.75rem}
 .wk-day.today{box-shadow:0 0 0 2px #2E6BD6}
 .toast{position:fixed;left:50%;bottom:1.5rem;z-index:60;max-width:min(92vw,28rem);transform:translate(-50%,16px);opacity:0;background:#1A1D21;color:#fff;font-size:.875rem;font-weight:500;padding:.8rem 1.25rem;border-radius:999px;box-shadow:0 18px 40px -16px rgba(26,29,33,.6);transition:opacity .35s var(--ease),transform .35s var(--ease)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
- /* 🎨 CẤU HÌNH GIAO DIỆN CHATBOT HOÀN CHỈNH CHO BOO FIT LAB */
+ /* 🎨 ĐỔI NÚT CHAT THÀNH MÀU XANH BOO (#2E6BD6) */
 :root {
-  --chat--color-primary: #1A1D21 !important;
-  --chat--color-secondary: #2E6BD6 !important;
-  --chat--color-typing: #1A1D21 !important;
+  --chat--color-primary: #2E6BD6 !important;
+  --chat--color-secondary: #1A1D21 !important;
+  --chat--color-typing: #2E6BD6 !important;
   --chat--border-radius: 20px !important;
   --chat--window--width: 380px !important;
   --chat--window--height: 580px !important;
+  --chat--toggle--background: #2E6BD6 !important;
+  --chat--toggle--hover: #1A1D21 !important;
 }
 
-/* 1. KHUNG CỬA SỔ CHAT (Giao diện chính) */
+/* 1. KHUNG CỬA SỔ CHAT */
 .n8n-chat-window {
   background-color: #FAFAF8 !important;
   border-radius: 24px !important;
@@ -189,38 +191,45 @@ article.lift{border-radius:1.75rem}
   color: #FFFFFF !important;
 }
 
-/* 2. CHỈ TRONG SUỐT KHUNG BAO NGOÀI NÚT TOGGLE (Xóa ô vuông xanh thừa) */
+/* 2. CHỈ TRONG SUỐT KHUNG BAO NGOÀI NÚT TOGGLE (Xóa ô vuông lòi ra) */
 .n8n-chat-toggle-button-wrapper,
-div[class*="toggle-wrapper"] {
+div[class*="toggle-wrapper"],
+div[class*="n8n-chat"] {
   background: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
 
-/* 3. NÚT CHATBOT TRÒN (Màu Đen ban đầu, Hover đổi sang Xanh BOO #2E6BD6) */
+/* 3. ÉP NÚT CHAT BẮT BUỘC MÀU XANH BOO (#2E6BD6) */
 .n8n-chat-toggle-button,
-button[class*="toggle-button"] {
-  background: #1A1D21 !important;
-  background-color: #1A1D21 !important;
+button[class*="toggle"],
+button[class*="n8n-chat-button"],
+div[class*="n8n-chat"] button {
+  background: #2E6BD6 !important;
+  background-color: #2E6BD6 !important;
   border-radius: 50% !important;
   width: 60px !important;
   height: 60px !important;
-  box-shadow: 0 10px 25px -5px rgba(26, 29, 33, 0.4) !important;
+  box-shadow: 0 10px 25px -5px rgba(46, 107, 214, 0.5) !important;
   transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
   border: none !important;
 }
 
+/* KHI RE CHUỘT (HOVER): ĐỔI SANG MÀU ĐEN CÁ TÍNH (#1A1D21) & PHÓNG TO */
 .n8n-chat-toggle-button:hover,
-button[class*="toggle-button"]:hover {
-  background: #2E6BD6 !important;
-  background-color: #2E6BD6 !important;
+button[class*="toggle"]:hover,
+button[class*="n8n-chat-button"]:hover,
+div[class*="n8n-chat"] button:hover {
+  background: #1A1D21 !important;
+  background-color: #1A1D21 !important;
   transform: scale(1.1) !important;
-  box-shadow: 0 12px 30px -5px rgba(46, 107, 214, 0.5) !important;
+  box-shadow: 0 12px 30px -5px rgba(26, 29, 33, 0.6) !important;
 }
 
-/* Ensure icon inside is white */
+/* Icon bong bóng trắng ở giữa */
 .n8n-chat-toggle-button svg,
-button[class*="toggle-button"] svg {
+button[class*="toggle"] svg,
+div[class*="n8n-chat"] svg {
   fill: #FFFFFF !important;
   color: #FFFFFF !important;
 }
