@@ -1986,14 +1986,12 @@ function checkAdminMode() {
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
-<!-- ========================================================= -->
-<!-- 🟢 TÍCH HỢP N8N CHATBOT WIDGET VÀO BOO FIT LAB            -->
-<!-- ========================================================= -->
+<!-- 🟢 CẤU HÌNH N8N CHATBOT WIDGET CHO BOO FIT LAB -->
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
 <script>
-  // Biến đếm số lần hỏi tư vấn của khách vãng lai (lưu tạm trong phiên)
-  window.consultCount = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
+  // Khởi tạo bộ đếm số lượt hỏi tư vấn từ sessionStorage
+  window.booConsultCount = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
 </script>
 
 <script type="module">
@@ -2002,13 +2000,13 @@ window.addEventListener('hashchange', checkAdminMode);
   window.n8nChatInstance = createChat({
     webhookUrl: 'https://catanhthu.app.n8n.cloud/webhook/3cdafc6c-7ccf-460a-ae37-933a92ce2a47/chat',
     
-    // Đọc trạng thái đăng ký & số lượt tư vấn thời gian thực
-    metadata: {
+    // Hàm dynamic metadata: luôn lấy giá trị mới nhất tại thời điểm bấm gửi tin nhắn
+    metadata: () => ({
       isRegistered: (typeof S !== 'undefined' && S.userProfile) ? "TRUE" : "FALSE",
       userEmail: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.email : "",
       userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : "",
-      consultCount: window.consultCount
-    },
+      consultCount: parseInt(sessionStorage.getItem('boo_consult_count') || '0')
+    }),
     
     showWelcomeMessage: true,
     initialMessages: [
@@ -2025,20 +2023,19 @@ window.addEventListener('hashchange', checkAdminMode);
   });
 </script>
 
-<!-- 🟢 SCRIPT BẮT TÍN HIỆU TĂNG ĐẾM & BẬT POP-UP FORM -->
+<!-- 🟢 BẮT TÍN HIỆU TĂNG ĐẾM & KÍCH HOẠT POPUP FORM -->
 <script>
   window.addEventListener('message', function(event) {
     if (event.data && typeof event.data === 'string') {
-      // 1. Nếu Bot phản hồi tư vấn cho khách chưa đăng ký -> Tăng bộ đếm
+      // 1. Tăng số lần hỏi khi AI tư vấn
       if (event.data.includes('COUNT_CONSULT')) {
-        window.consultCount++;
-        sessionStorage.setItem('boo_consult_count', window.consultCount);
-        if (window.n8nChatInstance && window.n8nChatInstance.metadata) {
-          window.n8nChatInstance.metadata.consultCount = window.consultCount;
-        }
+        let current = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
+        current++;
+        sessionStorage.setItem('boo_consult_count', current);
+        window.booConsultCount = current;
       }
       
-      // 2. Nếu Bot gửi lệnh bật Pop-up (khi quá 3 lần hỏi hoặc yêu cầu đăng ký)
+      // 2. Mở Pop-up Form đăng ký FIT CARD khi vượt quá giới hạn
       if (event.data.includes('OPEN_FITCARD_POPUP')) {
         if (typeof openFitCardModal === 'function') {
           openFitCardModal();
