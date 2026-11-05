@@ -182,7 +182,20 @@ article.lift{border-radius:1.75rem}
   --chat--message--bot--background: #FFFFFF !important;
   --chat--message--bot--color: #1A1D21 !important;
 }
+/* Đổi màu nút Chatbot sang Đen, khi Hover đổi sang Xanh BOO #2E6BD6 */
+button.n8n-chat-toggle-button,
+.n8n-chat-toggle-button {
+  background-color: #1A1D21 !important;
+  background: #1A1D21 !important;
+  transition: background-color 0.3s ease, transform 0.3s ease !important;
+}
 
+button.n8n-chat-toggle-button:hover,
+.n8n-chat-toggle-button:hover {
+  background-color: #2E6BD6 !important;
+  background: #2E6BD6 !important;
+  transform: scale(1.08) !important;
+}
 /* Bo góc khung chat và tạo hiệu ứng bóng đổ */
 .n8n-chat-window {
   border-radius: 24px !important;
