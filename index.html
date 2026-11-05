@@ -1645,7 +1645,13 @@ async function submitFitCard(event) {
   };
 
   S.userProfile = profile;
-
+if (window.n8nChatInstance) {
+    window.n8nChatInstance.metadata = {
+      isRegistered: "TRUE",
+      userEmail: profile.email,
+      userName: profile.displayName
+    };
+  }
   // Cộng điểm hành động
   addPts(BEHAVIOR_SCORES.register_contact, 'Tạo tài khoản / Điền form Contact thành công');
 
@@ -1912,6 +1918,41 @@ function checkAdminMode() {
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
+ <!-- ========================================================= -->
+<!-- 🟢 TÍCH HỢP N8N CHATBOT WIDGET VÀO BOO FIT LAB            -->
+<!-- ========================================================= -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  // Lưu instance vào window để cập nhật metadata khi khách đăng ký
+  window.n8nChatInstance = createChat({
+    webhookUrl: 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663/chat', // Webhook Chat URL của cậu
+    
+    // Đọc trạng thái đăng ký thời gian thực từ biến S.userProfile
+    metadata: {
+      isRegistered: (typeof S !== 'undefined' && S.userProfile) ? "TRUE" : "FALSE",
+      userEmail: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.email : "",
+      userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : ""
+    },
+    
+    showWelcomeMessage: true,
+    initialMessages: [
+      'Hi cậu! Tớ là FIT ASSIST 🤖',
+      'Cậu cần hỗ trợ thông tin gì về BOO FIT LAB hay tư vấn outfit hôm nay thế?'
+    ],
+    i18n: {
+      en: {
+        title: 'FIT ASSIST - Trợ lý BOO',
+        subtitle: 'Đồng hành tìm outfit đúng gu cùng cậu',
+        inputPlaceholder: 'Nhập câu hỏi của cậu...',
+      },
+    },
+  });
+</script>
+
+</body>
+</html>
 </body>
 </html>
  
