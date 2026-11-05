@@ -1990,16 +1990,24 @@ window.addEventListener('hashchange', checkAdminMode);
 <!-- 🟢 TÍCH HỢP N8N CHATBOT WIDGET VÀO BOO FIT LAB            -->
 <!-- ========================================================= -->
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+<script>
+  // Biến đếm số lần hỏi tư vấn của khách vãng lai (lưu tạm trong phiên)
+  window.consultCount = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
+</script>
+
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
   window.n8nChatInstance = createChat({
     webhookUrl: 'https://catanhthu.app.n8n.cloud/webhook/3cdafc6c-7ccf-460a-ae37-933a92ce2a47/chat',
     
+    // Đọc trạng thái đăng ký & số lượt tư vấn thời gian thực
     metadata: {
       isRegistered: (typeof S !== 'undefined' && S.userProfile) ? "TRUE" : "FALSE",
       userEmail: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.email : "",
-      userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : ""
+      userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : "",
+      consultCount: window.consultCount
     },
     
     showWelcomeMessage: true,
@@ -2017,12 +2025,24 @@ window.addEventListener('hashchange', checkAdminMode);
   });
 </script>
 
-<!-- 🟢 SCRIPT TỰ ĐỘNG BẬT POP-UP FORM ĐĂNG KÝ KHI CHATBOT YÊU CẦU -->
+<!-- 🟢 SCRIPT BẮT TÍN HIỆU TĂNG ĐẾM & BẬT POP-UP FORM -->
 <script>
   window.addEventListener('message', function(event) {
-    if (event.data && typeof event.data === 'string' && event.data.includes('OPEN_FITCARD_POPUP')) {
-      if (typeof openFitCardModal === 'function') {
-        openFitCardModal();
+    if (event.data && typeof event.data === 'string') {
+      // 1. Nếu Bot phản hồi tư vấn cho khách chưa đăng ký -> Tăng bộ đếm
+      if (event.data.includes('COUNT_CONSULT')) {
+        window.consultCount++;
+        sessionStorage.setItem('boo_consult_count', window.consultCount);
+        if (window.n8nChatInstance && window.n8nChatInstance.metadata) {
+          window.n8nChatInstance.metadata.consultCount = window.consultCount;
+        }
+      }
+      
+      // 2. Nếu Bot gửi lệnh bật Pop-up (khi quá 3 lần hỏi hoặc yêu cầu đăng ký)
+      if (event.data.includes('OPEN_FITCARD_POPUP')) {
+        if (typeof openFitCardModal === 'function') {
+          openFitCardModal();
+        }
       }
     }
   });
