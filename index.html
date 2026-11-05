@@ -1986,7 +1986,7 @@ function checkAdminMode() {
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
-<!-- 🟢 CẤU HÌNH BẮT BỘC ĐĂNG KÝ FIT CARD KHI BẤM NÚT CHATBOT -->
+<!-- 🟢 CẤU HÌNH POPUP KHI BẤM NÚT CHATBOT KHI CHƯA ĐĂNG KÝ -->
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
 <script type="module">
@@ -2015,41 +2015,63 @@ window.addEventListener('hashchange', checkAdminMode);
       },
     }
   });
+</script>
 
-  // 2. Bắt sự kiện click nút Chat: Chưa đăng ký -> Bật Form Đăng Ký
-  document.addEventListener('DOMContentLoaded', () => {
-    // Chờ Chatbot render xong nút toggle
-    const checkToggleButton = setInterval(() => {
-      const toggleBtn = document.querySelector('.n8n-chat-toggle-button') || document.querySelector('button[class*="toggle"]');
-      
-      if (toggleBtn) {
-        clearInterval(checkToggleButton);
-        
-        toggleBtn.addEventListener('click', function(e) {
-          const isRegistered = typeof S !== 'undefined' && S.userProfile;
-          
-          // NẾU CHƯA ĐĂNG KÝ: Chặn mở chat và bật Pop-up Form
-          if (!isRegistered) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Đóng khung chat lại nếu nó lỡ mở ra
-            const chatWindow = document.querySelector('.n8n-chat-window') || document.querySelector('div[class*="chat-window"]');
-            if (chatWindow) {
-              chatWindow.style.display = 'none';
-            }
-            
-            // Bật Pop-up Form FIT CARD
-            if (typeof openFitCardModal === 'function') {
-              openFitCardModal();
-            }
-          }
-        }, true); // Dùng capture phase để chặn trước sự kiện mặc định của thư viện
+<!-- 🟢 LỚP PHỦ BẮT SỰ KIỆN CLICK POPUP CHUẨN XÁC 100% -->
+<style>
+  #chat-guard-overlay {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    width: 64px;
+    height: 64px;
+    z-index: 99999;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 50%;
+  }
+</style>
+
+<div id="chat-guard-overlay"></div>
+
+<script>
+  // Hàm kiểm tra và cập nhật trạng thái lớp phủ
+  function updateChatGuard() {
+    const overlay = document.getElementById('chat-guard-overlay');
+    const isRegistered = typeof S !== 'undefined' && S.userProfile;
+    
+    if (overlay) {
+      if (isRegistered) {
+        // Đã đăng ký -> Ẩn lớp phủ để bấm trực tiếp vào Chatbot
+        overlay.style.display = 'none';
+      } else {
+        // Chưa đăng ký -> Hiện lớp phủ đè lên nút Chatbot
+        overlay.style.display = 'block';
       }
-    }, 300);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('chat-guard-overlay');
+    
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isRegistered = typeof S !== 'undefined' && S.userProfile;
+        if (!isRegistered) {
+          if (typeof openFitCardModal === 'function') {
+            openFitCardModal();
+          }
+        }
+      });
+    }
+
+    // Kiểm tra định kỳ trạng thái người dùng
+    setInterval(updateChatGuard, 500);
   });
 </script>
 
 </body>
 </html>
- 
