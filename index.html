@@ -1925,11 +1925,9 @@ window.addEventListener('hashchange', checkAdminMode);
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
-  // Lưu instance vào window để cập nhật metadata khi khách đăng ký
   window.n8nChatInstance = createChat({
-    webhookUrl: 'https://catanhthu.app.n8n.cloud/webhook/3cdafc6c-7ccf-460a-ae37-933a92ce2a47/chat', // Webhook Chat URL của cậu
+    webhookUrl: 'https://catanhthu.app.n8n.cloud/webhook/3cdafc6c-7ccf-460a-ae37-933a92ce2a47/chat',
     
-    // Đọc trạng thái đăng ký thời gian thực từ biến S.userProfile
     metadata: {
       isRegistered: (typeof S !== 'undefined' && S.userProfile) ? "TRUE" : "FALSE",
       userEmail: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.email : "",
@@ -1947,26 +1945,10 @@ window.addEventListener('hashchange', checkAdminMode);
         subtitle: 'Đồng hành tìm outfit đúng gu cùng cậu',
         inputPlaceholder: 'Nhập câu hỏi của cậu...',
       },
-    },
-
-    // 🎨 CẤU HÌNH GIAO DIỆN CHATBOT THEO TONE BOO FIT LAB
-    style: {
-      primaryColor: '#1A1D21',          // Màu Đen chủ đạo BOO FIT LAB
-      backgroundColor: '#FAFAF8',       // Màu nền Kem mờ nhẹ
-      fontFamily: '"Be Vietnam Pro", sans-serif', // Font chuẩn của web
-      
-      userMessageColor: '#1A1D21',      // Tin nhắn người dùng (Nền Đen)
-      userMessageTextColor: '#FFFFFF',  // Chữ Trắng
-      botMessageColor: '#FFFFFF',       // Tin nhắn Bot (Nền Trắng)
-      botMessageTextColor: '#1A1D21',   // Chữ Đen
-      
-      borderRadius: '20px',             // Bo tròn khung chat 20px
     }
   });
 </script>
 
-</body>
-</html>
 </body>
 </html>
  
