@@ -165,6 +165,46 @@ article.lift{border-radius:1.75rem}
 .wk-day.today{box-shadow:0 0 0 2px #2E6BD6}
 .toast{position:fixed;left:50%;bottom:1.5rem;z-index:60;max-width:min(92vw,28rem);transform:translate(-50%,16px);opacity:0;background:#1A1D21;color:#fff;font-size:.875rem;font-weight:500;padding:.8rem 1.25rem;border-radius:999px;box-shadow:0 18px 40px -16px rgba(26,29,33,.6);transition:opacity .35s var(--ease),transform .35s var(--ease)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+ /* 🎨 CẤU HÌNH GIAO DIỆN CHATBOT THEO TONE BOO FIT LAB */
+:root {
+  --chat--color-primary: #1A1D21 !important;
+  --chat--color-secondary: #2E6BD6 !important;
+  --chat--color-typing: #1A1D21 !important;
+  --chat--border-radius: 20px !important;
+  --chat--window--width: 380px !important;
+  --chat--window--height: 580px !important;
+  --chat--header--background: #1A1D21 !important;
+  --chat--header--color: #FFFFFF !important;
+  --chat--toggle--background: #1A1D21 !important;
+  --chat--toggle--hover: #2E6BD6 !important;
+  --chat--message--user--background: #1A1D21 !important;
+  --chat--message--user--color: #FFFFFF !important;
+  --chat--message--bot--background: #FFFFFF !important;
+  --chat--message--bot--color: #1A1D21 !important;
+}
+
+/* Bo góc khung chat và tạo hiệu ứng bóng đổ */
+.n8n-chat-window {
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px -15px rgba(26, 29, 33, 0.35) !important;
+  border: 1px solid #E7E4DD !important;
+  overflow: hidden !important;
+}
+
+/* Định dạng Header của Chatbot */
+.n8n-chat-header {
+  background: #1A1D21 !important;
+  color: #FFFFFF !important;
+}
+
+/* Định dạng Nút mở Chatbot tròn ở góc dưới màn hình */
+.n8n-chat-toggle-button {
+  background: #1A1D21 !important;
+  box-shadow: 0 10px 25px -5px rgba(26, 29, 33, 0.4) !important;
+}
+.n8n-chat-toggle-button:hover {
+  background: #2E6BD6 !important;
+}
 </style>
 </head>
 <body class="font-sans antialiased">
