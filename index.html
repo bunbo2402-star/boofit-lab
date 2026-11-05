@@ -182,20 +182,29 @@ article.lift{border-radius:1.75rem}
   --chat--message--bot--background: #FFFFFF !important;
   --chat--message--bot--color: #1A1D21 !important;
 }
-/* 🟢 ÉP MÀU NÚT CHATBOT N8N ĐỔI SANG MÀU XANH BOO KHI HOVER */
+/* 🟢 FIX HOÀN TOÀN LỖI Ô VUÔNG XANH LÒI RA Ở NÚT CHATBOT */
 div[class*="n8n-chat"],
+div[class*="n8n-chat"] * {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Ép chính xác hình tròn cho nút toggle */
 .n8n-chat-toggle-button,
 button[class*="toggle"] {
   background-color: #1A1D21 !important;
-  background: #1A1D21 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  width: 60px !important;
+  height: 60px !important;
+  box-shadow: 0 10px 25px -5px rgba(26, 29, 33, 0.4) !important;
   transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
 }
 
-div[class*="n8n-chat"]:hover,
+/* Đổi màu xanh BOO (#2E6BD6) + phóng to mượt khi HOVER */
 .n8n-chat-toggle-button:hover,
 button[class*="toggle"]:hover {
   background-color: #2E6BD6 !important;
-  background: #2E6BD6 !important;
   transform: scale(1.1) !important;
   box-shadow: 0 12px 30px -5px rgba(46, 107, 214, 0.5) !important;
 }
