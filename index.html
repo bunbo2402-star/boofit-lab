@@ -2017,6 +2017,17 @@ window.addEventListener('hashchange', checkAdminMode);
   });
 </script>
 
+<!-- 🟢 SCRIPT TỰ ĐỘNG BẬT POP-UP FORM ĐĂNG KÝ KHI CHATBOT YÊU CẦU -->
+<script>
+  window.addEventListener('message', function(event) {
+    if (event.data && typeof event.data === 'string' && event.data.includes('OPEN_FITCARD_POPUP')) {
+      if (typeof openFitCardModal === 'function') {
+        openFitCardModal();
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
  
