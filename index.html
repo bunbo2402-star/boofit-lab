@@ -1986,26 +1986,20 @@ function checkAdminMode() {
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
-<!-- 🟢 CẤU HÌNH N8N CHATBOT WIDGET CHO BOO FIT LAB -->
+<!-- 🟢 CẤU HÌNH BẮT BỘC ĐĂNG KÝ FIT CARD KHI BẤM NÚT CHATBOT -->
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-
-<script>
-  // Khởi tạo bộ đếm số lượt hỏi tư vấn từ sessionStorage
-  window.booConsultCount = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
-</script>
 
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
+  // 1. Khởi tạo n8n Chat Widget
   window.n8nChatInstance = createChat({
     webhookUrl: 'https://catanhthu.app.n8n.cloud/webhook/3cdafc6c-7ccf-460a-ae37-933a92ce2a47/chat',
     
-    // Hàm dynamic metadata: luôn lấy giá trị mới nhất tại thời điểm bấm gửi tin nhắn
     metadata: () => ({
       isRegistered: (typeof S !== 'undefined' && S.userProfile) ? "TRUE" : "FALSE",
       userEmail: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.email : "",
-      userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : "",
-      consultCount: parseInt(sessionStorage.getItem('boo_consult_count') || '0')
+      userName: (typeof S !== 'undefined' && S.userProfile) ? S.userProfile.displayName : ""
     }),
     
     showWelcomeMessage: true,
@@ -2021,27 +2015,38 @@ window.addEventListener('hashchange', checkAdminMode);
       },
     }
   });
-</script>
 
-<!-- 🟢 BẮT TÍN HIỆU TĂNG ĐẾM & KÍCH HOẠT POPUP FORM -->
-<script>
-  window.addEventListener('message', function(event) {
-    if (event.data && typeof event.data === 'string') {
-      // 1. Tăng số lần hỏi khi AI tư vấn
-      if (event.data.includes('COUNT_CONSULT')) {
-        let current = parseInt(sessionStorage.getItem('boo_consult_count') || '0');
-        current++;
-        sessionStorage.setItem('boo_consult_count', current);
-        window.booConsultCount = current;
-      }
+  // 2. Bắt sự kiện click nút Chat: Chưa đăng ký -> Bật Form Đăng Ký
+  document.addEventListener('DOMContentLoaded', () => {
+    // Chờ Chatbot render xong nút toggle
+    const checkToggleButton = setInterval(() => {
+      const toggleBtn = document.querySelector('.n8n-chat-toggle-button') || document.querySelector('button[class*="toggle"]');
       
-      // 2. Mở Pop-up Form đăng ký FIT CARD khi vượt quá giới hạn
-      if (event.data.includes('OPEN_FITCARD_POPUP')) {
-        if (typeof openFitCardModal === 'function') {
-          openFitCardModal();
-        }
+      if (toggleBtn) {
+        clearInterval(checkToggleButton);
+        
+        toggleBtn.addEventListener('click', function(e) {
+          const isRegistered = typeof S !== 'undefined' && S.userProfile;
+          
+          // NẾU CHƯA ĐĂNG KÝ: Chặn mở chat và bật Pop-up Form
+          if (!isRegistered) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Đóng khung chat lại nếu nó lỡ mở ra
+            const chatWindow = document.querySelector('.n8n-chat-window') || document.querySelector('div[class*="chat-window"]');
+            if (chatWindow) {
+              chatWindow.style.display = 'none';
+            }
+            
+            // Bật Pop-up Form FIT CARD
+            if (typeof openFitCardModal === 'function') {
+              openFitCardModal();
+            }
+          }
+        }, true); // Dùng capture phase để chặn trước sự kiện mặc định của thư viện
       }
-    }
+    }, 300);
   });
 </script>
 
