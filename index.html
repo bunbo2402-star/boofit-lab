@@ -1918,7 +1918,7 @@ function checkAdminMode() {
 window.addEventListener('DOMContentLoaded', checkAdminMode);
 window.addEventListener('hashchange', checkAdminMode);
 </script>
- <!-- ========================================================= -->
+<!-- ========================================================= -->
 <!-- 🟢 TÍCH HỢP N8N CHATBOT WIDGET VÀO BOO FIT LAB            -->
 <!-- ========================================================= -->
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
@@ -1943,11 +1943,25 @@ window.addEventListener('hashchange', checkAdminMode);
     ],
     i18n: {
       en: {
-        title: 'FIT ASSIST - Trợ lý BOO',
+        title: 'FIT ASSIST · Trợ lý BOO',
         subtitle: 'Đồng hành tìm outfit đúng gu cùng cậu',
         inputPlaceholder: 'Nhập câu hỏi của cậu...',
       },
     },
+
+    // 🎨 CẤU HÌNH GIAO DIỆN CHATBOT THEO TONE BOO FIT LAB
+    style: {
+      primaryColor: '#1A1D21',          // Màu Đen chủ đạo BOO FIT LAB
+      backgroundColor: '#FAFAF8',       // Màu nền Kem mờ nhẹ
+      fontFamily: '"Be Vietnam Pro", sans-serif', // Font chuẩn của web
+      
+      userMessageColor: '#1A1D21',      // Tin nhắn người dùng (Nền Đen)
+      userMessageTextColor: '#FFFFFF',  // Chữ Trắng
+      botMessageColor: '#FFFFFF',       // Tin nhắn Bot (Nền Trắng)
+      botMessageTextColor: '#1A1D21',   // Chữ Đen
+      
+      borderRadius: '20px',             // Bo tròn khung chat 20px
+    }
   });
 </script>
 
