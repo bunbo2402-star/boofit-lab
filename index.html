@@ -1658,8 +1658,21 @@ function copyMemberCode() {
   }
 }
 async function syncLeadToHubSpot(actionName) {
-  // Chỉ đồng bộ khi khách hàng đã điền form đăng ký trước đó
-  if (!S.userProfile || !S.userProfile.email) return;
+  let profile = S.userProfile;
+  if (!profile) {
+    try {
+      const savedUser = localStorage.getItem('boo_user_profile');
+      if (savedUser) {
+        profile = JSON.parse(savedUser);
+        S.userProfile = profile;
+      }
+    } catch (e) {}
+  }
+
+  if (!profile || !profile.email) {
+    console.log('⚠️ Chưa đăng ký form, bỏ qua sync HubSpot cho hành động:', actionName);
+    return;
+  }
 
   const vibeNames = {
     soft: 'BayBOO Ngọt Ngào',
@@ -1671,16 +1684,16 @@ async function syncLeadToHubSpot(actionName) {
   };
 
   const payload = {
-    displayName: S.userProfile.displayName,
-    email: S.userProfile.email,
-    phone: S.userProfile.phone,
-    store: S.userProfile.store,
-    channel: S.userProfile.channel,
+    displayName: profile.displayName,
+    email: profile.email,
+    phone: profile.phone || '',
+    store: profile.store || '',
+    channel: profile.channel || '',
     styleVibe: S.resultVibe || 'Chưa làm quiz',
     didQuiz: Boolean(S.done && S.resultVibe) ? 'TRUE' : 'FALSE',
     vibeName: S.resultVibe ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz',
-    customerId: S.userProfile.customerId,
-    leadScore: S.pts, // Điểm cập nhật mới nhất
+    customerId: profile.customerId,
+    leadScore: S.pts,
     lifecycleStage: getLifecycleStage(S.pts).hubspot,
     savedOutfits: S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào',
     lastAction: actionName || 'Tương tác trên Web',
@@ -1689,14 +1702,17 @@ async function syncLeadToHubSpot(actionName) {
 
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
 
+  console.log('🚀 Đang chuẩn bị bắn webhook sync lên n8n:', payload);
+
   try {
     await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
+    console.log('✅ Sync HubSpot thành công cho hành động:', actionName, 'với số điểm:', S.pts);
   } catch (err) {
-    console.error('Lỗi sync HubSpot:', err);
+    console.error('❌ Lỗi sync HubSpot:', err);
   }
 }
  
@@ -1771,7 +1787,9 @@ async function submitFitCard(event) {
   };
 
   S.userProfile = profile;
-  
+  try {
+      localStorage.setItem('boo_user_profile', JSON.stringify(profile));
+    } catch (e) {}
   if (window.n8nChatInstance) {
     window.n8nChatInstance.metadata = {
       isRegistered: "TRUE",
