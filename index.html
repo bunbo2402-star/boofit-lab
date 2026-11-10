@@ -1787,9 +1787,7 @@ async function submitFitCard(event) {
   };
 
   S.userProfile = profile;
-  try {
-      localStorage.setItem('boo_user_profile', JSON.stringify(profile));
-    } catch (e) {}
+ 
   if (window.n8nChatInstance) {
     window.n8nChatInstance.metadata = {
       isRegistered: "TRUE",
