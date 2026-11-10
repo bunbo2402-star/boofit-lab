@@ -1656,6 +1656,48 @@ function copyMemberCode() {
     toast('Không sao chép được, cậu chụp màn hình giúp tớ nha.');
   }
 }
+async function syncLeadToHubSpot(actionName) {
+  // Chỉ đồng bộ khi khách hàng đã điền form đăng ký trước đó
+  if (!S.userProfile || !S.userProfile.email) return;
+
+  const vibeNames = {
+    soft: 'BayBOO Ngọt Ngào',
+    street: 'Hop on da Street',
+    neutral: 'Basic Tối Giản',
+    explorer: 'Tắc Kè Xuống Phố',
+    comfy: 'Bật mode Sporty',
+    cozy: 'Ấm áp mùa Thu Đông'
+  };
+
+  const payload = {
+    displayName: S.userProfile.displayName,
+    email: S.userProfile.email,
+    phone: S.userProfile.phone,
+    store: S.userProfile.store,
+    channel: S.userProfile.channel,
+    styleVibe: S.resultVibe || 'Chưa làm quiz',
+    didQuiz: Boolean(S.done && S.resultVibe) ? 'TRUE' : 'FALSE',
+    vibeName: S.resultVibe ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz',
+    customerId: S.userProfile.customerId,
+    leadScore: S.pts, // Điểm cập nhật mới nhất
+    lifecycleStage: getLifecycleStage(S.pts).hubspot,
+    savedOutfits: S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào',
+    lastAction: actionName || 'Tương tác trên Web',
+    timestamp: new Date().toISOString()
+  };
+
+  const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
+
+  try {
+    await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.error('Lỗi sync HubSpot:', err);
+  }
+}
  
 async function submitFitCard(event) {
   event.preventDefault();
@@ -1663,14 +1705,12 @@ async function submitFitCard(event) {
   const emailVal = $('#userEmail').value.trim();
   const phoneVal = $('#userPhone').value.trim();
   
-  // Validate định dạng Email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { 
     toast('Email chưa đúng định dạng.'); 
     $('#userEmail').focus(); 
     return; 
   }
 
-  // Nếu điền SĐT thì kiểm tra định dạng
   if (phoneVal && !/^(\+?84|0)\d{9}$/.test(phoneVal.replace(/[\s.-]/g, ''))) { 
     toast('Số điện thoại không đúng định dạng.'); 
     $('#userPhone').focus(); 
@@ -1686,6 +1726,11 @@ async function submitFitCard(event) {
   const cleanPhone = phoneVal ? phoneVal.replace(/[\s.-]/g, '') : '';
   const hasDoneQuiz = Boolean(S.done && S.resultVibe);
   
+  // Nếu người dùng chưa được gán profile trước đó, cộng điểm đăng ký form
+  if (!S.userProfile) {
+    addPts(BEHAVIOR_SCORES.register_contact, 'Tạo tài khoản / Điền form Contact thành công');
+  }
+
   const vibeNames = {
     soft: 'BayBOO Ngọt Ngào',
     street: 'Hop on da Street',
@@ -1697,7 +1742,16 @@ async function submitFitCard(event) {
 
   const currentVibeName = hasDoneQuiz ? (vibeNames[S.resultVibe] || S.resultVibe) : 'Chưa làm quiz';
 
-  // Đóng gói Payload gửi n8n
+  // Lưu set đồ đang chờ (nếu có bấm lưu từ trước)
+  const pend = SETS.find(x => x.id === S.pendingSave); 
+  S.pendingSave = null;
+  if (pend && !S.saved.some(x => x.id === pend.id)) {
+    S.saved.push({ id: pend.id, name: pend.name, img: pend.img, colors: S.colors[pend.id] ? [...S.colors[pend.id]] : pend.items.map(i => i.c[0]) });
+    addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD');
+    updCount();
+  }
+
+  // Đóng gói Payload gửi sang n8n với đầy đủ thông tin điểm và set đồ
   const profile = {
     displayName: $('#userName').value.trim() || 'Thành viên FIT LAB',
     email: emailVal,
@@ -1709,35 +1763,22 @@ async function submitFitCard(event) {
     vibeName: currentVibeName,
     marketingConsent: $('#consentCheck').checked,
     customerId: getMemberCode(),
+    leadScore: S.pts, // 🟢 Gửi tổng điểm hiện tại chuẩn xác
+    lifecycleStage: getLifecycleStage(S.pts).hubspot,
+    savedOutfits: S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào',
     timestamp: new Date().toISOString()
   };
 
   S.userProfile = profile;
-if (window.n8nChatInstance) {
+  
+  if (window.n8nChatInstance) {
     window.n8nChatInstance.metadata = {
       isRegistered: "TRUE",
       userEmail: profile.email,
       userName: profile.displayName
     };
   }
-  // Cộng điểm hành động
-  addPts(BEHAVIOR_SCORES.register_contact, 'Tạo tài khoản / Điền form Contact thành công');
 
-  // Lưu set đồ đang chờ
-  const pend = SETS.find(x => x.id === S.pendingSave); 
-  S.pendingSave = null;
-  if (pend && !S.saved.some(x => x.id === pend.id)) {
-    const s = pend;
-    S.saved.push({ id: s.id, name: s.name, img: s.img, colors: S.colors[s.id] ? [...S.colors[s.id]] : s.items.map(i => i.c[0]) });
-    addPts(BEHAVIOR_SCORES.save_fitcard, 'Lưu set vào FIT CARD');
-    updCount();
-  }
-
-  profile.leadScore = S.pts;
-  profile.lifecycleStage = 'subscriber';
-  profile.savedOutfits = S.saved && S.saved.length > 0 ? S.saved.map(item => item.name).join(', ') : 'Chưa lưu set nào';
-
-  // Bắn Webhook sang n8n
   const N8N_WEBHOOK_URL = 'https://boofitlab.app.n8n.cloud/webhook/e2e66b4f-fde1-400e-9018-322dc4b5b663';
   
   try {
