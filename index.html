@@ -1658,15 +1658,13 @@ function copyMemberCode() {
   }
 }
 async function syncLeadToHubSpot(actionName) {
-  let profile = S.userProfile;
-  if (!profile) {
-    try {
-      const savedUser = localStorage.getItem('boo_user_profile');
-      if (savedUser) {
-        profile = JSON.parse(savedUser);
-        S.userProfile = profile;
-      }
-    } catch (e) {}
+  // Chỉ lấy profile trực tiếp từ RAM của phiên làm việc hiện tại
+  const profile = S.userProfile;
+
+  // Nếu chưa đăng ký form trong phiên này thì dừng lại không bắn sync
+  if (!profile || !profile.email) {
+    console.log('⚠️ Chưa đăng ký form trong phiên này, bỏ qua sync HubSpot cho hành động:', actionName);
+    return;
   }
 
   if (!profile || !profile.email) {
